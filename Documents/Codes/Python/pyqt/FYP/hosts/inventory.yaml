@@ -1,0 +1,20 @@
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.254
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - router
+  hostname: R1
+  type: router
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.253
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - switch
+  hostname: S1
+  type: switch

@@ -1,0 +1,1177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main_window</class>
+ <widget class="QMainWindow" name="main_window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1043</width>
+    <height>666</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2" rowstretch="0">
+    <item row="0" column="0">
+     <widget class="QToolBox" name="toolBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhPreferNumbers</set>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <property name="tabSpacing">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Users</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>Delete User</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Add  User</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1" colspan="2">
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>Groups</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>All users</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="text">
+           <string>Edit User</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Devices and Groups</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pb_dev_add">
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_dev_all">
+          <property name="text">
+           <string>ALL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pb_dev_edit">
+          <property name="text">
+           <string>Delete or Edit</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Basic Tasks</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_bt_show_commands">
+          <property name="text">
+           <string>Show Commands</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pb_bt_set_clock">
+          <property name="text">
+           <string>Set Clock</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pb_bt_set_ntp">
+          <property name="text">
+           <string>Set NTP</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_193">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>L2 Concepts</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="page_194">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>L3 Concepts</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>VPNS</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Backup and Restore</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QTabWidget" name="tab_main">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>3</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Devices</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_11">
+        <item row="1" column="0" colspan="3">
+         <widget class="QTabWidget" name="tab_devices">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="currentIndex">
+           <number>2</number>
+          </property>
+          <property name="movable">
+           <bool>false</bool>
+          </property>
+          <widget class="QWidget" name="tab_3">
+           <attribute name="title">
+            <string>All Devices</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_12">
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="groupBox">
+              <property name="title">
+               <string>All Devices</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_6">
+               <item row="0" column="0">
+                <widget class="QLineEdit" name="txt_d_all_hostname">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Search using hostname</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLineEdit" name="txt_d_all_ip_address">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Search using IP Address</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QPushButton" name="btn_d_all_search">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Search</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QPushButton" name="btn_d_all_clear">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Clear</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <spacer name="verticalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Minimum</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>17</width>
+                   <height>13</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="0" colspan="4">
+                <widget class="QTableWidget" name="tbl_devices">
+                 <property name="tabletTracking">
+                  <bool>false</bool>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>true</bool>
+                 </property>
+                 <property name="textElideMode">
+                  <enum>Qt::ElideRight</enum>
+                 </property>
+                 <property name="sortingEnabled">
+                  <bool>true</bool>
+                 </property>
+                 <attribute name="horizontalHeaderCascadingSectionResizes">
+                  <bool>false</bool>
+                 </attribute>
+                 <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                  <bool>false</bool>
+                 </attribute>
+                 <attribute name="horizontalHeaderStretchLastSection">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderCascadingSectionResizes">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderStretchLastSection">
+                  <bool>false</bool>
+                 </attribute>
+                 <column>
+                  <property name="text">
+                   <string>Hostname</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>IP Address</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Username</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Password</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Secret Password</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Groups</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Type</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_4">
+           <attribute name="title">
+            <string>Add Device</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_10">
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="gb_d_all">
+              <property name="title">
+               <string>Add a Host</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="0">
+                <layout class="QFormLayout" name="formLayout_2">
+                 <property name="horizontalSpacing">
+                  <number>10</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>8</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>100</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="hostnameLabel">
+                   <property name="text">
+                    <string>hostname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="d_add_hostname">
+                   <property name="placeholderText">
+                    <string>Enter device hostname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="iPAddressLabel">
+                   <property name="text">
+                    <string>IP Address</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="d_add_ip_address">
+                   <property name="placeholderText">
+                    <string>Enter deivce ip address</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="usernameLabel">
+                   <property name="text">
+                    <string>username</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="d_add_username">
+                   <property name="placeholderText">
+                    <string>Enter ssh username</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="passwordLabel">
+                   <property name="text">
+                    <string>password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLineEdit" name="d_add_password">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter ssh password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="enablePasswordLabel">
+                   <property name="text">
+                    <string>Enable Password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="d_add_secret">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter enable password of device</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="label">
+                   <property name="text">
+                    <string>Device Type</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QComboBox" name="d_add_device_type">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Router</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Switch</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="6" column="1">
+                  <widget class="QPushButton" name="btn_d_add_save">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                     <horstretch>3</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Save</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_5">
+           <attribute name="title">
+            <string>Edit or Delete</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="gb_d_edit">
+              <property name="title">
+               <string>Edit or Delete a host</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <item row="0" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <item>
+                  <widget class="QLineEdit" name="txt_d_edit_hostname">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Search by hostname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="txt_d_edit_ip_address">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Search by IP Addres</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_d_edit_search">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Search</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="0">
+                <layout class="QFormLayout" name="formLayout_4">
+                 <property name="horizontalSpacing">
+                  <number>10</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>8</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>100</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="hostnameLabel_3">
+                   <property name="text">
+                    <string>hostname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="d_edit_hostname">
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="iPAddressLabel_3">
+                   <property name="text">
+                    <string>IP Address</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="d_edit_ip_address">
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="usernameLabel_3">
+                   <property name="text">
+                    <string>username</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="d_edit_username">
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="passwordLabel_3">
+                   <property name="text">
+                    <string>password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLineEdit" name="d_edit_password">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="enablePasswordLabel_3">
+                   <property name="text">
+                    <string>Enable Password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="d_edit_secret">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="deviceTypeLabel">
+                   <property name="text">
+                    <string>Device Type</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QComboBox" name="d_edit_device_type">
+                   <item>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Router</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Switch</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="6" column="1">
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <item>
+                    <widget class="QPushButton" name="btn_d_edit_edit">
+                     <property name="text">
+                      <string>Edit</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_3">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>10</width>
+                       <height>10</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="btn_d_edit_delete">
+                     <property name="text">
+                      <string>Delete</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="btn_d_edit_clear">
+                     <property name="text">
+                      <string>Clear</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Basic Section</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_22">
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="tab_basic_tasks">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_15">
+           <attribute name="title">
+            <string>Show Commands</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_23">
+            <item row="0" column="3">
+             <widget class="QPushButton" name="btn_bt_show_submit">
+              <property name="text">
+               <string>Submit</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QComboBox" name="cb_bt_all_devices">
+              <item>
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="2" column="0" colspan="4">
+             <widget class="QTextEdit" name="te_bt_show_show_output">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="cb_bt_show_groups">
+              <item>
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Routers</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Switches</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QComboBox" name="cb_bt_show_show_commands">
+              <item>
+               <property name="text">
+                <string>all interfaces configurations</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>show clock</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_6">
+           <attribute name="title">
+            <string>Set</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_18">
+            <item row="1" column="1">
+             <widget class="QGroupBox" name="groupBox_2">
+              <property name="title">
+               <string/>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_17">
+               <item row="0" column="0">
+                <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+               </item>
+               <item row="1" column="0">
+                <widget class="QPushButton" name="pushButton_6">
+                 <property name="text">
+                  <string>PushButton</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="2">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="1">
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="1">
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1043</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_as"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <widget class="QMenu" name="menuThemes">
+     <property name="title">
+      <string>Themes</string>
+     </property>
+     <addaction name="theme_blue_shade"/>
+     <addaction name="theme_dark_grey"/>
+     <addaction name="theme_breeze_dark"/>
+     <addaction name="theme_breeze_light"/>
+     <addaction name="theme_classic"/>
+     <addaction name="theme_dark_orange"/>
+    </widget>
+    <addaction name="menuThemes"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuTools"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="text">
+    <string>Save as</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="theme_blue_shade">
+   <property name="text">
+    <string>blue shade</string>
+   </property>
+  </action>
+  <action name="theme_dark_grey">
+   <property name="text">
+    <string>Dark Grey</string>
+   </property>
+  </action>
+  <action name="theme_breeze_dark">
+   <property name="text">
+    <string>Breeze Dark</string>
+   </property>
+  </action>
+  <action name="theme_breeze_light">
+   <property name="text">
+    <string>Breeze Light</string>
+   </property>
+  </action>
+  <action name="theme_classic">
+   <property name="text">
+    <string>Classic</string>
+   </property>
+  </action>
+  <action name="actionDark_Grey_2">
+   <property name="text">
+    <string>Dark Grey</string>
+   </property>
+  </action>
+  <action name="theme_dark_orange">
+   <property name="text">
+    <string>Dark Orange</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>d_add_hostname</tabstop>
+  <tabstop>d_add_ip_address</tabstop>
+  <tabstop>d_add_username</tabstop>
+  <tabstop>d_add_password</tabstop>
+  <tabstop>d_add_secret</tabstop>
+  <tabstop>d_add_device_type</tabstop>
+  <tabstop>btn_d_add_save</tabstop>
+  <tabstop>d_edit_hostname</tabstop>
+  <tabstop>d_edit_ip_address</tabstop>
+  <tabstop>d_edit_username</tabstop>
+  <tabstop>d_edit_password</tabstop>
+  <tabstop>d_edit_secret</tabstop>
+  <tabstop>d_edit_device_type</tabstop>
+  <tabstop>btn_d_edit_edit</tabstop>
+  <tabstop>txt_d_all_hostname</tabstop>
+  <tabstop>txt_d_all_ip_address</tabstop>
+  <tabstop>btn_d_all_search</tabstop>
+  <tabstop>btn_d_all_clear</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>pb_dev_edit</tabstop>
+  <tabstop>pb_dev_add</tabstop>
+  <tabstop>txt_d_edit_hostname</tabstop>
+  <tabstop>txt_d_edit_ip_address</tabstop>
+  <tabstop>btn_d_edit_search</tabstop>
+  <tabstop>pb_dev_all</tabstop>
+  <tabstop>tab_main</tabstop>
+  <tabstop>tab_devices</tabstop>
+  <tabstop>tbl_devices</tabstop>
+  <tabstop>btn_d_edit_delete</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>tab_basic_tasks</tabstop>
+  <tabstop>cb_bt_all_devices</tabstop>
+  <tabstop>cb_bt_show_groups</tabstop>
+  <tabstop>btn_bt_show_submit</tabstop>
+  <tabstop>te_bt_show_show_output</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pb_bt_show_commands</sender>
+   <signal>clicked()</signal>
+   <receiver>cb_bt_all_devices</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>229</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>128</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_bt_set_clock</sender>
+   <signal>clicked()</signal>
+   <receiver>dateTimeEdit</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>138</x>
+     <y>330</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>656</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_dev_all</sender>
+   <signal>clicked()</signal>
+   <receiver>txt_d_all_ip_address</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>209</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>558</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_dev_add</sender>
+   <signal>clicked()</signal>
+   <receiver>d_add_hostname</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>562</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_dev_edit</sender>
+   <signal>clicked()</signal>
+   <receiver>txt_d_edit_ip_address</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>346</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>672</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
