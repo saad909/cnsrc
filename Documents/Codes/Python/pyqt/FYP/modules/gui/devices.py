@@ -79,6 +79,8 @@ class devices(QDialog):
             # update autocomplete list of ip_addresses and hostnames
             self.auto_complete_edit_results()
             self.auto_complete_search_results()
+            # update devices in show commands combo box
+            self.update_combo_boxes()
 
             
        

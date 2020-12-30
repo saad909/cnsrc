@@ -571,6 +571,8 @@ class devices_func(QDial):
                 # clear search results
                 self.clear_edit_search_results()
                 self.clear_device_edit_user_search()
+                # update devices in show commands combo boxes
+                self.update_bt_all_devices()
             elif selection == QMessageBox.Cancel:
                 self.clear_edit_search_results()
                 self.clear_device_edit_user_search()
@@ -618,6 +620,8 @@ class devices_func(QDial):
                     # clear search results
                     self.clear_edit_search_results()
                     self.clear_device_edit_user_search()
+                    # update devices in show commands combo boxes
+                    self.update_bt_all_devices()
                         
                 else:
                     self.clear_edit_search_results()

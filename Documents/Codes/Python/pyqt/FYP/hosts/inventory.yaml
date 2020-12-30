@@ -18,3 +18,13 @@
   - switch
   hostname: S1
   type: switch
+- data:
+    device_type: cisco_ios
+    host: 1.1.1.2
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - router
+  hostname: R3
+  type: router
