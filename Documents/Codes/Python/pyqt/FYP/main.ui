@@ -609,55 +609,6 @@
             <string>Show Commands</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_23">
-            <item row="0" column="3">
-             <widget class="QPushButton" name="pb_bt_submit">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>Submit</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QComboBox" name="cb_bt_all_devices">
-              <item>
-               <property name="text">
-                <string>Select a device</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="2" column="0" colspan="4">
-             <widget class="QTextEdit" name="te_bt_show_show_output">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(0, 255, 0);</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="cb_bt_all_groups">
-              <item>
-               <property name="text">
-                <string>Select a group</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Routers</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Switches</string>
-               </property>
-              </item>
-             </widget>
-            </item>
             <item row="0" column="2">
              <widget class="QComboBox" name="cb_bt_all_commands">
               <property name="editable">
@@ -691,6 +642,60 @@ color: rgb(0, 255, 0);</string>
                 <string>clock</string>
                </property>
               </item>
+              <item>
+               <property name="text">
+                <string>version</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QPushButton" name="pb_bt_submit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Submit</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="cb_bt_all_groups">
+              <item>
+               <property name="text">
+                <string>Select a group</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>router</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>switch</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QComboBox" name="cb_bt_all_devices">
+              <item>
+               <property name="text">
+                <string>Select a device</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="2" column="0" colspan="4">
+             <widget class="QTextEdit" name="te_bt_command_output">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -1113,7 +1118,6 @@ color: rgb(0, 255, 0);</string>
   <tabstop>cb_bt_all_devices</tabstop>
   <tabstop>cb_bt_all_groups</tabstop>
   <tabstop>pb_bt_submit</tabstop>
-  <tabstop>te_bt_show_show_output</tabstop>
  </tabstops>
  <resources/>
  <connections>
