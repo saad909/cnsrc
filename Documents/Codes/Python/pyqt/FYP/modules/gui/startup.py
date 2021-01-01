@@ -19,6 +19,10 @@ class startup_settings(QDial):
         self.update_bt_all_devices()
         
 
+        # sort show commands combobox
+        self.cb_bt_all_commands.model().sort(0)
+
+
         ###################### hide the tabs ###################### 
         # main tab
         self.tab_main.tabBar().setVisible(False)

@@ -34,12 +34,12 @@ class Window(
         self.get_valid_ip(self.txt_d_all_ip_address)
         self.get_valid_ip(self.txt_d_edit_ip_address)
         self.get_valid_ip(self.d_edit_ip_address)
+
+
         # handle show commands combo boxes
         self.device_selection = None
-        # if device is selected
         self.cb_bt_all_groups.currentIndexChanged.connect(lambda: self.disable_box(self.cb_bt_all_groups,self.cb_bt_all_devices))
         self.cb_bt_all_devices.currentIndexChanged.connect(lambda: self.disable_box(self.cb_bt_all_devices,self.cb_bt_all_groups))
-        # if group is selected
         self.cb_bt_all_commands.currentIndexChanged.connect(self.show_commands_submit_button)
 
 
@@ -60,6 +60,7 @@ class Window(
         self.pb_bt_set_ntp.clicked.connect(lambda: self.tab_movement(1,self.tab_basic_tasks,1))
         self.pb_bt_set_clock.clicked.connect(lambda: self.tab_movement(1,self.tab_basic_tasks,1))
         
+        ################### button click action #####################
         ##### add device ###### 
         
         
@@ -81,6 +82,9 @@ class Window(
         self.btn_d_edit_edit.clicked.connect(self.edit_device)
         self.btn_d_edit_delete.clicked.connect(self.delete_device)
         self.btn_d_edit_clear.clicked.connect(self.clear_edit_search_results)
+
+        ##### show commands ###### 
+        self.pb_bt_submit.clicked.connect(self.run_show_command)
         
         
         ##### interfaces ###### 

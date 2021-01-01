@@ -660,9 +660,25 @@ color: rgb(0, 255, 0);</string>
             </item>
             <item row="0" column="2">
              <widget class="QComboBox" name="cb_bt_all_commands">
+              <property name="editable">
+               <bool>false</bool>
+              </property>
+              <property name="maxVisibleItems">
+               <number>10</number>
+              </property>
               <item>
                <property name="text">
                 <string>Select a show command</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>running config</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>startup config</string>
                </property>
               </item>
               <item>
@@ -672,7 +688,7 @@ color: rgb(0, 255, 0);</string>
               </item>
               <item>
                <property name="text">
-                <string>show clock</string>
+                <string>clock</string>
                </property>
               </item>
              </widget>
@@ -1108,8 +1124,8 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>229</y>
+     <x>154</x>
+     <y>222</y>
     </hint>
     <hint type="destinationlabel">
      <x>359</x>
@@ -1144,8 +1160,8 @@ color: rgb(0, 255, 0);</string>
      <y>209</y>
     </hint>
     <hint type="destinationlabel">
-     <x>558</x>
-     <y>159</y>
+     <x>329</x>
+     <y>138</y>
     </hint>
    </hints>
   </connection>
@@ -1160,8 +1176,8 @@ color: rgb(0, 255, 0);</string>
      <y>208</y>
     </hint>
     <hint type="destinationlabel">
-     <x>562</x>
-     <y>265</y>
+     <x>413</x>
+     <y>211</y>
     </hint>
    </hints>
   </connection>
@@ -1172,8 +1188,8 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>150</x>
-     <y>346</y>
+     <x>158</x>
+     <y>375</y>
     </hint>
     <hint type="destinationlabel">
      <x>672</x>
