@@ -1,33 +1,19 @@
 from PyQt5.QtWidgets import *
-from pprint import pprint
-from netmiko import ConnectHandler,NetMikoTimeoutException
-class connection(QDialog):
 
-    # craete the connection handler and return
-    def create_handler(device):
-        device = device['data']
-        try:
-            net_conn =  connecthandler(**device)
-            return net_conn
-        except netmikotimeoutexception:
-            print("devices in not reachable")
-            QMessageBox.information(self,"Note","devices in not reachable")
-        except netmikoauthenticationexception:
-            print("authentication failure")
-            QMessageBox.information(self,"Note","authentication failure")
-        except netmikosshexception:
-            print("make sure ssh is enabled on device")
-            QMessageBox.information(self,"Note","make sure ssh is enabled on device")
-
-    def write_commad_output(command_output):
-        with open('logs.txt', 'a') as filehandle:
-                filehandle.writelines("%s\n" % line for line in command_output)
-
-    def write_message(message):
-        with open("logs.txt",'a') as handler:
-            handler.write(message)
-
+class show_commands(QDialog):
     def show_commands():
+        # get the values from the combo_boxes
+        device_name = self.cb_bt_all_devices.currentText()
+        group_name = self.cb_bt_show_groups.currentText()
+        show_command = self.cb_bt_show_commands.currentText()
+
+        if device_name and group_name:
+            QMessageBox.information(self,"Note","Single device will be prefered")
+        # Only device is selected
+        elif device_name and not (group_name):
+            pass
+        
+
         devices = read_yaml_file()
         print(f"================= Total = {len(devices)} =================")
         pprint(devices)
@@ -70,4 +56,31 @@ class connection(QDialog):
 
                 print(f"Total down  = {down_count}")
 
+
+    def disable_box(self,checking_box,box_to_disable): 
+
+
+        self.device_section = False
+
+        current_index = checking_box.currentIndex()
+        if current_index == 0:
+
+            self.device_selection = False
+            box_to_disable.setEnabled(True)
+            self.show_commands_submit_button()
+
+        elif current_index != 0:
+
+            self.device_selection = True
+            box_to_disable.setEnabled(False)
+            self.show_commands_submit_button()
+
+
+        # command seelection
+    def show_commands_submit_button(self):
+
+        if self.device_selection and self.cb_bt_all_commands.currentIndex() != 0:
+            self.pb_bt_submit.setEnabled(True)
+        else:
+            self.pb_bt_submit.setEnabled(False)
 

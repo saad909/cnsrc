@@ -40,6 +40,7 @@ class startup_settings(QDial):
         ###################### remove border ###################### 
         self.remove_border(self.tab_main)
         self.remove_border(self.tab_devices)
+        # show commands submit button
         
         
 

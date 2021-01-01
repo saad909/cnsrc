@@ -10,7 +10,7 @@ class Window(
 
     QMainWindow,ui,startup_settings,devices, devices_func,
     inventory_mgmt_func,user_settings, themes_func,
-    connection,update_combo_boxes
+    connection,update_combo_boxes,show_commands
     
     ):
 
@@ -34,6 +34,13 @@ class Window(
         self.get_valid_ip(self.txt_d_all_ip_address)
         self.get_valid_ip(self.txt_d_edit_ip_address)
         self.get_valid_ip(self.d_edit_ip_address)
+        # handle show commands combo boxes
+        self.device_selection = None
+        # if device is selected
+        self.cb_bt_all_groups.currentIndexChanged.connect(lambda: self.disable_box(self.cb_bt_all_groups,self.cb_bt_all_devices))
+        self.cb_bt_all_devices.currentIndexChanged.connect(lambda: self.disable_box(self.cb_bt_all_devices,self.cb_bt_all_groups))
+        # if group is selected
+        self.cb_bt_all_commands.currentIndexChanged.connect(self.show_commands_submit_button)
 
 
 

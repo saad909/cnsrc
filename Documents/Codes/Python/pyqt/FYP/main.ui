@@ -24,205 +24,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2" rowstretch="0">
-    <item row="0" column="0">
-     <widget class="QToolBox" name="toolBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>1</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="inputMethodHints">
-       <set>Qt::ImhPreferNumbers</set>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
-      </property>
-      <property name="currentIndex">
-       <number>2</number>
-      </property>
-      <property name="tabSpacing">
-       <number>2</number>
-      </property>
-      <widget class="QWidget" name="page">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>255</width>
-         <height>415</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Users</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="1">
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>Delete User</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>Add  User</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1" colspan="2">
-         <widget class="QPushButton" name="pushButton_4">
-          <property name="text">
-           <string>Groups</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="text">
-           <string>All users</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="pushButton_5">
-          <property name="text">
-           <string>Edit User</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>255</width>
-         <height>415</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Devices and Groups</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pb_dev_add">
-          <property name="text">
-           <string>Add</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_dev_all">
-          <property name="text">
-           <string>ALL</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QPushButton" name="pb_dev_edit">
-          <property name="text">
-           <string>Delete or Edit</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_6">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>255</width>
-         <height>415</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Basic Tasks</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_8">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_bt_show_commands">
-          <property name="text">
-           <string>Show Commands</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pb_bt_set_clock">
-          <property name="text">
-           <string>Set Clock</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="pb_bt_set_ntp">
-          <property name="text">
-           <string>Set NTP</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_193">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>255</width>
-         <height>415</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>L2 Concepts</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="page_194">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>255</width>
-         <height>415</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>L3 Concepts</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="page_5">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>255</width>
-         <height>415</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>VPNS</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="page_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>255</width>
-         <height>415</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Backup and Restore</string>
-       </attribute>
-      </widget>
-     </widget>
-    </item>
     <item row="0" column="1">
      <widget class="QTabWidget" name="tab_main">
       <property name="sizePolicy">
@@ -809,7 +610,10 @@
            </attribute>
            <layout class="QGridLayout" name="gridLayout_23">
             <item row="0" column="3">
-             <widget class="QPushButton" name="btn_bt_show_submit">
+             <widget class="QPushButton" name="pb_bt_submit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="text">
                <string>Submit</string>
               </property>
@@ -819,7 +623,7 @@
              <widget class="QComboBox" name="cb_bt_all_devices">
               <item>
                <property name="text">
-                <string/>
+                <string>Select a device</string>
                </property>
               </item>
              </widget>
@@ -836,10 +640,10 @@ color: rgb(0, 255, 0);</string>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QComboBox" name="cb_bt_show_groups">
+             <widget class="QComboBox" name="cb_bt_all_groups">
               <item>
                <property name="text">
-                <string/>
+                <string>Select a group</string>
                </property>
               </item>
               <item>
@@ -855,7 +659,12 @@ color: rgb(0, 255, 0);</string>
              </widget>
             </item>
             <item row="0" column="2">
-             <widget class="QComboBox" name="cb_bt_show_show_commands">
+             <widget class="QComboBox" name="cb_bt_all_commands">
+              <item>
+               <property name="text">
+                <string>Select a show command</string>
+               </property>
+              </item>
               <item>
                <property name="text">
                 <string>all interfaces configurations</string>
@@ -875,6 +684,45 @@ color: rgb(0, 255, 0);</string>
             <string>Set</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_18">
+            <item row="1" column="0">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="1">
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="1">
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
             <item row="1" column="1">
              <widget class="QGroupBox" name="groupBox_2">
               <property name="title">
@@ -894,19 +742,6 @@ color: rgb(0, 255, 0);</string>
               </layout>
              </widget>
             </item>
-            <item row="1" column="0">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
             <item row="1" column="2">
              <spacer name="horizontalSpacer_2">
               <property name="orientation">
@@ -920,37 +755,210 @@ color: rgb(0, 255, 0);</string>
               </property>
              </spacer>
             </item>
-            <item row="0" column="1">
-             <spacer name="verticalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="2" column="1">
-             <spacer name="verticalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
            </layout>
           </widget>
          </widget>
         </item>
        </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QToolBox" name="toolBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhPreferNumbers</set>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <property name="tabSpacing">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Users</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>Delete User</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Add  User</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1" colspan="2">
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>Groups</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>All users</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="text">
+           <string>Edit User</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Devices and Groups</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pb_dev_add">
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_dev_all">
+          <property name="text">
+           <string>ALL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pb_dev_edit">
+          <property name="text">
+           <string>Delete or Edit</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Basic Tasks</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_bt_show_commands">
+          <property name="text">
+           <string>Show Commands</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pb_bt_set_clock">
+          <property name="text">
+           <string>Set Clock</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pb_bt_set_ntp">
+          <property name="text">
+           <string>Set NTP</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_193">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>L2 Concepts</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="page_194">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>L3 Concepts</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>VPNS</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>255</width>
+         <height>415</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Backup and Restore</string>
+       </attribute>
       </widget>
      </widget>
     </item>
@@ -1087,8 +1095,8 @@ color: rgb(0, 255, 0);</string>
   <tabstop>pushButton_2</tabstop>
   <tabstop>tab_basic_tasks</tabstop>
   <tabstop>cb_bt_all_devices</tabstop>
-  <tabstop>cb_bt_show_groups</tabstop>
-  <tabstop>btn_bt_show_submit</tabstop>
+  <tabstop>cb_bt_all_groups</tabstop>
+  <tabstop>pb_bt_submit</tabstop>
   <tabstop>te_bt_show_show_output</tabstop>
  </tabstops>
  <resources/>

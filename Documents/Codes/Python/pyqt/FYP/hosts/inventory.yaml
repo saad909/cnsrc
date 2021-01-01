@@ -28,3 +28,13 @@
   - router
   hostname: R3
   type: router
+- data:
+    device_type: cisco_ios
+    host: 192.168.1.10
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - router
+  hostname: R4
+  type: router

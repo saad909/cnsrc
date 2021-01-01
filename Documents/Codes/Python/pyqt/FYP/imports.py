@@ -9,3 +9,4 @@ from modules.gui.user_settings import user_settings
 from modules.gui.inventory_mgmt_func import inventory_mgmt_func
 
 from modules.networking.connection import *
+from modules.networking.show_commands import *
