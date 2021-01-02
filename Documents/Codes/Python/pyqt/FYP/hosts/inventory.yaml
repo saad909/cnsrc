@@ -20,11 +20,21 @@
   type: switch
 - data:
     device_type: cisco_ios
-    host: 192.168.1.10
+    host: 192.168.122.86
     password: cisco
     secret: cisco
     username: cisco
   groups:
   - router
-  hostname: R4
+  hostname: R2
+  type: router
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.101
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - router
+  hostname: Real Router
   type: router

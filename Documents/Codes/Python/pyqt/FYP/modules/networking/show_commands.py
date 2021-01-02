@@ -32,12 +32,22 @@ class show_commands(QDialog):
                 return device
 
     # execute show command agianst a single device
-    def execute_show_command(self,net_conn,filename):
+    def execute_show_command(self,net_conn,filename,group):
         filename = os.path.join('show',filename)
         command = self.gen_false(filename)
+        net_conn.ansi_escape_codes = True
         output = net_conn.send_command(command)
         print(output)
-        self.te_bt_command_output.setPlainText(str(output))
+        print(group)
+        if not group:
+            self.te_bt_command_output.clear()
+            self.te_bt_command_output.setPlainText(str(output))
+            return 
+        else:
+            return output
+        
+
+        net_conn.disconnect()
 
 
     def execute_show_command_against_single_device(self, device_name,command_text):
@@ -47,25 +57,36 @@ class show_commands(QDialog):
         device = self.get_device(device_name)
         net_conn = self.create_handler(device)
 
-        self.te_bt_command_output.clear()
         if net_conn:
             # show clock
             if command_text == "clock":
-                self.execute_show_command(net_conn,'show_clock')
+                self.execute_show_command(net_conn,'show_clock',False)
                 return
+
+
 
             #show startup config
             elif command_text == "startup config":
-                self.execute_show_command(net_conn,'show_start')
+                self.execute_show_command(net_conn,'show_start',False)
                 return
+
+
 
             #show running config
             elif command_text == "running config":
-                self.execute_show_command(net_conn,'show_run')
+                self.execute_show_command(net_conn,'show_run',False)
                 return
+
+
             # sh interfaces information
             elif command_text == "all interfaces configurations":
-                self.execute_show_command(net_conn,'show_interface_brief')
+                self.execute_show_command(net_conn,'show_interface_brief',False)
+                return
+
+
+            # sh interfaces information
+            elif command_text == "version":
+                self.execute_show_command(net_conn,'show_version',False)
                 return
             
         
@@ -82,6 +103,7 @@ class show_commands(QDialog):
         group_devices = list()
         all_devices = self.convert_host_file_into_list()
 
+        # getting group members
         for device in all_devices:
             if group_name in device['groups']:
                 group_devices.append(device)
@@ -90,32 +112,47 @@ class show_commands(QDialog):
 
 
         self.te_bt_command_output.clear()
+        output = ""
+        result = ""
         for device in group_devices:
             net_conn = self.create_handler(device)
             if net_conn:
-                print(f"\n================== {device['hostname']} ==================\n")
-                self.te_bt_command_output.setPlainText(f"\n================== {device['hostname']} ==================\n")
+                message = f"\n\n==================================== {device['hostname']} ====================================\n\n"
+                print(message)
+                output += message
+
+
                 # show clock
                 if command_text == "clock":
-                    self.execute_show_command(net_conn,'show_clock')
+                    result = self.execute_show_command(net_conn,'show_clock',True)
+                    output += result
+
 
                 #show startup config
                 elif command_text == "startup config":
                     print("Startup config")
-                    self.execute_show_command(net_conn,'show_start')
+                    result = self.execute_show_command(net_conn,'show_start',True)
+                    output += result
+
 
                 #show running config
                 elif command_text == "running config":
-                    print("Running config")
-                    self.execute_show_command(net_conn,'show_run')
+                    result = self.execute_show_command(net_conn,'show_run',True)
+                    output += result
+
+
                 # sh interfaces information
                 elif command_text == "all interfaces configurations":
-                    self.execute_show_command(net_conn,'show_interface_brief')
+                    result = self.execute_show_command(net_conn,'show_interface_brief',True)
+                    output += result
 
                 elif command_text == "version":
-                    self.execute_show_command(net_conn,'show_version')
+                    result = self.execute_show_command(net_conn,'show_version',True)
+                    output += result
 
-
+        print(type(output))
+        print(str(output))
+        self.te_bt_command_output.setPlainText(output)
     def disable_box(self,checking_box,box_to_disable): 
 
 

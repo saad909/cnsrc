@@ -80,7 +80,7 @@ class devices(QDialog):
             self.auto_complete_edit_results()
             self.auto_complete_search_results()
             # update devices in show commands combo box
-            self.update_combo_boxes()
+            self.update_bt_all_devices()
 
             
        

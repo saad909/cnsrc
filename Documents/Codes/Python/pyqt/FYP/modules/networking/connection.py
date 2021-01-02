@@ -9,7 +9,8 @@ from jinja2 import Environment, FileSystemLoader
 # from bracket_expansion import *
 from netmiko import Netmiko, file_transfer,ConnectHandler
 from netmiko.ssh_exception import NetMikoTimeoutException
-from netmiko.ssh_exception import NetMikoAuthenticationException
+from netmiko.ssh_exception import AuthenticationException
+from paramiko.ssh_exception import SSHException
 
 
 templates_path = os.path.join('hosts','templates')
@@ -29,24 +30,20 @@ class connection(QDialog):
             print("devices in not reachable")
             QMessageBox.information(self,"Note",f"{hostname} in not reachable")
             return False
-        except NetMikoAuthenticationException:
+        except AuthenticationException:
             print("authentication failure")
             QMessageBox.information(self,"Note",f"For {hostname} authentication Failed")
             return False
-        except Exception as error:
-            print("make sure ssh is enabled on device")
-            QMessageBox.information(self,"Note",f"Make sure ssh is enabled on {hostname}")
-            print(error)
 
+        except SSHException:
+            print("SSH error. Make sure ssh is enabled on device")
+            QMessageBox.information(self,"Note",f"SSH error. Make sure ssh is enabled on {hostname}")
+            print(str(error))
+        except Exception as error:
+            print(str(error))
+            QMessageBox.information(self,"Note",str(error))
             return False
 
-    # def write_commad_output(command_output):
-    #     with open('logs.txt', 'a') as filehandle:
-    #             filehandle.writelines("%s\n" % line for line in command_output)
-
-    # def write_message(message):
-    #     with open("logs.txt",'a') as handler:
-    #         handler.write(message)
 
 
     # generate the configuration template
