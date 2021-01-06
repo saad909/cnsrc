@@ -10,7 +10,7 @@ class Window(
 
     QMainWindow,ui,startup_settings,devices, devices_func,
     inventory_mgmt_func,user_settings, themes_func,
-    connection,update_combo_boxes,show_commands
+    connection,update_combo_boxes,show_commands,basic_tasks
     
     ):
 
@@ -87,9 +87,9 @@ class Window(
         self.pb_bt_submit.clicked.connect(self.run_show_command)
         
         
-        ##### interfaces ###### 
+        ##### basic tasks ###### 
         
-        # self.btn_show_cmd_submit.clicked.connect(self.show_commands)
+        self.bt_set_vlan_submit.clicked.connect(self.create_vlan)
         
         
 

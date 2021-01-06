@@ -5,7 +5,7 @@
     secret: cisco
     username: cisco
   groups:
-  - router
+    - router
   hostname: R1
   type: router
 - data:
@@ -15,17 +15,17 @@
     secret: cisco
     username: cisco
   groups:
-  - switch
+    - switch
   hostname: S1
   type: switch
 - data:
     device_type: cisco_ios
-    host: 192.168.122.86
+    host: 192.168.122.26
     password: cisco
     secret: cisco
     username: cisco
   groups:
-  - router
+    - router
   hostname: R2
   type: router
 - data:
@@ -35,6 +35,6 @@
     secret: cisco
     username: cisco
   groups:
-  - router
+    - router
   hostname: Real Router
   type: router

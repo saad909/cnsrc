@@ -50,16 +50,12 @@ class connection(QDialog):
 
     # 1. get the values from yaml file
     # 2. feed those valus to jinj2 template
-    def gen(self,filename):
+    def gen(self,configs_dictionary, filename):
+        template_path = os.path.join(filename + '.j2')
+        template = ENV.get_template(template_path)
+        return template.render(config=configs_dictionary)
 
-        print('-------------------')
-        print('')
-        var_file_path = os.path.join('hosts', 'vars', filename + '.yaml')
-        with open(var_file_path) as _:
-            var_file = safe_load(_)
-            print(var_file)
-            template = ENV.get_template(filename + ".j2")
-            print(template.render(config=var_file))
+
 
     # use this template for those commands which dont require any arguments
     def gen_false(self,filename):
@@ -70,12 +66,3 @@ class connection(QDialog):
             command = handler.read()
         print(command)
         return command
-
-        
-        
-
-            
-
-
-
-
