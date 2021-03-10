@@ -1,0 +1,70 @@
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.254
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - router
+  hostname: R1
+  type: router
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.26
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - router
+  hostname: R2
+  type: router
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.101
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - router
+  hostname: Real Router
+  type: router
+- data:
+    device_type: cisco_ios
+    host: 10.1.1.1
+    password: cisco
+    secret: cisoc
+    username: cisoc
+  groups:
+  - router
+  hostname: cisco
+  type: router
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.96
+    password: cisoc
+    secret: cisco
+    username: cisco
+  groups:
+  - router
+  hostname: demo
+  type: router
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.253
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - switch
+  hostname: switch
+  type: switch
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.118
+    password: cisco
+    secret: cisco
+    username: cisco
+  groups:
+  - router
+  hostname: demo12
+  type: router

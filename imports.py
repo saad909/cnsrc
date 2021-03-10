@@ -1,4 +1,5 @@
-from modules.gui.startup import  *
+from gui import *
+from modules.gui.startup import *
 from modules.gui.devices import *
 from modules.gui.devices_func import *
 from modules.gui.inventory_mgmt_func import *
