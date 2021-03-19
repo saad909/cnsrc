@@ -68,3 +68,13 @@
   - router
   hostname: demo12
   type: router
+- data:
+    device_type: cisco_ios
+    host: 10.1.1.253
+    password: cisco
+    secret: cisoc
+    username: cisco
+  groups:
+  - switch
+  hostname: S1
+  type: switch

@@ -4,12 +4,13 @@ from PyQt5.QtGui import *
 from PyQt5.uic import loadUiType
 from imports import *
 
-# ui, _ = loadUiType("main.ui")
+ui, _ = loadUiType("main.ui")
 
 
 class Window(
     QMainWindow,
-    Ui_main_window,
+    # Ui_main_window,
+    ui,
     startup_settings,
     devices,
     devices_func,
@@ -71,12 +72,6 @@ class Window(
         ##### general tasks ######
         self.pb_bt_show_commands.clicked.connect(
             lambda: self.tab_movement(1, self.tab_basic_tasks, 0)
-        )
-        self.pb_bt_set_ntp.clicked.connect(
-            lambda: self.tab_movement(1, self.tab_basic_tasks, 1)
-        )
-        self.pb_bt_set_clock.clicked.connect(
-            lambda: self.tab_movement(1, self.tab_basic_tasks, 1)
         )
 
         ################### button click action #####################
