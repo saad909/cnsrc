@@ -16,7 +16,6 @@ class Window(
     devices_func,
     inventory_mgmt_func,
     user_settings,
-    themes_func,
     connection,
     update_combo_boxes,
     show_commands,
@@ -98,20 +97,6 @@ class Window(
         ##### basic tasks ######
 
         self.bt_set_vlan_submit.clicked.connect(self.create_vlan)
-
-        # theming
-        self.theme_blue_shade.triggered.connect(lambda: self.apply_theme("blue shade"))
-        self.theme_dark_grey.triggered.connect(lambda: self.apply_theme("dark grey"))
-        self.theme_breeze_dark.triggered.connect(
-            lambda: self.apply_theme("breeze dark")
-        )
-        self.theme_breeze_light.triggered.connect(
-            lambda: self.apply_theme("breeze light")
-        )
-        self.theme_classic.triggered.connect(lambda: self.apply_theme("classic"))
-        self.theme_dark_orange.triggered.connect(
-            lambda: self.apply_theme("dark orange")
-        )
 
 
 def main():
