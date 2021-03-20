@@ -608,7 +608,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -752,10 +752,25 @@
                  </property>
                  <layout class="QGridLayout" name="gridLayout_31">
                   <item row="2" column="2">
-                   <widget class="QListWidget" name="listWidget">
+                   <widget class="QListWidget" name="g_add_group_members">
                     <property name="selectionMode">
                      <enum>QAbstractItemView::MultiSelection</enum>
                     </property>
+                    <item>
+                     <property name="text">
+                      <string>saad</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>test</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>test2</string>
+                     </property>
+                    </item>
                    </widget>
                   </item>
                   <item row="0" column="0">
@@ -766,7 +781,7 @@
                    </widget>
                   </item>
                   <item row="0" column="2">
-                   <widget class="QLineEdit" name="lineEdit">
+                   <widget class="QLineEdit" name="g_add_groupname">
                     <property name="placeholderText">
                      <string>Enter the group name</string>
                     </property>
@@ -783,9 +798,9 @@
                    </widget>
                   </item>
                   <item row="3" column="2">
-                   <widget class="QPushButton" name="pushButton_9">
+                   <widget class="QPushButton" name="g_add_submit">
                     <property name="text">
-                     <string>Submit</string>
+                     <string>Add Group</string>
                     </property>
                    </widget>
                   </item>
@@ -1074,7 +1089,7 @@ color: rgb(0, 255, 0);</string>
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -1357,12 +1372,12 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>375</y>
+     <x>162</x>
+     <y>439</y>
     </hint>
     <hint type="destinationlabel">
-     <x>672</x>
-     <y>162</y>
+     <x>736</x>
+     <y>138</y>
     </hint>
    </hints>
   </connection>
@@ -1373,8 +1388,8 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>154</x>
-     <y>222</y>
+     <x>158</x>
+     <y>320</y>
     </hint>
     <hint type="destinationlabel">
      <x>359</x>
@@ -1389,12 +1404,12 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>199</x>
-     <y>208</y>
+     <x>203</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
-     <x>413</x>
-     <y>211</y>
+     <x>871</x>
+     <y>250</y>
     </hint>
    </hints>
   </connection>
@@ -1405,12 +1420,28 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>101</x>
-     <y>209</y>
+     <x>105</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
-     <x>329</x>
-     <y>138</y>
+     <x>619</x>
+     <y>137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_grp_all</sender>
+   <signal>clicked()</signal>
+   <receiver>tab_groups</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>65</x>
+     <y>283</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>77</y>
     </hint>
    </hints>
   </connection>

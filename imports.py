@@ -11,3 +11,5 @@ from modules.gui.inventory_mgmt_func import inventory_mgmt_func
 from modules.networking.connection import *
 from modules.networking.show_commands import *
 from modules.networking.basic_tasks import *
+
+from modules.gui.groups import *

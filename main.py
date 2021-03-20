@@ -20,6 +20,7 @@ class Window(
     update_combo_boxes,
     show_commands,
     basic_tasks,
+    groups,
 ):
     def __init__(self):
         super().__init__()
@@ -100,11 +101,14 @@ class Window(
         self.btn_d_edit_delete.clicked.connect(self.delete_device)
         self.btn_d_edit_clear.clicked.connect(self.clear_edit_search_results)
 
+        ##### add, show, delete and edit custom groups ######
+        # add a group
+        self.g_add_submit.clicked.connect(self.add_group)
+
         ##### show commands ######
         self.pb_bt_submit.clicked.connect(self.run_show_command)
 
         ##### basic tasks ######
-
         self.bt_set_vlan_submit.clicked.connect(self.create_vlan)
 
 
