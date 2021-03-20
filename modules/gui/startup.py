@@ -37,6 +37,9 @@ class startup_settings(QDial):
         # edit or delete device
         self.auto_complete_edit_results()
 
+        # add devices for custom groups
+        self.add_devices_for_group_selection()
+
         ###################### remove border ######################
         # self.remove_border(self.tab_main)
         # self.remove_border(self.tab_devices)

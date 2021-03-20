@@ -6,6 +6,7 @@
     username: cisco
   groups:
   - router
+  - test12
   hostname: R1
   type: router
 - data:
@@ -16,6 +17,7 @@
     username: cisco
   groups:
   - router
+  - test123
   hostname: R2
   type: router
 - data:
@@ -36,6 +38,7 @@
     username: cisoc
   groups:
   - router
+  - test12
   hostname: cisco
   type: router
 - data:
@@ -56,6 +59,8 @@
     username: cisco
   groups:
   - switch
+  - test1
+  - test123
   hostname: switch
   type: switch
 - data:
@@ -66,6 +71,7 @@
     username: cisco
   groups:
   - router
+  - test1
   hostname: demo12
   type: router
 - data:
