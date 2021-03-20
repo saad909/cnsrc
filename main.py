@@ -56,7 +56,7 @@ class Window(
     def handleButtons(self):
 
         ################### Tab movement #####################
-        ##### add device ######
+        ##### devices ######
 
         self.pb_dev_all.clicked.connect(
             lambda: self.tab_movement(0, self.tab_devices, 0)
@@ -68,11 +68,20 @@ class Window(
             lambda: self.tab_movement(0, self.tab_devices, 2)
         )
 
-        ##### general tasks ######
+        ##### basic tasks ######
         self.pb_bt_show_commands.clicked.connect(
-            lambda: self.tab_movement(1, self.tab_basic_tasks, 0)
+            lambda: self.tab_movement(2, self.tab_basic_tasks, 0)
         )
-
+        ##### custom groups ######
+        self.pb_grp_all.clicked.connect(
+            lambda: self.tab_movement(1, self.tab_groups, 0)
+        )
+        self.pb_grp_add.clicked.connect(
+            lambda: self.tab_movement(1, self.tab_groups, 1)
+        )
+        self.pb_grp_edit.clicked.connect(
+            lambda: self.tab_movement(1, self.tab_groups, 2)
+        )
         ################### button click action #####################
         ##### add device ######
 

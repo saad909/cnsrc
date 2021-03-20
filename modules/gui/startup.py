@@ -1,5 +1,4 @@
 ###################### startup settings ######################
-
 from re import sub
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -27,7 +26,7 @@ class startup_settings(QDial):
         self.tab_main.tabBar().setVisible(False)
         self.tab_basic_tasks.tabBar().setVisible(False)
         self.tab_devices.tabBar().setVisible(False)
-        # self.tab_devices.tabBar().setVisible(False)
+        self.tab_groups.tabBar().setVisible(False)
         ###################### devices ######################
 
         ##### ALL Devices Table ######
@@ -35,9 +34,7 @@ class startup_settings(QDial):
         # set auto completion for search boxes
         self.auto_complete_search_results()
 
-        ##### edit or delete device ######
-
-        # set auto completion for search boxes
+        # edit or delete device
         self.auto_complete_edit_results()
 
         ###################### remove border ######################
