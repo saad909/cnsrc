@@ -5,10 +5,11 @@
     secret: cisco
     username: cisco
   groups:
-  - router
+  - switch
   - test12
+  - a
   hostname: R1
-  type: router
+  type: switch
 - data:
     device_type: cisco_ios
     host: 192.168.122.26
@@ -18,6 +19,8 @@
   groups:
   - router
   - test123
+  - sa
+  - a
   hostname: R2
   type: router
 - data:
@@ -28,6 +31,8 @@
     username: cisco
   groups:
   - router
+  - sa
+  - asdas
   hostname: Real Router
   type: router
 - data:
@@ -39,6 +44,9 @@
   groups:
   - router
   - test12
+  - sa
+  - sa
+  - asdas
   hostname: cisco
   type: router
 - data:
@@ -49,6 +57,7 @@
     username: cisco
   groups:
   - router
+  - a
   hostname: demo
   type: router
 - data:
@@ -61,6 +70,9 @@
   - switch
   - test1
   - test123
+  - sa
+  - sa
+  - sa
   hostname: switch
   type: switch
 - data:
@@ -72,6 +84,8 @@
   groups:
   - router
   - test1
+  - a
+  - asdas
   hostname: demo12
   type: router
 - data:
