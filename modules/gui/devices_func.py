@@ -94,7 +94,7 @@ class devices_func(QDial):
             self.tbl_devices.setItem(i,4,QTableWidgetItem(secret))
 
 
-            self.tbl_devices.setItem(i,5,QTableWidgetItem(", ".join(all_groups)))
+            self.tbl_devices.setItem(i,5,QTableWidgetItem(" ".join(all_groups)))
 
             self.tbl_devices.setItem(i,6,QTableWidgetItem(device_type))
 

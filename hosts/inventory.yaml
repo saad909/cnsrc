@@ -26,5 +26,5 @@
     username: cisco
   groups:
   - switch
-  hostname: s1
+  hostname: sw
   type: switch

@@ -2,3 +2,16 @@
   - S1
   - s1
   group_name: custom_switches
+- group_members: []
+  group_name: asdas
+- group_members: []
+  group_name: test1
+- group_members: []
+  group_name: cisco
+- group_members: []
+  group_name: sa
+- group_members: []
+  group_name: saad
+- group_members:
+  - S1
+  group_name: testing group

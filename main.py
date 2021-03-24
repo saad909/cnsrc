@@ -32,7 +32,6 @@ class Window(
         self.handleButtons()
 
     ###################### handle UI changes  ######################
-
     def handleUIChanges(self):
         # get the valid ip
         self.get_valid_ip(self.d_add_ip_address)
@@ -83,6 +82,10 @@ class Window(
         self.pb_grp_edit.clicked.connect(
             lambda: self.tab_movement(1, self.tab_groups, 2)
         )
+        # search button in all devices
+        self.btn_g_all_search.clicked.connect(self.search_group)
+        # clear button in all devices
+        self.btn_g_all_clear.clicked.connect(self.clear_group_all_user_search)
         ################### button click action #####################
         ##### add device ######
 

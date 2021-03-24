@@ -8,6 +8,28 @@ import os
 
 
 class groups(QDialog):
+    def clear_group_all_user_search(self):
+        self.fill_groups_table(self.get_all_groups())
+        self.txt_g_all_group_name.setText("")
+        self.txt_g_all_group_name.setFocus()
+
+    def search_group(self):
+        # get values
+        searched_text = self.txt_g_all_group_name.text()
+        groups = self.get_all_groups()
+        searched_groups = list()
+        count = 0
+        for group in groups:
+            if searched_text in group["group_name"]:
+                searched_groups.append(group)
+                count += 1
+        if count == 0:
+            QMessageBox.information(self, "Note", "No results found")
+            self.clear_group_all_user_search()
+        else:
+            QMessageBox.information(self, "Note", f"{count} result(s) found")
+            self.fill_groups_table(searched_groups)
+
     def add_devices_for_group_selection(self):
         devices = self.get_all_devices_hostname()
         # devices.sort()
@@ -106,7 +128,7 @@ class groups(QDialog):
             group_members = group["group_members"]
 
             # convert all group members list into a comma separated string
-            group_members = ", ".join(group_members)
+            group_members = " ".join(group_members)
 
             # fill table
             self.tbl_groups.setItem(i, 0, QTableWidgetItem(group_name))
@@ -151,6 +173,7 @@ class groups(QDialog):
                 self.write_group_file(groups)
                 QMessageBox.information(self, "Note", "Group added successfully")
                 self.statusBar().showMessage("Succesfuly")
+                self.fill_groups_table(self.get_all_groups())
 
             else:
                 QMessageBox.information(self, "Note", "Group did not added")
