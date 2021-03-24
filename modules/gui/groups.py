@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QDialog, QMessageBox
+from PyQt5.QtWidgets import *
 from netmiko import ConnectHandler
 from yaml import safe_load
 import yaml
@@ -12,6 +13,11 @@ class groups(QDialog):
         # devices.sort()
         self.g_add_group_members.addItems(devices)
         self.g_add_group_members.setSortingEnabled(True)
+
+    def get_all_groups(self):
+        group_file = self.get_group_file_path()
+        groups = self.read_yaml_file(group_file)
+        return groups
 
     def get_group_file_path(self):
         return os.path.join("hosts", "groups.yaml")
@@ -87,6 +93,24 @@ class groups(QDialog):
         self.g_add_groupname.setText("")
         self.g_add_group_members.selectionModel().clear()
         self.g_add_groupname.setFocus()
+
+    def fill_groups_table(self, groups):
+        groups_count = len(groups)
+        self.tbl_groups.setRowCount(groups_count)
+        i = 0
+        for group in groups:
+            # get the values
+            group_name = group["group_name"]
+            group_members = group["group_members"]
+
+            # convert all group members list into a comma separated string
+            group_members = ", ".join(group_members)
+
+            # fill table
+            self.tbl_groups.setItem(i, 0, QTableWidgetItem(group_name))
+            self.tbl_groups.setItem(i, 1, QTableWidgetItem(group_members))
+
+            i += 1
 
     def add_group(self):
         group_name = self.g_add_groupname.text()

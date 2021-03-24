@@ -608,7 +608,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -654,7 +654,7 @@
                 </widget>
                </item>
                <item row="2" column="0" colspan="4">
-                <widget class="QTableWidget" name="tbl_devices_3">
+                <widget class="QTableWidget" name="tbl_groups">
                  <property name="tabletTracking">
                   <bool>false</bool>
                  </property>

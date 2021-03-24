@@ -8,11 +8,14 @@ import glob
 class startup_settings(QDial):
     def startup(self):
 
-        ###################### load user settings ######################
+        ###################### groups section ######################
+        # show all groups in table on startup
+        self.fill_groups_table(self.get_all_groups())
 
         # update all devices table
         self.clear_device_search_results()
 
+        # load user saved settings
         self.load_settings()
 
         # update devices in show commands section
