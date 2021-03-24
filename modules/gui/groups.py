@@ -69,7 +69,7 @@ class groups(QDialog):
         self.check_for_group_file()
         groups = self.convert_group_file_into_list()
         group = self.create_dictionary_for_group(group_name, group_members)
-        if len(groups) == 1 and groups[0]["group_name"] == "demo":
+        if len(groups) == 1 and groups[0]["group_name"] == "dummy":
             groups.pop(0)
             groups.append(group)
         else:
@@ -83,12 +83,34 @@ class groups(QDialog):
         f = open(group_file, "w+")
         yaml.dump(groups, f, allow_unicode=True)
 
+    def clear_add_group_fields(self):
+        self.g_add_groupname.setText("")
+        self.g_add_group_members.selectionModel().clear()
+        self.g_add_groupname.setFocus()
+
     def add_group(self):
         group_name = self.g_add_groupname.text()
         group_members = list()
         for device in self.g_add_group_members.selectedItems():
             group_members.append(device.text())
-        if group_name and group_members:
+
+        self.check_for_group_file()
+        groups = self.read_yaml_file(self.get_group_file_path())
+        # check for group duplication
+        duplicaton_occured = False
+        for group in groups:
+            if group["group_name"] == group_name:
+                duplicaton_occured = True
+                break
+        if duplicaton_occured:
+            print("Duplication occured")
+            QMessageBox.information(
+                self, "Warning", f"group {group_name} already exists"
+            )
+            self.clear_add_group_fields()
+            return
+
+        if group_name:
             groups = self.add_group_into_file(group_name, group_members)
 
             # ask for confirmation
@@ -109,9 +131,7 @@ class groups(QDialog):
                 self.statusBar().showMessage("Failed")
             # clear selections
 
-            self.g_add_groupname.setText("")
-            self.g_add_group_members.selectionModel().clear()
-            self.g_add_groupname.setFocus()
+            self.clear_add_group_fields()
 
         # Need to add
         # 1. check for groupName duplication, already membership while editing

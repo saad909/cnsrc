@@ -1,10 +1,9 @@
-- group_members: []
-  group_name: dummy
 - group_members:
-  - R2
-  - demo12
+  - R1
+  - demo
   group_name: saad
 - group_members:
-  - switch
+  - demo
+  - R2
   - demo12
-  group_name: cisco
+  group_name: test
