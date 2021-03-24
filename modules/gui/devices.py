@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import *
+
+
 class devices(QDialog):
     def add_host(self):
-        ##### getting the values from the boxes ###### 
+        ##### getting the values from the boxes ######
 
         hostname = self.d_add_hostname.text()
         ip_address = self.d_add_ip_address.text()
@@ -10,11 +12,8 @@ class devices(QDialog):
         secret = self.d_add_secret.text()
         device_type_index = self.d_add_device_type.currentIndex()
 
-        
-        
-        ##### checking for empty boxes ###### 
-        
-        
+        ##### checking for empty boxes ######
+
         if not hostname:
             self.highlight_border(self.d_add_hostname)
             self.statusBar().showMessage("Hostname can not be empty")
@@ -28,9 +27,9 @@ class devices(QDialog):
             self.highlight_border(self.d_add_ip_address)
             self.statusBar().showMessage("Invalid Ip Address")
             self.d_add_ip_address.setFocus()
-            
+
             return
-            
+
         if not username:
             self.highlight_border(self.d_add_username)
             self.statusBar().showMessage("username can not be empty")
@@ -60,28 +59,26 @@ class devices(QDialog):
         else:
             self.highlight_border_false(self.d_add_device_type)
 
-
-        
         # create the dictionary
-        device = self.create_dictionary(hostname,ip_address,username,password,secret,device_type_index)
+        device = self.create_dictionary(
+            hostname, ip_address, username, password, secret, device_type_index
+        )
 
         # add host_into inventory
         added = self.add_host_into_inventory(device)
 
         if added:
-            QMessageBox.information(self,"Success","Device added successfully")
-            # clearing the fileds 
+            QMessageBox.information(self, "Success", "Device added successfully")
+            # clearing the fileds
             self.clear_add_devices_fileds()
 
-
-            # Update the all device table 
+            # Update the all device table
             self.clear_device_search_results()
             # update autocomplete list of ip_addresses and hostnames
             self.auto_complete_edit_results()
             self.auto_complete_search_results()
             # update devices in show commands combo box
             self.update_bt_all_devices()
-
-            
-       
-    
+            # update devices in group addition
+            self.clear_add_group_fields()
+            self.add_devices_for_group_selection()

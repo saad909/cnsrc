@@ -73,8 +73,18 @@ class devices_func(QDial):
             username = device['data']['username']
             password = device['data']['password']
             secret = device['data']['secret']
-            groups = device['groups']
             device_type = device['type']
+            # groups based on device type
+            groups = device['groups']
+            # user defined groups
+            other_groups = list()
+            all_custom_groups = self.get_all_groups()
+            for group in all_custom_groups:
+                if hostname in group['group_members']:
+                    other_groups.append(group['group_name'])
+
+            all_groups = groups + other_groups
+
                 
             
             self.tbl_devices.setItem(i,0,QTableWidgetItem(hostname))
@@ -83,15 +93,8 @@ class devices_func(QDial):
             self.tbl_devices.setItem(i,3,QTableWidgetItem(password))
             self.tbl_devices.setItem(i,4,QTableWidgetItem(secret))
 
-            all_groups = ""
-            if len(groups) == 1:
-                all_groups = str(groups[0])
-            else:
-                for group in groups:
-                    if len(group) != 1:
-                        all_groups += str(group) + ", "
 
-            self.tbl_devices.setItem(i,5,QTableWidgetItem(all_groups))
+            self.tbl_devices.setItem(i,5,QTableWidgetItem(", ".join(all_groups)))
 
             self.tbl_devices.setItem(i,6,QTableWidgetItem(device_type))
 
@@ -573,6 +576,8 @@ class devices_func(QDial):
                 self.clear_device_edit_user_search()
                 # update devices in show commands combo boxes
                 self.update_bt_all_devices()
+                # update devices in group addition
+                self.add_devices_for_group_selection()
             elif selection == QMessageBox.Cancel:
                 self.clear_edit_search_results()
                 self.clear_device_edit_user_search()
@@ -622,6 +627,8 @@ class devices_func(QDial):
                     self.clear_device_edit_user_search()
                     # update devices in show commands combo boxes
                     self.update_bt_all_devices()
+                    # update devices in group addition
+                    self.add_devices_for_group_selection()
                         
                 else:
                     self.clear_edit_search_results()

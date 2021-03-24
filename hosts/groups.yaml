@@ -1,9 +1,4 @@
 - group_members:
-  - R1
-  - demo
-  group_name: saad
-- group_members:
-  - demo
-  - R2
-  - demo12
-  group_name: test
+  - S1
+  - s1
+  group_name: custom_switches

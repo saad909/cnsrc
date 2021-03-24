@@ -11,10 +11,12 @@ class groups(QDialog):
     def add_devices_for_group_selection(self):
         devices = self.get_all_devices_hostname()
         # devices.sort()
+        self.g_add_group_members.clear()
         self.g_add_group_members.addItems(devices)
         self.g_add_group_members.setSortingEnabled(True)
 
     def get_all_groups(self):
+        self.check_for_group_file()
         group_file = self.get_group_file_path()
         groups = self.read_yaml_file(group_file)
         return groups

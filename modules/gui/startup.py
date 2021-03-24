@@ -13,6 +13,7 @@ class startup_settings(QDial):
         self.fill_groups_table(self.get_all_groups())
 
         # update all devices table
+        self.check_for_host_file()
         self.clear_device_search_results()
 
         # load user saved settings
