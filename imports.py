@@ -1,4 +1,4 @@
-from gui import *
+# from gui import *
 from modules.gui.startup import *
 from modules.gui.devices import *
 from modules.gui.devices_func import *
