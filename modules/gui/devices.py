@@ -80,5 +80,4 @@ class devices(QDialog):
             # update devices in show commands combo box
             self.update_bt_all_devices()
             # update devices in group addition
-            self.clear_add_group_fields()
             self.add_devices_for_group_selection()

@@ -128,7 +128,7 @@ class groups(QDialog):
             group_members = group["group_members"]
 
             # convert all group members list into a comma separated string
-            group_members = " ".join(group_members)
+            group_members = ", ".join(group_members)
 
             # fill table
             self.tbl_groups.setItem(i, 0, QTableWidgetItem(group_name))

@@ -11,6 +11,8 @@ class startup_settings(QDial):
         ###################### groups section ######################
         # show all groups in table on startup
         self.fill_groups_table(self.get_all_groups())
+        # add devices for custom groups
+        self.add_devices_for_group_selection()
 
         # update all devices table
         self.check_for_host_file()
@@ -40,9 +42,6 @@ class startup_settings(QDial):
 
         # edit or delete device
         self.auto_complete_edit_results()
-
-        # add devices for custom groups
-        self.add_devices_for_group_selection()
 
         ###################### remove border ######################
         # self.remove_border(self.tab_main)
