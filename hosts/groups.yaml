@@ -1,7 +1,3 @@
-- group_members:
-  - S1
-  - s1
-  group_name: custom_switches
 - group_members: []
   group_name: asdas
 - group_members: []
@@ -12,14 +8,3 @@
   group_name: sa
 - group_members: []
   group_name: saad
-- group_members:
-  - S1
-  group_name: testing group
-- group_members:
-  - real_router
-  - sw
-  group_name: saad1
-- group_members:
-  - S1
-  - ro1
-  group_name: test_group

@@ -175,7 +175,9 @@ class groups(QDialog):
                 QMessageBox.information(self, "Note", "Group added successfully")
                 self.statusBar().showMessage("Succesfuly")
                 self.fill_groups_table(self.get_all_groups())
+                self.clear_device_search_results()
 
+                self.clear_device_search_results()
             else:
                 QMessageBox.information(self, "Note", "Group did not added")
                 self.statusBar().showMessage("Failed")
@@ -185,22 +187,41 @@ class groups(QDialog):
 
     def clear_edit_group_fields(self):
         self.txt_g_edit_groupname.setText("")
+        self.g_edit_groupname.setText("")
         self.g_edit_group_members.clear()
         self.txt_g_edit_groupname.setFocus()
 
-    # def delete_group(self):
-    #     selection = QMessageBox.question(
-    #         self,
-    #         "Warning",
-    #         "Do you really want to delete the group?",
-    #         QMessageBox.Yes|QMessageBox.No|QMessageBox.Cancel,
-    #         QMessageBox.Cancel
-    #     )
-    #     if selection = QMessageBox.Yes:
-    #         groups.pop(i)
-    #         self.write_group_file(groups)
-    #     elif selection == QMessageBox.Cancel:
-    #         self.clear_edit_group_fields()
+    def delete_group(self):
+        # get values from gui
+        searched_groupname = self.g_edit_groupname.text()
+        groups = self.get_all_groups()
+        group_index = -1
+        i = 0
+        for group in groups:
+            if group["group_name"] == searched_groupname:
+                group_index = i
+            i += 1
+
+        if group_index == -1:
+            QMessageBox.information(self, "Note", "No result found")
+            return
+        else:
+            selection = QMessageBox.question(
+                self,
+                "Warning",
+                "Do you really want to delete the group?",
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
+                QMessageBox.Cancel,
+            )
+            if selection == QMessageBox.Yes:
+                groups.pop(group_index)
+                # write to group file
+                self.write_group_file(groups)
+                self.fill_groups_table(self.get_all_groups())
+                self.clear_edit_group_fields()
+                self.clear_device_search_results()
+            elif selection == QMessageBox.Cancel:
+                self.clear_edit_group_fields()
 
     def edit_group_search(self):
         # get values from gui

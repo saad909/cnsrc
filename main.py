@@ -109,6 +109,8 @@ class Window(
         self.g_add_submit.clicked.connect(self.add_group)
         # fill searched group results in edit or delete section
         self.btn_g_edit_search.clicked.connect(self.edit_group_search)
+        # delete group
+        self.pb_g_delete.clicked.connect(self.delete_group)
 
         ##### show commands ######
         self.pb_bt_submit.clicked.connect(self.run_show_command)
