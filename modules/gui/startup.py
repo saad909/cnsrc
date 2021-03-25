@@ -13,6 +13,8 @@ class startup_settings(QDial):
         self.fill_groups_table(self.get_all_groups())
         # add devices for custom groups
         self.add_devices_for_group_selection()
+        self.g_add_group_members.setCurrentRow(2)
+        self.g_add_group_members.setCurrentRow(1)
 
         # update all devices table
         self.check_for_host_file()

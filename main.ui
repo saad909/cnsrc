@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1004</width>
-    <height>762</height>
+    <width>976</width>
+    <height>703</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -52,7 +52,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -608,7 +608,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -811,7 +811,7 @@
                <item row="0" column="0">
                 <layout class="QHBoxLayout" name="horizontalLayout_4">
                  <item>
-                  <widget class="QLineEdit" name="txt_d_edit_hostname_3">
+                  <widget class="QLineEdit" name="txt_g_edit_groupname">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                      <horstretch>1</horstretch>
@@ -824,7 +824,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="btn_d_edit_search_3">
+                  <widget class="QPushButton" name="btn_g_edit_search">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                      <horstretch>1</horstretch>
@@ -848,7 +848,7 @@
                  </property>
                  <layout class="QGridLayout" name="gridLayout_39">
                   <item row="2" column="0">
-                   <widget class="QLineEdit" name="lineEdit_3">
+                   <widget class="QLineEdit" name="g_edit_groupname">
                     <property name="placeholderText">
                      <string>Enter the group name</string>
                     </property>
@@ -862,7 +862,7 @@
                    </widget>
                   </item>
                   <item row="4" column="0">
-                   <widget class="QListWidget" name="listWidget_3">
+                   <widget class="QListWidget" name="g_edit_group_members">
                     <property name="selectionMode">
                      <enum>QAbstractItemView::MultiSelection</enum>
                     </property>
@@ -884,14 +884,14 @@
                <item row="2" column="0">
                 <layout class="QHBoxLayout" name="horizontalLayout">
                  <item>
-                  <widget class="QPushButton" name="pushButton_11">
+                  <widget class="QPushButton" name="pb_g_edit">
                    <property name="text">
                     <string>Edit</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_12">
+                  <widget class="QPushButton" name="pb_g_delete">
                    <property name="text">
                     <string>Delete</string>
                    </property>
@@ -1084,8 +1084,8 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>220</width>
-         <height>549</height>
+         <width>215</width>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1127,8 +1127,8 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>220</width>
-         <height>549</height>
+         <width>192</width>
+         <height>490</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1163,8 +1163,8 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>220</width>
-         <height>549</height>
+         <width>192</width>
+         <height>490</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1199,8 +1199,8 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>220</width>
-         <height>549</height>
+         <width>192</width>
+         <height>490</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1228,8 +1228,8 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>220</width>
-         <height>549</height>
+         <width>192</width>
+         <height>490</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1241,8 +1241,8 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>220</width>
-         <height>549</height>
+         <width>192</width>
+         <height>490</height>
         </rect>
        </property>
        <attribute name="label">

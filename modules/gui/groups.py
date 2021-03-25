@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QDialog, QMessageBox
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
 from netmiko import ConnectHandler
 from yaml import safe_load
@@ -182,10 +183,70 @@ class groups(QDialog):
 
             self.clear_add_group_fields()
 
-        # Need to add
-        # 1. check for groupName duplication, already membership while editing
-        # 2. add or remove a device to a certain group from devices section
-        # 3. show all groups
-        # 4. remove a group
-        # 5. edit a group
-        # reflect data changes
+    def clear_edit_group_fields(self):
+        self.txt_g_edit_groupname.setText("")
+        self.g_edit_group_members.clear()
+        self.txt_g_edit_groupname.setFocus()
+
+    # def delete_group(self):
+    #     selection = QMessageBox.question(
+    #         self,
+    #         "Warning",
+    #         "Do you really want to delete the group?",
+    #         QMessageBox.Yes|QMessageBox.No|QMessageBox.Cancel,
+    #         QMessageBox.Cancel
+    #     )
+    #     if selection = QMessageBox.Yes:
+    #         groups.pop(i)
+    #         self.write_group_file(groups)
+    #     elif selection == QMessageBox.Cancel:
+    #         self.clear_edit_group_fields()
+
+    def edit_group_search(self):
+        # get values from gui
+        searched_groupname = self.txt_g_edit_groupname.text()
+        if searched_groupname:
+            groups = self.get_all_groups()
+            group_index = -1
+            i = 0
+            for group in groups:
+                if group["group_name"] == searched_groupname:
+                    group_index = i
+                    break
+                i += 1
+            if group_index == -1:
+                QMessageBox.information(self, "Note", "No result found")
+                return
+            else:
+                # fill the fileds
+                self.clear_edit_group_fields()
+                self.g_edit_groupname.setText(groups[group_index]["group_name"])
+                pprint(groups[group_index]["group_members"])
+                self.g_edit_group_members.addItems(self.get_all_devices_hostname())
+
+                # now higlight the group members of group in qlist widget
+                group_members = groups[group_index]["group_members"]
+                index = list()
+                devices = self.get_all_devices_hostname()
+                devices.sort()
+                i = 0
+                for device in devices:
+                    for member in group_members:
+                        if device == member:
+                            index.append(i)
+                    i += 1
+                pprint(index)
+                for i in index:
+                    matching_items = self.g_edit_group_members.findItems(
+                        devices[i], Qt.MatchExactly
+                    )
+                    for item in matching_items:
+                        item.setSelected(True)
+                # self.g_edit_group_members.setSortingEnabled(True)
+
+                # 1. hightlight members in serach result
+                # 2. edit and delete the group
+                # 3. reflect the changes
+                # * all devices table
+                # * all groups table
+                # * combobox in basic tasks

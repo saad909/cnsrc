@@ -28,3 +28,13 @@
   - switch
   hostname: sw
   type: switch
+- data:
+    device_type: cisco_ios
+    host: 1.1.1.1
+    password: saad
+    secret: '123'
+    username: cisco
+  groups:
+  - switch
+  hostname: ro1
+  type: switch
