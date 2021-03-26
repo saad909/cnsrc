@@ -185,6 +185,8 @@ class groups(QDialog):
                 self.clear_device_search_results()
                 self.update_show_commands_groups_combobox()
                 self.clear_device_search_results()
+                self.auto_complete_group_edit_search_results()
+                self.auto_complete_group_search_results()
             else:
                 QMessageBox.information(self, "Note", "Group did not added")
                 self.statusBar().showMessage("Failed")
@@ -334,6 +336,8 @@ class groups(QDialog):
                 self.clear_device_search_results()
                 self.txt_g_edit_groupname.setFocus()
                 self.update_show_commands_groups_combobox()
+                self.auto_complete_group_edit_search_results()
+                self.auto_complete_group_search_results()
 
         else:
             QMessageBox.information(self, "Warning", "Group name can't be empty")
