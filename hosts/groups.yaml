@@ -1,0 +1,7 @@
+- group_members:
+  - R1
+  - Sw
+  - real router
+  group_name: topology
+- group_members: []
+  group_name: test
