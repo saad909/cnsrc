@@ -31,9 +31,10 @@ class startup_settings(QDial):
 
         # sort show commands combobox
         self.cb_bt_all_commands.model().sort(0)
-        self.cb_bt_all_groups.addItems(
-            ["switch", "router"] + self.get_all_groups_names()
-        )
+        # sort show groups combobox
+        self.cb_bt_all_groups.model().sort(0)
+        # all group to groups combobox in basic task section - show commands
+        self.update_show_commands_groups_combobox()
 
         ###################### hide the tabs ######################
         # main tab

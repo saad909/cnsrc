@@ -145,6 +145,13 @@ class groups(QDialog):
 
         self.check_for_group_file()
         groups = self.read_yaml_file(self.get_group_file_path())
+        # check group name not equal to router or switch
+        if group_name == "router" or group_name == "switch":
+            QMessageBox.information(
+                self, "Warning", r"group name can't be 'router' or 'switch'"
+            )
+            self.clear_add_group_fields()
+            return
         # check for group duplication
         duplicaton_occured = False
         for group in groups:
@@ -176,7 +183,7 @@ class groups(QDialog):
                 self.statusBar().showMessage("Succesfuly")
                 self.fill_groups_table(self.get_all_groups())
                 self.clear_device_search_results()
-
+                self.update_show_commands_groups_combobox()
                 self.clear_device_search_results()
             else:
                 QMessageBox.information(self, "Note", "Group did not added")
@@ -275,6 +282,13 @@ class groups(QDialog):
         edited_group = self.create_dictionary_for_group(group_name, group_members)
         all_groups = self.get_all_groups()
 
+        # check group name not equal to router or switch
+        if group_name == "router" or group_name == "switch":
+            QMessageBox.information(
+                self, "Warning", r"group name can't be 'router' or 'switch'"
+            )
+            self.g_edit_groupname.setFocus()
+            return
         if group_name:
             # get the index of target group
             group_index = -1
@@ -319,6 +333,8 @@ class groups(QDialog):
                 self.fill_groups_table(self.get_all_groups())
                 self.clear_device_search_results()
                 self.txt_g_edit_groupname.setFocus()
+                self.update_show_commands_groups_combobox()
+
         else:
             QMessageBox.information(self, "Warning", "Group name can't be empty")
             self.clear_edit_group_fields()

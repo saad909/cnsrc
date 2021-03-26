@@ -4,6 +4,12 @@ from pprint import pprint
 
 
 class show_commands(QDialog):
+    def update_show_commands_groups_combobox(self):
+        self.cb_bt_all_groups.clear()
+        self.cb_bt_all_groups.addItems(
+            ["Select a group", "switch", "router"] + self.get_all_groups_names()
+        )
+
     def run_show_command(self):
         # get the values from the combo_boxes
         device_name = device_group = None
