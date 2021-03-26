@@ -186,6 +186,7 @@ class groups(QDialog):
             self.clear_add_group_fields()
 
     def clear_edit_group_fields(self):
+        self.searched_groupname = self.txt_g_edit_groupname.text()
         self.txt_g_edit_groupname.setText("")
         self.g_edit_groupname.setText("")
         self.g_edit_group_members.clear()
@@ -263,11 +264,76 @@ class groups(QDialog):
                     )
                     for item in matching_items:
                         item.setSelected(True)
-                # self.g_edit_group_members.setSortingEnabled(True)
 
-                # 1. hightlight members in serach result
-                # 2. edit and delete the group
-                # 3. reflect the changes
-                # * all devices table
-                # * all groups table
-                # * combobox in basic tasks
+    def edit_group(self):
+        # get values from gui - if not empty groupname
+        searched_group_name = self.searched_groupname
+        group_name = self.g_edit_groupname.text()
+        group_members = list()
+        for device in self.g_edit_group_members.selectedItems():
+            group_members.append(device.text())
+        edited_group = self.create_dictionary_for_group(group_name, group_members)
+        all_groups = self.get_all_groups()
+
+        if group_name:
+            # get the index of target group
+            group_index = -1
+            i = 0
+            for group in all_groups:
+                if group["group_name"] == searched_group_name:
+                    group_index = i
+                    break
+                i += 1
+            print(
+                "------------------ Your target group is(index = {0}) ------------------".format(
+                    group_index
+                )
+            )
+            pprint(all_groups[group_index])
+            # check for changes done
+            print(
+                "------------------ Your new group is(index = {0}) ------------------".format(
+                    group_index
+                )
+            )
+            pprint(edited_group)
+            for group in all_groups:
+                group["group_members"].sort()
+                if group == edited_group:
+                    QMessageBox.information(self, "Note", "You made no changes")
+                    return
+            # ask for changes
+            selection = QMessageBox.question(
+                self,
+                "Alert",
+                "Do you really want to edit group?",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No,
+            )
+            if selection == QMessageBox.Yes:
+                all_groups[group_index] = edited_group
+                self.write_group_file(all_groups)
+                QMessageBox.information(self, "Note", "Edited successfully")
+                self.statusBar().showMessage("Succesfuly")
+                self.clear_edit_group_fields()
+                self.fill_groups_table(self.get_all_groups())
+                self.clear_device_search_results()
+                self.txt_g_edit_groupname.setFocus()
+        else:
+            QMessageBox.information(self, "Warning", "Group name can't be empty")
+            self.clear_edit_group_fields()
+            self.txt_g_edit_groupname.setFocus()
+            return
+
+    def get_all_groups_names(self):
+        groups = self.get_all_groups()
+        all_groups_list = list()
+        for group in groups:
+            all_groups_list.append(group["group_name"])
+        return all_groups_list
+
+    def auto_complete_group_edit_search_results(self):
+        self.auto_fill(self.get_all_groups_names(), self.txt_g_edit_groupname)
+
+    def auto_complete_group_search_results(self):
+        self.auto_fill(self.get_all_groups_names(), self.txt_g_all_group_name)

@@ -1,10 +1,8 @@
-- group_members: []
-  group_name: asdas
-- group_members: []
-  group_name: test1
-- group_members: []
-  group_name: cisco
-- group_members: []
-  group_name: sa
-- group_members: []
-  group_name: saad
+- group_members:
+  - S1
+  - sw
+  group_name: s
+- group_members:
+  - S1
+  - sw
+  group_name: sw
