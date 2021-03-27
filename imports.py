@@ -13,3 +13,7 @@ from modules.networking.show_commands import *
 from modules.networking.basic_tasks import *
 
 from modules.gui.groups import *
+
+# users settings
+from modules.user.user_auth import *
+from modules.user.users import *

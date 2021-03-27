@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>976</width>
+    <width>912</width>
     <height>703</height>
    </rect>
   </property>
@@ -36,8 +36,291 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
+      <widget class="QWidget" name="tab_7">
+       <attribute name="title">
+        <string>Users</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_19">
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="tab_users">
+          <property name="currentIndex">
+           <number>1</number>
+          </property>
+          <widget class="QWidget" name="tab_8">
+           <attribute name="title">
+            <string>All users</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_24">
+           <attribute name="title">
+            <string>user settings</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>100</number>
+              </property>
+              <item>
+               <widget class="QGroupBox" name="groupBox_3">
+                <property name="title">
+                 <string>Add</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_9">
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_5">
+                   <property name="text">
+                    <string>Password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="txt_usr_add_username">
+                   <property name="placeholderText">
+                    <string>Enter user name</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_6">
+                   <property name="text">
+                    <string>Confirm Password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_2">
+                   <property name="text">
+                    <string>username</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="txt_usr_add_confirm_password">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>repeat password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="txt_usr_add_password">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <spacer name="verticalSpacer_5">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="5" column="0" colspan="2">
+                  <widget class="QGroupBox" name="groupBox_8">
+                   <property name="title">
+                    <string>Delete</string>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_14">
+                    <item row="0" column="1">
+                     <widget class="QLineEdit" name="txt_usr_del_username">
+                      <property name="placeholderText">
+                       <string>Enter user name</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="txt_usr_del_password">
+                      <property name="echoMode">
+                       <enum>QLineEdit::Password</enum>
+                      </property>
+                      <property name="placeholderText">
+                       <string>Enter password</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_17">
+                      <property name="text">
+                       <string>username</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_18">
+                      <property name="text">
+                       <string>Password</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QPushButton" name="btn_usr_del_delete">
+                      <property name="text">
+                       <string>Delete</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <spacer name="verticalSpacer_4">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QPushButton" name="btn_usr_add_add">
+                   <property name="text">
+                    <string>Add</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_4">
+                <property name="title">
+                 <string>Edit</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_13">
+                 <property name="rightMargin">
+                  <number>25</number>
+                 </property>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="label_10">
+                   <property name="text">
+                    <string>Confirm Password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="txt_usr_edit_new_password">
+                   <property name="toolTip">
+                    <string>Leave empty, if don't want to change password</string>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter new password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLineEdit" name="txt_usr_edit_confirm_password">
+                   <property name="toolTip">
+                    <string>Leave empty, if don't want to change password</string>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>repeat password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <item>
+                    <widget class="QPushButton" name="btn_user_edit_edit">
+                     <property name="text">
+                      <string>Edit</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_11">
+                   <property name="text">
+                    <string>username</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="txt_usr_edit_username">
+                   <property name="placeholderText">
+                    <string>Enter user name</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="txt_usr_edit_password">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter old password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_9">
+                   <property name="text">
+                    <string>password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_15">
+                   <property name="text">
+                    <string>New Password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <spacer name="verticalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>Devices</string>
@@ -1058,7 +1341,7 @@ color: rgb(0, 255, 0);</string>
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -1068,39 +1351,25 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>215</width>
-         <height>476</height>
+         <width>177</width>
+         <height>490</height>
         </rect>
        </property>
        <attribute name="label">
         <string>Users</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="1">
-         <widget class="QPushButton" name="pushButton_2">
+       <layout class="QGridLayout" name="gridLayout_15">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_usr_user_settings">
           <property name="text">
-           <string>Delete User</string>
+           <string>User Settings</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="2">
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>Add  User</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pushButton_3">
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pb_usr_all_users">
           <property name="text">
            <string>All users</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="pushButton_5">
-          <property name="text">
-           <string>Edit User</string>
           </property>
          </widget>
         </item>
@@ -1111,8 +1380,8 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>192</width>
-         <height>490</height>
+         <width>178</width>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1147,8 +1416,8 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>192</width>
-         <height>490</height>
+         <width>178</width>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1183,7 +1452,7 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>192</width>
+         <width>177</width>
          <height>490</height>
         </rect>
        </property>
@@ -1212,7 +1481,7 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>192</width>
+         <width>177</width>
          <height>490</height>
         </rect>
        </property>
@@ -1225,7 +1494,7 @@ color: rgb(0, 255, 0);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>192</width>
+         <width>177</width>
          <height>490</height>
         </rect>
        </property>
@@ -1313,9 +1582,7 @@ color: rgb(0, 255, 0);</string>
   <tabstop>txt_d_all_ip_address</tabstop>
   <tabstop>btn_d_all_search</tabstop>
   <tabstop>btn_d_all_clear</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_3</tabstop>
-  <tabstop>pushButton_5</tabstop>
+  <tabstop>pb_usr_user_settings</tabstop>
   <tabstop>pb_dev_edit</tabstop>
   <tabstop>pb_dev_add</tabstop>
   <tabstop>txt_d_edit_hostname</tabstop>
@@ -1326,7 +1593,6 @@ color: rgb(0, 255, 0);</string>
   <tabstop>tab_devices</tabstop>
   <tabstop>tbl_devices</tabstop>
   <tabstop>btn_d_edit_delete</tabstop>
-  <tabstop>pushButton_2</tabstop>
   <tabstop>tab_basic_tasks</tabstop>
   <tabstop>cb_bt_all_devices</tabstop>
   <tabstop>cb_bt_all_groups</tabstop>
@@ -1341,12 +1607,44 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>162</x>
-     <y>439</y>
+     <x>166</x>
+     <y>415</y>
     </hint>
     <hint type="destinationlabel">
-     <x>736</x>
+     <x>724</x>
      <y>138</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_grp_all</sender>
+   <signal>clicked()</signal>
+   <receiver>tab_groups</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>69</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_dev_all</sender>
+   <signal>clicked()</signal>
+   <receiver>txt_d_all_ip_address</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>109</x>
+     <y>240</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>101</y>
     </hint>
    </hints>
   </connection>
@@ -1357,8 +1655,8 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>320</y>
+     <x>162</x>
+     <y>300</y>
     </hint>
     <hint type="destinationlabel">
      <x>359</x>
@@ -1373,44 +1671,12 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>203</x>
-     <y>260</y>
+     <x>231</x>
+     <y>240</y>
     </hint>
     <hint type="destinationlabel">
-     <x>871</x>
-     <y>250</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pb_dev_all</sender>
-   <signal>clicked()</signal>
-   <receiver>txt_d_all_ip_address</receiver>
-   <slot>setFocus()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>105</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>619</x>
-     <y>137</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pb_grp_all</sender>
-   <signal>clicked()</signal>
-   <receiver>tab_groups</receiver>
-   <slot>setFocus()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>65</x>
-     <y>283</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>364</x>
-     <y>77</y>
+     <x>403</x>
+     <y>175</y>
     </hint>
    </hints>
   </connection>

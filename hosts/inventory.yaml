@@ -16,15 +16,5 @@
     username: cisco
   groups:
   - switch
-  hostname: Sw
+  hostname: S1
   type: switch
-- data:
-    device_type: cisco_ios
-    host: 192.168.122.101
-    password: cisco
-    secret: cisco
-    username: cisco
-  groups:
-  - router
-  hostname: real router
-  type: router
