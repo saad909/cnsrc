@@ -60,6 +60,8 @@ class devices(QDialog):
             self.highlight_border_false(self.d_add_device_type)
 
         # create the dictionary
+        password = self.encrypt_password(password)
+        secret = self.encrypt_password(secret)
         device = self.create_dictionary(
             hostname, ip_address, username, password, secret, device_type_index
         )

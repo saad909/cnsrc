@@ -90,6 +90,14 @@ class devices_func(QDial):
             self.tbl_devices.setItem(i,0,QTableWidgetItem(hostname))
             self.tbl_devices.setItem(i,1,QTableWidgetItem(ip))
             self.tbl_devices.setItem(i,2,QTableWidgetItem(username))
+
+            # decrypt passwords
+            if devices[0]['hostname'] != 'dummy':
+                password = self.decrypt_password(password)
+                secret = self.decrypt_password(secret)
+                print(f"Password: {password}")
+                print(f"Secret: {secret}")
+
             self.tbl_devices.setItem(i,3,QTableWidgetItem(password))
             self.tbl_devices.setItem(i,4,QTableWidgetItem(secret))
 
@@ -284,7 +292,7 @@ class devices_func(QDial):
         self.d_edit_hostname.setText(device['hostname'])
         self.d_edit_ip_address.setText(device['data']['host'])
         self.d_edit_username.setText(device['data']['username'])
-        self.d_edit_password.setText(device['data']['password'])
+        self.d_edit_password.setText(self.decrypt_password(device['data']['password']))
         self.d_edit_secret.setText(device['data']['secret'])
         if device['type'] == 'router':
             self.d_edit_device_type.setCurrentIndex(1)
@@ -442,6 +450,8 @@ class devices_func(QDial):
         device_type_index = self.d_edit_device_type.currentIndex()
         
         
+        # encrypt password
+        password = self.encrypt_password(password)
         device = self.create_dictionary(hostname,ip_address,username,password,secret,device_type_index)
         
             
@@ -541,6 +551,7 @@ class devices_func(QDial):
                 devices[device_index]['hostname'] = hostname
                 devices[device_index]['data']['host'] = ip_address
                 devices[device_index]['data']['username'] = username
+                # save encrypted passwords
                 devices[device_index]['data']['password'] = password
                 devices[device_index]['data']['secret'] = secret
 

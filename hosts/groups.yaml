@@ -1,4 +1,2 @@
-- group_members:
-  - R1
-  - S1
-  group_name: lab
+- group_members: []
+  group_name: dummy

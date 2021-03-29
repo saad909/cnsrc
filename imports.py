@@ -19,7 +19,7 @@ from modules.user.user_auth import *
 from modules.user.users import *
 
 # password hashing
-from modules.password_hashing import *
+from modules.password.password_hashing import *
 
 # password hashing
-from modules.password_encryption import *
+from modules.password.password_encryption import *
