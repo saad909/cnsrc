@@ -457,6 +457,10 @@ class devices_func(QDial):
         
         # encrypt password
         password = self.encrypt_password(password)
+        secret = self.encrypt_password(secret)
+        print("----------------- Encryption password --------------------")
+        print(self.decrypt_password(password))
+        print(self.decrypt_password( secret ))
         device = self.create_dictionary(hostname,ip_address,username,password,secret,device_type_index)
         
             
@@ -557,8 +561,8 @@ class devices_func(QDial):
                 devices[device_index]['data']['host'] = ip_address
                 devices[device_index]['data']['username'] = username
                 # save encrypted passwords
-                # devices[device_index]['data']['password'] = password
-                # devices[device_index]['data']['secret'] = secret
+                devices[device_index]['data']['password'] = password
+                devices[device_index]['data']['secret'] = secret
 
                 # setting device type
                 if device_type_index == 1:
@@ -578,8 +582,8 @@ class devices_func(QDial):
                 pprint(devices)
 
                 # write to the inventory file
-                devices[device_index]['data']['password'] = self.encrypt_password(password)
-                devices[device_index]['data']['secret'] = self.encrypt_password(secret)
+                # devices[device_index]['data']['password'] = self.encrypt_password(password)
+                # devices[device_index]['data']['secret'] = self.encrypt_password(secret)
                 self.write_inventory(devices)
 
                 QMessageBox.information(self,"Success","Data modified successfully")

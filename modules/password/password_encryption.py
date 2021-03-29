@@ -18,5 +18,5 @@ class password_encryption:
         fernet = Fernet(key)
         # decrypt password and return
 
-        password = fernet.decrypt(encrypted_password).decode()
-        return password
+        password = fernet.decrypt(encrypted_password)
+        return password.decode()
