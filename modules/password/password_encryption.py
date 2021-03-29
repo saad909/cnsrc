@@ -6,7 +6,6 @@ class password_encryption:
         # master key
         # key = "b'QulLnMhuTxVD0ScQpRQu-imNAiG6DRu37ahnQijXzVo='"
         key = "gJXQcSqBdWK7B6uUPbifvhZJuDkoMjEHfDYb_5rvLhE="
-        print("\t\t\t {}".format(key))
         # generate cypher string
         fernet = Fernet(key)
         encrypted_password = fernet.encrypt(password.encode())

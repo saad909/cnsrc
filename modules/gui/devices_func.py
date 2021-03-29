@@ -289,11 +289,16 @@ class devices_func(QDial):
 
 
     def fill_edit_search_results(self,device):
+        if device['hostname'] == 'dummy':
+            QMessageBox.information(self,"Note","Dummy device can't be edited")
+            self.clear_device_edit_user_search()
+            self.txt_d_edit_ip_address.setFocus()
+            return
         self.d_edit_hostname.setText(device['hostname'])
         self.d_edit_ip_address.setText(device['data']['host'])
         self.d_edit_username.setText(device['data']['username'])
+        self.d_edit_secret.setText(self.decrypt_password(device['data']['secret']))
         self.d_edit_password.setText(self.decrypt_password(device['data']['password']))
-        self.d_edit_secret.setText(device['data']['secret'])
         if device['type'] == 'router':
             self.d_edit_device_type.setCurrentIndex(1)
         elif device['type'] == 'switch':
@@ -552,8 +557,8 @@ class devices_func(QDial):
                 devices[device_index]['data']['host'] = ip_address
                 devices[device_index]['data']['username'] = username
                 # save encrypted passwords
-                devices[device_index]['data']['password'] = password
-                devices[device_index]['data']['secret'] = secret
+                # devices[device_index]['data']['password'] = password
+                # devices[device_index]['data']['secret'] = secret
 
                 # setting device type
                 if device_type_index == 1:
@@ -573,6 +578,8 @@ class devices_func(QDial):
                 pprint(devices)
 
                 # write to the inventory file
+                devices[device_index]['data']['password'] = self.encrypt_password(password)
+                devices[device_index]['data']['secret'] = self.encrypt_password(secret)
                 self.write_inventory(devices)
 
                 QMessageBox.information(self,"Success","Data modified successfully")
