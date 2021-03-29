@@ -17,3 +17,6 @@ from modules.gui.groups import *
 # users settings
 from modules.user.user_auth import *
 from modules.user.users import *
+
+# password hashing
+from modules.password_hashing import *

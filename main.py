@@ -23,6 +23,7 @@ class Window(
     groups,
     user_auth,
     users,
+    password_hashing,
 ):
     def __init__(self):
         super().__init__()

@@ -1,12 +1,16 @@
 import sqlite3
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-from pysqlcipher3 import dbapi2 as sqlite3
+import sys
 
 
 class users(QDialog):
 
-    # database settingsk
+    # database settings
+    def get_all_users(self):
+        query = "SELECT * FROM users"
+        return self.cur.execute(query).fetchall()
+
     def clear_usr_add_fields(self):
         self.txt_usr_add_username.setText("")
         self.txt_usr_add_password.setText("")
@@ -17,23 +21,41 @@ class users(QDialog):
         self.con = sqlite3.connect("users.db")
         self.cur = self.con.cursor()
         self.cur.execute("PRAGMA key = 'secret'")
-        self.cur.execute("PRAGMA kdf_iter = 24000")
 
     def add_user(self):
         # get values from gui
         username = self.txt_usr_add_username.text()
         password = self.txt_usr_add_password.text()
+
+        # check for user already existance
+        all_users = self.get_all_users()
+        user_exists = False
+        for user in all_users:
+            if user[0] == username:
+                user_exists = True
+                break
+        if user_exists:
+            QMessageBox.information(self, "Warning", f"{username} already exists")
+            self.clear_usr_add_fields()
+            return
+
+        # if user does not exists then run this code
         confirm_password = self.txt_usr_add_confirm_password.text()
 
         if username and password and confirm_password:
             # check for password and confirm password matching
             if password != confirm_password:
                 QMessageBox.information(self, "Warning", "Passwords does not match")
-                self.clear_usr_add_fields()
+                self.txt_usr_add_password.setText("")
+                self.txt_usr_add_confirm_password.setText("")
+                self.txt_usr_add_password.setFocus()
                 return
 
+            # add user into databse with hashed password
+            hashed_password = self.hash_password(password)
+            print(hashed_password)
             query = "insert into users(username, password) values(?,?)"
-            self.cur.execute(query, (username, password))
+            self.cur.execute(query, (username, hashed_password))
             selection = QMessageBox.question(
                 self,
                 "Attention",
