@@ -20,3 +20,6 @@ from modules.user.users import *
 
 # password hashing
 from modules.password_hashing import *
+
+# password hashing
+from modules.password_encryption import *

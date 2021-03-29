@@ -24,6 +24,7 @@ class Window(
     user_auth,
     users,
     password_hashing,
+    password_encryption,
 ):
     def __init__(self):
         super().__init__()
