@@ -128,6 +128,7 @@ class Window(
 
         ##### basic tasks ######
         self.bt_set_vlan_submit.clicked.connect(self.create_vlan)
+
         ##### user Section ######
         # add user
         self.btn_usr_add_add.clicked.connect(self.add_user)

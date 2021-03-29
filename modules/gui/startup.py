@@ -52,6 +52,9 @@ class startup_settings(QDial):
         # edit or delete device
         self.auto_complete_edit_results()
 
+        ######## users section #############
+        self.db_connection()
+
         ###################### remove border ######################
         # self.remove_border(self.tab_main)
         # self.remove_border(self.tab_devices)
