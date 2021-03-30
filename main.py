@@ -138,6 +138,8 @@ class Window(
         self.btn_user_edit_edit.clicked.connect(self.edit_user)
         # delete user
         self.btn_usr_del_delete.clicked.connect(self.delete_user)
+        # fill user search  results
+        self.btn_usr_search.clicked.connect(self.fill_usr_edit_search_results)
 
 
 def main():

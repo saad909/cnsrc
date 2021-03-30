@@ -42,6 +42,7 @@ class startup_settings(QDial):
         self.tab_basic_tasks.tabBar().setVisible(False)
         self.tab_devices.tabBar().setVisible(False)
         self.tab_groups.tabBar().setVisible(False)
+        self.tab_users.tabBar().setVisible(False)
         ###################### devices ######################
 
         ##### ALL Devices Table ######
@@ -54,6 +55,7 @@ class startup_settings(QDial):
 
         ######## users section #############
         self.db_connection()
+        self.fill_all_users_table()
 
         ###################### remove border ######################
         # self.remove_border(self.tab_main)
