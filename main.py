@@ -140,6 +140,10 @@ class Window(
         self.btn_usr_del_delete.clicked.connect(self.delete_user)
         # fill user search  results
         self.btn_usr_search.clicked.connect(self.fill_usr_edit_search_results)
+        # filter button for all users
+        self.btn_usr_filter.clicked.connect(self.filter_all_devices)
+        # clear user filter results button for all users
+        self.btn_usr_clear_filter.clicked.connect(self.clear_users_filter_results)
 
 
 def main():

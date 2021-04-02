@@ -492,7 +492,7 @@
                <item row="0" column="0">
                 <layout class="QHBoxLayout" name="horizontalLayout_9">
                  <item>
-                  <widget class="QLineEdit" name="txt_usr_username_search_2">
+                  <widget class="QLineEdit" name="txt_usr_table_filter">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                      <horstretch>1</horstretch>
@@ -505,7 +505,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="btn_usr_search_2">
+                  <widget class="QPushButton" name="btn_usr_filter">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                      <horstretch>1</horstretch>
@@ -514,6 +514,19 @@
                    </property>
                    <property name="text">
                     <string>Filter</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_usr_clear_filter">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Clear</string>
                    </property>
                   </widget>
                  </item>

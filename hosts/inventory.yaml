@@ -1,28 +1,14 @@
 - data:
     device_type: cisco_ios
-    host: 1.1.1.1
+    host: 127.0.0.1
     password: !!binary |
-      Z0FBQUFBQmdZZ1BTMk5BWHA1dWJLUi1RN3lYWmFHT2Zfb3NrVm8zMk9NR2tQUUs4REFTekx5cklY
-      U1QyZkNwZ0JpTzFEWno3RE5qRU43OGZRVmlEZmo0T3RUUk1feS1GUHc9PQ==
+      Z0FBQUFBQmdaSnlLT1Fsb19rd3pDbkpzNWlEUGdnZEQzd0JkbVJkZjVwQnV0Rm9Zd29saUpwVkxT
+      X3VGS0dQYjcxMm85TkdnVTJNTUVwMzA0bTRfZmdWdlRlbGFMVmtZa2c9PQ==
     secret: !!binary |
-      Z0FBQUFBQmdZZ1BTMkRjb3RlYXU1YlZVS1Z4aVd0UWlMLUFYUm9EeDY2aVRQSW1sLU1HLVdrNXhZ
-      VEk0SmY1aFpKOGpFUVJac25wR19qb1dhVExINVNWNll2dWhNbXhVdUE9PQ==
-    username: saad
-  groups:
-  - switch
-  hostname: r1
-  type: switch
-- data:
-    device_type: cisco_ios
-    host: 192.168.122.54
-    password: !!binary |
-      Z0FBQUFBQmdZZ1BrUE0xTmdzWExOR2R3bXZtZkpoeXRudkt2QV9fR3pJbG5NZmNzTGVkRHRvZzRH
-      U1dBWTdsMi01eGlwdms2cmJxWEg1b3dyYW9sU2trLWJqZng0THVlbXc9PQ==
-    secret: !!binary |
-      Z0FBQUFBQmdZZ1BrZGltX2VIMnZjN3NraVctRnF4dEdSZ2N0aFd0U2R1Z1YwTzRlbVJJVWdsa0lS
-      ZXg4NFU5V0ZXcWtNMl9jZ3RXQ0ZCVmRndXZqajl0Tk1GVHFQdUtvWEE9PQ==
+      Z0FBQUFBQmdaSnlLV1U1cnlvaFBrUEJpMUJnNTllXy1JV3FwZ21mQjZvbFZiUnRGOVBlQy1EZWJt
+      WUtWekJoTU5QLW1tM25rb1lwU3B5NEVwMy1hT1loc3FncGJRT3lHeEE9PQ==
     username: cisco
   groups:
   - router
-  hostname: s1
+  hostname: R1
   type: router

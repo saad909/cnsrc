@@ -55,7 +55,7 @@ class startup_settings(QDial):
 
         ######## users section #############
         self.db_connection()
-        self.fill_all_users_table()
+        self.fill_all_users_table(self.get_all_users())
 
         ###################### remove border ######################
         # self.remove_border(self.tab_main)
