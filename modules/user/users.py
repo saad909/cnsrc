@@ -27,7 +27,6 @@ class users(QDialog):
     def db_connection(self):
         self.con = sqlite3.connect("users.db")
         self.cur = self.con.cursor()
-        self.cur.execute("PRAGMA key = 'secret'")
 
     def add_user(self):
         # get values from gui

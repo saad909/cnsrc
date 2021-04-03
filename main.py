@@ -21,7 +21,6 @@ class Login(QWidget, login, password_hashing):
     def db_connection(self):
         self.con = sqlite3.connect("users.db")
         self.cur = self.con.cursor()
-        self.cur.execute("PRAGMA key = 'secret'")
 
     def get_all_users(self):
         query = "SELECT * FROM users"
