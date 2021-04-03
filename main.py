@@ -136,9 +136,6 @@ class Main_Window(
             lambda: self.tab_movement(2, self.tab_groups, 2)
         )
         ##### users ######
-        self.pb_usr_all_users.clicked.connect(
-            lambda: self.tab_movement(0, self.tab_users, 0)
-        )
         self.pb_usr_user_settings.clicked.connect(
             lambda: self.tab_movement(0, self.tab_users, 1)
         )

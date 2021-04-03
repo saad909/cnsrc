@@ -243,6 +243,10 @@ class users(QDialog):
     def delete_user(self):
         username = self.txt_usr_edit_username.text()
         password = self.txt_usr_edit_password.text()
+        if username == "admin":
+            QMessageBox.information(self, "Warning", "admin user can't be deleted")
+            self.clear_usr_edit_fields()
+            return
         if self.usr_searched:
             username_before = self.user_data[0]
             password_before = self.user_data[1]
@@ -303,6 +307,8 @@ class users(QDialog):
                 self.txt_usr_edit_password.setText(self.user_data[1])
                 self.txt_usr_edit_password.setEnabled(False)
                 self.usr_searched = True
+                if self.user_data[0] == "admin":
+                    self.txt_usr_edit_username.setEnabled(False)
 
             else:
                 QMessageBox.information(self, "Warning", "No result found")
@@ -318,6 +324,7 @@ class users(QDialog):
         self.txt_usr_username_search.setFocus()
         self.txt_usr_edit_password.setEnabled(True)
         self.fill_all_users_table(self.get_all_users())
+        self.txt_usr_edit_username.setEnabled(True)
 
     def check_database_file(self):
         database_exists = os.path.isfile("users.db")
