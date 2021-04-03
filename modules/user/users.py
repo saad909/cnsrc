@@ -125,12 +125,13 @@ class users(QDialog):
                             QMessageBox.No,
                         )
                         if selection == QMessageBox.Yes:
-                            query = f"UPDATE users set username=?, password=? where username={username}"
+                            query = f"UPDATE users set username=?, password=? where username=?"
                             self.cur.execute(
                                 query,
                                 (
                                     username,
                                     self.hash_password(new_password),
+                                    username_before,
                                 ),
                             )
                             self.con.commit()
@@ -138,6 +139,7 @@ class users(QDialog):
                                 self, "Note", "User edited successfully"
                             )
                             self.fill_all_users_table(self.get_all_users())
+                            self.clear_usr_edit_fields()
                         else:
                             self.clear_usr_edit_fields()
                             return
@@ -168,12 +170,13 @@ class users(QDialog):
                     )
                     if selection == QMessageBox.Yes:
                         query = f"UPDATE users set username=? where username=?"
-                        self.cur.execute(query, (username,))
+                        self.cur.execute(query, (username, username_before))
                         self.con.commit()
                         QMessageBox.information(
                             self, "Note", "User edited successfully"
                         )
-                        self.fill_all_users_table()
+                        self.fill_all_users_table(self.get_all_users())
+                        self.clear_usr_edit_fields()
                     else:
                         self.clear_usr_edit_fields()
                         return
@@ -191,15 +194,20 @@ class users(QDialog):
                             QMessageBox.No,
                         )
                         if selection == QMessageBox.Yes:
-                            query = (
-                                f"UPDATE users set password=? where username={username}"
+                            query = f"UPDATE users set password=? where username=?"
+                            self.cur.execute(
+                                query,
+                                (
+                                    self.hash_password(new_password),
+                                    username,
+                                ),
                             )
-                            self.cur.execute(query, (self.hash_password(new_password),))
                             self.con.commit()
                             QMessageBox.information(
                                 self, "Note", "User edited successfully"
                             )
                             self.fill_all_users_table(self.get_all_users())
+                            self.clear_usr_edit_fields()
                         else:
                             self.clear_usr_edit_fields()
                             return
@@ -224,69 +232,6 @@ class users(QDialog):
             QMessageBox.information(self, "Warning", "Please search the user before")
             self.clear_usr_edit_fields()
 
-            # check for password matching
-        # username and  password values check
-        # if not username and not password:
-        #     QMessageBox.information(self, "Warning", "Please search the user first")
-        #     self.clear_usr_edit_fields()
-        #     return
-        # elif (username and not password) or (password and not username):
-        #     QMessageBox.information(self, "Warning", "You removed one field")
-        #     self.clear_usr_edit_fields()
-        #     return
-        # elif (username != username.before) or (password != password_before):
-        #     QMessageBox.information(self, "Warning", "Results were changed")
-        #     self.clear_usr_edit_fields()
-        #     return
-        # else:
-        #     # check for passwords
-        #     if new_password and confirm_password:
-        #         # passwords are given but not same
-        #         if new_password != confirm_password:
-        #             QMessageBox.information(self, "Warning", "Passwords does not match")
-        #             self.txt_usr_edit_confirm_password.setText("")
-        #             self.txt_usr_edit_confirm_password.setFocus()
-        #             return
-        #         # new password and confirm passwords are given and match
-        #         else:
-        #             # check for changed password and before password matching
-        #             if password_before == password and username_before == username:
-        #                 QMessageBox.information(
-        #                     self,
-        #                     "Note",
-        #                     "You made no changes",
-        #                 )
-        #                 return
-        #             else:
-        #                 self.hash_password(password)
-        #                 selection = QMessageBox.question(
-        #                     self,
-        #                     "Note",
-        #                     "Want to edit the device",
-        #                     QMessageBox.Yes | QMessageBox.No,
-        #                     QMessageBox.No,
-        #                 )
-        #         if selection == QMessageBox.Yes:
-        #             pass
-        #     # new password is given but confirm password is not given
-        #     elif new_password and not confirm_password:
-        #         self.txt_usr_edit_confirm_password.setFocus()
-        #         return
-        #     # confirm password is given but new password is not given
-        #     elif confirm_password and not new_password:
-        #         self.txt_usr_edit_new_password.setFocus()
-        #         return
-        #     else:
-        #         selection = QMessageBox.question(
-        #             self,
-        #             "Note",
-        #             "Want to edit the device",
-        #             QMessageBox.Yes | QMessageBox.No,
-        #             QMessageBox.No,
-        #         )
-        #     if selection == QMessageBox.Yes:
-        #         query = "UPDATE users set username=?, password=?"
-
     def delete_user(self):
         username = self.txt_usr_edit_username.text()
         if username:
@@ -304,6 +249,7 @@ class users(QDialog):
                 self.con.commit()
                 QMessageBox.information(self, "Note", "User deleted successfully")
                 self.clear_usr_edit_fields()
+                self.fill_all_users_table(self.get_all_users())
 
             elif selection == QMessageBox.Cancel:
                 self.clear_usr_edit_fields()
