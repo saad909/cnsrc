@@ -9,7 +9,7 @@ class password_hashing:
         pwdhash = binascii.hexlify(pwdhash)
         return (salt + pwdhash).decode("ascii")
 
-    def verify_password(self, stored_password, provided_password):
+    def verify_hashed_password(self, stored_password, provided_password):
         """Verify a stored password against one provided by user"""
         salt = stored_password[:64]
         stored_password = stored_password[64:]

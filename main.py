@@ -5,9 +5,60 @@ from PyQt5.uic import loadUiType
 from imports import *
 
 ui, _ = loadUiType("main.ui")
+login, _ = loadUiType("login.ui")
 
 
-class Window(
+class Login(QWidget, login, password_hashing):
+    def __init__(self):
+        QWidget.__init__(self)
+        self.setupUi(self)
+        self.db_connection()
+        self.handle_login()
+
+    def handle_login(self):
+        self.btn_login.clicked.connect(self.check_login_credentials)
+
+    def db_connection(self):
+        self.con = sqlite3.connect("users.db")
+        self.cur = self.con.cursor()
+        self.cur.execute("PRAGMA key = 'secret'")
+
+    def get_all_users(self):
+        query = "SELECT * FROM users"
+        return self.cur.execute(query).fetchall()
+
+    def check_login_credentials(self):
+        username = self.txt_login_username.text()
+        password = self.txt_login_password.text()
+
+        all_users = self.get_all_users()
+        user_authenticated = False
+        username_matched = False
+        password_matched = False
+        for user in all_users:
+            if username == user[0]:
+                username_matched = True
+                if self.verify_hashed_password(user[1], password):
+                    user_authenticated = True
+                    break
+
+        if user_authenticated:
+            QMessageBox.information(self, "Succesfuly", "Login Succesful")
+            self.close()
+            main_window = Main_Window()
+            main_window.show()
+        elif username_matched and not password_matched:
+            QMessageBox.information(self, "Note", "Wrong password")
+            self.txt_login_password.setFocus()
+            self.txt_login_password.setText("")
+        else:
+            QMessageBox.information(self, "Warning", "username does not exists")
+            self.txt_login_username.setText("")
+            self.txt_login_password.setText("")
+            self.txt_login_username.setFocus()
+
+
+class Main_Window(
     QMainWindow,
     # Ui_main_window,
     ui,
@@ -21,7 +72,6 @@ class Window(
     show_commands,
     basic_tasks,
     groups,
-    user_auth,
     users,
     password_hashing,
     password_encryption,
@@ -150,7 +200,7 @@ class Window(
 
 def main():
     app = QApplication(sys.argv)
-    window = Window()
+    window = Login()
     window.show()
     sys.exit(app.exec_())
 

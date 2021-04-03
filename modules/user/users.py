@@ -6,6 +6,14 @@ import os
 
 class users(QDialog):
     # database settings
+    def auto_complete_user_edit_results(self):
+        all_users = self.get_all_users()
+        all_usernames = list()
+        for user in all_users:
+            all_usernames.append(user[0])
+
+        self.auto_fill(all_usernames, self.txt_usr_username_search)
+
     def get_all_users(self):
         query = "SELECT * FROM users"
         return self.cur.execute(query).fetchall()
@@ -30,7 +38,7 @@ class users(QDialog):
         all_users = self.get_all_users()
         user_exists = False
         for user in all_users:
-            if user[0] == username:
+            if username == user[0]:
                 user_exists = True
                 break
         if user_exists:
@@ -154,10 +162,12 @@ class users(QDialog):
                     QMessageBox.information(
                         self, "Warning", "Confirm password is field is empty"
                     )
+                    self.txt_usr_edit_confirm_password.setFocus()
                 elif confirm_password and not new_password:
                     QMessageBox.information(
                         self, "Warning", "New password is field is empty"
                     )
+                    self.txt_usr_edit_new_password.setFocus()
                 # username change but don't want to change the password
                 else:
                     # edit user
@@ -175,7 +185,6 @@ class users(QDialog):
                         QMessageBox.information(
                             self, "Note", "User edited successfully"
                         )
-                        self.fill_all_users_table(self.get_all_users())
                         self.clear_usr_edit_fields()
                     else:
                         self.clear_usr_edit_fields()
@@ -206,7 +215,7 @@ class users(QDialog):
                             QMessageBox.information(
                                 self, "Note", "User edited successfully"
                             )
-                            self.fill_all_users_table(self.get_all_users())
+
                             self.clear_usr_edit_fields()
                         else:
                             self.clear_usr_edit_fields()
@@ -234,30 +243,45 @@ class users(QDialog):
 
     def delete_user(self):
         username = self.txt_usr_edit_username.text()
-        if username:
-            selection = QMessageBox.information(
-                self,
-                "Warning",
-                "Do you really want to delete user?",
-                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
-                QMessageBox.No,
-            )
-            # delete the user
-            if selection == QMessageBox.Yes:
-                query = "DELETE FROM users where username=?"
-                self.cur.execute(query, (username,))
-                self.con.commit()
-                QMessageBox.information(self, "Note", "User deleted successfully")
-                self.clear_usr_edit_fields()
-                self.fill_all_users_table(self.get_all_users())
+        password = self.txt_usr_edit_password.text()
+        if self.usr_searched:
+            username_before = self.user_data[0]
+            password_before = self.user_data[1]
+            if username and password:
+                if username == username_before:
+                    selection = QMessageBox.information(
+                        self,
+                        "Warning",
+                        "Do you really want to delete user?",
+                        QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
+                        QMessageBox.No,
+                    )
+                    # delete the user
+                    if selection == QMessageBox.Yes:
+                        query = "DELETE FROM users where username=?"
+                        self.cur.execute(query, (username,))
+                        self.con.commit()
+                        QMessageBox.information(
+                            self, "Note", "User deleted successfully"
+                        )
+                        self.clear_usr_edit_fields()
 
-            elif selection == QMessageBox.Cancel:
+                    elif selection == QMessageBox.Cancel:
+                        self.clear_usr_edit_fields()
+                        return
+                else:
+                    QMessageBox.information(self, "Warning", "Results were changed")
+                    self.clear_usr_edit_fields()
+                    return
+            else:
+                QMessageBox.information(
+                    self, "Warning", "No result found. Please search again"
+                )
                 self.clear_usr_edit_fields()
                 return
         else:
-            QMessageBox.information(self, "Warning", "Please search the user first")
+            QMessageBox.information(self, "Warning", "Please search the user before")
             self.clear_usr_edit_fields()
-            return
 
     def fill_usr_edit_search_results(self):
         self.searched_user = self.txt_usr_username_search.text()
@@ -294,6 +318,7 @@ class users(QDialog):
         self.txt_usr_username_search.setText("")
         self.txt_usr_username_search.setFocus()
         self.txt_usr_edit_password.setEnabled(True)
+        self.fill_all_users_table(self.get_all_users())
 
     def check_database_file(self):
         database_exists = os.path.isfile("users.db")
