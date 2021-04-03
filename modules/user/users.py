@@ -11,7 +11,6 @@ class users(QDialog):
         all_usernames = list()
         for user in all_users:
             all_usernames.append(user[0])
-
         self.auto_fill(all_usernames, self.txt_usr_username_search)
 
     def get_all_users(self):
@@ -230,10 +229,12 @@ class users(QDialog):
                     QMessageBox.information(
                         self, "Warning", "Confirm password is field is empty"
                     )
+                    self.txt_usr_edit_confirm_password.setFocus()
                 elif confirm_password and not new_password:
                     QMessageBox.information(
                         self, "Warning", "New password is field is empty"
                     )
+                    self.txt_usr_edit_new_password.setFocus()
                 else:
                     QMessageBox.information(self, "Note", "You made no changes")
         else:
@@ -325,6 +326,7 @@ class users(QDialog):
         self.txt_usr_edit_password.setEnabled(True)
         self.fill_all_users_table(self.get_all_users())
         self.txt_usr_edit_username.setEnabled(True)
+        self.auto_complete_user_edit_results()
 
     def check_database_file(self):
         database_exists = os.path.isfile("users.db")
