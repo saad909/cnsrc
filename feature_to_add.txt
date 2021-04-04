@@ -1,13 +1,13 @@
 - 1. groups management 
-2. user authentication
+- 2. user authentication
+- 9. encrypt passwords in inventory file
 3. multithreading
 4. basic configs
 5. backup and restore running and startup configs at some action happened for each device or at specific interval or manually
 6. backup and restore ios at specific interval or on user demand
-8. monitoring - cpu, ram, and other usages show with graph
-- 9. encrypt passwords in inventory file
-pending
+
 10. check intergrity of host file,group file and databse file before reading - hacker may create its own databse and may paste here
 11. optional port no while adding device
+8. monitoring - cpu, ram, and other usages show with graph
 
-Total = 2/11
+Total = 3/11
