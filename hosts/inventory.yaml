@@ -1,12 +1,12 @@
 - data:
     device_type: cisco_ios
-    host: 192.168.122.254
+    host: 10.10.10.10
     password: !!binary |
-      Z0FBQUFBQmdhWHR4SHJaelBWVGh1SHBkdFZTdmpMRGMyQjVXdmt5cmpQOG9lZkd5UUxYTE44dGFZ
-      d1BIN2FuMC1xNjBfcURuUFpua0dPa2Y4cUhDRU5RNC1feUZNNkdab0E9PQ==
+      Z0FBQUFBQmdiV2hGY21KMWpKTHpkOWNOTkdXTWlGUk9DTkxnc0hpLU5MWmUtS1dCMGlJbG1yVGpa
+      dVQ4Mlc0d2V1b0lRN0hjS1Vzd2JRVVM1TTRQZXdfWWRJd1V5ZHNpb0E9PQ==
     secret: !!binary |
-      Z0FBQUFBQmdhWHR4MG5jZXhESGZ5UEpmSTQ2N3UtbWl4WUtRM1l3UG1kakJFUENya0d5OVZKRXk3
-      bDlHOFlVOVc2d21IUFBrSVNEWjNISjM2SkVuUFN1U0tQSzYxbzdfT3c9PQ==
+      Z0FBQUFBQmdiV2hGMEVocjM1ckVWaWRTZjhXYW12c2poRkllS3RKb3J4aFA5UXBTVlZBUHJiUDVt
+      cV9LNlpuT0xsYl9OYW95QXJTOXp0LVlYUlY3NXFmVDJlMWp1OXF6U1E9PQ==
     username: cisco
   groups:
   - router
@@ -14,29 +14,29 @@
   type: router
 - data:
     device_type: cisco_ios
-    host: 10.1.1.253
+    host: 20.20.20.20
     password: !!binary |
-      Z0FBQUFBQmdhWGtNemt0NHMtUUVsYVVkRTRGMkRwLUFaOXF6a0pmOUd0VnlIcVpBWjRIdVBiVHdr
-      MjJvZDZoeWw5VGZVT3JDRjVtTVlLalV5R0FMekVaMFNablRoX0hYdUE9PQ==
+      Z0FBQUFBQmdiV2hTdlJfTkpqNWJlbm5Ebmw0QkpUX3BMbmlLekpMYjlSMU12UHpWUmFYNG1zMWo3
+      MjZHa3V3alJ3c2FRbmN3NzR3NnVfaHgzRDIxN1hQMV9qZ3R5OHIyc3c9PQ==
     secret: !!binary |
-      Z0FBQUFBQmdhWGtNSFJCcnJCTHJVVmMzdnVXQ0pDQXRUV2FLdkRVaWNoR3dxeDUzMHpWS2JQbndZ
-      MDRSVGtNYm5hSDJxQTQyQ3hGVXFBd2lzUVp0dWZ1ZGpFa0haWnVGY0E9PQ==
-    username: cisco
-  groups:
-  - switch
-  hostname: S1
-  type: switch
-- data:
-    device_type: cisco_ios
-    host: 192.168.122.101
-    password: !!binary |
-      Z0FBQUFBQmdhWUkxdE52am9oSXNKSXhfUmtZXzN3Z3E4cXBkOHMzNElOR0RSeE5RUXJmazJGOTZL
-      RC04YXFnZUZ1dk83OENzQUJuRE1Lc2QtWjY4QzhQYTlsbjY5Q05vR2c9PQ==
-    secret: !!binary |
-      Z0FBQUFBQmdhWUkxdnByYTRjV2cxRl9QRzVIVnlJdVc3V0hORzBFcE8xS0hOeWQxQzhCVkQxdjU2
-      OEo0NC1RWXQyQnhrMGZXNkp3bFpkQmtHQ0pSMkxLeGlCTklkWVlEZ2c9PQ==
+      Z0FBQUFBQmdiV2hTVUVydE40MERzUU9SYVJ2YUUxaFdwLTJuVUxieHQwaDZybEVHR3V3bEFNaUlf
+      dzFNVEI4dEo4ZDBJUnVuZnZvR3phWDU0bEZQdGdfbF92X3ItMUZ6UUE9PQ==
     username: cisco
   groups:
   - router
-  hostname: real router
+  hostname: R2
+  type: router
+- data:
+    device_type: cisco_ios
+    host: 30.30.30.30
+    password: !!binary |
+      Z0FBQUFBQmdiV2hlaHN4WDB4WURsemFFaTlZaHhCeUFJSWNEd1VtMTVLUUFhdWhsTldRMmtlX1Bt
+      SlF3LXZoLW9PRDNQT2hab2RiU0YwSjhselFfYjJlWHV1ZUZqa2o1WUE9PQ==
+    secret: !!binary |
+      Z0FBQUFBQmdiV2hlNS04TDlQSFJDTXUwTTg0YU9CSm1YRVJpejZjblZVbWNZSzl6U3dVWmxRblBF
+      WDE4S2JVanJsWTdwSTl1MGlFZWVVS1p5aGlzVHhkWmRERF9yUjZTS0E9PQ==
+    username: cisco
+  groups:
+  - router
+  hostname: R3
   type: router

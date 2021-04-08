@@ -1,4 +1,4 @@
 - group_members:
+  - R2
   - R1
-  - S1
-  group_name: test
+  group_name: my group

@@ -39,6 +39,7 @@ class show_commands(QDialog):
         filename = os.path.join("show", filename)
         command = self.gen_false(filename)
         net_conn.ansi_escape_codes = True
+        net_conn.enable()
         output = net_conn.send_command(command)
         print(output)
         print(group)
@@ -126,6 +127,7 @@ class show_commands(QDialog):
         result = ""
         for device in group_devices:
             net_conn = self.create_handler(device)
+            net_conn.enable()
             if net_conn:
                 message = f"\n\n\t\t===================== {device['hostname']} =====================\n\n"
                 print(message)
