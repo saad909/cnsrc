@@ -1,12 +1,12 @@
 - data:
     device_type: cisco_ios
-    host: 10.10.10.10
+    host: 10.1.1.254
     password: !!binary |
-      Z0FBQUFBQmdiV2hGY21KMWpKTHpkOWNOTkdXTWlGUk9DTkxnc0hpLU5MWmUtS1dCMGlJbG1yVGpa
-      dVQ4Mlc0d2V1b0lRN0hjS1Vzd2JRVVM1TTRQZXdfWWRJd1V5ZHNpb0E9PQ==
+      Z0FBQUFBQmdjMHVBNG45eVJkTjdCYzE2OHVoRHBac1NhbVdSa2JGdHB5SUNnWjBiaHNJcWpfVjJu
+      OGk1eXN6NXFzU3ZZOEJuLWN4aTY3MDdvU2QwYTRnT3dKSVpIRTdSSFE9PQ==
     secret: !!binary |
-      Z0FBQUFBQmdiV2hGMEVocjM1ckVWaWRTZjhXYW12c2poRkllS3RKb3J4aFA5UXBTVlZBUHJiUDVt
-      cV9LNlpuT0xsYl9OYW95QXJTOXp0LVlYUlY3NXFmVDJlMWp1OXF6U1E9PQ==
+      Z0FBQUFBQmdjMHVBS1ZkNE91MW4wNnNFWkhSMXpfMVdqR0JpXzRjWS1VNm5TTzVuLUo1WWc1OU9x
+      bWEyRnl6U0ZFY2ZFd3hicWdUeElFZWlydTJlSGlHOGR5TmZmV1VVVUE9PQ==
     username: cisco
   groups:
   - router
@@ -14,29 +14,15 @@
   type: router
 - data:
     device_type: cisco_ios
-    host: 20.20.20.20
+    host: 10.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdiV2hTdlJfTkpqNWJlbm5Ebmw0QkpUX3BMbmlLekpMYjlSMU12UHpWUmFYNG1zMWo3
-      MjZHa3V3alJ3c2FRbmN3NzR3NnVfaHgzRDIxN1hQMV9qZ3R5OHIyc3c9PQ==
+      Z0FBQUFBQmdjMHR0VGRNTmpXbUlrSzd5c05oM3ZVWC1WTy1peDFyOHFLNkZEdFZweDNOVTRHeWk4
+      QTdsSFhlbmhqMEVTcm9aVXd0RE5FYmdVdGhYRnZMOXRjOXNWdzQxdXc9PQ==
     secret: !!binary |
-      Z0FBQUFBQmdiV2hTVUVydE40MERzUU9SYVJ2YUUxaFdwLTJuVUxieHQwaDZybEVHR3V3bEFNaUlf
-      dzFNVEI4dEo4ZDBJUnVuZnZvR3phWDU0bEZQdGdfbF92X3ItMUZ6UUE9PQ==
+      Z0FBQUFBQmdjMHR0TkRkd01DbS1qUmptQURLdkJYZm9ocUQzZDZsbW1mbGgyb2lpWjg4amgwOGkz
+      VjdVWXhQMW14WFZQM0hpUmdwUGp4S3J1UXgtQ2pfdWJUeVpXb1hxT3c9PQ==
     username: cisco
   groups:
-  - router
-  hostname: R2
-  type: router
-- data:
-    device_type: cisco_ios
-    host: 30.30.30.30
-    password: !!binary |
-      Z0FBQUFBQmdiV2hlaHN4WDB4WURsemFFaTlZaHhCeUFJSWNEd1VtMTVLUUFhdWhsTldRMmtlX1Bt
-      SlF3LXZoLW9PRDNQT2hab2RiU0YwSjhselFfYjJlWHV1ZUZqa2o1WUE9PQ==
-    secret: !!binary |
-      Z0FBQUFBQmdiV2hlNS04TDlQSFJDTXUwTTg0YU9CSm1YRVJpejZjblZVbWNZSzl6U3dVWmxRblBF
-      WDE4S2JVanJsWTdwSTl1MGlFZWVVS1p5aGlzVHhkWmRERF9yUjZTS0E9PQ==
-    username: cisco
-  groups:
-  - router
-  hostname: R3
-  type: router
+  - switch
+  hostname: Sw1
+  type: switch

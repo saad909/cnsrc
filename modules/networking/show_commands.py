@@ -40,7 +40,7 @@ class show_commands(QDialog):
         command = self.gen_false(filename)
         net_conn.ansi_escape_codes = True
         net_conn.enable()
-        output = net_conn.send_command(command)
+        output = net_conn.send_command(command, use_textfsm=True)
         print(output)
         print(group)
         if not group:
@@ -84,6 +84,16 @@ class show_commands(QDialog):
             elif command_text == "version":
                 self.execute_show_command(net_conn, "show_version", False)
                 return
+            else:
+                net_conn.enable()
+                try:
+                    output = net_conn.send_command(command_text)
+                    self.te_bt_command_output.clear()
+                    self.te_bt_command_output.setPlainText(str(output))
+                    return
+                except Exception as error:
+                    QMessageBox.information(self,"Warning","command not found")
+                    self.te_bt_command_output.clear()
 
     def get_custom_group_members(self, groups_name):
         group_devices_name = list()
@@ -159,6 +169,12 @@ class show_commands(QDialog):
                 elif command_text == "version":
                     result = self.execute_show_command(net_conn, "show_version", True)
                     output += result
+                else:
+                    net_conn.enable()
+                    output = net_conn.send_command(command_text)
+                    self.te_bt_command_output.clear()
+                    self.te_bt_command_output.setPlainText(str(output))
+                    return
 
         print(type(output))
         print(str(output))

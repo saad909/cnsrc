@@ -19,4 +19,4 @@ class password_encryption:
         # decrypt password and return
 
         password = fernet.decrypt(encrypted_password)
-        return password.decode()
+        return password.decode("utf-8")

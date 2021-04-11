@@ -75,6 +75,7 @@ class users(QDialog):
                     self, "Note", f"user {username} addedd successfully"
                 )
                 self.fill_all_users_table(self.get_all_users())
+                self.auto_complete_user_edit_results()
             else:
                 self.clear_usr_add_fields()
 
