@@ -76,8 +76,11 @@ class show_commands(QDialog):
         all_groups = self.get_all_groups()
         group_members = None
         for group in all_groups:
-            if group['group_name'] == group_name:
-                group_members = group['group_members']
+            try:
+                if group['group_name'] == group_name:
+                    group_members = group['group_members']
+            except Exception as error:
+                print(error)
         return group_members
 
     # this actually send the command to the handler

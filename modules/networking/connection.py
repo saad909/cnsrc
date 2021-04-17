@@ -8,7 +8,7 @@ from paramiko.ssh_exception import SSHException
 
 
 templates_path = os.path.join("hosts", "templates")
-ENV = Environment(
+j2_env = Environment(
     loader=FileSystemLoader(templates_path), trim_blocks=True, autoescape=True,
 )
 
@@ -19,26 +19,23 @@ class connection(QDialog):
             conn = ConnectHandler(**device['data'])
             self.run_show_commands(conn, device)
         except NetMikoTimeoutException:
-            print("devices in not reachable")
-            QMessageBox.information(
-                self, "Note", f"{device['hostname']} in not reachable")
-            return False
+            print(f"{device['hostname']}  in not reachable")
+            # QMessageBox.information(
+            #     self, "Note", f"{device['hostname']} in not reachable")
         except AuthenticationException:
             print("authentication failure")
-            QMessageBox.information(
-                self, "Note", f"For {device['hostname']} authentication Failed"
-            )
-            return False
+            # QMessageBox.information(
+            #     self, "Note", f"For {device['hostname']} authentication Failed"
+            # )
 
         except SSHException:
             print("SSH error. Make sure ssh is enabled on device")
-            QMessageBox.information(
-                self, "Note", f"SSH error. Make sure ssh is enabled on device[{'hostname'}]"
-            )
+            # QMessageBox.information(
+            #     self, "Note", f"SSH error. Make sure ssh is enabled on device[{'hostname'}]"
+            # )
         except Exception as error:
             print(str(error))
-            QMessageBox.information(self, "Note", str(error))
-            return False
+            # QMessageBox.information(self, "Note", str(error))
 
     def run_show_commands(self, conn, host):
         conn.enable()
