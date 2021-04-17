@@ -1,6 +1,8 @@
 from PyQt5.QtWidgets import *
 import os
-from pprint import pprint
+import concurrent.futures as cf
+from yaml import safe_load
+# from pprint import pprint
 
 
 class show_commands(QDialog):
@@ -9,176 +11,6 @@ class show_commands(QDialog):
         self.cb_bt_all_groups.addItems(
             ["Select a group", "switch", "router"] + self.get_all_groups_names()
         )
-
-    def run_show_command(self):
-        # get the values from the combo_boxes
-        device_name = device_group = None
-
-        device_selection = self.cb_bt_all_devices.isEnabled()
-
-        # if single device is selected
-        if device_selection:
-            device_name = self.cb_bt_all_devices.currentText()
-            command_text = self.cb_bt_all_commands.currentText()
-            self.execute_show_command_against_single_device(device_name, command_text)
-
-        # if group is selected
-        else:
-            group_name = self.cb_bt_all_groups.currentText()
-            command_text = self.cb_bt_all_commands.currentText()
-            self.execute_show_command_against_group(group_name, command_text)
-
-    def get_device(self, hostname):
-        devices = self.convert_host_file_into_list()
-        for device in devices:
-            if device["hostname"] == hostname:
-                return device
-
-    # execute show command agianst a single device
-    def execute_show_command(self, net_conn, filename, group):
-        filename = os.path.join("show", filename)
-        command = self.gen_false(filename)
-        net_conn.ansi_escape_codes = True
-        net_conn.enable()
-        output = net_conn.send_command(command, use_textfsm=True)
-        print(output)
-        print(group)
-        if not group:
-            self.te_bt_command_output.clear()
-            self.te_bt_command_output.setPlainText(str(output))
-            return
-        else:
-            return output
-
-        net_conn.disconnect()
-
-    def execute_show_command_against_single_device(self, device_name, command_text):
-        print(f"Device name is {device_name}")
-        print(f"command to execute is {command_text}")
-
-        device = self.get_device(device_name)
-        net_conn = self.create_handler(device)
-
-        if net_conn:
-            # show clock
-            if command_text == "clock":
-                self.execute_show_command(net_conn, "show_clock", False)
-                return
-
-            # show startup config
-            elif command_text == "startup config":
-                self.execute_show_command(net_conn, "show_start", False)
-                return
-
-            # show running config
-            elif command_text == "running config":
-                self.execute_show_command(net_conn, "show_run", False)
-                return
-
-            # sh interfaces information
-            elif command_text == "all interfaces configurations":
-                self.execute_show_command(net_conn, "show_interface_brief", False)
-                return
-
-            # sh interfaces information
-            elif command_text == "version":
-                self.execute_show_command(net_conn, "show_version", False)
-                return
-            else:
-                net_conn.enable()
-                try:
-                    output = net_conn.send_command(command_text)
-                    self.te_bt_command_output.clear()
-                    self.te_bt_command_output.setPlainText(str(output))
-                    return
-                except Exception as error:
-                    QMessageBox.information(self,"Warning","command not found")
-                    self.te_bt_command_output.clear()
-
-    def get_custom_group_members(self, groups_name):
-        group_devices_name = list()
-        all_groups = self.get_all_groups()
-        for group in all_groups:
-            if group["group_name"] == groups_name:
-                group_devices_name = group["group_members"]
-                break
-        group_devices = list()
-        all_devices = self.convert_host_file_into_list()
-        for device_name in group_devices_name:
-            for device in all_devices:
-                if device["hostname"] == device_name:
-                    group_devices.append(device)
-                    break
-
-        return group_devices
-
-    # execute show command agianst a group
-    def execute_show_command_against_group(self, group_name, command_text):
-        # print selected group and command
-        print(f"Group name is {group_name}")
-        print(f"command to execute is {command_text}")
-
-        group_devices = list()
-        if group_name == "router" or group_name == "switch":
-            all_devices = self.convert_host_file_into_list()
-            # getting group members
-            for device in all_devices:
-                if group_name in device["groups"]:
-                    group_devices.append(device)
-        else:
-            group_devices = self.get_custom_group_members(group_name)
-
-        pprint(group_devices)
-        print(type(group_devices))
-        print(f"total devices = {len(group_devices)}")
-
-        self.te_bt_command_output.clear()
-        output = ""
-        result = ""
-        for device in group_devices:
-            net_conn = self.create_handler(device)
-            net_conn.enable()
-            if net_conn:
-                message = f"\n\n\t\t===================== {device['hostname']} =====================\n\n"
-                print(message)
-                output += message
-
-                # show clock
-                if command_text == "clock":
-                    result = self.execute_show_command(net_conn, "show_clock", True)
-                    output += result
-
-                # show startup config
-                elif command_text == "startup config":
-                    print("Startup config")
-                    result = self.execute_show_command(net_conn, "show_start", True)
-                    output += result
-
-                # show running config
-                elif command_text == "running config":
-                    result = self.execute_show_command(net_conn, "show_run", True)
-                    output += result
-
-                # sh interfaces information
-                elif command_text == "all interfaces configurations":
-                    result = self.execute_show_command(
-                        net_conn, "show_interface_brief", True
-                    )
-                    output += result
-
-                elif command_text == "version":
-                    result = self.execute_show_command(net_conn, "show_version", True)
-                    output += result
-                else:
-                    net_conn.enable()
-                    output = net_conn.send_command(command_text)
-                    self.te_bt_command_output.clear()
-                    self.te_bt_command_output.setPlainText(str(output))
-                    return
-
-        print(type(output))
-        print(str(output))
-        self.te_bt_command_output.setPlainText(output)
 
     def disable_box(self, checking_box, box_to_disable):
 
@@ -202,6 +34,96 @@ class show_commands(QDialog):
     def show_commands_submit_button(self):
 
         if self.device_selection and self.cb_bt_all_commands.currentIndex() != 0:
-            self.pb_bt_submit.setEnabled(True)
+            self.config_show_btn_submit.setEnabled(True)
         else:
-            self.pb_bt_submit.setEnabled(False)
+            self.config_show_btn_submit.setEnabled(False)
+
+            # | | ___   __ _(_) ___
+            # | |/ _ \ / _` | |/ __|
+            # | | (_) | (_| | | (__
+            # |_|\___/ \__, |_|\___|
+            #         |___/
+
+    def get_command(self, command_text):
+        file_name = os.path.join("hosts", "show commands", command_text+".cfg")
+        with open(file_name, 'r') as handler:
+            command = handler.read()
+        return command
+
+    # this will start running show commands procedure
+    def run_show_command(self):
+        device_name = None
+
+        device_selection = self.cb_bt_all_devices.isEnabled()
+
+        # if single device is selected
+        if device_selection:
+            device_name = self.cb_bt_all_devices.currentText()
+            command_text = self.cb_bt_all_commands.currentText()
+            self.command = self.get_command(command_text)
+            self.show_cmd_against_device(
+                device_name)
+
+        # if group is selected
+        else:
+            group_name = self.cb_bt_all_groups.currentText()
+            command_text = self.cb_bt_all_commands.currentText()
+            self.command = self.get_command(command_text)
+            # print(command)
+            self.show_cmd_against_group(group_name)
+
+    def get_custom_group_members(self, group_name):
+        all_groups = self.get_all_groups()
+        group_members = None
+        for group in all_groups:
+            if group['group_name'] == group_name:
+                group_members = group['group_members']
+        return group_members
+
+    # this actually send the command to the handler
+    def create_thread(self, group_members):
+        self.show_output = ""
+        self.config_show_te_cmds_output.setText("")
+        for device in group_members:
+            device['data']['password'] = self.decrypt_password(
+                device['data']['password'])
+            device['data']['secret'] = self.decrypt_password(
+                device['data']['secret'])
+
+        with cf.ThreadPoolExecutor(max_workers=5) as ex:
+            ex.map(self.create_show_handler, group_members)
+        print(self.show_output)
+        self.config_show_te_cmds_output.setText(self.show_output)
+
+    def show_cmd_against_group(self, group_name):
+        # run against device type groups
+        group_members = list()
+        if group_name == "router":
+            all_device = self.convert_host_file_into_list()
+            for device in all_device:
+                if 'router' in device['groups']:
+                    group_members.append(device)
+            self.create_thread(group_members)
+            return
+
+        elif group_name == "switch":
+            all_device = self.convert_host_file_into_list()
+            for device in all_device:
+                if 'switch' in device['groups']:
+                    group_members.append(device)
+            self.create_thread(group_members)
+            return
+        else:
+            # This will only get the group members name
+            custom_group_members = list()
+            group_members = self.get_custom_group_members(group_name)
+            all_devices = self.convert_host_file_into_list()
+            for member in group_members:
+                for device in all_devices:
+                    if member == device['hostname']:
+                        custom_group_members.append(device)
+            self.create_thread(custom_group_members)
+            return
+
+    def show_cmd_against_device(self):
+        pass

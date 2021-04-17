@@ -51,7 +51,8 @@ class Login(QWidget, login, password_hashing):
             self.txt_login_password.setFocus()
             self.txt_login_password.setText("")
         else:
-            QMessageBox.information(self, "Warning", "username does not exists")
+            QMessageBox.information(
+                self, "Warning", "username does not exists")
             self.txt_login_username.setText("")
             self.txt_login_password.setText("")
             self.txt_login_username.setFocus()
@@ -95,10 +96,12 @@ class Main_Window(
         # handle show commands combo boxes
         self.device_selection = None
         self.cb_bt_all_groups.currentIndexChanged.connect(
-            lambda: self.disable_box(self.cb_bt_all_groups, self.cb_bt_all_devices)
+            lambda: self.disable_box(
+                self.cb_bt_all_groups, self.cb_bt_all_devices)
         )
         self.cb_bt_all_devices.currentIndexChanged.connect(
-            lambda: self.disable_box(self.cb_bt_all_devices, self.cb_bt_all_groups)
+            lambda: self.disable_box(
+                self.cb_bt_all_devices, self.cb_bt_all_groups)
         )
         self.cb_bt_all_commands.currentIndexChanged.connect(
             self.show_commands_submit_button
@@ -172,7 +175,7 @@ class Main_Window(
         self.pb_g_edit.clicked.connect(self.edit_group)
 
         ##### show commands ######
-        self.pb_bt_submit.clicked.connect(self.run_show_command)
+        self.config_show_btn_submit.clicked.connect(self.run_show_command)
 
         ##### basic tasks ######
         self.bt_set_vlan_submit.clicked.connect(self.create_vlan)
@@ -191,7 +194,8 @@ class Main_Window(
         # filter button for all users
         self.btn_usr_filter.clicked.connect(self.filter_all_devices)
         # clear user filter results button for all users
-        self.btn_usr_clear_filter.clicked.connect(self.clear_users_filter_results)
+        self.btn_usr_clear_filter.clicked.connect(
+            self.clear_users_filter_results)
 
 
 def main():

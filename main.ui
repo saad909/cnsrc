@@ -52,8 +52,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>176</width>
-         <height>389</height>
+         <width>183</width>
+         <height>395</height>
         </rect>
        </property>
        <attribute name="label">
@@ -75,7 +75,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>375</height>
+         <height>381</height>
         </rect>
        </property>
        <attribute name="label">
@@ -111,7 +111,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>375</height>
+         <height>381</height>
         </rect>
        </property>
        <attribute name="label">
@@ -146,8 +146,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>176</width>
-         <height>389</height>
+         <width>183</width>
+         <height>395</height>
         </rect>
        </property>
        <attribute name="label">
@@ -175,8 +175,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>176</width>
-         <height>389</height>
+         <width>183</width>
+         <height>395</height>
         </rect>
        </property>
        <attribute name="label">
@@ -188,8 +188,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>176</width>
-         <height>389</height>
+         <width>183</width>
+         <height>395</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1466,7 +1466,7 @@
            </attribute>
            <layout class="QGridLayout" name="gridLayout_23">
             <item row="0" column="3">
-             <widget class="QPushButton" name="pb_bt_submit">
+             <widget class="QPushButton" name="config_show_btn_submit">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1476,7 +1476,7 @@
              </widget>
             </item>
             <item row="2" column="0" colspan="4">
-             <widget class="QTextEdit" name="te_bt_command_output">
+             <widget class="QTextEdit" name="config_show_te_cmds_output">
               <property name="styleSheet">
                <string notr="true">background-color: rgb(0, 0, 0);
 color: rgb(0, 255, 0);</string>
@@ -1673,7 +1673,7 @@ color: rgb(0, 255, 0);</string>
   <tabstop>btn_d_edit_delete</tabstop>
   <tabstop>cb_bt_all_devices</tabstop>
   <tabstop>cb_bt_all_groups</tabstop>
-  <tabstop>pb_bt_submit</tabstop>
+  <tabstop>config_show_btn_submit</tabstop>
  </tabstops>
  <resources/>
  <connections>
