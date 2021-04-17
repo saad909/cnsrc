@@ -53,7 +53,7 @@ class show_commands(QDialog):
     # this will start running show commands procedure
     def run_show_command(self):
         device_name = None
-
+        self.statusBar().showMessage("")
         device_selection = self.cb_bt_all_devices.isEnabled()
 
         # if single device is selected
