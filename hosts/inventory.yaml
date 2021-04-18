@@ -2,11 +2,11 @@
     device_type: cisco_ios
     host: 10.1.1.254
     password: !!binary |
-      Z0FBQUFBQmdjMHVBNG45eVJkTjdCYzE2OHVoRHBac1NhbVdSa2JGdHB5SUNnWjBiaHNJcWpfVjJu
-      OGk1eXN6NXFzU3ZZOEJuLWN4aTY3MDdvU2QwYTRnT3dKSVpIRTdSSFE9PQ==
+      Z0FBQUFBQmdmSGVhTUJna1BGNmx1QnlmN1ZQWVVHekJaS1otWmx1Wm1vbnVzY1IyQlFtVWZqQWk5
+      NFBidVY1MDhRMmJOVDNteHpSZUVqS09XU01nWjRqNlBDdjNvRTFWMEE9PQ==
     secret: !!binary |
-      Z0FBQUFBQmdjMHVBS1ZkNE91MW4wNnNFWkhSMXpfMVdqR0JpXzRjWS1VNm5TTzVuLUo1WWc1OU9x
-      bWEyRnl6U0ZFY2ZFd3hicWdUeElFZWlydTJlSGlHOGR5TmZmV1VVVUE9PQ==
+      Z0FBQUFBQmdmSGVhUGZtM2E5UXlDbVZ3N0RCMkFrYm5la0s5ZjRwbUNMam9ocl8zRG5pX0cxbGJT
+      Z1JGVFp4Z1VGNGlYZVlUSDVyclhxZGkzb1F2YjZqaldwcGsyX3ZnRmc9PQ==
     username: cisco
   groups:
   - router
@@ -16,13 +16,27 @@
     device_type: cisco_ios
     host: 10.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdjMHR0VGRNTmpXbUlrSzd5c05oM3ZVWC1WTy1peDFyOHFLNkZEdFZweDNOVTRHeWk4
-      QTdsSFhlbmhqMEVTcm9aVXd0RE5FYmdVdGhYRnZMOXRjOXNWdzQxdXc9PQ==
+      Z0FBQUFBQmdmSGVjbWRnWUU1a3Y4NE51Y05wTWxDRzlaTlhFOWZ0d0Vob09jMlVSWThUM0JqUERo
+      TldVNGtBQTdOR3IzQVQ0eDYxdHUxZnFTa05ra0xqSzhNNEVoSXk2RlE9PQ==
     secret: !!binary |
-      Z0FBQUFBQmdjMHR0TkRkd01DbS1qUmptQURLdkJYZm9ocUQzZDZsbW1mbGgyb2lpWjg4amgwOGkz
-      VjdVWXhQMW14WFZQM0hpUmdwUGp4S3J1UXgtQ2pfdWJUeVpXb1hxT3c9PQ==
+      Z0FBQUFBQmdmSGVjUEwtaWZaMjFrZlZCbmJYOW5TdFRwT2lGaFdxSVNwTDZiNEtZMHVLWUhhWlpW
+      RndqR3V1N0VGU0luNXByUkltMHRDYXg2MXpjYVE3VGdTOHRCaDdsS1E9PQ==
     username: cisco
   groups:
   - switch
   hostname: Sw1
+  type: switch
+- data:
+    device_type: cisco_ios
+    host: 1.1.1.1
+    password: !!binary |
+      Z0FBQUFBQmdmSUd0THpzSVphaDVKaFJhTXg3dm56X2JvVmZDWXdkdXBadEdCZzAzczk1alFQQVVs
+      TENYZy05MjBiT2hlOFRmNlF2Zll6TmJCQUJuZl92cVJHZjNiM0M4MlE9PQ==
+    secret: !!binary |
+      Z0FBQUFBQmdmSUd0dS0yX1NIbnhsbnRuU29nSWRoS0lDYTF6dGxxUkJ4cUxJcGtQdzlCTnFNRllW
+      UlRfUl9hRG1DOUw4S1N5VWI5aWdCbTRNeE5IN1VaX3NtN0NQa3U3dGc9PQ==
+    username: cisco
+  groups:
+  - switch
+  hostname: R12
   type: switch

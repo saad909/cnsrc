@@ -42,7 +42,7 @@
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -52,7 +52,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>183</width>
+         <width>167</width>
          <height>395</height>
         </rect>
        </property>
@@ -82,13 +82,6 @@
         <string>Devices</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pb_dev_add">
-          <property name="text">
-           <string>Add</string>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="0">
          <widget class="QPushButton" name="pb_dev_all">
           <property name="text">
@@ -103,6 +96,13 @@
           </property>
          </widget>
         </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pb_dev_add">
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="page_5">
@@ -111,7 +111,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>381</height>
+         <height>395</height>
         </rect>
        </property>
        <attribute name="label">
@@ -146,7 +146,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>183</width>
+         <width>167</width>
          <height>395</height>
         </rect>
        </property>
@@ -175,7 +175,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>183</width>
+         <width>167</width>
          <height>395</height>
         </rect>
        </property>
@@ -188,7 +188,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>183</width>
+         <width>167</width>
          <height>395</height>
         </rect>
        </property>
@@ -210,7 +210,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -906,6 +906,36 @@
               </layout>
              </widget>
             </item>
+            <item row="1" column="0">
+             <widget class="QGroupBox" name="groupBox_9">
+              <property name="title">
+               <string>Bulk addition</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_14">
+               <item row="0" column="1">
+                <widget class="QPushButton" name="dev_add_btn_browse">
+                 <property name="text">
+                  <string>Browse</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLineEdit" name="dev_add_txt_csv_file_path">
+                 <property name="placeholderText">
+                  <string>full path of csv file containing hosts data</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QPushButton" name="dev_add_btn_bulk_add">
+                 <property name="text">
+                  <string>Add</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
            </layout>
           </widget>
           <widget class="QWidget" name="tab_5">
@@ -1115,6 +1145,22 @@
                       <string>Delete</string>
                      </property>
                     </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_4">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>10</width>
+                       <height>10</height>
+                      </size>
+                     </property>
+                    </spacer>
                    </item>
                    <item>
                     <widget class="QPushButton" name="btn_d_edit_clear">

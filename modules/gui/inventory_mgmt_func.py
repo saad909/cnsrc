@@ -107,9 +107,10 @@ class inventory_mgmt_func(QDialog):
         for device in all_hosts:
             if device["hostname"] == host["hostname"]:
                 print("Host name duplication occured")
-                QMessageBox.information(
-                    self, "Warning", "Host name duplication occured"
-                )
+                QMessageBox.information(self,"Waring",f"{device['hostname']}: {host['data']['host']} also has the same hostname")
+                # QMessageBox.information(
+                #     self, "Warning", "Host name duplication occured"
+                # )
 
                 self.d_add_hostname.setFocus()
                 self.highlight_border(self.d_add_hostname)
@@ -126,9 +127,10 @@ class inventory_mgmt_func(QDialog):
         for device in all_hosts:
             if device["data"]["host"] == host["data"]["host"]:
                 print(f"{device['hostname']} has the same ip address ")
-                QMessageBox.information(
-                    self, "Warning", f"{device['hostname']} has the same ip address "
-                )
+                # QMessageBox.information(
+                #     self, "Warning", f"{device['hostname']} has the same ip address "
+                # )
+                QMessageBox.information(self,"Waring",f"{host['hostname']}: {device['hostname']} already has been assigned the ip address {device['data']['host']} ")
 
                 self.d_add_ip_address.setFocus()
                 self.highlight_border(self.d_add_ip_address)
