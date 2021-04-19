@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>849</width>
-    <height>597</height>
+    <height>657</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -53,7 +53,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>395</height>
+         <height>455</height>
         </rect>
        </property>
        <attribute name="label">
@@ -75,7 +75,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>381</height>
+         <height>441</height>
         </rect>
        </property>
        <attribute name="label">
@@ -111,7 +111,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>395</height>
+         <height>441</height>
         </rect>
        </property>
        <attribute name="label">
@@ -147,7 +147,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>395</height>
+         <height>455</height>
         </rect>
        </property>
        <attribute name="label">
@@ -176,7 +176,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>395</height>
+         <height>455</height>
         </rect>
        </property>
        <attribute name="label">
@@ -189,7 +189,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>395</height>
+         <height>455</height>
         </rect>
        </property>
        <attribute name="label">
@@ -210,372 +210,397 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
         <string>Users</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_19">
+       <layout class="QGridLayout" name="gridLayout_21">
         <item row="0" column="0">
-         <widget class="QTabWidget" name="tab_users">
-          <property name="currentIndex">
-           <number>0</number>
+         <widget class="QGroupBox" name="groupBox_10">
+          <property name="title">
+           <string>Users Settings</string>
           </property>
-          <widget class="QWidget" name="tab_8">
-           <attribute name="title">
-            <string>All users</string>
-           </attribute>
-          </widget>
-          <widget class="QWidget" name="tab_24">
-           <attribute name="title">
-            <string>user settings</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_2">
-            <item row="1" column="0">
-             <widget class="QGroupBox" name="groupBox_3">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="title">
-               <string>Add</string>
-              </property>
-              <property name="flat">
-               <bool>true</bool>
-              </property>
-              <property name="checkable">
-               <bool>false</bool>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_9">
+          <layout class="QGridLayout" name="gridLayout_19">
+           <item row="0" column="0">
+            <widget class="QTabWidget" name="tab_users">
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="tab_24">
+              <attribute name="title">
+               <string>user settings</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_2">
                <item row="0" column="0">
-                <widget class="QLabel" name="label_2">
-                 <property name="text">
-                  <string>username</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_5">
-                 <property name="text">
-                  <string>Password</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QLineEdit" name="txt_usr_add_username">
-                 <property name="placeholderText">
-                  <string>Enter user name</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QLineEdit" name="txt_usr_add_confirm_password">
-                 <property name="echoMode">
-                  <enum>QLineEdit::Password</enum>
-                 </property>
-                 <property name="placeholderText">
-                  <string>repeat password</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QLineEdit" name="txt_usr_add_password">
-                 <property name="echoMode">
-                  <enum>QLineEdit::Password</enum>
-                 </property>
-                 <property name="placeholderText">
-                  <string>Enter password</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_6">
-                 <property name="text">
-                  <string>Confirm Password</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QPushButton" name="btn_usr_add_add">
-                 <property name="text">
-                  <string>Add</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="1">
-                <spacer name="verticalSpacer_2">
+                <spacer name="horizontalSpacer">
                  <property name="orientation">
-                  <enum>Qt::Vertical</enum>
+                  <enum>Qt::Horizontal</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>20</width>
-                   <height>40</height>
+                   <width>40</width>
+                   <height>20</height>
                   </size>
                  </property>
                 </spacer>
                </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QGroupBox" name="groupBox_4">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="title">
-               <string>Delete or Edit</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-              <property name="flat">
-               <bool>true</bool>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_13">
-               <property name="rightMargin">
-                <number>25</number>
-               </property>
                <item row="1" column="0">
-                <widget class="QLabel" name="label_11">
-                 <property name="text">
-                  <string>username</string>
+                <widget class="QGroupBox" name="groupBox_3">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
+                 <property name="title">
+                  <string>Add</string>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="checkable">
+                  <bool>false</bool>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_9">
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string>username</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_5">
+                    <property name="text">
+                     <string>Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="txt_usr_add_username">
+                    <property name="placeholderText">
+                     <string>Enter user name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="txt_usr_add_confirm_password">
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>repeat password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="txt_usr_add_password">
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Enter password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_6">
+                    <property name="text">
+                     <string>Confirm Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QPushButton" name="btn_usr_add_add">
+                    <property name="text">
+                     <string>Add</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <spacer name="verticalSpacer_2">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
                 </widget>
                </item>
-               <item row="2" column="1">
-                <widget class="QLineEdit" name="txt_usr_edit_password">
-                 <property name="echoMode">
-                  <enum>QLineEdit::Password</enum>
+               <item row="2" column="0" colspan="2">
+                <widget class="QGroupBox" name="groupBox_8">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>1</verstretch>
+                  </sizepolicy>
                  </property>
-                 <property name="placeholderText">
-                  <string>Enter old password</string>
+                 <property name="title">
+                  <string>All Users</string>
                  </property>
-                </widget>
-               </item>
-               <item row="0" column="0" colspan="2">
-                <layout class="QHBoxLayout" name="horizontalLayout_8">
-                 <item>
-                  <widget class="QLineEdit" name="txt_usr_username_search">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="placeholderText">
-                    <string>search username</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_usr_search">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>Search</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_usr_search_clear">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>Clear</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_15">
-                 <property name="text">
-                  <string>New Password</string>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
                  </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QLineEdit" name="txt_usr_edit_new_password">
-                 <property name="toolTip">
-                  <string>Leave empty, if don't want to change password</string>
+                 <property name="flat">
+                  <bool>true</bool>
                  </property>
-                 <property name="echoMode">
-                  <enum>QLineEdit::Password</enum>
-                 </property>
-                 <property name="placeholderText">
-                  <string>Enter new password</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="1">
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
-                 <item>
-                  <widget class="QPushButton" name="btn_usr_del_delete">
-                   <property name="text">
-                    <string>Delete</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_user_edit_edit">
-                   <property name="text">
-                    <string>Edit</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_10">
-                 <property name="text">
-                  <string>Confirm Password</string>
-                 </property>
+                 <layout class="QGridLayout" name="gridLayout">
+                  <item row="1" column="2">
+                   <widget class="QPushButton" name="usr_btn_export">
+                    <property name="text">
+                     <string>Export</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLineEdit" name="usr_txt_file_path">
+                    <property name="placeholderText">
+                     <string>Enter full file path</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" colspan="3">
+                   <layout class="QHBoxLayout" name="horizontalLayout_9">
+                    <item>
+                     <widget class="QLineEdit" name="txt_usr_table_filter">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="placeholderText">
+                       <string>search username</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_filter">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>Filter</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_clear_filter">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>Clear</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="2" column="0" colspan="3">
+                   <widget class="QTableWidget" name="tbl_users">
+                    <attribute name="horizontalHeaderStretchLastSection">
+                     <bool>true</bool>
+                    </attribute>
+                    <attribute name="verticalHeaderStretchLastSection">
+                     <bool>false</bool>
+                    </attribute>
+                    <column>
+                     <property name="text">
+                      <string>username</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>password</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QPushButton" name="usr_btn_browse">
+                    <property name="text">
+                     <string>Browse</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </item>
                <item row="1" column="1">
-                <widget class="QLineEdit" name="txt_usr_edit_username">
-                 <property name="placeholderText">
-                  <string>Enter user name</string>
+                <widget class="QGroupBox" name="groupBox_4">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
-                </widget>
-               </item>
-               <item row="4" column="1">
-                <widget class="QLineEdit" name="txt_usr_edit_confirm_password">
-                 <property name="toolTip">
-                  <string>Leave empty, if don't want to change password</string>
+                 <property name="title">
+                  <string>Delete or Edit</string>
                  </property>
-                 <property name="echoMode">
-                  <enum>QLineEdit::Password</enum>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                  </property>
-                 <property name="placeholderText">
-                  <string>repeat password</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_9">
-                 <property name="text">
-                  <string>password</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="2" column="0" colspan="2">
-             <widget class="QGroupBox" name="groupBox_8">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>1</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="title">
-               <string>All Users</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="flat">
-               <bool>true</bool>
-              </property>
-              <layout class="QGridLayout" name="gridLayout">
-               <item row="0" column="0">
-                <layout class="QHBoxLayout" name="horizontalLayout_9">
-                 <item>
-                  <widget class="QLineEdit" name="txt_usr_table_filter">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="placeholderText">
-                    <string>search username</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_usr_filter">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>Filter</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_usr_clear_filter">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>Clear</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="1" column="0">
-                <widget class="QTableWidget" name="tbl_users">
-                 <attribute name="horizontalHeaderStretchLastSection">
+                 <property name="flat">
                   <bool>true</bool>
-                 </attribute>
-                 <attribute name="verticalHeaderStretchLastSection">
-                  <bool>false</bool>
-                 </attribute>
-                 <column>
-                  <property name="text">
-                   <string>username</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_13">
+                  <property name="rightMargin">
+                   <number>25</number>
                   </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>password</string>
-                  </property>
-                 </column>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_11">
+                    <property name="text">
+                     <string>username</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="txt_usr_edit_password">
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Enter old password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" colspan="2">
+                   <layout class="QHBoxLayout" name="horizontalLayout_8">
+                    <item>
+                     <widget class="QLineEdit" name="txt_usr_username_search">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="placeholderText">
+                       <string>search username</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_search">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>Search</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_search_clear">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>Clear</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="label_15">
+                    <property name="text">
+                     <string>New Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QLineEdit" name="txt_usr_edit_new_password">
+                    <property name="toolTip">
+                     <string>Leave empty, if don't want to change password</string>
+                    </property>
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Enter new password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <layout class="QHBoxLayout" name="horizontalLayout_7">
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_del_delete">
+                      <property name="text">
+                       <string>Delete</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_user_edit_edit">
+                      <property name="text">
+                       <string>Edit</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="label_10">
+                    <property name="text">
+                     <string>Confirm Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="txt_usr_edit_username">
+                    <property name="placeholderText">
+                     <string>Enter user name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="QLineEdit" name="txt_usr_edit_confirm_password">
+                    <property name="toolTip">
+                     <string>Leave empty, if don't want to change password</string>
+                    </property>
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>repeat password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_9">
+                    <property name="text">
+                     <string>password</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </item>
               </layout>
              </widget>
-            </item>
-            <item row="0" column="0">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </widget>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -607,26 +632,29 @@
             <item row="0" column="0">
              <widget class="QGroupBox" name="groupBox">
               <property name="title">
-               <string/>
+               <string>All Devices</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_6">
-               <item row="0" column="1">
-                <widget class="QLineEdit" name="txt_d_all_ip_address">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                   <horstretch>1</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
+               <item row="1" column="0">
+                <spacer name="verticalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
                  </property>
-                 <property name="placeholderText">
-                  <string>Search using IP Address</string>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Minimum</enum>
                  </property>
-                </widget>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>17</width>
+                   <height>13</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
-               <item row="0" column="2">
+               <item row="0" column="4">
                 <widget class="QPushButton" name="btn_d_all_search">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                    <horstretch>1</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -636,10 +664,10 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="3">
+               <item row="0" column="5">
                 <widget class="QPushButton" name="btn_d_all_clear">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                    <horstretch>1</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -652,7 +680,7 @@
                <item row="0" column="0">
                 <widget class="QLineEdit" name="txt_d_all_hostname">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                    <horstretch>1</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -662,7 +690,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="2" column="0" colspan="4">
+               <item row="3" column="0" colspan="6">
                 <widget class="QTableWidget" name="tbl_devices">
                  <property name="tabletTracking">
                   <bool>false</bool>
@@ -731,21 +759,45 @@
                  </column>
                 </widget>
                </item>
-               <item row="1" column="0">
-                <spacer name="verticalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
+               <item row="2" column="0" colspan="3">
+                <widget class="QLineEdit" name="dev_all_txt_file_path">
+                 <property name="placeholderText">
+                  <string>Enter full file path</string>
                  </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Minimum</enum>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QPushButton" name="dev_all_btn_browse">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>17</width>
-                   <height>13</height>
-                  </size>
+                 <property name="text">
+                  <string>Browse</string>
                  </property>
-                </spacer>
+                </widget>
+               </item>
+               <item row="2" column="4" colspan="2">
+                <widget class="QPushButton" name="dev_all_btn_export">
+                 <property name="text">
+                  <string>Export</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLineEdit" name="txt_d_all_ip_address">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Search using IP Address</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -760,7 +812,7 @@
             <item row="0" column="0">
              <widget class="QGroupBox" name="gb_d_all">
               <property name="title">
-               <string/>
+               <string>Add a device</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_5">
                <item row="0" column="0">
@@ -914,6 +966,12 @@
               <layout class="QGridLayout" name="gridLayout_14">
                <item row="0" column="1">
                 <widget class="QPushButton" name="dev_add_btn_browse">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="text">
                   <string>Browse</string>
                  </property>
@@ -926,7 +984,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="0">
+               <item row="1" column="0" colspan="2">
                 <widget class="QPushButton" name="dev_add_btn_bulk_add">
                  <property name="text">
                   <string>Add</string>
@@ -946,7 +1004,7 @@
             <item row="0" column="0">
              <widget class="QGroupBox" name="gb_d_edit">
               <property name="title">
-               <string/>
+               <string>Edit or delete Device</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_3">
                <item row="0" column="0">
@@ -1205,13 +1263,26 @@
            <attribute name="title">
             <string>All Groups</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_28">
+           <layout class="QGridLayout" name="gridLayout_16">
             <item row="0" column="0">
              <widget class="QGroupBox" name="groupBox_5">
               <property name="title">
-               <string/>
+               <string>All Groups</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_29">
+               <item row="0" column="3">
+                <widget class="QPushButton" name="btn_g_all_clear">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Clear</string>
+                 </property>
+                </widget>
+               </item>
                <item row="0" column="1">
                 <widget class="QLineEdit" name="txt_g_all_group_name">
                  <property name="sizePolicy">
@@ -1228,6 +1299,19 @@
                  </property>
                 </widget>
                </item>
+               <item row="2" column="3">
+                <widget class="QPushButton" name="grp_all_btn_export">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Export</string>
+                 </property>
+                </widget>
+               </item>
                <item row="0" column="2">
                 <widget class="QPushButton" name="btn_g_all_search">
                  <property name="sizePolicy">
@@ -1241,7 +1325,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="2" column="0" colspan="4">
+               <item row="4" column="0" colspan="4">
                 <widget class="QTableWidget" name="tbl_groups">
                  <property name="tabletTracking">
                   <bool>false</bool>
@@ -1285,7 +1369,20 @@
                  </column>
                 </widget>
                </item>
-               <item row="1" column="0">
+               <item row="2" column="1">
+                <widget class="QLineEdit" name="grp_all_txt_file_path">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Enter full file path</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
                 <spacer name="verticalSpacer_3">
                  <property name="orientation">
                   <enum>Qt::Vertical</enum>
@@ -1301,16 +1398,16 @@
                  </property>
                 </spacer>
                </item>
-               <item row="0" column="3">
-                <widget class="QPushButton" name="btn_g_all_clear">
+               <item row="2" column="2">
+                <widget class="QPushButton" name="grp_all_btn_browse">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>1</horstretch>
+                  <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+                   <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>Clear</string>
+                  <string>Browse</string>
                  </property>
                 </widget>
                </item>
@@ -1327,7 +1424,7 @@
             <item row="0" column="1">
              <widget class="QGroupBox" name="gb_d_all_3">
               <property name="title">
-               <string/>
+               <string>Add a group</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_38">
                <item row="0" column="0">
@@ -1393,7 +1490,7 @@
             <item row="0" column="0">
              <widget class="QGroupBox" name="gb_d_edit_3">
               <property name="title">
-               <string/>
+               <string>Edit or Delete Group</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_40">
                <item row="0" column="0">
@@ -1704,7 +1801,6 @@ color: rgb(0, 255, 0);</string>
   <tabstop>btn_d_edit_edit</tabstop>
   <tabstop>txt_d_all_hostname</tabstop>
   <tabstop>txt_d_all_ip_address</tabstop>
-  <tabstop>btn_d_all_search</tabstop>
   <tabstop>btn_d_all_clear</tabstop>
   <tabstop>pb_usr_user_settings</tabstop>
   <tabstop>pb_dev_edit</tabstop>

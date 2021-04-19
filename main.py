@@ -154,6 +154,14 @@ class Main_Window(
 
         self.btn_d_all_search.clicked.connect(self.search_device)
         self.btn_d_all_clear.clicked.connect(self.clear_device_search_results)
+        # browse for export
+        self.dev_all_btn_browse.clicked.connect(
+            lambda: self.export_file_path(self.dev_all_txt_file_path)
+        )
+        # Export devices
+        self.dev_all_btn_export.clicked.connect(
+            lambda: self.export_table(self.tbl_devices, self.dev_all_txt_file_path)
+        )
 
         ##### edit or delete devices ######
 
@@ -172,6 +180,14 @@ class Main_Window(
         self.pb_g_delete.clicked.connect(self.delete_group)
         # edit group
         self.pb_g_edit.clicked.connect(self.edit_group)
+        # browse export file path
+        self.grp_all_btn_browse.clicked.connect(
+            lambda: self.export_file_path(self.grp_all_txt_file_path)
+        )
+        # export user
+        self.grp_all_btn_export.clicked.connect(
+            lambda: self.export_table(self.tbl_groups, self.grp_all_txt_file_path)
+        )
 
         ##### show commands ######
         self.config_show_btn_submit.clicked.connect(self.run_show_command)
@@ -194,6 +210,14 @@ class Main_Window(
         self.btn_usr_filter.clicked.connect(self.filter_all_devices)
         # clear user filter results button for all users
         self.btn_usr_clear_filter.clicked.connect(self.clear_users_filter_results)
+        # browse export file path
+        self.usr_btn_browse.clicked.connect(
+            lambda: self.export_file_path(self.usr_txt_file_path)
+        )
+        # export user
+        self.usr_btn_export.clicked.connect(
+            lambda: self.export_table(self.tbl_users, self.usr_txt_file_path)
+        )
 
 
 def main():

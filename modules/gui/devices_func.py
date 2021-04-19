@@ -3,9 +3,57 @@ from PyQt5.QtCore import QRegExp
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from pprint import pprint
-
+import pandas as pd
 
 class devices_func(QDial):
+
+    # _____                       _                  ____ ______     __
+    # | ____|_  ___ __   ___  _ __| |_    __ _ ___   / ___/ ___\ \   / /
+    # |  _| \ \/ / '_ \ / _ \| '__| __|  / _` / __| | |   \___ \\ \ / /
+    # | |___ >  <| |_) | (_) | |  | |_  | (_| \__ \ | |___ ___) |\ V /
+    # |_____/_/\_\ .__/ \___/|_|   \__|  \__,_|___/  \____|____/  \_/
+    #           |_|
+
+    def export_file_path(self,box_to_set_path):
+        filename = QFileDialog.getSaveFileName(
+            self, "Save File", ".", "Excel File (*.xlsx);;All files(*)"
+        )[0]
+        # Append extension if not there yet
+        if not filename.endswith(".xlsx"):
+            filename += ".xlsx"
+        box_to_set_path.setText(filename)
+        return
+
+
+    def export_table(self,table,file_path_widget):
+        filename = file_path_widget.text()
+        # filename not given
+        if not filename or not filename.endswith(".xlsx"):
+            QMessageBox.information(self,"Warning","Please first enter the file path")
+            file_path_widget.setFocus()
+            return
+
+        else:
+
+            try:
+                columnHeaders = []
+                # create column header list
+                for j in range(table.model().columnCount()):
+                    columnHeaders.append(table.horizontalHeaderItem(j).text())
+
+                df = pd.DataFrame(columns=columnHeaders)
+
+                # create dataframe object recordset
+                for row in range(table.rowCount()):
+                    for col in range(table.columnCount()):
+                        df.at[row, columnHeaders[col]] = table.item(row, col).text()
+
+                df.to_excel(filename, index=False)
+                print('Excel file exported')
+                QMessageBox.information(self,"Success",'Excel file exported')
+                file_path_widget.setText("")
+            except Exception as error:
+                QMessageBox.information(self,"Failed",str(error))
 
     # clear the text boxes
     def clear_text_box(self, widget):
@@ -34,8 +82,11 @@ class devices_func(QDial):
     def is_ip_complete(self, ipTextBox):
 
         ip_address = ipTextBox.text()
-        octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-4])"
-        reg_exp = "^" + octet + r"\." + octet + r"\." + octet + r"\." + octet + "$"
+        reg_exp = QRegExp(
+            r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
+        )
+        # octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-4])"
+        # reg_exp = "^" + octet + r"\." + octet + r"\." + octet + r"\." + octet + "$"
         result = list()
         result = re.findall(reg_exp, ip_address)
         if len(result) == 1:

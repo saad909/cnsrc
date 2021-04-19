@@ -1,26 +1,12 @@
 - data:
     device_type: cisco_ios
-    host: 10.1.1.254
-    password: !!binary |
-      Z0FBQUFBQmdmSGVhTUJna1BGNmx1QnlmN1ZQWVVHekJaS1otWmx1Wm1vbnVzY1IyQlFtVWZqQWk5
-      NFBidVY1MDhRMmJOVDNteHpSZUVqS09XU01nWjRqNlBDdjNvRTFWMEE9PQ==
-    secret: !!binary |
-      Z0FBQUFBQmdmSGVhUGZtM2E5UXlDbVZ3N0RCMkFrYm5la0s5ZjRwbUNMam9ocl8zRG5pX0cxbGJT
-      Z1JGVFp4Z1VGNGlYZVlUSDVyclhxZGkzb1F2YjZqaldwcGsyX3ZnRmc9PQ==
-    username: cisco
-  groups:
-  - router
-  hostname: R1
-  type: router
-- data:
-    device_type: cisco_ios
     host: 10.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdmSGVjbWRnWUU1a3Y4NE51Y05wTWxDRzlaTlhFOWZ0d0Vob09jMlVSWThUM0JqUERo
-      TldVNGtBQTdOR3IzQVQ0eDYxdHUxZnFTa05ra0xqSzhNNEVoSXk2RlE9PQ==
+      Z0FBQUFBQmdmSU1mQXJoM2p2eGluRDdDakFjeVdNWXFXcVJOaERPbXZrUGdMemQ2MmtPRk1ISDQ2
+      Z2gzcGFqYkdQeUoxLUNucjIwOE0yeV9qb1FsQkVFUjRVOUFoSnVHOWc9PQ==
     secret: !!binary |
-      Z0FBQUFBQmdmSGVjUEwtaWZaMjFrZlZCbmJYOW5TdFRwT2lGaFdxSVNwTDZiNEtZMHVLWUhhWlpW
-      RndqR3V1N0VGU0luNXByUkltMHRDYXg2MXpjYVE3VGdTOHRCaDdsS1E9PQ==
+      Z0FBQUFBQmdmSU1mNWJDWGY0eWNxWWlyVjBkZlM0SkFWc2dHRmhMMGlpdlo4VEJyT1d0UXBNQnJf
+      Mkp0OFhfT3FiUWp0SXRRZFhKTjYzVVd1U29MNC1hUGtKZlE3Tk0yRWc9PQ==
     username: cisco
   groups:
   - switch
@@ -28,15 +14,15 @@
   type: switch
 - data:
     device_type: cisco_ios
-    host: 1.1.1.1
+    host: 10.1.1.254
     password: !!binary |
-      Z0FBQUFBQmdmSUd0THpzSVphaDVKaFJhTXg3dm56X2JvVmZDWXdkdXBadEdCZzAzczk1alFQQVVs
-      TENYZy05MjBiT2hlOFRmNlF2Zll6TmJCQUJuZl92cVJHZjNiM0M4MlE9PQ==
+      Z0FBQUFBQmdmSU0tQjZCYmlKXzJPX3ZOX1c1TFU0NGx2b3FLSUwyV3c1UHNKd1NWOGxoWmxKRC1S
+      YjdvNjVCRlJyZmhxZlN5M2ZjczdoeGMxZkZOOExkMGpCWkVHc3RDMGc9PQ==
     secret: !!binary |
-      Z0FBQUFBQmdmSUd0dS0yX1NIbnhsbnRuU29nSWRoS0lDYTF6dGxxUkJ4cUxJcGtQdzlCTnFNRllW
-      UlRfUl9hRG1DOUw4S1N5VWI5aWdCbTRNeE5IN1VaX3NtN0NQa3U3dGc9PQ==
+      Z0FBQUFBQmdmSU0ta3VGSjVtQ25fR3gzLTZtSmRxWVlld2xhdzdvOVhYQlVXdHBtX0xkWkh6Rmhw
+      N2l3TkNZSUdyZXRCSEltVU44bFJMRVZ0Rm1IMWg5azMzd0R1LUVVQ2c9PQ==
     username: cisco
   groups:
-  - switch
-  hostname: R12
-  type: switch
+  - router
+  hostname: R1
+  type: router
