@@ -5,6 +5,7 @@ from PyQt5.QtGui import *
 from pprint import pprint
 import pandas as pd
 
+
 class devices_func(QDial):
 
     # _____                       _                  ____ ______     __
@@ -14,7 +15,7 @@ class devices_func(QDial):
     # |_____/_/\_\ .__/ \___/|_|   \__|  \__,_|___/  \____|____/  \_/
     #           |_|
 
-    def export_file_path(self,box_to_set_path):
+    def export_file_path(self, box_to_set_path):
         filename = QFileDialog.getSaveFileName(
             self, "Save File", ".", "Excel File (*.xlsx);;All files(*)"
         )[0]
@@ -24,12 +25,11 @@ class devices_func(QDial):
         box_to_set_path.setText(filename)
         return
 
-
-    def export_table(self,table,file_path_widget):
+    def export_table(self, table, file_path_widget):
         filename = file_path_widget.text()
         # filename not given
         if not filename or not filename.endswith(".xlsx"):
-            QMessageBox.information(self,"Warning","Please first enter the file path")
+            QMessageBox.information(self, "Warning", "Please first enter the file path")
             file_path_widget.setFocus()
             return
 
@@ -49,11 +49,11 @@ class devices_func(QDial):
                         df.at[row, columnHeaders[col]] = table.item(row, col).text()
 
                 df.to_excel(filename, index=False)
-                print('Excel file exported')
-                QMessageBox.information(self,"Success",'Excel file exported')
+                print("Excel file exported")
+                QMessageBox.information(self, "Success", "Excel file exported")
                 file_path_widget.setText("")
             except Exception as error:
-                QMessageBox.information(self,"Failed",str(error))
+                QMessageBox.information(self, "Failed", str(error))
 
     # clear the text boxes
     def clear_text_box(self, widget):
@@ -82,9 +82,8 @@ class devices_func(QDial):
     def is_ip_complete(self, ipTextBox):
 
         ip_address = ipTextBox.text()
-        reg_exp = QRegExp(
-            r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
-        )
+        reg_exp = r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
+
         # octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-4])"
         # reg_exp = "^" + octet + r"\." + octet + r"\." + octet + r"\." + octet + "$"
         result = list()
@@ -117,6 +116,7 @@ class devices_func(QDial):
             password = device["data"]["password"]
             secret = device["data"]["secret"]
             device_type = device["type"]
+            port_number = device["data"]["port"]
             # groups based on device type
             groups = device["groups"]
             # user defined groups
@@ -144,6 +144,7 @@ class devices_func(QDial):
 
             self.tbl_devices.setItem(i, 5, QTableWidgetItem(", ".join(all_groups)))
             self.tbl_devices.setItem(i, 6, QTableWidgetItem(device_type))
+            self.tbl_devices.setItem(i, 7, QTableWidgetItem(port_number))
 
             i += 1
 
@@ -325,6 +326,7 @@ class devices_func(QDial):
         self.d_edit_username.setText("")
         self.d_edit_password.setText("")
         self.d_edit_secret.setText("")
+        self.d_edit_port_number.setText("")
         self.d_edit_device_type.setCurrentIndex(0)
 
     def fill_edit_search_results(self, device):
@@ -336,8 +338,9 @@ class devices_func(QDial):
         self.d_edit_hostname.setText(device["hostname"])
         self.d_edit_ip_address.setText(device["data"]["host"])
         self.d_edit_username.setText(device["data"]["username"])
-        self.d_edit_secret.setText(self.decrypt_password(device["data"]["secret"]))
         self.d_edit_password.setText(self.decrypt_password(device["data"]["password"]))
+        self.d_edit_secret.setText(self.decrypt_password(device["data"]["secret"]))
+        self.d_edit_port_number.setText(device["data"]["port"])
         if device["type"] == "router":
             self.d_edit_device_type.setCurrentIndex(1)
         elif device["type"] == "switch":
@@ -490,6 +493,7 @@ class devices_func(QDial):
         username = self.d_edit_username.text()
         password = self.d_edit_password.text()
         secret = self.d_edit_secret.text()
+        port_number = self.d_edit_port_number.text()
         device_type_index = self.d_edit_device_type.currentIndex()
 
         # encrypt password
@@ -499,7 +503,13 @@ class devices_func(QDial):
         print(self.decrypt_password(password))
         print(self.decrypt_password(secret))
         device = self.create_dictionary(
-            hostname, ip_address, username, password, secret, device_type_index
+            hostname,
+            ip_address,
+            username,
+            password,
+            secret,
+            device_type_index,
+            port_number,
         )
 
         ##### check for empty boxes ######
@@ -541,6 +551,13 @@ class devices_func(QDial):
             return
         else:
             self.highlight_border_false(self.d_edit_secret)
+        if not port_number:
+            self.highlight_border(self.d_edit_port_number)
+            self.statusBar().showMessage("Port Number can not be empty")
+            self.d_edit_port_number.setFocus()
+            return
+        else:
+            self.highlight_border_false(self.d_edit_port_number)
 
         if device == self.device_before:
             QMessageBox.information(self, "Warning", "You made no changes")
@@ -610,6 +627,7 @@ class devices_func(QDial):
                 # save encrypted passwords
                 devices[device_index]["data"]["password"] = password
                 devices[device_index]["data"]["secret"] = secret
+                devices[device_index]["data"]["port"] = port_number
 
                 # setting device type
                 if device_type_index == 1:
@@ -628,9 +646,6 @@ class devices_func(QDial):
                 print("---------------- Devices After Editing ----------------")
                 pprint(devices)
 
-                # write to the inventory file
-                # devices[device_index]['data']['password'] = self.encrypt_password(password)
-                # devices[device_index]['data']['secret'] = self.encrypt_password(secret)
                 self.write_inventory(devices)
 
                 QMessageBox.information(self, "Success", "Data modified successfully")

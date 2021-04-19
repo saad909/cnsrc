@@ -23,12 +23,20 @@ class inventory_mgmt_func(QDialog):
             os.mkdir("hosts")
             # creating a dummy file
             hostname = ip_address = username = password = secret = "dummy"
+            port_number = "22"
             device_type_index = 0
             device = self.create_dictionary(
-                hostname, ip_address, username, password, secret, device_type_index
+                hostname,
+                ip_address,
+                username,
+                password,
+                secret,
+                device_type_index,
+                port_number,
             )
             devices_list = list()
             devices_list.append(device)
+            host_file = self.get_host_file_path()
             f = open(host_file, "w+")
             yaml.dump(devices_list, f, allow_unicode=True)
             return False
@@ -40,9 +48,16 @@ class inventory_mgmt_func(QDialog):
 
             # creating a dummy file
             hostname = ip_address = username = password = secret = "dummy"
+            port_number = "22"
             device_type_index = 0
             device = self.create_dictionary(
-                hostname, ip_address, username, password, secret, device_type_index
+                hostname,
+                ip_address,
+                username,
+                password,
+                secret,
+                device_type_index,
+                port_number,
             )
             devices_list = list()
             devices_list.append(device)
@@ -73,7 +88,14 @@ class inventory_mgmt_func(QDialog):
     # output = dictionary created from those parameter
     # output['data'] -> contains the information for actual connection
     def create_dictionary(
-        self, hostname, ip_address, username, password, secret, device_type_index
+        self,
+        hostname,
+        ip_address,
+        username,
+        password,
+        secret,
+        device_type_index,
+        port_number,
     ):
         device_type = None
         if device_type_index == 1:
@@ -91,6 +113,7 @@ class inventory_mgmt_func(QDialog):
                 "username": username,
                 "password": password,
                 "secret": secret,
+                "port": port_number,
             },
             "type": device_type,
             "groups": [],
@@ -107,7 +130,11 @@ class inventory_mgmt_func(QDialog):
         for device in all_hosts:
             if device["hostname"] == host["hostname"]:
                 print("Host name duplication occured")
-                QMessageBox.information(self,"Waring",f"{device['hostname']}: {host['data']['host']} also has the same hostname")
+                QMessageBox.information(
+                    self,
+                    "Waring",
+                    f"{device['hostname']}: {host['data']['host']} also has the same hostname",
+                )
                 # QMessageBox.information(
                 #     self, "Warning", "Host name duplication occured"
                 # )
@@ -130,7 +157,11 @@ class inventory_mgmt_func(QDialog):
                 # QMessageBox.information(
                 #     self, "Warning", f"{device['hostname']} has the same ip address "
                 # )
-                QMessageBox.information(self,"Waring",f"{host['hostname']}: {device['hostname']} already has been assigned the ip address {device['data']['host']} ")
+                QMessageBox.information(
+                    self,
+                    "Waring",
+                    f"{host['hostname']}: {device['hostname']} already has been assigned the ip address {device['data']['host']} ",
+                )
 
                 self.d_add_ip_address.setFocus()
                 self.highlight_border(self.d_add_ip_address)

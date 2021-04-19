@@ -12,6 +12,7 @@ class devices(QDialog):
         username = self.d_add_username.text()
         password = self.d_add_password.text()
         secret = self.d_add_secret.text()
+        port_number = self.d_add_port_number.text()
         device_type_index = self.d_add_device_type.currentIndex()
 
         ##### checking for empty boxes ######
@@ -53,6 +54,13 @@ class devices(QDialog):
             return
         else:
             self.highlight_border_false(self.d_add_secret)
+        if not port_number:
+            self.highlight_border(self.d_add_port_number)
+            self.statusBar().showMessage("Port Number can not be empty")
+            self.d_add_port_number.setFocus()
+            return
+        else:
+            self.highlight_border_false(self.d_add_port_number)
         if device_type_index == 0:
             self.highlight_border(self.d_add_device_type)
             self.statusBar().showMessage("Please select the device type")
@@ -65,7 +73,13 @@ class devices(QDialog):
         password = self.encrypt_password(password)
         secret = self.encrypt_password(secret)
         device = self.create_dictionary(
-            hostname, ip_address, username, password, secret, device_type_index
+            hostname,
+            ip_address,
+            username,
+            password,
+            secret,
+            device_type_index,
+            port_number,
         )
 
         # add host_into inventory
@@ -86,6 +100,11 @@ class devices(QDialog):
             # update devices in group addition
             self.add_devices_for_group_selection()
 
+    #          ____  _   _ _     _  __     _    ____  ____ ___ _____ ___ ___  _   _
+    #         | __ )| | | | |   | |/ /    / \  |  _ \|  _ \_ _|_   _|_ _/ _ \| \ | |
+    #         |  _ \| | | | |   | ' /    / _ \ | | | | | | | |  | |  | | | | |  \| |
+    #         | |_) | |_| | |___| . \   / ___ \| |_| | |_| | |  | |  | | |_| | |\  |
+    #         |____/ \___/|_____|_|\_\ /_/   \_\____/|____/___| |_| |___\___/|_| \_|
     # set path of csv file
     def check_csv_file(self, csv_file):
         regexp = (
@@ -159,8 +178,6 @@ class devices(QDialog):
                 #     print(row)
         except Exception as error:
             QMessageBox.information(self, "Warning", str(error))
-        # if self.check_csv_file(csv_file_content):
-        #     pass
 
     def browse_file(self):
         url = QFileDialog.getOpenFileName(
@@ -180,6 +197,8 @@ class devices(QDialog):
                 if valid_csv_file:
                     for device in csv_file_content:
                         devices.append(device.split(","))
+                # set default port number
+                port_number = "22"
                 for device in devices:
                     # .strip will remove leading and ending zeros from the string
                     hostname = device[1].strip()
@@ -187,6 +206,10 @@ class devices(QDialog):
                     username = device[3].strip()
                     password = device[4].strip()
                     secret = device[5].strip()
+                    if len(device) >= 7:
+                        if device[6]:
+                            port_number = device[6].strip()
+                    print(f"Port Number={port_number}")
                     device_type_index = 0
                     if (
                         device[0] == "router"
@@ -200,9 +223,6 @@ class devices(QDialog):
                         or device[0] == "SWITCH"
                     ):
                         device_type_index = 2
-                    # port_number = '22'
-                    # if len(device) >= 7:
-                    #     port_number = device[6]
                     password = self.encrypt_password(password)
                     secret = self.encrypt_password(secret)
                     device = self.create_dictionary(
@@ -212,6 +232,7 @@ class devices(QDialog):
                         password,
                         secret,
                         device_type_index,
+                        port_number,
                     )
                     pprint(device)
                     # add host_into inventory

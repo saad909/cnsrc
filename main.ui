@@ -23,7 +23,7 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_25">
+   <layout class="QGridLayout" name="gridLayout_24">
     <item row="0" column="0">
      <widget class="QToolBox" name="toolBox">
       <property name="sizePolicy">
@@ -42,7 +42,7 @@
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -210,7 +210,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -619,7 +619,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -755,6 +755,11 @@
                  <column>
                   <property name="text">
                    <string>Type</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Port</string>
                   </property>
                  </column>
                 </widget>
@@ -911,14 +916,14 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="5" column="0">
+                 <item row="6" column="0">
                   <widget class="QLabel" name="label">
                    <property name="text">
                     <string>Device Type</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="5" column="1">
+                 <item row="6" column="1">
                   <widget class="QComboBox" name="d_add_device_type">
                    <property name="styleSheet">
                     <string notr="true"/>
@@ -940,7 +945,27 @@
                    </item>
                   </widget>
                  </item>
-                 <item row="6" column="1">
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="enablePasswordLabel_2">
+                   <property name="text">
+                    <string>Port Number</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QLineEdit" name="d_add_port_number">
+                   <property name="text">
+                    <string>22</string>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::Normal</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter port number(optional)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
                   <widget class="QPushButton" name="btn_d_add_save">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -1007,49 +1032,6 @@
                <string>Edit or delete Device</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_3">
-               <item row="0" column="0">
-                <layout class="QHBoxLayout" name="horizontalLayout_2">
-                 <item>
-                  <widget class="QLineEdit" name="txt_d_edit_hostname">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="placeholderText">
-                    <string>Search by hostname</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="txt_d_edit_ip_address">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="placeholderText">
-                    <string>Search by IP Addres</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_d_edit_search">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>Search</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
                <item row="1" column="0">
                 <layout class="QFormLayout" name="formLayout_4">
                  <property name="horizontalSpacing">
@@ -1146,14 +1128,27 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="5" column="0">
-                  <widget class="QLabel" name="deviceTypeLabel">
+                 <item row="5" column="1">
+                  <widget class="QLineEdit" name="d_edit_port_number">
                    <property name="text">
-                    <string>Device Type</string>
+                    <string/>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::Normal</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string/>
                    </property>
                   </widget>
                  </item>
-                 <item row="5" column="1">
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="enablePasswordLabel_4">
+                   <property name="text">
+                    <string>Port Number</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="1">
                   <widget class="QComboBox" name="d_edit_device_type">
                    <item>
                     <property name="text">
@@ -1172,7 +1167,14 @@
                    </item>
                   </widget>
                  </item>
-                 <item row="6" column="1">
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="deviceTypeLabel">
+                   <property name="text">
+                    <string>Device Type</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
                   <layout class="QHBoxLayout" name="horizontalLayout_5">
                    <item>
                     <widget class="QPushButton" name="btn_d_edit_edit">
@@ -1228,6 +1230,49 @@
                     </widget>
                    </item>
                   </layout>
+                 </item>
+                </layout>
+               </item>
+               <item row="0" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <item>
+                  <widget class="QLineEdit" name="txt_d_edit_hostname">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Search by hostname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="txt_d_edit_ip_address">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Search by IP Addres</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_d_edit_search">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Search</string>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </item>
@@ -1789,15 +1834,11 @@ color: rgb(0, 255, 0);</string>
   <tabstop>d_add_ip_address</tabstop>
   <tabstop>d_add_username</tabstop>
   <tabstop>d_add_password</tabstop>
-  <tabstop>d_add_secret</tabstop>
-  <tabstop>d_add_device_type</tabstop>
-  <tabstop>btn_d_add_save</tabstop>
   <tabstop>d_edit_hostname</tabstop>
   <tabstop>d_edit_ip_address</tabstop>
   <tabstop>d_edit_username</tabstop>
   <tabstop>d_edit_password</tabstop>
   <tabstop>d_edit_secret</tabstop>
-  <tabstop>d_edit_device_type</tabstop>
   <tabstop>btn_d_edit_edit</tabstop>
   <tabstop>txt_d_all_hostname</tabstop>
   <tabstop>txt_d_all_ip_address</tabstop>
