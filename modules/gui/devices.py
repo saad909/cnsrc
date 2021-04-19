@@ -13,6 +13,8 @@ class devices(QDialog):
         password = self.d_add_password.text()
         secret = self.d_add_secret.text()
         port_number = self.d_add_port_number.text()
+        if not port_number:
+            port_number = 22
         device_type_index = self.d_add_device_type.currentIndex()
 
         ##### checking for empty boxes ######
@@ -129,7 +131,7 @@ class devices(QDialog):
             + r"\D|\s*[\w\-]+,\s*"
             + r"\D|[\w\-]+\s*"
             + r"\D|[\w\-]+\s*,"
-            + r"\D|[\w\-]+\s*,\s*"
+            + r"\D|\s*[\w\-]+\s*,\s*"
             + r"\D|,"
             + r")"
             # port number
@@ -186,6 +188,7 @@ class devices(QDialog):
         self.dev_add_txt_csv_file_path.setText(url[0])
 
     def bulk_device_addition(self):
+        # set default port number
         csv_file_path = self.dev_add_txt_csv_file_path.text()
         if csv_file_path:
             # file exists
@@ -197,9 +200,8 @@ class devices(QDialog):
                 if valid_csv_file:
                     for device in csv_file_content:
                         devices.append(device.split(","))
-                # set default port number
-                port_number = "22"
                 for device in devices:
+                    port_number = "22"
                     # .strip will remove leading and ending zeros from the string
                     hostname = device[1].strip()
                     ip_address = device[2].strip()
@@ -207,7 +209,7 @@ class devices(QDialog):
                     password = device[4].strip()
                     secret = device[5].strip()
                     if len(device) >= 7:
-                        if device[6]:
+                        if device[6].strip().isdigit():
                             port_number = device[6].strip()
                     print(f"Port Number={port_number}")
                     device_type_index = 0

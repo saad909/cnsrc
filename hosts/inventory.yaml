@@ -2,12 +2,12 @@
     device_type: cisco_ios
     host: 10.1.1.254
     password: !!binary |
-      Z0FBQUFBQmdmV25OdFc0ajdONVFBMnUzc0VIbXRSMEpQME90b1FmanJ4UjA5THZoa0dJaEtNLW1M
-      dnZDallHX1NPNldMSllfNXdGSEtPVGFPUWNmRkU3cGpKNWpjcE9UZkE9PQ==
+      Z0FBQUFBQmdmWHJjMjJWS2UxRUUyc1FVVDNQWHoyNEZZM0dDUU93b3A3aUc0dU5wSXZwaTRHU2Fr
+      YU9yZzA1THFPWFJfNzRTMFBpSVNPZEZOcmN2djZFbUNqSFZwbkQ4UEE9PQ==
     port: '223'
     secret: !!binary |
-      Z0FBQUFBQmdmV25OV1FlaW9JZWVjdXQ0U04xV0VQemZyd1FMRHpJUGd0WXNWRVBJVWE1S2NyUmV3
-      MWpuRVNDZkR2WmhuY0pfYW5rakxHS2w1X21wMEpXMUhXQkItWkh4eFE9PQ==
+      Z0FBQUFBQmdmWHJjTEltM21KLVAxcFJzdzBfa1JTUVBOUDRDaTA0WTI1U3pCa25lamZ0Ul9LcGFB
+      VjVBOUF0V2V2QS1VM1hXTVJON0ZPZkZEOURFd1R1ZnJjZGZzY2hwT0E9PQ==
     username: cisco
   groups:
   - router
@@ -17,14 +17,29 @@
     device_type: cisco_ios
     host: 10.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdmV25OMWZ0ZWpRSnY5X1M2UmxhZ29jaHhCMjhKbzVLVnJ3TWJmalMtOUdtVlhiUlZ3
-      SG05TWdKYVc0UVk2ZTA3VWYwckxWU1RfTkJjcDVXZnBSTDJnMWFpb1E9PQ==
-    port: ''
+      Z0FBQUFBQmdmWC0wQ0lJTnZFQlJjdE1LZ2ZUUV9qMkZtZHBPdjJINnNEaVllSEhpdjVFWWNYN2Rv
+      LWVqQl96dl95dU00cFJMVm1VdzV3R01KSUhUVld1WUhramJVWENNYmc9PQ==
+    port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdmV25OUlRDS0hfVGlEUTFDLTBwMXNIZThsNzBFZ2F4eGR1aVNtaTVsQjhyWU93c09f
-      V09GMVBXRzFxaFdWaDBEQXJvUDMxdEZnaG1rTGJLUVpZdGMzNXgzcXc9PQ==
+      Z0FBQUFBQmdmWC0wMUtTdlRtYVRncHhUX1JkUGx4ek4wQ184SVNhWWgtc29tNE5xR3VnUHZlbFkw
+      eVhDTFVLT2NzVjVCS0V4WHVfTTdaRkJYSDZ5ekxjcFF3X3ZpRktWRFE9PQ==
     username: cisco
   groups:
   - switch
   hostname: Sw1
+  type: switch
+- data:
+    device_type: cisco_ios
+    host: 10.1.1.253
+    password: !!binary |
+      Z0FBQUFBQmdmWF91enRncUJjam1heWlQaFNmaUdRR21paTVYQm9jYnZRWmhheTZ2d0NFb2w3YWJO
+      blUwWWVWdWRFc2hKbFM4YjZpRGpOZDVENGpHcXhxUl9keWt0akNvUWc9PQ==
+    port: '2222'
+    secret: !!binary |
+      Z0FBQUFBQmdmWF91VnNtajhyN2VjUy1nTDNsdVg5ZE9CaERaX2NQTlI5eEFrYXRkQldHQThzUS1D
+      LXdmdmlhT3REeG5fMVpvRFRWekRQNG5JZkVpc3pkdXNTR1VxREtNZmc9PQ==
+    username: cisco
+  groups:
+  - switch
+  hostname: R
   type: switch

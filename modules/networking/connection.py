@@ -9,19 +9,25 @@ from paramiko.ssh_exception import SSHException
 
 templates_path = os.path.join("hosts", "templates")
 j2_env = Environment(
-    loader=FileSystemLoader(templates_path), trim_blocks=True, autoescape=True,
+    loader=FileSystemLoader(templates_path),
+    trim_blocks=True,
+    autoescape=True,
 )
 
 
 class connection(QDialog):
     def create_show_handler(self, device):
         try:
-            conn = ConnectHandler(**device['data'])
+            if int(device["data"]["port"]) > 65535:
+                QMessageBox.information(
+                    self, "Warning", f"{device['hostname']} has invalid port number"
+                )
+                return
+            conn = ConnectHandler(**device["data"])
             self.run_show_commands(conn, device)
         except NetMikoTimeoutException:
             print(f"{device['hostname']}  in not reachable")
-            self.statusBar().showMessage(
-                f"{device['hostname']} in not reachable")
+            self.statusBar().showMessage(f"{device['hostname']} in not reachable")
             # QMessageBox.information(
             #     self, "Note", f"{device['hostname']} in not reachable")
         except AuthenticationException:
@@ -30,12 +36,14 @@ class connection(QDialog):
             #     self, "Note", f"For {device['hostname']} authentication Failed"
             # )
             self.statusBar().setMessage(
-                f"For {device['hostname']} authentication Failed")
+                f"For {device['hostname']} authentication Failed"
+            )
 
         except SSHException:
             print("SSH error. Make sure ssh is enabled on device")
             self.statusBar().setMessage(
-                f"SSH error. Make sure ssh is enabled on device[{'hostname'}]")
+                f"SSH error. Make sure ssh is enabled on device[{'hostname'}]"
+            )
             # QMessageBox.information(
             #     self, "Note", f"SSH error. Make sure ssh is enabled on device[{'hostname'}]"
             # )

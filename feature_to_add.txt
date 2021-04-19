@@ -5,8 +5,8 @@
 - 3. multithreading
 - 9. Bulk addition also check the integrity of csv file
 - 10. Export tables as excel file
+- 11. optional port no while adding device
 
-11. optional port no while adding device
 12. all show commands add
 
 8. monitoring - cpu, ram, per interface traffic and other usages show with graph

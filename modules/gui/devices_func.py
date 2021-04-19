@@ -313,9 +313,7 @@ class devices_func(QDial):
 
     ##### clear top bar search results ######
     def auto_complete_edit_results(self):
-        all_ip_addresses = self.get_all_devices_ip()
         all_hostnames = self.get_all_devices_hostname()
-        self.auto_fill(all_ip_addresses, self.txt_d_edit_ip_address)
         self.auto_fill(all_hostnames, self.txt_d_edit_hostname)
 
     ###################### edit the deivce ######################
@@ -350,135 +348,31 @@ class devices_func(QDial):
         self.clear_edit_search_results()
         # check the empty values
         hostname = self.txt_d_edit_hostname.text()
-        ip_address = self.txt_d_edit_ip_address.text()
-        print(hostname, ip_address)
 
         # ip address and hostname both are empty
-        if not (hostname or ip_address):
-            QMessageBox.information(self, "Note", "Please enter ip address or hostname")
-            self.txt_d_edit_ip_address.setFocus()
+        if not hostname:
+            QMessageBox.information(self, "Note", "Please enter hostname first")
+            self.txt_d_edit_hostname.setFocus()
             self.highlight_border(self.txt_d_edit_hostname)
             return
-
-        # ip address and hostname both are given
-        search_key = None
-        if hostname and ip_address:
-
-            # default search is by ip_address
-
-            if not self.is_ip_complete(self.txt_d_edit_ip_address):
-                self.highlight_border(self.txt_d_edit_ip_address)
-                QMessageBox.information(
-                    self,
-                    "Warning",
-                    "Entered a wrong ip address.Now searching using hostname",
-                )
-
-                search_key = hostname
-                devices = self.convert_host_file_into_list()
-                searched_device = None
-                for device in devices:
-                    if search_key == device["hostname"]:
-                        searched_device = device
-                        break
-                if searched_device:
-                    pprint(searched_device)
-                    self.fill_edit_search_results(searched_device)
-                    self.device_before = searched_device
-                    return
-                else:
-                    QMessageBox.information(self, "Note", "hostname is not found")
-                    self.clear_device_edit_user_search()
-                    self.txt_d_edit_ip_address.setFocus()
-                    return
-            else:
-                self.highlight_border_false(self.d_add_ip_address)
-                self.highlight_border_false(self.d_add_hostname)
-                search_key = ip_address
-                devices = self.convert_host_file_into_list()
-                searched_device = None
-                for device in devices:
-                    if search_key == device["data"]["host"]:
-                        searched_device = device
-                        break
-
-                if searched_device:
-                    pprint(searched_device)
-                    self.fill_edit_search_results(searched_device)
-                    self.device_before = searched_device
-                    return
-                else:
-                    QMessageBox.information(
-                        self,
-                        "Note",
-                        "ip address not found. Now searching using hostname",
-                    )
-                    searched_key = hostname
-                    devices = self.convert_host_file_into_list()
-                    searched_device = None
-                    for device in devices:
-                        if search_key == device["hostname"]:
-                            searched_device = device
-                            break
-                    if searched_device:
-                        pprint(searched_device)
-                        self.fill_edit_search_results(searched_device)
-                        self.device_before = searched_device
-                        return
-                    else:
-                        QMessageBox.information(self, "Note", "hostname is not found")
-                        self.clear_device_edit_user_search()
-                        self.txt_d_edit_ip_address.setFocus()
-                        return
-
         # only hostname is given
-        if hostname and not (ip_address):
-            search_key = hostname
-            devices = self.convert_host_file_into_list()
-            searched_device = None
-            for device in devices:
-                if search_key == device["hostname"]:
-                    searched_device = device
-                    break
-            if searched_device:
-                pprint(searched_device)
-                self.fill_edit_search_results(searched_device)
-                self.device_before = searched_device
-                return
-            else:
-                QMessageBox.information(self, "Note", "Host not found")
-                self.clear_device_edit_user_search()
-                self.txt_d_edit_hostname.setFocus()
+        search_key = hostname
+        devices = self.convert_host_file_into_list()
+        searched_device = None
+        for device in devices:
+            if search_key == device["hostname"]:
+                searched_device = device
+                break
+        if searched_device:
+            pprint(searched_device)
+            self.fill_edit_search_results(searched_device)
+            self.device_before = searched_device
+            return
+        else:
+            QMessageBox.information(self, "Note", "Host not found")
+            self.clear_device_edit_user_search()
+            self.txt_d_edit_hostname.setFocus()
 
-        # only  ip is given
-        if ip_address and not (hostname):
-
-            if not self.is_ip_complete(self.txt_d_edit_ip_address):
-                self.highlight_border(self.txt_d_edit_ip_address)
-                self.txt_d_edit_ip_address.setFocus()
-                QMessageBox.information(self, "Warning", "Entered a wrong ip address")
-                self.clear_device_edit_user_search()
-                self.txt_d_edit_ip_address.setFocus()
-                return
-
-            else:
-                self.highlight_border_false(self.d_add_ip_address)
-
-            search_key = ip_address
-            devices = self.convert_host_file_into_list()
-            searched_device = None
-            for device in devices:
-                if search_key == device["data"]["host"]:
-                    searched_device = device
-                    break
-            if searched_device:
-                pprint(searched_device)
-                self.fill_edit_search_results(searched_device)
-                self.device_before = searched_device
-                return
-            else:
-                QMessageBox.information(self, "Note", "Host not found")
-                return
 
     def change_group_type(self, device, group_type):
         # get the device before group
@@ -569,6 +463,7 @@ class devices_func(QDial):
 
             hostname_before = self.device_before["hostname"]
             ip_before = self.device_before["data"]["host"]
+            port_before = self.device_before["data"]["host"]
 
             hostname_changed = None
             if hostname != hostname_before:
@@ -584,22 +479,23 @@ class devices_func(QDial):
                     QMessageBox.information(
                         self,
                         "Waring",
-                        f"{hostname}: {self.device_before['data']['ip_address']} also has the same hostname",
+                        f"{hostname}: {self.device_before['data']['host']} also has the same hostname",
                     )
                     return
-            if ip_address != ip_before:
-                # ip check
-                all_ip_addresses = self.get_all_devices_ip()
+            # ip check
+            if ip_address != ip_before and port_number != port_before:
+                all_devices_list = self.convert_host_file_into_list()
                 status = None
-                if ip_address in all_ip_addresses:
-                    status = True
+                for device in all_devices_list:
+                    if device['data']['host'] ==  ip_address and device['data']['port'] == port_number:
+                        status = True
                 if status:
                     # self.d_edit_ip_address.setFocus()
                     self.highlight_border(self.d_edit_ip_address)
                     QMessageBox.information(
                         self,
                         "Waring",
-                        f"{hostname}: {hostname_before} also has the same ip address",
+                        f"{hostname}: {hostname_before} also has the same ip address and port number",
                     )
                     return
 
@@ -661,13 +557,12 @@ class devices_func(QDial):
                 self.update_bt_all_devices()
                 # update devices in group addition
                 self.add_devices_for_group_selection()
-            elif selection == QMessageBox.Cancel:
+            elif selection == QMessageBox.No:
                 self.clear_edit_search_results()
                 self.clear_device_edit_user_search()
 
     ##################### delete the device ######################
     def clear_device_edit_user_search(self):
-        self.txt_d_edit_ip_address.setText("")
         self.txt_d_edit_hostname.setText("")
 
     def delete_device(self):

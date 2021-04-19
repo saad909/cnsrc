@@ -89,7 +89,6 @@ class Main_Window(
         # get the valid ip
         self.get_valid_ip(self.d_add_ip_address)
         self.get_valid_ip(self.txt_d_all_ip_address)
-        self.get_valid_ip(self.txt_d_edit_ip_address)
         self.get_valid_ip(self.d_edit_ip_address)
 
         # handle show commands combo boxes

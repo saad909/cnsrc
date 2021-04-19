@@ -619,7 +619,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -1249,19 +1249,6 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txt_d_edit_ip_address">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="placeholderText">
-                    <string>Search by IP Addres</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
                   <widget class="QPushButton" name="btn_d_edit_search">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1847,7 +1834,6 @@ color: rgb(0, 255, 0);</string>
   <tabstop>pb_dev_edit</tabstop>
   <tabstop>pb_dev_add</tabstop>
   <tabstop>txt_d_edit_hostname</tabstop>
-  <tabstop>txt_d_edit_ip_address</tabstop>
   <tabstop>btn_d_edit_search</tabstop>
   <tabstop>pb_dev_all</tabstop>
   <tabstop>tab_main</tabstop>
@@ -1860,22 +1846,6 @@ color: rgb(0, 255, 0);</string>
  </tabstops>
  <resources/>
  <connections>
-  <connection>
-   <sender>pb_dev_edit</sender>
-   <signal>clicked()</signal>
-   <receiver>txt_d_edit_ip_address</receiver>
-   <slot>setFocus()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>166</x>
-     <y>415</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>724</x>
-     <y>138</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>pb_dev_all</sender>
    <signal>clicked()</signal>

@@ -152,15 +152,18 @@ class inventory_mgmt_func(QDialog):
         self, all_hosts, host
     ):  # return True in case of duplication
         for device in all_hosts:
-            if device["data"]["host"] == host["data"]["host"]:
-                print(f"{device['hostname']} has the same ip address ")
+            if (
+                device["data"]["host"] == host["data"]["host"]
+                and device["data"]["port"] == host["data"]["port"]
+            ):
+                print(f"{device['hostname']} has the same ip address and port number ")
                 # QMessageBox.information(
                 #     self, "Warning", f"{device['hostname']} has the same ip address "
                 # )
                 QMessageBox.information(
                     self,
                     "Waring",
-                    f"{host['hostname']}: {device['hostname']} already has been assigned the ip address {device['data']['host']} ",
+                    f"{host['hostname']}: {device['hostname']} already has been assigned the ip address {device['data']['host']}:{device['data']['port']} ",
                 )
 
                 self.d_add_ip_address.setFocus()

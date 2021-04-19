@@ -1,2 +1,3 @@
 router,R1,10.1.1.254,cisco,cisco,cisco,223
-switch,Sw1,10.1.1.253,cisco,cisco,cisco,
+switch,Sw1,10.1.1.254,cisco,cisco,cisco,
+switch,Sw2,10.1.1.252,cisco,cisco,  cisco ,  65536 
