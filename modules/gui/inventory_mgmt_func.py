@@ -24,15 +24,17 @@ class inventory_mgmt_func(QDialog):
             # creating a dummy file
             hostname = ip_address = username = password = secret = "dummy"
             port_number = "22"
-            device_type_index = 0
+            device_type = ""
+            os_type = ""
             device = self.create_dictionary(
                 hostname,
                 ip_address,
                 username,
                 password,
                 secret,
-                device_type_index,
+                device_type,
                 port_number,
+                os_type,
             )
             devices_list = list()
             devices_list.append(device)
@@ -49,15 +51,17 @@ class inventory_mgmt_func(QDialog):
             # creating a dummy file
             hostname = ip_address = username = password = secret = "dummy"
             port_number = "22"
-            device_type_index = 0
+            device_type = ""
+            os_type = ""
             device = self.create_dictionary(
                 hostname,
                 ip_address,
                 username,
                 password,
                 secret,
-                device_type_index,
+                device_type,
                 port_number,
+                os_type,
             )
             devices_list = list()
             devices_list.append(device)
@@ -94,21 +98,15 @@ class inventory_mgmt_func(QDialog):
         username,
         password,
         secret,
-        device_type_index,
+        device_type,
         port_number,
+        os_type,
     ):
-        device_type = None
-        if device_type_index == 1:
-            device_type = "router"
-        elif device_type_index == 2:
-            device_type = "switch"
-        else:
-            device_type = "dummy"
 
         return {
             "hostname": hostname,
             "data": {
-                "device_type": "cisco_ios",
+                "device_type": os_type,
                 "host": ip_address,
                 "username": username,
                 "password": password,

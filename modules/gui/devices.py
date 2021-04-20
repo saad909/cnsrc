@@ -15,7 +15,8 @@ class devices(QDialog):
         port_number = self.d_add_port_number.text()
         if not port_number:
             port_number = 22
-        device_type_index = self.d_add_device_type.currentIndex()
+        device_type = str(self.d_add_device_type.currentText())
+        os_type = str(self.d_add_cb_os_type.currentText())
 
         ##### checking for empty boxes ######
 
@@ -63,13 +64,6 @@ class devices(QDialog):
             return
         else:
             self.highlight_border_false(self.d_add_port_number)
-        if device_type_index == 0:
-            self.highlight_border(self.d_add_device_type)
-            self.statusBar().showMessage("Please select the device type")
-            self.d_add_device_type.setFocus()
-            return
-        else:
-            self.highlight_border_false(self.d_add_device_type)
 
         # create the dictionary
         password = self.encrypt_password(password)
@@ -80,8 +74,9 @@ class devices(QDialog):
             username,
             password,
             secret,
-            device_type_index,
+            device_type,
             port_number,
+            os_type,
         )
 
         # add host_into inventory
@@ -111,28 +106,31 @@ class devices(QDialog):
     def check_csv_file(self, csv_file):
         regexp = (
             # device type
-            r"\s*(Router|Switch|ROUTER|SWITCH|router|switch)\s*"
+            r"\s*(Router|Switch)\s*"
+            + ","
+            # device os
+            r"\s*cisco_(ios|xr|xe|nxos|asa)\s*"
             + ","
             # hostname
-            r"\s*[\w+\-!@$]+\s*"
+            r"\s*[\w+\-@$!]+\s*"
             + ","
             # ip address
             + r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
             + ","
             # username and password
-            + r"(\s*[\w\-@!$]+\s*,){2}"
+            + r"(\s*[\w\-@$!]+\s*,){2}"
             # secret
             + r"("
-            + r"[\w@$!\-]+"
-            + r"\D|[\w@!$\-]+,"
-            + r"\D|[\w@!$\-]+,\s*"
-            + r"\D|\s*[\w@$!\-]+"
-            + r"\D|\s*[\w@$!\-]+,"
-            + r"\D|\s*[\w@$!\-]+,\s*"
-            + r"\D|[\w@$!\-]+\s*"
-            + r"\D|[\w@$!\-]+\s*,"
-            + r"\D|\s*[\w@$!\-]+\s*,\s*"
-            + r"\D|,"
+            + r"[\w\-@$!]+"
+            + r"\D|[\w\-@$!]+,"
+            + r"\D|[\w\-@$!]+,\s*"
+            + r"\D|\s*[\w\-@$!]+"
+            + r"\D|\s*[\w\-@$!]+,"
+            + r"\D|\s*[\w\-@$!]+,\s*"
+            + r"\D|\s*[\w\-@$!]+\s*,\s*"
+            + r"\D|[\w\-@$!]+\s*"
+            + r"\D|[\w\-@$!]+\s*,"
+            + r"\D|[\w\-@$!]+\s*,\s*"
             + r")"
             # port number
             + r"("
@@ -188,7 +186,6 @@ class devices(QDialog):
         self.dev_add_txt_csv_file_path.setText(url[0])
 
     def bulk_device_addition(self):
-        # set default port number
         csv_file_path = self.dev_add_txt_csv_file_path.text()
         if csv_file_path:
             # file exists
@@ -200,31 +197,24 @@ class devices(QDialog):
                 if valid_csv_file:
                     for device in csv_file_content:
                         devices.append(device.split(","))
+                # set default port number
+                port_number = "22"
                 for device in devices:
-                    port_number = "22"
                     # .strip will remove leading and ending zeros from the string
-                    hostname = device[1].strip()
-                    ip_address = device[2].strip()
-                    username = device[3].strip()
-                    password = device[4].strip()
-                    secret = device[5].strip()
-                    if len(device) >= 7:
-                        if device[6].strip().isdigit():
-                            port_number = device[6].strip()
-                    print(f"Port Number={port_number}")
-                    device_type_index = 0
-                    if (
-                        device[0] == "router"
-                        or device[0] == "Router"
-                        or device[0] == "ROUTER"
-                    ):
-                        device_type_index = 1
-                    if (
-                        device[0] == "switch"
-                        or device[0] == "Switch"
-                        or device[0] == "SWITCH"
-                    ):
-                        device_type_index = 2
+                    device_type = device[0].strip()
+                    os_type = device[1].strip()
+                    hostname = device[2].strip()
+                    ip_address = device[3].strip()
+                    username = device[4].strip()
+                    password = device[5].strip()
+                    secret = device[6].strip()
+                    print(f"Port Number before={port_number}")
+                    if len(device) >= 8:
+                        if device[7].strip().isdigit():
+                            port_number = device[7].strip()
+                        else:
+                            port_number = "22"
+                    print(f"Port Number after={port_number}")
                     password = self.encrypt_password(password)
                     secret = self.encrypt_password(secret)
                     device = self.create_dictionary(
@@ -233,8 +223,9 @@ class devices(QDialog):
                         username,
                         password,
                         secret,
-                        device_type_index,
+                        device_type,
                         port_number,
+                        os_type,
                     )
                     pprint(device)
                     # add host_into inventory
@@ -255,6 +246,7 @@ class devices(QDialog):
                         self.update_bt_all_devices()
                         # update devices in group addition
                         self.add_devices_for_group_selection()
+                return
 
             else:
                 QMessageBox.information(self, "Warning", "file does not exist")

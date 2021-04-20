@@ -179,15 +179,16 @@ class groups(QDialog):
                     if device['hostname'] == member:
                         all_members.append(device)
             match = True
-            first_device = all_members[0]
-            list_length = len(all_members)
-            for index in range(1,list_length):
-                if first_device['data']['device_type'] != all_members[index]['data']['device_type']:
-                    match = False
+            if all_members:
+                first_device = all_members[0]
+                list_length = len(all_members)
+                for index in range(1,list_length):
+                    if first_device['data']['device_type'] != all_members[index]['data']['device_type']:
+                        match = False
 
-            if not match:
-                QMessageBox.information(self,"Warning","Incompatible grouping")
-                return
+                if not match:
+                    QMessageBox.information(self,"Warning","Incompatible grouping")
+                    return
 
 
 
@@ -387,7 +388,6 @@ class groups(QDialog):
             )
             pprint(edited_group)
             for group in all_groups:
-                # group["group_members"].sort()
                 if group == edited_group:
                     QMessageBox.information(self, "Note", "You made no changes")
                     return

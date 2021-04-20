@@ -210,7 +210,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -762,6 +762,11 @@
                    <string>Port</string>
                   </property>
                  </column>
+                 <column>
+                  <property name="text">
+                   <string>OS</string>
+                  </property>
+                 </column>
                 </widget>
                </item>
                <item row="2" column="0" colspan="3">
@@ -930,11 +935,6 @@
                    </property>
                    <item>
                     <property name="text">
-                     <string/>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
                      <string>Router</string>
                     </property>
                    </item>
@@ -965,7 +965,46 @@
                    </property>
                   </widget>
                  </item>
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="label_12">
+                   <property name="text">
+                    <string>OS type</string>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="7" column="1">
+                  <widget class="QComboBox" name="d_add_cb_os_type">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>cisco_ios</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_xr</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>ios_xe</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_asa</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_nxos</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="8" column="1">
                   <widget class="QPushButton" name="btn_d_add_save">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -1128,6 +1167,13 @@
                    </property>
                   </widget>
                  </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="enablePasswordLabel_4">
+                   <property name="text">
+                    <string>Port Number</string>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="5" column="1">
                   <widget class="QLineEdit" name="d_edit_port_number">
                    <property name="text">
@@ -1141,20 +1187,15 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="5" column="0">
-                  <widget class="QLabel" name="enablePasswordLabel_4">
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="deviceTypeLabel">
                    <property name="text">
-                    <string>Port Number</string>
+                    <string>Device Type</string>
                    </property>
                   </widget>
                  </item>
                  <item row="6" column="1">
                   <widget class="QComboBox" name="d_edit_device_type">
-                   <item>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </item>
                    <item>
                     <property name="text">
                      <string>Router</string>
@@ -1167,14 +1208,43 @@
                    </item>
                   </widget>
                  </item>
-                 <item row="6" column="0">
-                  <widget class="QLabel" name="deviceTypeLabel">
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="deviceTypeLabel_2">
                    <property name="text">
-                    <string>Device Type</string>
+                    <string>OS Type</string>
                    </property>
                   </widget>
                  </item>
                  <item row="7" column="1">
+                  <widget class="QComboBox" name="d_edit_cb_os_type">
+                   <item>
+                    <property name="text">
+                     <string>cisco_ios</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_xr</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_xe</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_asa</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_nxos</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="8" column="1">
                   <layout class="QHBoxLayout" name="horizontalLayout_5">
                    <item>
                     <widget class="QPushButton" name="btn_d_edit_edit">

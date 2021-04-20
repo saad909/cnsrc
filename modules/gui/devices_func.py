@@ -72,7 +72,9 @@ class devices_func(QDial):
     def get_valid_ip(self, textBox):
         # validate ip address input
         octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-4])"
-        ipRegExp = QRegExp('^' + octet + r'\.' + octet + r'\.' + octet + r'\.' + octet + '$')
+        ipRegExp = QRegExp(
+            "^" + octet + r"\." + octet + r"\." + octet + r"\." + octet + "$"
+        )
         # ipRegExp = QRegExp(
         #     r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
         # )
@@ -127,6 +129,7 @@ class devices_func(QDial):
                     other_groups.append(group["group_name"])
 
             all_groups = groups + other_groups
+            os_type = device["data"]["device_type"]
 
             self.tbl_devices.setItem(i, 0, QTableWidgetItem(hostname))
             self.tbl_devices.setItem(i, 1, QTableWidgetItem(ip))
@@ -145,6 +148,7 @@ class devices_func(QDial):
             self.tbl_devices.setItem(i, 5, QTableWidgetItem(", ".join(all_groups)))
             self.tbl_devices.setItem(i, 6, QTableWidgetItem(device_type))
             self.tbl_devices.setItem(i, 7, QTableWidgetItem(port_number))
+            self.tbl_devices.setItem(i, 8, QTableWidgetItem(os_type))
 
             i += 1
 
@@ -326,6 +330,7 @@ class devices_func(QDial):
         self.d_edit_secret.setText("")
         self.d_edit_port_number.setText("")
         self.d_edit_device_type.setCurrentIndex(0)
+        self.d_edit_cb_os_type.setCurrentIndex(0)
 
     def fill_edit_search_results(self, device):
         if device["hostname"] == "dummy":
@@ -339,10 +344,10 @@ class devices_func(QDial):
         self.d_edit_password.setText(self.decrypt_password(device["data"]["password"]))
         self.d_edit_secret.setText(self.decrypt_password(device["data"]["secret"]))
         self.d_edit_port_number.setText(device["data"]["port"])
-        if device["type"] == "router":
-            self.d_edit_device_type.setCurrentIndex(1)
-        elif device["type"] == "switch":
-            self.d_edit_device_type.setCurrentIndex(2)
+        os_type_index = self.d_edit_cb_os_type.findText(device['data']['device_type'])
+        self.d_edit_cb_os_type.setCurrentIndex(os_type_index)
+        dev_type_index = self.d_edit_device_type.findText(device['type'])
+        self.d_edit_device_type.setCurrentIndex(dev_type_index)
 
     def edit_search_device(self):
         self.clear_edit_search_results()
@@ -373,7 +378,6 @@ class devices_func(QDial):
             self.clear_device_edit_user_search()
             self.txt_d_edit_hostname.setFocus()
 
-
     def change_group_type(self, device, group_type):
         # get the device before group
         if self.device_before["groups"][0] == group_type:
@@ -388,7 +392,8 @@ class devices_func(QDial):
         password = self.d_edit_password.text()
         secret = self.d_edit_secret.text()
         port_number = self.d_edit_port_number.text()
-        device_type_index = self.d_edit_device_type.currentIndex()
+        device_type = str(self.d_edit_device_type.currentText())
+        os_type = str(self.d_edit_cb_os_type.currentText())
 
         # encrypt password
         password = self.encrypt_password(password)
@@ -402,8 +407,9 @@ class devices_func(QDial):
             username,
             password,
             secret,
-            device_type_index,
+            device_type,
             port_number,
+            os_type,
         )
 
         ##### check for empty boxes ######
@@ -463,7 +469,6 @@ class devices_func(QDial):
 
             hostname_before = self.device_before["hostname"]
             ip_before = self.device_before["data"]["host"]
-            port_before = self.device_before["data"]["host"]
 
             hostname_changed = None
             if hostname != hostname_before:
@@ -483,11 +488,11 @@ class devices_func(QDial):
                     )
                     return
             # ip check
-            if ip_address != ip_before and port_number != port_before:
+            if ip_address != ip_before:
                 all_devices_list = self.convert_host_file_into_list()
                 status = None
                 for device in all_devices_list:
-                    if device['data']['host'] ==  ip_address and device['data']['port'] == port_number:
+                    if device["data"]["host"] == ip_address:
                         status = True
                 if status:
                     # self.d_edit_ip_address.setFocus()
@@ -524,13 +529,8 @@ class devices_func(QDial):
                 devices[device_index]["data"]["password"] = password
                 devices[device_index]["data"]["secret"] = secret
                 devices[device_index]["data"]["port"] = port_number
-
-                # setting device type
-                if device_type_index == 1:
-                    devices[device_index]["type"] = "router"
-
-                elif device_type_index == 2:
-                    devices[device_index]["type"] = "switch"
+                devices[device_index]["data"]["device_type"] = os_type
+                devices[device_index]["type"] = device_type
 
                 # device group based on type
                 if devices[device_index]["type"] == "router":
