@@ -1,13 +1,8 @@
 - group_members:
-  - R1
-  - Sw1
-  group_name: test
-- group_members:
   - Huawei_SF-CSG-01
-  group_name: Huawei_Test
-- group_members:
-  - R1
   - Sw1
-  group_name: test1
-- group_members: []
-  group_name: tes2
+  group_name: saad
+- group_members:
+  - Sw1
+  - Sw2
+  group_name: testasdas

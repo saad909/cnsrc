@@ -171,6 +171,27 @@ class groups(QDialog):
             return
 
         if group_name:
+            # check for incomptaible grouping
+            devices = self.convert_host_file_into_list()
+            all_members = list()
+            for member in group_members:
+                for device in devices:
+                    if device['hostname'] == member:
+                        all_members.append(device)
+            match = True
+            first_device = all_members[0]
+            list_length = len(all_members)
+            for index in range(1,list_length):
+                if first_device['data']['device_type'] != all_members[index]['data']['device_type']:
+                    match = False
+
+            if not match:
+                QMessageBox.information(self,"Warning","Incompatible grouping")
+                return
+
+
+
+            print(group_members)
             groups = self.add_group_into_file(group_name, group_members)
 
             # ask for confirmation
@@ -305,6 +326,25 @@ class groups(QDialog):
             self.g_edit_groupname.setFocus()
             return
         if group_name:
+            # check for incomptaible grouping
+            devices = self.convert_host_file_into_list()
+            all_members = list()
+            for member in group_members:
+                for device in devices:
+                    if device['hostname'] == member:
+                        all_members.append(device)
+            match = True
+            first_device = all_members[0]
+            list_length = len(all_members)
+            for index in range(1,list_length):
+                if first_device['data']['device_type'] != all_members[index]['data']['device_type']:
+                    match = False
+
+            if not match:
+                QMessageBox.information(self,"Warning","Incompatible grouping")
+                return
+
+
             # get the index of target group
             group_index = -1
             i = 0
@@ -313,6 +353,26 @@ class groups(QDialog):
                     group_index = i
                     break
                 i += 1
+
+             # check for group duplication
+            duplicaton_occured = False
+            groups = self.convert_group_file_into_list()
+            i = 0
+            for group in groups:
+                if i == group_index:
+                    continue
+                if group["group_name"] == group_name:
+                    duplicaton_occured = True
+                    break
+                i += 1
+            if duplicaton_occured:
+                print("Duplication occured")
+                QMessageBox.information(
+                    self, "Warning", f"group {group_name} already exists"
+                )
+                self.clear_edit_group_fields()
+                return
+
             print(
                 "------------------ Your target group is(index = {0}) ------------------".format(
                     group_index
@@ -327,7 +387,7 @@ class groups(QDialog):
             )
             pprint(edited_group)
             for group in all_groups:
-                group["group_members"].sort()
+                # group["group_members"].sort()
                 if group == edited_group:
                     QMessageBox.information(self, "Note", "You made no changes")
                     return
