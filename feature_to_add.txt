@@ -6,6 +6,7 @@
 - 9. Bulk addition also check the integrity of csv file
 - 10. Export tables as excel file
 - 11. optional port no while adding device
+- 13. Logging
 
 12. all show commands add
 
@@ -16,5 +17,60 @@
 5. backup and restore running and startup configs at some action happened for each device or at specific interval or manually
 6. backup and restore ios at specific interval or on user demand
 
+
+Routers:
+
+
+routinng protocols
+  - redistribution
+  - rip
+    - version 
+    - network adv
+    - authentication
+    - ripng
+  - ospf
+    - network adv
+    - wildcard mask
+    - area 
+    - authe
+    - router type
+    - interface priority change
+    - Router id change
+  - eigrp 
+    - version
+    - authentication
+    - network adv
+dhcp server configure
+dhcp snooping
+
+
+
+
+port channeling
+ppp - pap,chap
+clock
+snmp enable
+backup  and restore configs
+export/import configs
+create new user with different privilages
+ip address config
+interface up/down
+new interface configure
+dns config
+Loopback
+
+Switches:
+
+
+vlan - creation,mode(truck access hybrid)
+dns config
+default gateway
+vlan tagging
+qnq
+SVI
+Loopback
+change hostname
+
+Optional:
 
 Total = 3/11

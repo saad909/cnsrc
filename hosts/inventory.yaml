@@ -1,13 +1,28 @@
 - data:
     device_type: cisco_ios
+    host: 10.1.1.1
+    password: !!binary |
+      Z0FBQUFBQmdmYW94ZHY0UFp4Uk9XQmN2UUoxVnYyTS1ZMFR3YUExQ2hhSnBOYldmMS1rVzgyTHFG
+      ZzNrdFBQSnpOaThBYjFVWHZ4bE5zeXVuNm9JX0puLXdqUGV5Y2VzVHc9PQ==
+    port: '22'
+    secret: !!binary |
+      Z0FBQUFBQmdmYW94ZWZCZzNRaEZCRHp1UnFtS0JGb2VjbnFZRHdvS3NlVF9WemVISk5jRzlsMmMx
+      bWtYMVl2NkNnS3hoc3ptMlFJV2FDckJCamhTSTRlcVpfTFNhakFWMlE9PQ==
+    username: Huawei
+  groups:
+  - router
+  hostname: Huawei_SF-CSG-01
+  type: router
+- data:
+    device_type: cisco_ios
     host: 10.1.1.254
     password: !!binary |
-      Z0FBQUFBQmdmWHJjMjJWS2UxRUUyc1FVVDNQWHoyNEZZM0dDUU93b3A3aUc0dU5wSXZwaTRHU2Fr
-      YU9yZzA1THFPWFJfNzRTMFBpSVNPZEZOcmN2djZFbUNqSFZwbkQ4UEE9PQ==
-    port: '223'
+      Z0FBQUFBQmdmYlVJM2RGVXN6Uk5EOE9FVHJOcmRxakVkRDBBNjhsQzJ6dzNHUGVFWmszTFJCY0Fk
+      cm9JSFhoLWVfMXJoUHNHRXptR0Nybk01UzhNVWplbXRjZDhCbDgxMkE9PQ==
+    port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdmWHJjTEltM21KLVAxcFJzdzBfa1JTUVBOUDRDaTA0WTI1U3pCa25lamZ0Ul9LcGFB
-      VjVBOUF0V2V2QS1VM1hXTVJON0ZPZkZEOURFd1R1ZnJjZGZzY2hwT0E9PQ==
+      Z0FBQUFBQmdmYlVJZlk1cVZTQW45QzBxTk9feVJmOHdEVXlHRTJsS2ozdGlGN3g1SGpaaXhpV1VW
+      c2RQMzNndjhKamM5azVGaWtjR19MQ2Q0Tng0RFdXZzBsLUp3clItNlE9PQ==
     username: cisco
   groups:
   - router
@@ -17,12 +32,12 @@
     device_type: cisco_ios
     host: 10.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdmWC0wQ0lJTnZFQlJjdE1LZ2ZUUV9qMkZtZHBPdjJINnNEaVllSEhpdjVFWWNYN2Rv
-      LWVqQl96dl95dU00cFJMVm1VdzV3R01KSUhUVld1WUhramJVWENNYmc9PQ==
+      Z0FBQUFBQmdmYTg3SFlvUldKNTJNWnJxcklXcm85RGhMekFlVWtnRVNic2xxZkN5amt0dTZKaXJW
+      TFFxeklQWFBNblprSzI3QklUS2RSam9keUQxVUlBeXdkYUVfazdqS0E9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdmWC0wMUtTdlRtYVRncHhUX1JkUGx4ek4wQ184SVNhWWgtc29tNE5xR3VnUHZlbFkw
-      eVhDTFVLT2NzVjVCS0V4WHVfTTdaRkJYSDZ5ekxjcFF3X3ZpRktWRFE9PQ==
+      Z0FBQUFBQmdmYTg3aFltZzRNLXZDeWNaUDJFaHpxMVYxc1A5cktmVXhzY1NsYXhBTkdGM09iaTVl
+      NjFsRXRlNi03UmFjSkdKZEhjNnEzQS1OZ3o3N2xFdk5TSHEtbWF3cXc9PQ==
     username: cisco
   groups:
   - switch
@@ -30,16 +45,31 @@
   type: switch
 - data:
     device_type: cisco_ios
-    host: 10.1.1.253
+    host: 10.1.1.252
     password: !!binary |
-      Z0FBQUFBQmdmWF91enRncUJjam1heWlQaFNmaUdRR21paTVYQm9jYnZRWmhheTZ2d0NFb2w3YWJO
-      blUwWWVWdWRFc2hKbFM4YjZpRGpOZDVENGpHcXhxUl9keWt0akNvUWc9PQ==
-    port: '2222'
+      Z0FBQUFBQmdmYTg3T2VCdnhtbk5nNmZuUFFTaFBnQklwa1JQQklnSUYyTWRFTDcwMk5QS1hZa2VO
+      SkcxRUNhamhzTXlOSk5rNTZUbDJ4YTF6bnlFMnk5VUpfOEtYUlQ0Umc9PQ==
+    port: '65536'
     secret: !!binary |
-      Z0FBQUFBQmdmWF91VnNtajhyN2VjUy1nTDNsdVg5ZE9CaERaX2NQTlI5eEFrYXRkQldHQThzUS1D
-      LXdmdmlhT3REeG5fMVpvRFRWekRQNG5JZkVpc3pkdXNTR1VxREtNZmc9PQ==
+      Z0FBQUFBQmdmYTg3TFJsYkNXNVlhVG96OGJKOWcxeG0zVXh2NXk2cldvd2VpNjY2Z1RXX2hILUh6
+      ZFdYc3ZoTk9TNlQzZ0ZPM3lUcTVPNFVDM2NaakpFLVlZeGZXNEdYMmc9PQ==
     username: cisco
   groups:
   - switch
-  hostname: R
+  hostname: Sw2
   type: switch
+- data:
+    device_type: cisco_ios
+    host: 223.1.1.254
+    password: !!binary |
+      Z0FBQUFBQmdmYkF2em8xREF2amVJZkZaWHZWWnB3NkpZQ004X3poWENjX25xZ3VnWXhqZXJ3ZEw3
+      YXR0RzM5WWZTdk16ZDAxR2lGU2VEZlJ2R0FFeWt5d1hyVkdtOXE2VGc9PQ==
+    port: '223'
+    secret: !!binary |
+      Z0FBQUFBQmdmYkF2Q0s1VkhmWkNvZHV2OGxfb0p1MUJ2UXFhVXpQMnlmTnlsZy1PamtKeUFlMGtr
+      N05EN2JwTFI1dF9acllHWmJnb2RPZ24tZlpscW1JWEZ4NWY3aW0za3c9PQ==
+    username: h1@12!233
+  groups:
+  - router
+  hostname: CSG_$!@01
+  type: router

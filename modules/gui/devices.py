@@ -111,27 +111,27 @@ class devices(QDialog):
     def check_csv_file(self, csv_file):
         regexp = (
             # device type
-            r"\s*(router|switch)\s*"
+            r"\s*(Router|Switch|ROUTER|SWITCH|router|switch)\s*"
             + ","
             # hostname
-            r"\s*[\w+\-]+\s*"
+            r"\s*[\w+\-!@$]+\s*"
             + ","
             # ip address
             + r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
             + ","
             # username and password
-            + r"(\s*[\w\-]+\s*,){2}"
+            + r"(\s*[\w\-@!$]+\s*,){2}"
             # secret
             + r"("
-            + r"[\w\-]+"
-            + r"\D|[\w\-]+,"
-            + r"\D|[\w\-]+,\s*"
-            + r"\D|\s*[\w\-]+"
-            + r"\D|\s*[\w\-]+,"
-            + r"\D|\s*[\w\-]+,\s*"
-            + r"\D|[\w\-]+\s*"
-            + r"\D|[\w\-]+\s*,"
-            + r"\D|\s*[\w\-]+\s*,\s*"
+            + r"[\w@$!\-]+"
+            + r"\D|[\w@!$\-]+,"
+            + r"\D|[\w@!$\-]+,\s*"
+            + r"\D|\s*[\w@$!\-]+"
+            + r"\D|\s*[\w@$!\-]+,"
+            + r"\D|\s*[\w@$!\-]+,\s*"
+            + r"\D|[\w@$!\-]+\s*"
+            + r"\D|[\w@$!\-]+\s*,"
+            + r"\D|\s*[\w@$!\-]+\s*,\s*"
             + r"\D|,"
             + r")"
             # port number

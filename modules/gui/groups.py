@@ -1,11 +1,10 @@
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
-from netmiko import ConnectHandler
 from yaml import safe_load
 import yaml
 from pprint import pprint
-import os
+import os,re
 
 
 class groups(QDialog):
@@ -32,10 +31,13 @@ class groups(QDialog):
             self.fill_groups_table(searched_groups)
 
     def add_devices_for_group_selection(self):
-        devices = self.get_all_devices_hostname()
-        # devices.sort()
+        devices = self.convert_host_file_into_list()
         self.g_add_group_members.clear()
-        self.g_add_group_members.addItems(devices)
+        for device in devices:
+            device['hostname'] = "{:40s} {:10s}".format(device['hostname'],device['data']['device_type'])
+            self.g_add_group_members.addItem(device['hostname'])
+
+        # devices = [devices+"\t\t - " for deivce in devices["hostname"]]
         self.g_add_group_members.setSortingEnabled(True)
 
     def get_all_groups(self):
@@ -140,8 +142,10 @@ class groups(QDialog):
     def add_group(self):
         group_name = self.g_add_groupname.text()
         group_members = list()
+        regexp = r"\s+\w+\s*"
         for device in self.g_add_group_members.selectedItems():
-            group_members.append(device.text())
+            group_members.append(re.sub(regexp,"",device.text()))
+
 
         self.check_for_group_file()
         groups = self.read_yaml_file(self.get_group_file_path())
@@ -253,23 +257,29 @@ class groups(QDialog):
                 self.clear_edit_group_fields()
                 self.g_edit_groupname.setText(groups[group_index]["group_name"])
                 pprint(groups[group_index]["group_members"])
-                self.g_edit_group_members.addItems(self.get_all_devices_hostname())
+                devices = self.convert_host_file_into_list()
+                for device in devices:
+                    device['hostname'] = "{:40s} {:10s}".format(device['hostname'],device['data']['device_type'])
+                    self.g_edit_group_members.addItem(device['hostname'])
+                # self.g_edit_group_members.addItems(self.get_all_devices_hostname())
 
                 # now higlight the group members of group in qlist widget
                 group_members = groups[group_index]["group_members"]
+
                 index = list()
-                devices = self.get_all_devices_hostname()
-                devices.sort()
+                devices = self.convert_host_file_into_list()
+                # devices['hostname'].sort()
                 i = 0
                 for device in devices:
                     for member in group_members:
-                        if device == member:
+                        if device['hostname'] == member:
                             index.append(i)
                     i += 1
                 pprint(index)
                 for i in index:
+                    devices[i]['hostname'] = "{:40s} {:10s}".format(devices[i]['hostname'],devices[i]['data']['device_type'])
                     matching_items = self.g_edit_group_members.findItems(
-                        devices[i], Qt.MatchExactly
+                        devices[i]['hostname'], Qt.MatchExactly
                     )
                     for item in matching_items:
                         item.setSelected(True)
@@ -279,8 +289,11 @@ class groups(QDialog):
         searched_group_name = self.searched_groupname
         group_name = self.g_edit_groupname.text()
         group_members = list()
+        regexp = r"\s+\w+\s*"
         for device in self.g_edit_group_members.selectedItems():
-            group_members.append(device.text())
+            group_members.append(re.sub(regexp,"",device.text()))
+        # for device in self.g_edit_group_members.selectedItems():
+        #     group_members.append(device.text())
         edited_group = self.create_dictionary_for_group(group_name, group_members)
         all_groups = self.get_all_groups()
 

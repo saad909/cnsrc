@@ -71,21 +71,21 @@ class devices_func(QDial):
 
     def get_valid_ip(self, textBox):
         # validate ip address input
-        # octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-4])"
-        # ipRegExp = QRegExp('^' + octet + r'\.' + octet + r'\.' + octet + r'\.' + octet + '$')
-        ipRegExp = QRegExp(
-            r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
-        )
+        octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-4])"
+        ipRegExp = QRegExp('^' + octet + r'\.' + octet + r'\.' + octet + r'\.' + octet + '$')
+        # ipRegExp = QRegExp(
+        #     r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
+        # )
         ipValidator = QRegExpValidator(ipRegExp)
         textBox.setValidator(ipValidator)
 
     def is_ip_complete(self, ipTextBox):
 
         ip_address = ipTextBox.text()
-        reg_exp = r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
+        # reg_exp = r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
 
-        # octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-4])"
-        # reg_exp = "^" + octet + r"\." + octet + r"\." + octet + r"\." + octet + "$"
+        octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-4])"
+        reg_exp = "^" + octet + r"\." + octet + r"\." + octet + r"\." + octet + "$"
         result = list()
         result = re.findall(reg_exp, ip_address)
         if len(result) == 1:

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>849</width>
-    <height>657</height>
+    <height>700</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -42,7 +42,7 @@
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>3</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -53,7 +53,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>455</height>
+         <height>498</height>
         </rect>
        </property>
        <attribute name="label">
@@ -75,7 +75,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>441</height>
+         <height>484</height>
         </rect>
        </property>
        <attribute name="label">
@@ -111,7 +111,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>441</height>
+         <height>484</height>
         </rect>
        </property>
        <attribute name="label">
@@ -147,7 +147,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>455</height>
+         <height>498</height>
         </rect>
        </property>
        <attribute name="label">
@@ -176,7 +176,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>455</height>
+         <height>498</height>
         </rect>
        </property>
        <attribute name="label">
@@ -189,7 +189,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>455</height>
+         <height>498</height>
         </rect>
        </property>
        <attribute name="label">
@@ -210,7 +210,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -619,7 +619,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -1583,6 +1583,9 @@
                     <property name="selectionMode">
                      <enum>QAbstractItemView::MultiSelection</enum>
                     </property>
+                    <property name="sortingEnabled">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                   <item row="3" column="0">
@@ -1640,30 +1643,6 @@
             <string>Show Commands</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_23">
-            <item row="0" column="3">
-             <widget class="QPushButton" name="config_show_btn_submit">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>Submit</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0" colspan="4">
-             <widget class="QTextEdit" name="config_show_te_cmds_output">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(0, 255, 0);</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="cb_bt_all_groups"/>
-            </item>
             <item row="0" column="0">
              <widget class="QComboBox" name="cb_bt_all_devices">
               <item>
@@ -1672,6 +1651,9 @@ color: rgb(0, 255, 0);</string>
                </property>
               </item>
              </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="cb_bt_all_groups"/>
             </item>
             <item row="0" column="2">
              <widget class="QComboBox" name="cb_bt_all_commands">
@@ -1711,6 +1693,46 @@ color: rgb(0, 255, 0);</string>
                 <string>version</string>
                </property>
               </item>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QPushButton" name="config_show_btn_submit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Submit</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="4">
+             <widget class="QListWidget" name="g_edit_group_members_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::MultiSelection</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0" colspan="4">
+             <widget class="QTextEdit" name="config_show_te_cmds_output">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
