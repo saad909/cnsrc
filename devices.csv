@@ -1,3 +1,3 @@
 Router,cisco_ios,R1@!@$_-,10.1.1.254,cisco,cisco, cisco,  223  
 Switch,cisco_xr,Sw1,223.1.1.253,cisco,  cisco  ,cisco, 
-Switch,cisco_xe,Sw2,10.1.1.252,cisco,cisco,  cisco ,  65536 
+Switch,cisco_ios,Sw2,10.1.1.252,cisco,cisco,  cisco ,  65536 

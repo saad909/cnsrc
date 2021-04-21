@@ -340,12 +340,27 @@ class groups(QDialog):
         # get values from gui - if not empty groupname
         searched_group_name = self.searched_groupname
         group_name = self.g_edit_groupname.text()
+        if group_name == "dummy":
+            QMessageBox.information(
+                self, "Warning", "Can not edit dummy group.Please add a group first"
+            )
+            self.g_edit_groupname.setFocus()
+            self.clear_edit_group_fields()
+            return
         group_members = list()
         regexp = r"\s+\w+\s*"
         for device in self.g_edit_group_members.selectedItems():
             group_members.append(re.sub(regexp, "", device.text()))
         # for device in self.g_edit_group_members.selectedItems():
         #     group_members.append(device.text())
+        for member in group_members:
+            if member.strip() == "dummy":
+                QMessageBox.information(
+                    self, "Warning", "Can not add dummy device into a group.\nPlease select other devices if present"
+                )
+                self.g_edit_groupname.setFocus()
+                self.clear_edit_group_fields()
+                return
         edited_group = self.create_dictionary_for_group(group_name, group_members)
         all_groups = self.get_all_groups()
 
@@ -435,9 +450,9 @@ class groups(QDialog):
                 all_groups[group_index] = edited_group
                 self.write_group_file(all_groups)
                 QMessageBox.information(self, "Note", "Edited successfully")
+                self.fill_groups_table(self.get_all_groups())
                 self.statusBar().showMessage("Succesfuly")
                 self.clear_edit_group_fields()
-                self.fill_groups_table(self.get_all_groups())
                 self.clear_device_search_results()
                 self.txt_g_edit_groupname.setFocus()
                 self.auto_complete_group_edit_search_results()

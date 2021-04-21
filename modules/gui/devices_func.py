@@ -336,7 +336,7 @@ class devices_func(QDial):
         if device["hostname"] == "dummy":
             QMessageBox.information(self, "Note", "Dummy device can't be edited")
             self.clear_device_edit_user_search()
-            self.txt_d_edit_ip_address.setFocus()
+            self.txt_d_edit_hostname.setFocus()
             return
         self.d_edit_hostname.setText(device["hostname"])
         self.d_edit_ip_address.setText(device["data"]["host"])
@@ -391,36 +391,63 @@ class devices_func(QDial):
             if device["hostname"] == device_name:
                 return device["data"]["device_type"]
 
-    def synchronize_editing(self, old_name,new_name):
+    def synchronize_editing(self, old_name, new_name):
+        print(f"------------------Host name before = {old_name}------------")
+        print(f"------------------Host name after = {new_name}------------")
         all_groups = self.convert_group_file_into_list()
-        members_os_types = list()
+        target_groups = list()
+        index = 0
         for group in all_groups:
-            index = -1
-            i = 0
-            for member in group["group_members"]:
-                if member == old_name:
-                    index = i
-                    members_os_types.append(self.check_group_members_os_type(member))
+            for group_member in group['group_members']:
+                i = 0
+                if group_member == old_name:
+                    print(f"------------------Host name before = \n{group}")
+                    if old_name != new_name:
+                        group['group_members'][i] = new_name
+                    print(f"------------------Host name after = \n{group}")
+                    target_groups.append(index)
                     break
                 i += 1
-            if index != -1:
-                group["group_members"][index] = new_name
-            match = True
-            if members_os_types:
-                first_member = members_os_types[0]
-                for index in range(1, len(members_os_types)):
-                    if members_os_types[index] != first_member:
-                        match = False
-                        break
-            if not match:
-                QMessageBox.information(
-                    self,
-                    "Warning",
-                    f"{group['group_name']} has mismatched os type members",
-                )
+            index += 1
 
         self.write_group_file(all_groups)
-        return
+        # Target Groups
+        QMessageBox.information(self, "Warning", f"Target Groups are {target_groups}")
+
+        # checking for os type match
+        groups = list()
+        for index in target_groups:
+            groups.append(all_groups[index])
+        print("Target groups are")
+        print(groups)
+
+        all_devices = self.convert_host_file_into_list()
+        for group in groups:
+            os_type_list = list()
+            for member in group["group_members"]:
+                for device in all_devices:
+                    if device["hostname"] == member:
+                        os_type_list.append(device["data"]["device_type"])
+                        break
+            if os_type_list:
+                print("--------- OS TYPE LIST--------------")
+                print(os_type_list)
+                first_member = os_type_list[0]
+                for index in range(1, len(os_type_list)):
+                    if os_type_list[index] != first_member:
+                        QMessageBox.information(
+                            self,
+                            f"Warning",
+                            f"{group['group_name']} group has incomptaible members",
+                        )
+                        break
+
+            # first_member = group['group_members'][0]
+            # for index in range(1,len(group['group_members'])):
+            #     for device in all_devices:
+            #         if device['hostname'] == group['group_member'][index]:
+            #             os_type_list.append(device['data']['device_type'])
+            #             break
 
     def edit_device(self):
         hostname = self.d_edit_hostname.text()
@@ -583,7 +610,7 @@ class devices_func(QDial):
 
                 QMessageBox.information(self, "Success", "Data modified successfully")
                 # reflect changes in groups.yaml file
-                self.synchronize_editing(hostname_before,hostname)
+                self.synchronize_editing(hostname_before, hostname)
                 # update groups table
                 self.fill_groups_table(self.get_all_groups())
                 # update all devices table
