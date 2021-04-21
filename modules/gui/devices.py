@@ -96,6 +96,8 @@ class devices(QDialog):
             self.update_bt_all_devices()
             # update devices in group addition
             self.add_devices_for_group_selection()
+            # update groups table
+            self.fill_groups_table(self.get_all_groups())
 
     #          ____  _   _ _     _  __     _    ____  ____ ___ _____ ___ ___  _   _
     #         | __ )| | | | |   | |/ /    / \  |  _ \|  _ \_ _|_   _|_ _/ _ \| \ | |
@@ -246,6 +248,8 @@ class devices(QDialog):
                         self.update_bt_all_devices()
                         # update devices in group addition
                         self.add_devices_for_group_selection()
+                        # update groups table
+                        self.fill_groups_table(self.get_all_groups())
                 return
 
             else:

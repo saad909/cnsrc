@@ -385,18 +385,40 @@ class devices_func(QDial):
         else:
             device["groups"][0] = group_type
 
-    def synchronize_editing(self, device_name):
+    def check_group_members_os_type(self, device_name):
+        all_devices = self.convert_host_file_into_list()
+        for device in all_devices:
+            if device["hostname"] == device_name:
+                return device["data"]["device_type"]
+
+    def synchronize_editing(self, old_name,new_name):
         all_groups = self.convert_group_file_into_list()
+        members_os_types = list()
         for group in all_groups:
             index = -1
             i = 0
             for member in group["group_members"]:
-                if member == device_name:
+                if member == old_name:
                     index = i
+                    members_os_types.append(self.check_group_members_os_type(member))
                     break
                 i += 1
             if index != -1:
-                group["group_members"][index] = device_name
+                group["group_members"][index] = new_name
+            match = True
+            if members_os_types:
+                first_member = members_os_types[0]
+                for index in range(1, len(members_os_types)):
+                    if members_os_types[index] != first_member:
+                        match = False
+                        break
+            if not match:
+                QMessageBox.information(
+                    self,
+                    "Warning",
+                    f"{group['group_name']} has mismatched os type members",
+                )
+
         self.write_group_file(all_groups)
         return
 
@@ -561,7 +583,9 @@ class devices_func(QDial):
 
                 QMessageBox.information(self, "Success", "Data modified successfully")
                 # reflect changes in groups.yaml file
-                self.synchronize_editing(hostname)
+                self.synchronize_editing(hostname_before,hostname)
+                # update groups table
+                self.fill_groups_table(self.get_all_groups())
                 # update all devices table
                 self.clear_device_search_results()
                 # update autocomplete list of ip_addresses and hostnames
@@ -642,6 +666,8 @@ class devices_func(QDial):
                     self.update_bt_all_devices()
                     # update devices in group addition
                     self.add_devices_for_group_selection()
+                    # update groups table
+                    self.fill_groups_table(self.get_all_groups())
                 else:
                     self.clear_edit_search_results()
                     self.clear_device_edit_user_search()
