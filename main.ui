@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>849</width>
-    <height>700</height>
+    <height>730</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -53,7 +53,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>498</height>
+         <height>528</height>
         </rect>
        </property>
        <attribute name="label">
@@ -75,7 +75,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>484</height>
+         <height>514</height>
         </rect>
        </property>
        <attribute name="label">
@@ -111,7 +111,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>484</height>
+         <height>514</height>
         </rect>
        </property>
        <attribute name="label">
@@ -147,7 +147,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>498</height>
+         <height>528</height>
         </rect>
        </property>
        <attribute name="label">
@@ -176,7 +176,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>498</height>
+         <height>528</height>
         </rect>
        </property>
        <attribute name="label">
@@ -189,7 +189,7 @@
          <x>0</x>
          <y>0</y>
          <width>167</width>
-         <height>498</height>
+         <height>528</height>
         </rect>
        </property>
        <attribute name="label">
@@ -210,7 +210,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -1637,16 +1637,6 @@
                   <set>Qt::AlignCenter</set>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_39">
-                  <item row="3" column="0">
-                   <widget class="QListWidget" name="g_edit_group_members">
-                    <property name="selectionMode">
-                     <enum>QAbstractItemView::MultiSelection</enum>
-                    </property>
-                    <property name="sortingEnabled">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="1" column="0">
                    <widget class="QLineEdit" name="g_edit_groupname">
                     <property name="placeholderText">
@@ -1661,7 +1651,24 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="0">
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="g_edit_groupname_3">
+                    <property name="placeholderText">
+                     <string>Search member</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0" colspan="2">
+                   <widget class="QListWidget" name="g_edit_group_members">
+                    <property name="selectionMode">
+                     <enum>QAbstractItemView::MultiSelection</enum>
+                    </property>
+                    <property name="sortingEnabled">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="2">
                    <widget class="QLabel" name="label_8">
                     <property name="text">
                      <string>Group Members</string>
@@ -1716,82 +1723,7 @@
             <string>Show Commands</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_23">
-            <item row="0" column="0">
-             <widget class="QComboBox" name="cb_bt_all_devices">
-              <item>
-               <property name="text">
-                <string>Select a device</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="cb_bt_all_groups"/>
-            </item>
-            <item row="0" column="2">
-             <widget class="QComboBox" name="cb_bt_all_commands">
-              <property name="editable">
-               <bool>true</bool>
-              </property>
-              <property name="maxVisibleItems">
-               <number>10</number>
-              </property>
-              <item>
-               <property name="text">
-                <string>Select a show command</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>running config</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>startup config</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>all interfaces configurations</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>clock</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>version</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="0" column="3">
-             <widget class="QPushButton" name="config_show_btn_submit">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>Submit</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0" colspan="4">
-             <widget class="QListWidget" name="g_edit_group_members_2">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="selectionMode">
-               <enum>QAbstractItemView::MultiSelection</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0" colspan="4">
+            <item row="2" column="0" colspan="3">
              <widget class="QTextEdit" name="config_show_te_cmds_output">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -1805,6 +1737,73 @@ color: rgb(0, 255, 0);</string>
               </property>
               <property name="readOnly">
                <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="cb_bt_all_groups"/>
+            </item>
+            <item row="0" column="0">
+             <widget class="QComboBox" name="cb_bt_all_devices">
+              <item>
+               <property name="text">
+                <string>Select a device</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="3">
+             <widget class="QListWidget" name="g_edit_group_members_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::MultiSelection</enum>
+              </property>
+              <item>
+               <property name="text">
+                <string>saad</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>test</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>asd</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>asd</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>asdasd</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="3" column="2">
+             <widget class="QPushButton" name="pushButton">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QPushButton" name="config_show_btn_submit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Submit</string>
               </property>
              </widget>
             </item>
@@ -1937,7 +1936,6 @@ color: rgb(0, 255, 0);</string>
   <tabstop>btn_d_edit_delete</tabstop>
   <tabstop>cb_bt_all_devices</tabstop>
   <tabstop>cb_bt_all_groups</tabstop>
-  <tabstop>config_show_btn_submit</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -1948,12 +1946,12 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>109</x>
-     <y>240</y>
+     <x>97</x>
+     <y>241</y>
     </hint>
     <hint type="destinationlabel">
-     <x>320</x>
-     <y>101</y>
+     <x>247</x>
+     <y>104</y>
     </hint>
    </hints>
   </connection>
@@ -1964,8 +1962,8 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>69</x>
-     <y>270</y>
+     <x>77</x>
+     <y>268</y>
     </hint>
     <hint type="destinationlabel">
      <x>364</x>
@@ -1984,8 +1982,8 @@ color: rgb(0, 255, 0);</string>
      <y>300</y>
     </hint>
     <hint type="destinationlabel">
-     <x>359</x>
-     <y>128</y>
+     <x>334</x>
+     <y>98</y>
     </hint>
    </hints>
   </connection>
@@ -1996,12 +1994,12 @@ color: rgb(0, 255, 0);</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>231</x>
-     <y>240</y>
+     <x>183</x>
+     <y>241</y>
     </hint>
     <hint type="destinationlabel">
-     <x>403</x>
-     <y>175</y>
+     <x>705</x>
+     <y>226</y>
     </hint>
    </hints>
   </connection>

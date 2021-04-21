@@ -99,7 +99,7 @@ class Main_Window(
         self.cb_bt_all_devices.currentIndexChanged.connect(
             lambda: self.disable_box(self.cb_bt_all_devices, self.cb_bt_all_groups)
         )
-        self.cb_bt_all_commands.currentIndexChanged.connect(
+        self.g_edit_group_members_2.itemSelectionChanged.connect(
             self.show_commands_submit_button
         )
 

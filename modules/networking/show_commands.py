@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import *
 import os
 import concurrent.futures as cf
 from yaml import safe_load
+
 # from pprint import pprint
 
 
@@ -33,7 +34,7 @@ class show_commands(QDialog):
 
     def show_commands_submit_button(self):
 
-        if self.device_selection and self.cb_bt_all_commands.currentIndex() != 0:
+        if self.device_selection and self.g_edit_group_members_2.selectedItems():
             self.config_show_btn_submit.setEnabled(True)
         else:
             self.config_show_btn_submit.setEnabled(False)
@@ -45,8 +46,8 @@ class show_commands(QDialog):
             #         |___/
 
     def get_command(self, command_text):
-        file_name = os.path.join("hosts", "show commands", command_text+".cfg")
-        with open(file_name, 'r') as handler:
+        file_name = os.path.join("hosts", "show commands", command_text + ".cfg")
+        with open(file_name, "r") as handler:
             command = handler.read()
         return command
 
@@ -61,8 +62,7 @@ class show_commands(QDialog):
             device_name = self.cb_bt_all_devices.currentText()
             command_text = self.cb_bt_all_commands.currentText()
             self.command = self.get_command(command_text)
-            self.show_cmd_against_device(
-                device_name)
+            self.show_cmd_against_device(device_name)
 
         # if group is selected
         else:
@@ -77,8 +77,8 @@ class show_commands(QDialog):
         group_members = None
         for group in all_groups:
             try:
-                if group['group_name'] == group_name:
-                    group_members = group['group_members']
+                if group["group_name"] == group_name:
+                    group_members = group["group_members"]
             except Exception as error:
                 print(error)
         return group_members
@@ -88,10 +88,10 @@ class show_commands(QDialog):
         self.show_output = ""
         self.config_show_te_cmds_output.setText("")
         for device in group_members:
-            device['data']['password'] = self.decrypt_password(
-                device['data']['password'])
-            device['data']['secret'] = self.decrypt_password(
-                device['data']['secret'])
+            device["data"]["password"] = self.decrypt_password(
+                device["data"]["password"]
+            )
+            device["data"]["secret"] = self.decrypt_password(device["data"]["secret"])
 
         with cf.ThreadPoolExecutor(max_workers=5) as ex:
             ex.map(self.create_show_handler, group_members)
@@ -104,7 +104,7 @@ class show_commands(QDialog):
         if group_name == "router":
             all_device = self.convert_host_file_into_list()
             for device in all_device:
-                if 'router' in device['groups']:
+                if "router" in device["groups"]:
                     group_members.append(device)
             self.create_thread(group_members)
             return
@@ -112,7 +112,7 @@ class show_commands(QDialog):
         elif group_name == "switch":
             all_device = self.convert_host_file_into_list()
             for device in all_device:
-                if 'switch' in device['groups']:
+                if "switch" in device["groups"]:
                     group_members.append(device)
             self.create_thread(group_members)
             return
@@ -123,10 +123,10 @@ class show_commands(QDialog):
             all_devices = self.convert_host_file_into_list()
             for member in group_members:
                 for device in all_devices:
-                    if member == device['hostname']:
+                    if member == device["hostname"]:
                         custom_group_members.append(device)
             self.create_thread(custom_group_members)
             return
 
-    def show_cmd_against_device(self):
+    def show_cmd_against_device(self, device_name):
         pass
