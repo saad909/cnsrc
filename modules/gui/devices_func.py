@@ -344,9 +344,9 @@ class devices_func(QDial):
         self.d_edit_password.setText(self.decrypt_password(device["data"]["password"]))
         self.d_edit_secret.setText(self.decrypt_password(device["data"]["secret"]))
         self.d_edit_port_number.setText(device["data"]["port"])
-        os_type_index = self.d_edit_cb_os_type.findText(device['data']['device_type'])
+        os_type_index = self.d_edit_cb_os_type.findText(device["data"]["device_type"])
         self.d_edit_cb_os_type.setCurrentIndex(os_type_index)
-        dev_type_index = self.d_edit_device_type.findText(device['type'])
+        dev_type_index = self.d_edit_device_type.findText(device["type"])
         self.d_edit_device_type.setCurrentIndex(dev_type_index)
 
     def edit_search_device(self):
@@ -384,6 +384,21 @@ class devices_func(QDial):
             return
         else:
             device["groups"][0] = group_type
+
+    def synchronize_editing(self, device_name):
+        all_groups = self.convert_group_file_into_list()
+        for group in all_groups:
+            index = -1
+            i = 0
+            for member in group["group_members"]:
+                if member == device_name:
+                    index = i
+                    break
+                i += 1
+            if index != -1:
+                group["group_members"][index] = device_name
+        self.write_group_file(all_groups)
+        return
 
     def edit_device(self):
         hostname = self.d_edit_hostname.text()
@@ -545,6 +560,8 @@ class devices_func(QDial):
                 self.write_inventory(devices)
 
                 QMessageBox.information(self, "Success", "Data modified successfully")
+                # reflect changes in groups.yaml file
+                self.synchronize_editing(hostname)
                 # update all devices table
                 self.clear_device_search_results()
                 # update autocomplete list of ip_addresses and hostnames
@@ -564,6 +581,21 @@ class devices_func(QDial):
     ##################### delete the device ######################
     def clear_device_edit_user_search(self):
         self.txt_d_edit_hostname.setText("")
+
+    def synchronize_deletion(self, device_name):
+        all_groups = self.convert_group_file_into_list()
+        for group in all_groups:
+            index = -1
+            i = 0
+            for member in group["group_members"]:
+                if member == device_name:
+                    index = i
+                    break
+                i += 1
+            if index != -1:
+                group["group_members"].pop(index)
+        self.write_group_file(all_groups)
+        return
 
     def delete_device(self):
         hostname_before = self.device_before["hostname"]
@@ -596,6 +628,8 @@ class devices_func(QDial):
                     QMessageBox.information(
                         self, "Success", "host deleted successfully"
                     )
+                    # reflect changes in groups.yaml file
+                    self.synchronize_deletion(hostname)
                     # update all devices table
                     self.clear_device_search_results()
                     # update autocomplete list of ip_addresses and hostnames

@@ -2,12 +2,12 @@
     device_type: cisco_ios
     host: 10.1.1.254
     password: !!binary |
-      Z0FBQUFBQmdmeXRJRUhDc2x6QTJfMkxMSEkzT1lEQW9TMzhzVTBEN0NubHNsbEt2bGlYWC1EV0xK
-      NzIxZVRGUE1ISGVkUHVIc2tKNmFQT3hHdnNKZE1SUHRQeFBzM0xGclE9PQ==
+      Z0FBQUFBQmdnR2ZpY2Rlamhud3dtSVhWWXgwdW8wWWV0djJESnZ6Q2Rob2NOUEtCVmt6QjlkOHI3
+      TXdya1RvRmxCZWZ3UTdhQUJMekJrX2Q1cVJnMWg0ZjdvYkJoQzMxNlE9PQ==
     port: '223'
     secret: !!binary |
-      Z0FBQUFBQmdmeXRJMXdpLXJMdW5fMmpzcXdBaHdjY1pMMnNZdlMtaWxwVkV0bFNFUXF2OW5YNGpj
-      WDlic1dIV0loWnY1Rl9UZXktWjZzMnE0eGZrMGlYX2VVTExCbUdsdEE9PQ==
+      Z0FBQUFBQmdnR2ZpSi1MeFF3QlBIUEpaeDlSWkNqendwdVFfS0dkZjdVaTcyTV9fSUhYWmFtbWEy
+      aGtqN1FmSWlIaWhBZlY0N2M2aU1mbVNIYi1vVmtNaUpvSkh2cWUyOFE9PQ==
     username: cisco
   groups:
   - Router
@@ -17,27 +17,27 @@
     device_type: cisco_xr
     host: 223.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdmeXRKam9aSHBSeXEtYXBsMHdhQUI5UU9hRGU2VjhtQ19JdnJxUW96ekVFaEJuc0d4
-      RGtYaTBEUFhYSDBVNzhlTmMzajRuOEg2SU1yaWRHX0h3ekRJNkl0dGc9PQ==
+      Z0FBQUFBQmdnR2ZpdzdfbTA2Zk9YNUJGYl9mTVhpZ2xQdEhocXlrWFRuSUwydE1oZXNKcTJCeTdj
+      bkhBdDV4YXB4a3RqSVY4dGlJakM3ckdBMmVISzF6TURBZFdPLS1DOFE9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdmeXRKVmk2WFh6Vzl4azJTZUhMOGNnaGtTajY0Rldubk5qRWxYN2hRZ21pYXZ1cXJ2
-      SDhWWlh6Q0ZkTTlrc29uRjFVU0dwY2JCTF9xaXBTMkliN29FTVV3YVE9PQ==
+      Z0FBQUFBQmdnR2ZpZFVZU1JTQ2dWUlZNdnUtMDJyOW9ld3dJdkM5VmNiSzRQUm1ucVFSeXVCUm0t
+      M3FnSTkwYklsU1N6YllxZUhrYmV6dnAzR19oNklWQWZrTnZFZnFkYkE9PQ==
     username: cisco
   groups:
   - Switch
   hostname: Sw1
   type: Switch
 - data:
-    device_type: cisco_xe
+    device_type: cisco_ios
     host: 10.1.1.252
     password: !!binary |
-      Z0FBQUFBQmdmeXRKTkVFUlRPWndDM2FrektTRHdDQktQbjh5RDVkQ3pCdXJwcXBJM2phUFl2c1ph
-      ckZrMHZack4wV2wtUzZlZGg4ZEx1M3BnejJrVW1XZGhzaTl5UEwtcHc9PQ==
+      Z0FBQUFBQmdnR21SaXI0TW8xZDd5aU9nREFjSEZnZVNPMDhHd2p5dWowMkxlQnZsN3RyeFdpYk5N
+      MUxXdjNHcFJ1ai1NWEJHNkkyUmlxdGdHbUtwd0JKamIxUEIyeTVxaHc9PQ==
     port: '65536'
     secret: !!binary |
-      Z0FBQUFBQmdmeXRKOHRNcXliNW90aG9OSDQxcElxNDN4TWJSUVNhY3Z2b1VDUk96QTNnOEMtamhN
-      N096SFlac041bXVDTU1GZ2RLeUh6WU45NFVLZm1BeU1MbHZCUFMyRFE9PQ==
+      Z0FBQUFBQmdnR21ScUtkZFNiY0F6WnNuMzY2X2pFYUl4VkF1Q2xnRU80d2s5WGtyWFVzLV9MNHNL
+      YlZHYUFzTlJBTTBPSTR4THZpOEc5R0p2YXkxR2R3amFuYjI2aHlaZHc9PQ==
     username: cisco
   groups:
   - Switch

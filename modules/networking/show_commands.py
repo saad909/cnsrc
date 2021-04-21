@@ -1,12 +1,77 @@
 from PyQt5.QtWidgets import *
 import os
 import concurrent.futures as cf
-from yaml import safe_load
 
 # from pprint import pprint
 
 
 class show_commands(QDialog):
+    def fill_show_commands(self):
+        # check whether group is selected or a device
+        selection = "None"
+        if self.cb_bt_all_devices.isEnabled():
+            selection = "device"
+            file_path = os.path.join("hosts", "show commands")
+            device_name = str(self.cb_bt_all_devices.currentText())
+            print(f"Device is selected is {device_name}")
+            all_devices = self.convert_host_file_into_list()
+            for device in all_devices:
+                if device["hostname"] == device_name:
+                    file_path = os.path.join(
+                        file_path,
+                        device["type"] + "_" + device["data"]["device_type"] + ".cfg",
+                    )
+                    break
+        # check device type and os type and fill listbox with its own commands
+        else:
+            selection = "group"
+            file_path = os.path.join("hosts", "show commands")
+            group_name = str(self.cb_bt_all_groups.currentText())
+            print(f"Group is selected is {group_name}")
+            all_groups = self.get_all_groups()
+            group_member = None
+            for group in all_groups:
+                if group["group_name"] == group_name:
+                    group_member = group
+            all_devices = self.convert_host_file_into_list()
+            try:
+                if group_member["group_members"]:
+                    member = group_member["group_members"][0]
+                    for device in all_devices:
+                        if device["hostname"] == member:
+                            file_path = os.path.join(
+                                file_path,
+                                f"Group_{device['data']['device_type']}.cfg",
+                            )
+                            break
+
+                else:
+                    QMessageBox.information(self, "Warning", "Group has no members")
+                    self.show_commands_list.clear()
+                    return
+            except Exception as error:
+                QMessageBox.information(self, "Warning", str(error))
+                self.show_commands_list.clear()
+                return
+        print(f"config file = {file_path}")
+        if os.path.isfile(file_path):
+            try:
+                with open(file_path, "r") as handler:
+                    commands = handler.read()
+                    # fill commands against single device
+                    self.show_commands_list.clear()
+                    self.show_commands_list.addItems(commands.splitlines())
+                    return
+            except Exception as error:
+                QMessageBox.information(self, "Warning", str(error))
+                self.show_commands_list.clear()
+                return
+        else:
+            open(file_path, "a").close()
+            QMessageBox.information(self, "Warning", "Config is empty")
+            self.show_commands_list.clear()
+            return
+
     def update_show_commands_groups_combobox(self):
         self.cb_bt_all_groups.clear()
         self.cb_bt_all_groups.addItems(
@@ -29,12 +94,13 @@ class show_commands(QDialog):
             self.device_selection = True
             box_to_disable.setEnabled(False)
             self.show_commands_submit_button()
+            self.fill_show_commands()
 
         # command seelection
 
     def show_commands_submit_button(self):
 
-        if self.device_selection and self.g_edit_group_members_2.selectedItems():
+        if self.device_selection and self.show_commands_list.selectedItems():
             self.config_show_btn_submit.setEnabled(True)
         else:
             self.config_show_btn_submit.setEnabled(False)

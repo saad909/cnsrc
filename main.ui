@@ -1356,7 +1356,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -1372,6 +1372,48 @@
                <string>All Groups</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_29">
+               <item row="2" column="1">
+                <widget class="QLineEdit" name="grp_all_txt_file_path">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Enter full file path</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <spacer name="verticalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Minimum</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>17</width>
+                   <height>13</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="2">
+                <widget class="QPushButton" name="grp_all_btn_browse">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Browse</string>
+                 </property>
+                </widget>
+               </item>
                <item row="0" column="3">
                 <widget class="QPushButton" name="btn_g_all_clear">
                  <property name="sizePolicy">
@@ -1401,19 +1443,6 @@
                  </property>
                 </widget>
                </item>
-               <item row="2" column="3">
-                <widget class="QPushButton" name="grp_all_btn_export">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>Export</string>
-                 </property>
-                </widget>
-               </item>
                <item row="0" column="2">
                 <widget class="QPushButton" name="btn_g_all_search">
                  <property name="sizePolicy">
@@ -1424,6 +1453,19 @@
                  </property>
                  <property name="text">
                   <string>Search</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QPushButton" name="grp_all_btn_export">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Export</string>
                  </property>
                 </widget>
                </item>
@@ -1466,51 +1508,14 @@
                  </column>
                  <column>
                   <property name="text">
+                   <string>OS</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
                    <string>Group Members</string>
                   </property>
                  </column>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QLineEdit" name="grp_all_txt_file_path">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="placeholderText">
-                  <string>Enter full file path</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <spacer name="verticalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Minimum</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>17</width>
-                   <height>13</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="2" column="2">
-                <widget class="QPushButton" name="grp_all_btn_browse">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>Browse</string>
-                 </property>
                 </widget>
                </item>
               </layout>
@@ -1708,7 +1713,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="configs">
        <attribute name="title">
         <string>Basic Section</string>
        </attribute>
@@ -1718,7 +1723,7 @@
           <property name="currentIndex">
            <number>0</number>
           </property>
-          <widget class="QWidget" name="tab_15">
+          <widget class="QWidget" name="show_commands">
            <attribute name="title">
             <string>Show Commands</string>
            </attribute>
@@ -1753,7 +1758,7 @@ color: rgb(0, 255, 0);</string>
              </widget>
             </item>
             <item row="1" column="0" colspan="3">
-             <widget class="QListWidget" name="g_edit_group_members_2">
+             <widget class="QListWidget" name="show_commands_list">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
                 <horstretch>0</horstretch>
@@ -1763,31 +1768,6 @@ color: rgb(0, 255, 0);</string>
               <property name="selectionMode">
                <enum>QAbstractItemView::MultiSelection</enum>
               </property>
-              <item>
-               <property name="text">
-                <string>saad</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>test</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>asd</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>asd</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>asdasd</string>
-               </property>
-              </item>
              </widget>
             </item>
             <item row="3" column="2">

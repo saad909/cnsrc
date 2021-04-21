@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import *
 from yaml import safe_load
 import yaml
 from pprint import pprint
-import os,re
+import os, re
 
 
 class groups(QDialog):
@@ -34,8 +34,10 @@ class groups(QDialog):
         devices = self.convert_host_file_into_list()
         self.g_add_group_members.clear()
         for device in devices:
-            device['hostname'] = "{:40s} {:10s}".format(device['hostname'],device['data']['device_type'])
-            self.g_add_group_members.addItem(device['hostname'])
+            device["hostname"] = "{:40s} {:10s}".format(
+                device["hostname"], device["data"]["device_type"]
+            )
+            self.g_add_group_members.addItem(device["hostname"])
 
         # devices = [devices+"\t\t - " for deivce in devices["hostname"]]
         self.g_add_group_members.setSortingEnabled(True)
@@ -129,13 +131,28 @@ class groups(QDialog):
             # get the values
             group_name = group["group_name"]
             group_members = group["group_members"]
+            os_type = "None"
+            if group_members:
+                member = group_members[0]
+                host_file_exists = self.check_for_host_file()
+                if host_file_exists:
+                    all_devices = self.convert_host_file_into_list()
+                    for device in all_devices:
+                        if device["hostname"] == member:
+                            os_type = device["data"]["device_type"]
+                            break
+                else:
+                    QMessageBox.information(
+                        self, "Warning", "Hosts inventory is not present"
+                    )
 
             # convert all group members list into a comma separated string
             group_members = ", ".join(group_members)
 
             # fill table
             self.tbl_groups.setItem(i, 0, QTableWidgetItem(group_name))
-            self.tbl_groups.setItem(i, 1, QTableWidgetItem(group_members))
+            self.tbl_groups.setItem(i, 1, QTableWidgetItem(os_type))
+            self.tbl_groups.setItem(i, 2, QTableWidgetItem(group_members))
 
             i += 1
 
@@ -144,8 +161,17 @@ class groups(QDialog):
         group_members = list()
         regexp = r"\s+\w+\s*"
         for device in self.g_add_group_members.selectedItems():
-            group_members.append(re.sub(regexp,"",device.text()))
+            group_members.append(re.sub(regexp, "", device.text()))
 
+        if group_members:
+            if group_members[0].strip() == "dummy" and len(group_members) == 1:
+                QMessageBox.information(
+                    self,
+                    "Warning",
+                    "Can not add dummy device into a group\nPlease first add a device",
+                )
+                self.clear_add_group_fields()
+                return
 
         self.check_for_group_file()
         groups = self.read_yaml_file(self.get_group_file_path())
@@ -176,21 +202,22 @@ class groups(QDialog):
             all_members = list()
             for member in group_members:
                 for device in devices:
-                    if device['hostname'] == member:
+                    if device["hostname"] == member:
                         all_members.append(device)
             match = True
             if all_members:
                 first_device = all_members[0]
                 list_length = len(all_members)
-                for index in range(1,list_length):
-                    if first_device['data']['device_type'] != all_members[index]['data']['device_type']:
+                for index in range(1, list_length):
+                    if (
+                        first_device["data"]["device_type"]
+                        != all_members[index]["data"]["device_type"]
+                    ):
                         match = False
 
                 if not match:
-                    QMessageBox.information(self,"Warning","Incompatible grouping")
+                    QMessageBox.information(self, "Warning", "Incompatible grouping")
                     return
-
-
 
             print(group_members)
             groups = self.add_group_into_file(group_name, group_members)
@@ -209,7 +236,6 @@ class groups(QDialog):
                 self.statusBar().showMessage("Succesfuly")
                 self.fill_groups_table(self.get_all_groups())
                 self.clear_device_search_results()
-                self.update_show_commands_groups_combobox()
                 self.clear_device_search_results()
                 self.auto_complete_group_edit_search_results()
                 self.auto_complete_group_search_results()
@@ -281,8 +307,10 @@ class groups(QDialog):
                 pprint(groups[group_index]["group_members"])
                 devices = self.convert_host_file_into_list()
                 for device in devices:
-                    device['hostname'] = "{:40s} {:10s}".format(device['hostname'],device['data']['device_type'])
-                    self.g_edit_group_members.addItem(device['hostname'])
+                    device["hostname"] = "{:40s} {:10s}".format(
+                        device["hostname"], device["data"]["device_type"]
+                    )
+                    self.g_edit_group_members.addItem(device["hostname"])
                 # self.g_edit_group_members.addItems(self.get_all_devices_hostname())
 
                 # now higlight the group members of group in qlist widget
@@ -294,14 +322,16 @@ class groups(QDialog):
                 i = 0
                 for device in devices:
                     for member in group_members:
-                        if device['hostname'] == member:
+                        if device["hostname"] == member:
                             index.append(i)
                     i += 1
                 pprint(index)
                 for i in index:
-                    devices[i]['hostname'] = "{:40s} {:10s}".format(devices[i]['hostname'],devices[i]['data']['device_type'])
+                    devices[i]["hostname"] = "{:40s} {:10s}".format(
+                        devices[i]["hostname"], devices[i]["data"]["device_type"]
+                    )
                     matching_items = self.g_edit_group_members.findItems(
-                        devices[i]['hostname'], Qt.MatchExactly
+                        devices[i]["hostname"], Qt.MatchExactly
                     )
                     for item in matching_items:
                         item.setSelected(True)
@@ -313,16 +343,16 @@ class groups(QDialog):
         group_members = list()
         regexp = r"\s+\w+\s*"
         for device in self.g_edit_group_members.selectedItems():
-            group_members.append(re.sub(regexp,"",device.text()))
+            group_members.append(re.sub(regexp, "", device.text()))
         # for device in self.g_edit_group_members.selectedItems():
         #     group_members.append(device.text())
         edited_group = self.create_dictionary_for_group(group_name, group_members)
         all_groups = self.get_all_groups()
 
         # check group name not equal to router or switch
-        if group_name == "router" or group_name == "switch":
+        if group_name == "Router" or group_name == "Switch":
             QMessageBox.information(
-                self, "Warning", r"group name can't be 'router' or 'switch'"
+                self, "Warning", r"group name can't be 'Router' or 'Switch'"
             )
             self.g_edit_groupname.setFocus()
             return
@@ -332,19 +362,21 @@ class groups(QDialog):
             all_members = list()
             for member in group_members:
                 for device in devices:
-                    if device['hostname'] == member:
+                    if device["hostname"] == member:
                         all_members.append(device)
             match = True
             first_device = all_members[0]
             list_length = len(all_members)
-            for index in range(1,list_length):
-                if first_device['data']['device_type'] != all_members[index]['data']['device_type']:
+            for index in range(1, list_length):
+                if (
+                    first_device["data"]["device_type"]
+                    != all_members[index]["data"]["device_type"]
+                ):
                     match = False
 
             if not match:
-                QMessageBox.information(self,"Warning","Incompatible grouping")
+                QMessageBox.information(self, "Warning", "Incompatible grouping")
                 return
-
 
             # get the index of target group
             group_index = -1
@@ -355,7 +387,7 @@ class groups(QDialog):
                     break
                 i += 1
 
-             # check for group duplication
+            # check for group duplication
             duplicaton_occured = False
             groups = self.convert_group_file_into_list()
             i = 0
@@ -408,7 +440,6 @@ class groups(QDialog):
                 self.fill_groups_table(self.get_all_groups())
                 self.clear_device_search_results()
                 self.txt_g_edit_groupname.setFocus()
-                self.update_show_commands_groups_combobox()
                 self.auto_complete_group_edit_search_results()
                 self.auto_complete_group_search_results()
 

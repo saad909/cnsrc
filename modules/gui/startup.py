@@ -1,8 +1,6 @@
 ###################### startup settings ######################
-from re import sub
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-import glob
 
 
 class startup_settings(QDial):
@@ -30,7 +28,6 @@ class startup_settings(QDial):
         self.update_bt_all_devices()
 
         # sort show commands combobox
-        # self.cb_bt_all_commands.model().sort(0)
         # sort show groups combobox
         self.cb_bt_all_groups.model().sort(0)
         # all group to groups combobox in basic task section - show commands
@@ -62,3 +59,5 @@ class startup_settings(QDial):
         # self.remove_border(self.tab_main)
         # self.remove_border(self.tab_devices)
         # show commands submit button
+
+        # fill all show commands list box w.r.t device type or group_type

@@ -1,14 +1,2 @@
-- group_members:
-  - Huawei_SF-CSG-01
-  - Sw1
-  group_name: saad
-- group_members:
-  - Sw1
-  - Sw2
-  group_name: testasdas
-- group_members:
-  - R1@!@$_-
-  group_name: askjdaskjdhna
-- group_members:
-  - Sw2
-  group_name: asdasdasdasd
+- group_members: []
+  group_name: dummy
