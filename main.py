@@ -96,19 +96,19 @@ class Main_Window(
         #     lambda: self.disable_box(self.cb_bt_all_groups, self.cb_bt_all_devices)
         # )
 
-        main_tab_window = self.tab_main.currentWidget().objectName()
-        sub_tab_window = self.tab_basic_tasks.currentWidget().objectName()
+        # main_tab_window = self.tab_main.currentWidget().objectName()
+        # sub_tab_window = self.tab_basic_tasks.currentWidget().objectName()
 
-        if main_tab_window == "configs" and sub_tab_window == "show_commands":
-            self.cb_bt_all_devices.textActivated.connect(
-                lambda: self.disable_box(self.cb_bt_all_devices, self.cb_bt_all_groups)
-            )
-            self.cb_bt_all_groups.textActivated.connect(
-                lambda: self.disable_box(self.cb_bt_all_groups, self.cb_bt_all_devices)
-            )
-            self.show_commands_list.itemSelectionChanged.connect(
-                self.show_commands_submit_button
-            )
+        # if main_tab_window == "configs" and sub_tab_window == "show_commands":
+        self.cb_bt_all_devices.textActivated.connect(
+            lambda: self.disable_box(self.cb_bt_all_devices, self.cb_bt_all_groups)
+        )
+        self.cb_bt_all_groups.textActivated.connect(
+            lambda: self.disable_box(self.cb_bt_all_groups, self.cb_bt_all_devices)
+        )
+        self.show_commands_list.itemSelectionChanged.connect(
+            self.show_commands_submit_button
+        )
 
     ###################### handle buttons action ######################
 

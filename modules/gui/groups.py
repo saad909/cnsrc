@@ -123,6 +123,56 @@ class groups(QDialog):
         self.g_add_group_members.selectionModel().clear()
         self.g_add_groupname.setFocus()
 
+    def check_all_group_members_type(self, group):
+        if group:
+            if group["group_members"]:
+                device_type_list = list()
+                all_devices = self.convert_host_file_into_list()
+                for member in group["group_members"]:
+                    for device in all_devices:
+                        if device["hostname"] == member:
+                            device_type_list.append(device["type"])
+                            break
+                if len(device_type_list) == 1:
+                    return [True,device_type_list[0]]
+                elif len(device_type_list) > 1:
+                    first_type = device_type_list[0]
+                    for index in range(1,len(device_type_list)):
+                        if device_type_list[index] != first_type:
+                            return False
+                    return [True,first_type]
+            else:
+                return False
+
+    def check_group_incompatibility(self, group):
+        all_devices = self.convert_host_file_into_list()
+        os_type_list = list()
+        if group:
+            if group["group_members"]:
+                for member in group["group_members"]:
+                    for device in all_devices:
+                        if device["hostname"] == member:
+                            os_type_list.append(device["data"]["device_type"])
+                            break
+            else:
+                return False
+
+        # print(group['group_members'])
+        # print(os_type_list)
+        incomptaible_group = False
+        if len(group["group_members"]) > 1:
+            first_member = os_type_list[0]
+            for index in range(1, len(os_type_list)):
+                if os_type_list[index] != first_member:
+                    incomptaible_group = True
+        else:
+            return [True, os_type_list[0]]
+
+        if incomptaible_group:
+            return False
+        else:
+            return [True, first_member]
+
     def fill_groups_table(self, groups):
         groups_count = len(groups)
         self.tbl_groups.setRowCount(groups_count)
@@ -151,7 +201,13 @@ class groups(QDialog):
 
             # fill table
             self.tbl_groups.setItem(i, 0, QTableWidgetItem(group_name))
-            self.tbl_groups.setItem(i, 1, QTableWidgetItem(os_type))
+            authentic_group = self.check_group_incompatibility(group)
+            if authentic_group:
+                self.tbl_groups.setItem(i, 1, QTableWidgetItem(authentic_group[1]))
+            elif not group['group_members']:
+                self.tbl_groups.setItem(i, 1, QTableWidgetItem("None"))
+            else:
+                self.tbl_groups.setItem(i, 1, QTableWidgetItem("Incompatible"))
             self.tbl_groups.setItem(i, 2, QTableWidgetItem(group_members))
 
             i += 1
@@ -196,7 +252,7 @@ class groups(QDialog):
             self.clear_add_group_fields()
             return
 
-        if group_name:
+        if group_name and group_members:
             # check for incomptaible grouping
             devices = self.convert_host_file_into_list()
             all_members = list()
@@ -356,7 +412,9 @@ class groups(QDialog):
         for member in group_members:
             if member.strip() == "dummy":
                 QMessageBox.information(
-                    self, "Warning", "Can not add dummy device into a group.\nPlease select other devices if present"
+                    self,
+                    "Warning",
+                    "Can not add dummy device into a group.\nPlease select other devices if present",
                 )
                 self.g_edit_groupname.setFocus()
                 self.clear_edit_group_fields()
@@ -371,7 +429,7 @@ class groups(QDialog):
             )
             self.g_edit_groupname.setFocus()
             return
-        if group_name:
+        if group_name and group_members:
             # check for incomptaible grouping
             devices = self.convert_host_file_into_list()
             all_members = list()

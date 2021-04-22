@@ -2,44 +2,44 @@
     device_type: cisco_ios
     host: 10.1.1.254
     password: !!binary |
-      Z0FBQUFBQmdnSXZTYW9hcU1HX2RKbDctcU9JYUU5Zk82dFdrNUNycHlTMS13NUF1Z1hjeHNESENS
-      RjQ4bXUzT3o3T1pzQ29OdHUza2pfeUFuWHZPbkItM2U4aHBBOVRTblE9PQ==
+      Z0FBQUFBQmdnVWUxZVNyOFl4ZlpLdXh3bmhtSVZPaWFOQ09xeE1CMzUyZ0Q2TUtDZ1FsZ0h1WjVl
+      S0lsNFhLam04SC1YWEFLRzc1QllMSDFYd1ZXaFpxYkpubTlUVkVvTnc9PQ==
     port: '223'
     secret: !!binary |
-      Z0FBQUFBQmdnSXZTbF9Hc3ZSYVVfNzI1Qk9obEI4ZW42ZmpGRkN4cGtGSEtoMm5uNFNUQ0cxRGxq
-      VlBXRF9GNFhPZGtUWTNZOHdJZWJraUowbDlTVnd3dEtmZGJrRG5ySFE9PQ==
+      Z0FBQUFBQmdnVWUxZzFMaEpGRlF6WnlpcE9xZTJhZ080dFdzcXpDNldLb05rajFDRWs5LTJSb2NW
+      T3l6OHNQZ0NpWHVfM0dhOXJMMEpUSmZaZFlpYUxDalEwQXZUdkdwSXc9PQ==
     username: cisco
   groups:
   - Router
   hostname: R1@!@$_-
-  type: Router
+  type: Switch
 - data:
-    device_type: cisco_xr
+    device_type: cisco_nxos
     host: 223.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdnSXZUM29xTVN2WnFwN3JpTUFYMDFhNHdwRHgzR2R0OXVpOTNSSUFxV0RwUkE0OXQw
-      ay04T1BqcHRLdGZZMXp6VDRkam9PbWxrMFkyb1dyTk5RUUhaWUkweWc9PQ==
+      Z0FBQUFBQmdnVVo2b3ZJT081blM1TzdZODVpRWw3a1plVHZKVUxWNi1UUE0wdXI1RTM3NVVrNUg0
+      aVAzQWhVQVFqNXVXN3FFRzdmTktIelY4dDhUOXgzaU03bHRHY3BlTUE9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdnSXZUdV9kWGoxR0xFNmZzdjZhcjE1b2JyMXRJSTFLRGRORVBsaldzWWRvODNOS3ln
-      c2NRX29pcllZelpmMWhfY1FXLW5maVJGai1tZjMwU0RSazJoTXZNc1E9PQ==
+      Z0FBQUFBQmdnVVo2bjFqcXRKYW16aGs0UFBHNDNGOXE5Vnp0dF93NXRHN0pSZE9mTmxCSEVfVVFa
+      UVpvY0pLaFJBNWNDZ0RNbGxXU1pSN0d3WUNFVWVfemFLbVpxelBFZ0E9PQ==
     username: cisco
   groups:
   - Switch
-  hostname: Sw1
-  type: Switch
+  hostname: R12
+  type: Router
 - data:
     device_type: cisco_nxos
     host: 10.1.1.252
     password: !!binary |
-      Z0FBQUFBQmdnSXdxYURKTU1kby1RLVFvb1JNbjhtaGQybDhJSkRGZDg5Z0lHSnFwdk5KSzRxdXkt
-      WFVGUVJQY2YybmFhdGhkZTJFTkNhcFZfMFJtY1Z3cmg4d1FacGRZRGc9PQ==
+      Z0FBQUFBQmdnVGtGWk1ndE1tc29QUVNIU0dJUUxJMzd2MXIyS05mZFlxaktOOVNjVDBabGtaMWh2
+      N0Jhck1OOXlxNWd0ZFktSWc5U3Nja0kxZ1FpX084TDFhYTJuV1J4ZlE9PQ==
     port: '65536'
     secret: !!binary |
-      Z0FBQUFBQmdnSXdxNUhqaS1SQXRHWndJUGNoeXl6ZzRfOVVzX3E5LTc3Mk01UGdBMFJVZlRlb29H
-      aFhGbjZtYTV6Y0pNRmZUMl8ydDR4bkViSEJwWUM3SHJnQlNfMHcweEE9PQ==
+      Z0FBQUFBQmdnVGtGMW54ZzVHWE1rU3VmaDF5N0I1NzRDaXZQaWhCbGl4Qi1nRVJGRFpfcXR5VDh6
+      eTZpOERNQ3VkdWFQTTBxOHFGYkNYeEhzWVl5dXpMTU8weFNtTHRIZmc9PQ==
     username: cisco
   groups:
   - Switch
-  hostname: Sw2
+  hostname: Sw22
   type: Switch

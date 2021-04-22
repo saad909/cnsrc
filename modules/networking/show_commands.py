@@ -27,6 +27,23 @@ class show_commands(QDialog):
             selection = "group"
             file_path = os.path.join("hosts", "show commands")
             group_name = str(self.cb_bt_all_groups.currentText())
+            our_group = None
+            all_groups = self.convert_group_file_into_list()
+            for group in all_groups:
+                if group["group_name"] == group_name:
+                    our_group = group
+                    break
+            authentic_group = self.check_group_incompatibility(our_group)
+            if not our_group["group_members"]:
+                QMessageBox.information(self, "Warning", "Group has no group members")
+                self.show_commands_list.clear()
+                return
+            elif not authentic_group:
+                QMessageBox.information(
+                    self, "Warning", "Group has incomptaible members"
+                )
+                self.show_commands_list.clear()
+                return
             print(f"Group is selected is {group_name}")
             all_groups = self.get_all_groups()
             group_member = None
@@ -35,7 +52,21 @@ class show_commands(QDialog):
                     group_member = group
             all_devices = self.convert_host_file_into_list()
             try:
-                if group_member["group_members"]:
+                # if all devices are router or switch, the for groups show the commands
+                # of that device_type and deivce_os
+                # i.e if all devices in group are swith and ios. then show switch ios commands
+                type = self.check_all_group_members_type(group_member)
+                if type:
+                    member = group_member["group_members"][0]
+                    for device in all_devices:
+                        if device["hostname"] == member:
+                            file_path = os.path.join(
+                                file_path,
+                                f"{type[1]}_{device['data']['device_type']}.cfg",
+                            )
+                            break
+
+                elif group_member["group_members"]:
                     member = group_member["group_members"][0]
                     for device in all_devices:
                         if device["hostname"] == member:
@@ -74,9 +105,7 @@ class show_commands(QDialog):
 
     def update_show_commands_groups_combobox(self):
         self.cb_bt_all_groups.clear()
-        self.cb_bt_all_groups.addItems(
-            ["Select a group", "switch", "router"] + self.get_all_groups_names()
-        )
+        self.cb_bt_all_groups.addItems(["Select a group"] + self.get_all_groups_names())
 
     def disable_box(self, checking_box, box_to_disable):
 
@@ -167,32 +196,32 @@ class show_commands(QDialog):
     def show_cmd_against_group(self, group_name):
         # run against device type groups
         group_members = list()
-        if group_name == "router":
-            all_device = self.convert_host_file_into_list()
-            for device in all_device:
-                if "router" in device["groups"]:
-                    group_members.append(device)
-            self.create_thread(group_members)
-            return
+        # if group_name == "router":
+        #     all_device = self.convert_host_file_into_list()
+        #     for device in all_device:
+        #         if "router" in device["groups"]:
+        #             group_members.append(device)
+        #     self.create_thread(group_members)
+        #     return
 
-        elif group_name == "switch":
-            all_device = self.convert_host_file_into_list()
-            for device in all_device:
-                if "switch" in device["groups"]:
-                    group_members.append(device)
-            self.create_thread(group_members)
-            return
-        else:
-            # This will only get the group members name
-            custom_group_members = list()
-            group_members = self.get_custom_group_members(group_name)
-            all_devices = self.convert_host_file_into_list()
-            for member in group_members:
-                for device in all_devices:
-                    if member == device["hostname"]:
-                        custom_group_members.append(device)
-            self.create_thread(custom_group_members)
-            return
+        # elif group_name == "switch":
+        #     all_device = self.convert_host_file_into_list()
+        #     for device in all_device:
+        #         if "switch" in device["groups"]:
+        #             group_members.append(device)
+        #     self.create_thread(group_members)
+        #     return
+        # else:
+        # This will only get the group members name
+        custom_group_members = list()
+        group_members = self.get_custom_group_members(group_name)
+        all_devices = self.convert_host_file_into_list()
+        for member in group_members:
+            for device in all_devices:
+                if member == device["hostname"]:
+                    custom_group_members.append(device)
+        self.create_thread(custom_group_members)
+        return
 
     def show_cmd_against_device(self, device_name):
         pass
