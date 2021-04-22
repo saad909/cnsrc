@@ -76,7 +76,8 @@ class groups(QDialog):
         # check for file existance
         # first check for inventory file
         if not os.path.isfile(self.get_host_file_path()):
-            os.remove(group_file)
+            if os.path.isfile(self.get_group_file_path()):
+                os.remove(group_file)
         file_exists = os.path.isfile(group_file)
         if not file_exists:
             print("group file does not exists")
