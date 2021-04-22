@@ -1,8 +1,10 @@
 from PyQt5.QtWidgets import *
-import os
-import concurrent.futures as cf
+import os, re
+import threading
+from queue import Queue
 
-# from pprint import pprint
+
+from pprint import pprint
 
 
 class show_commands(QDialog):
@@ -146,7 +148,6 @@ class show_commands(QDialog):
             command = handler.read()
         return command
 
-    # this will start running show commands procedure
     def run_show_command(self):
         device_name = None
         self.statusBar().showMessage("")
@@ -155,15 +156,11 @@ class show_commands(QDialog):
         # if single device is selected
         if device_selection:
             device_name = self.cb_bt_all_devices.currentText()
-            command_text = self.cb_bt_all_commands.currentText()
-            self.command = self.get_command(command_text)
             self.show_cmd_against_device(device_name)
 
         # if group is selected
         else:
             group_name = self.cb_bt_all_groups.currentText()
-            command_text = self.cb_bt_all_commands.currentText()
-            self.command = self.get_command(command_text)
             # print(command)
             self.show_cmd_against_group(group_name)
 
@@ -179,40 +176,20 @@ class show_commands(QDialog):
         return group_members
 
     # this actually send the command to the handler
-    def create_thread(self, group_members):
+    def create_thread(self, devices, cmds):
         self.show_output = ""
         self.config_show_te_cmds_output.setText("")
-        for device in group_members:
+        for device in devices:
             device["data"]["password"] = self.decrypt_password(
                 device["data"]["password"]
             )
             device["data"]["secret"] = self.decrypt_password(device["data"]["secret"])
 
         with cf.ThreadPoolExecutor(max_workers=5) as ex:
-            ex.map(self.create_show_handler, group_members)
-        print(self.show_output)
-        self.config_show_te_cmds_output.setText(self.show_output)
+            ex.map(self.create_show_handler, devices, cmds)
 
     def show_cmd_against_group(self, group_name):
-        # run against device type groups
         group_members = list()
-        # if group_name == "router":
-        #     all_device = self.convert_host_file_into_list()
-        #     for device in all_device:
-        #         if "router" in device["groups"]:
-        #             group_members.append(device)
-        #     self.create_thread(group_members)
-        #     return
-
-        # elif group_name == "switch":
-        #     all_device = self.convert_host_file_into_list()
-        #     for device in all_device:
-        #         if "switch" in device["groups"]:
-        #             group_members.append(device)
-        #     self.create_thread(group_members)
-        #     return
-        # else:
-        # This will only get the group members name
         custom_group_members = list()
         group_members = self.get_custom_group_members(group_name)
         all_devices = self.convert_host_file_into_list()
@@ -220,8 +197,67 @@ class show_commands(QDialog):
             for device in all_devices:
                 if member == device["hostname"]:
                     custom_group_members.append(device)
-        self.create_thread(custom_group_members)
+        all_commands = list()
+        for command in self.show_commands_list.selectedItems():
+            all_commands.append(command.text())
+        print("commands are")
+        print(str(all_commands))
+        self.create_thread(custom_group_members, all_commands)
+        print(self.show_output)
         return
 
     def show_cmd_against_device(self, device_name):
-        pass
+        device_name = self.cb_bt_all_devices.currentText()
+        # get device
+        my_device = None
+        all_devices = self.convert_host_file_into_list()
+        for device in all_devices:
+            if device["hostname"] == device_name:
+                my_device = device
+                break
+
+        show_ouput_dictionary = {"hostname": "", "commands": [], "error": ""}
+        all_commands = list()
+        for command in self.show_commands_list.selectedItems():
+            all_commands.append(command.text())
+
+        output_q = Queue()
+        # decrypt_passwords
+        my_device["data"]["password"] = self.decrypt_password(
+            my_device["data"]["password"]
+        )
+        my_device["data"]["secret"] = self.decrypt_password(my_device["data"]["secret"])
+        for command in all_commands:
+            my_thread = threading.Thread(
+                target=self.create_show_handler,
+                args=(my_device, command, show_ouput_dictionary, output_q),
+            )
+            my_thread.start()
+
+        # Wait for all threads to complete
+        main_thread = threading.currentThread()
+        for some_thread in threading.enumerate():
+            if some_thread != main_thread:
+                some_thread.join()
+
+        # for thread in threading.enumerate():
+        #     if thread != main_thread:
+        #         thread.kill()
+
+        output = ""
+        errors = ""
+        regex = r"""
+            (^(\(|'|\('))|((\)|'|\)')$)
+        """
+        while not output_q.empty():
+            my_dict = output_q.get()
+            output += "".join(my_dict["commands"])
+            errors += "".join(my_dict["error"])
+        output = re.sub(regex, "", output)
+        errors = re.sub(regex, "", errors)
+
+        print(output)
+        print(errors)
+        self.config_show_te_cmds_output.clear()
+        self.config_show_te_cmds_output.setText(output)
+        return
