@@ -1,9 +1,4 @@
 - group_members:
-  - R12
+  - Sw2
   - R1@!@$_-
-  group_name: asda
-- group_members:
-  - R1@!@$_-
-  group_name: saad
-- group_members: []
-  group_name: test
+  group_name: Sw

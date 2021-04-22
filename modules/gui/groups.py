@@ -134,13 +134,13 @@ class groups(QDialog):
                             device_type_list.append(device["type"])
                             break
                 if len(device_type_list) == 1:
-                    return [True,device_type_list[0]]
+                    return [True, device_type_list[0]]
                 elif len(device_type_list) > 1:
                     first_type = device_type_list[0]
-                    for index in range(1,len(device_type_list)):
+                    for index in range(1, len(device_type_list)):
                         if device_type_list[index] != first_type:
                             return False
-                    return [True,first_type]
+                    return [True, first_type]
             else:
                 return False
 
@@ -195,6 +195,9 @@ class groups(QDialog):
                     QMessageBox.information(
                         self, "Warning", "Hosts inventory is not present"
                     )
+                    os.remove(os.path.join("hosts", "groups.yaml"))
+                    self.tbl_groups.setRowCount(0)
+                    return
 
             # convert all group members list into a comma separated string
             group_members = ", ".join(group_members)
@@ -204,7 +207,7 @@ class groups(QDialog):
             authentic_group = self.check_group_incompatibility(group)
             if authentic_group:
                 self.tbl_groups.setItem(i, 1, QTableWidgetItem(authentic_group[1]))
-            elif not group['group_members']:
+            elif not group["group_members"]:
                 self.tbl_groups.setItem(i, 1, QTableWidgetItem("None"))
             else:
                 self.tbl_groups.setItem(i, 1, QTableWidgetItem("Incompatible"))
@@ -295,6 +298,7 @@ class groups(QDialog):
                 self.clear_device_search_results()
                 self.auto_complete_group_edit_search_results()
                 self.auto_complete_group_search_results()
+                self.update_show_commands_groups_combobox()
             else:
                 QMessageBox.information(self, "Note", "Group did not added")
                 self.statusBar().showMessage("Failed")
@@ -515,6 +519,7 @@ class groups(QDialog):
                 self.txt_g_edit_groupname.setFocus()
                 self.auto_complete_group_edit_search_results()
                 self.auto_complete_group_search_results()
+                self.update_show_commands_groups_combobox()
 
         else:
             QMessageBox.information(self, "Warning", "Group name can't be empty")

@@ -7,12 +7,12 @@ class startup_settings(QDial):
     def startup(self):
 
         ###################### groups section ######################
-        # show all groups in table on startup
-        self.check_for_group_file()
-        self.fill_groups_table(self.get_all_groups())
         # add devices for custom groups
         self.check_for_host_file()
         self.add_devices_for_group_selection()
+        # show all groups in table on startup
+        self.check_for_group_file()
+        self.fill_groups_table(self.get_all_groups())
         # autocomplete for all groups and edits groups section
         self.auto_complete_group_search_results()
         self.auto_complete_group_edit_search_results()
