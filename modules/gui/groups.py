@@ -74,6 +74,9 @@ class groups(QDialog):
             return False
 
         # check for file existance
+        # first check for inventory file
+        if not os.path.isfile(self.get_host_file_path()):
+            os.remove(group_file)
         file_exists = os.path.isfile(group_file)
         if not file_exists:
             print("group file does not exists")
@@ -195,7 +198,6 @@ class groups(QDialog):
                     QMessageBox.information(
                         self, "Warning", "Hosts inventory is not present"
                     )
-                    os.remove(os.path.join("hosts", "groups.yaml"))
                     self.tbl_groups.setRowCount(0)
                     return
 

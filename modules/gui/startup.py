@@ -1,6 +1,7 @@
 ###################### startup settings ######################
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+import os
 
 
 class startup_settings(QDial):
@@ -8,11 +9,12 @@ class startup_settings(QDial):
 
         ###################### groups section ######################
         # add devices for custom groups
+        self.check_for_group_file()
         self.check_for_host_file()
         self.add_devices_for_group_selection()
         # show all groups in table on startup
-        self.check_for_group_file()
-        self.fill_groups_table(self.get_all_groups())
+        if os.path.isfile(self.get_group_file_path()):
+            self.fill_groups_table(self.get_all_groups())
         # autocomplete for all groups and edits groups section
         self.auto_complete_group_search_results()
         self.auto_complete_group_edit_search_results()
