@@ -1,113 +1,194 @@
 from PyQt5.QtWidgets import *
 import os, re
-import threading
-from queue import Queue
+from pyfiglet import Figlet
+from PyQt5.QtCore import Qt
 
 
 from pprint import pprint
 
 
 class show_commands(QDialog):
-    def fill_show_commands(self):
-        # check whether group is selected or a device
-        selection = "None"
-        if self.cb_bt_all_devices.isEnabled():
-            selection = "device"
-            file_path = os.path.join("hosts", "show commands")
-            device_name = str(self.cb_bt_all_devices.currentText())
-            print(f"Device is selected is {device_name}")
-            all_devices = self.convert_host_file_into_list()
-            for device in all_devices:
-                if device["hostname"] == device_name:
-                    file_path = os.path.join(
-                        file_path,
-                        device["type"] + "_" + device["data"]["device_type"] + ".cfg",
-                    )
-                    break
-        # check device type and os type and fill listbox with its own commands
-        else:
-            selection = "group"
-            file_path = os.path.join("hosts", "show commands")
-            group_name = str(self.cb_bt_all_groups.currentText())
-            our_group = None
-            all_groups = self.convert_group_file_into_list()
-            for group in all_groups:
-                if group["group_name"] == group_name:
-                    our_group = group
-                    break
-            authentic_group = self.check_group_incompatibility(our_group)
-            if not our_group["group_members"]:
-                QMessageBox.information(self, "Warning", "Group has no group members")
-                self.show_commands_list.clear()
-                return
-            elif not authentic_group:
-                QMessageBox.information(
-                    self, "Warning", "Group has incomptaible members"
-                )
-                self.show_commands_list.clear()
-                return
-            print(f"Group is selected is {group_name}")
-            all_groups = self.get_all_groups()
-            group_member = None
-            for group in all_groups:
-                if group["group_name"] == group_name:
-                    group_member = group
-            all_devices = self.convert_host_file_into_list()
-            try:
-                # if all devices are router or switch, the for groups show the commands
-                # of that device_type and deivce_os
-                # i.e if all devices in group are swith and ios. then show switch ios commands
-                type = self.check_all_group_members_type(group_member)
-                if type:
-                    member = group_member["group_members"][0]
-                    for device in all_devices:
-                        if device["hostname"] == member:
-                            file_path = os.path.join(
-                                file_path,
-                                f"{type[1]}_{device['data']['device_type']}.cfg",
-                            )
-                            break
-
-                elif group_member["group_members"]:
-                    member = group_member["group_members"][0]
-                    for device in all_devices:
-                        if device["hostname"] == member:
-                            file_path = os.path.join(
-                                file_path,
-                                f"Group_{device['data']['device_type']}.cfg",
-                            )
-                            break
-
-                else:
-                    QMessageBox.information(self, "Warning", "Group has no members")
-                    self.show_commands_list.clear()
-                    return
-            except Exception as error:
-                QMessageBox.information(self, "Warning", str(error))
-                self.show_commands_list.clear()
-                return
-        print(f"config file = {file_path}")
-        if os.path.isfile(file_path):
-            try:
-                with open(file_path, "r") as handler:
-                    commands = handler.read()
-                    # fill commands against single device
-                    self.show_commands_list.clear()
-                    self.show_commands_list.addItems(commands.splitlines())
-                    return
-            except Exception as error:
-                QMessageBox.information(self, "Warning", str(error))
-                self.show_commands_list.clear()
-                return
-        else:
-            open(file_path, "a").close()
-            QMessageBox.information(self, "Warning", "Config is empty")
+    def add_custom_commands(self, state):
+        if not self.config_show_btn_custom_commands.isChecked():
             self.show_commands_list.clear()
+            self.fill_show_commands()
+        if self.config_show_btn_custom_commands.isChecked():
+            file_url = ""
+            file_url = QFileDialog.getOpenFileName(
+                self, "Open a csv file", ".", "Text FILE(*.txt);;All File(*)"
+            )[0]
+            if file_url and os.path.isfile(file_url):
+                try:
+                    with open(file_url, "r") as handler:
+                        output = handler.read()
+                    output = output.splitlines()
+                    self.show_commands_list.clear()
+                    self.show_commands_list.addItems(output)
+                    QMessageBox.information(
+                        self, "Success", "Successfully imported your commands"
+                    )
+                    return
+
+                except Exception as error:
+                    self.config_show_btn_custom_commands.setChecked(False)
+                    self.fill_show_commands()
+                    QMessageBox.information(self, "Failed", str(error))
+                    return
+            else:
+                self.config_show_btn_custom_commands.setChecked(False)
+                self.fill_show_commands()
+                QMessageBox.information(self, "Failed", "Please select a file first")
+                return
+
+    def export_show_output(self):
+        output = self.config_show_te_cmds_output.toPlainText()
+        try:
+            if output:
+                url = QFileDialog.getSaveFileName(
+                    self, "Create a text file", ".", "Text file(*.txt);;All File(*)"
+                )[0]
+                if url:
+                    if not url.endswith(".txt"):
+                        url += ".txt"
+                    with open(url, "w") as handler:
+                        handler.write(output)
+                    QMessageBox.information(
+                        self, "Successfull", f"Output Exported to {url}"
+                    )
+                    return
+                else:
+                    QMessageBox.information(self, "Failed", "Please select path")
+                    return
+
+            else:
+                QMessageBox.information(self, "Failed", "No output is present")
+                return
+        except Exception as error:
+            QMessageBox.information(self, "Failed", str(error))
             return
+
+    def fill_show_commands(self):
+        if not self.config_show_btn_custom_commands.isChecked():
+            # check whether group is selected or a device
+            selection = "None"
+            if self.cb_bt_all_devices.isEnabled():
+                if self.cb_bt_all_devices.currentIndex() == 0:
+                    self.show_commands_list.clear()
+                    return
+                selection = "device"
+                file_path = os.path.join("hosts", "show commands")
+                device_name = str(self.cb_bt_all_devices.currentText())
+                print(f"Device is selected is {device_name}")
+                all_devices = self.convert_host_file_into_list()
+                for device in all_devices:
+                    if device["hostname"] == device_name:
+                        file_path = os.path.join(
+                            file_path,
+                            device["type"]
+                            + "_"
+                            + device["data"]["device_type"]
+                            + ".cfg",
+                        )
+                        break
+            # check device type and os type and fill listbox with its own commands
+            else:
+                if self.cb_bt_all_groups.currentIndex == 0:
+                    self.show_commands_list.clear()
+                    return
+                selection = "group"
+                file_path = os.path.join("hosts", "show commands")
+                group_name = str(self.cb_bt_all_groups.currentText())
+                our_group = None
+                all_groups = self.convert_group_file_into_list()
+                for group in all_groups:
+                    if group["group_name"] == group_name:
+                        our_group = group
+                        break
+                authentic_group = self.check_group_incompatibility(our_group)
+                if not our_group["group_members"]:
+                    QMessageBox.information(
+                        self, "Warning", "Group has no group members"
+                    )
+                    self.show_commands_list.clear()
+                    return
+                elif not authentic_group:
+                    QMessageBox.information(
+                        self, "Warning", "Group has incomptaible members"
+                    )
+                    self.show_commands_list.clear()
+                    return
+                print(f"Group is selected is {group_name}")
+                all_groups = self.get_all_groups()
+                group_member = None
+                for group in all_groups:
+                    if group["group_name"] == group_name:
+                        group_member = group
+                all_devices = self.convert_host_file_into_list()
+                try:
+                    # if all devices are router or switch, the for groups show the commands
+                    # of that device_type and deivce_os
+                    # i.e if all devices in group are swith and ios. then show switch ios commands
+                    type = self.check_all_group_members_type(group_member)
+                    if type:
+                        member = group_member["group_members"][0]
+                        for device in all_devices:
+                            if device["hostname"] == member:
+                                file_path = os.path.join(
+                                    file_path,
+                                    f"{type[1]}_{device['data']['device_type']}.cfg",
+                                )
+                                break
+
+                    elif group_member["group_members"]:
+                        member = group_member["group_members"][0]
+                        for device in all_devices:
+                            if device["hostname"] == member:
+                                file_path = os.path.join(
+                                    file_path,
+                                    f"Group_{device['data']['device_type']}.cfg",
+                                )
+                                break
+
+                    else:
+                        QMessageBox.information(self, "Warning", "Group has no members")
+                        self.show_commands_list.clear()
+                        return
+                except Exception as error:
+                    QMessageBox.information(self, "Warning", str(error))
+                    self.show_commands_list.clear()
+                    return
+            print(f"config file = {file_path}")
+            if os.path.isfile(file_path):
+                try:
+                    with open(file_path, "r") as handler:
+                        commands = handler.read()
+                        # fill commands against single device
+                        self.show_commands_list.clear()
+                        self.show_commands_list.addItems(commands.splitlines())
+                        return
+                except Exception as error:
+                    QMessageBox.information(self, "Warning", str(error))
+                    self.show_commands_list.clear()
+                    return
+            else:
+                open(file_path, "a").close()
+                QMessageBox.information(self, "Warning", "Config is empty")
+                self.show_commands_list.clear()
+                return
 
     def update_show_commands_groups_combobox(self):
         self.cb_bt_all_groups.clear()
         self.cb_bt_all_groups.addItems(["Select a group"] + self.get_all_groups_names())
+
+    def check_for_activation(self, checking_box, box_to_disable):
+        if checking_box.currentIndex() == 0 and box_to_disable.currentIndex() == 0:
+            self.config_show_btn_custom_commands.setEnabled(False)
+            self.config_show_btn_custom_commands.setChecked(False)
+            self.show_commands_list.clear()
+            return
+        else:
+            self.config_show_btn_custom_commands.setEnabled(True)
+            return
 
     def disable_box(self, checking_box, box_to_disable):
 
@@ -175,19 +256,6 @@ class show_commands(QDialog):
                 print(error)
         return group_members
 
-    # this actually send the command to the handler
-    def create_thread(self, devices, cmds):
-        self.show_output = ""
-        self.config_show_te_cmds_output.setText("")
-        for device in devices:
-            device["data"]["password"] = self.decrypt_password(
-                device["data"]["password"]
-            )
-            device["data"]["secret"] = self.decrypt_password(device["data"]["secret"])
-
-        with cf.ThreadPoolExecutor(max_workers=5) as ex:
-            ex.map(self.create_show_handler, devices, cmds)
-
     def show_cmd_against_group(self, group_name):
         group_members = list()
         custom_group_members = list()
@@ -200,11 +268,31 @@ class show_commands(QDialog):
         all_commands = list()
         for command in self.show_commands_list.selectedItems():
             all_commands.append(command.text())
-        print("commands are")
-        print(str(all_commands))
-        self.create_thread(custom_group_members, all_commands)
-        print(self.show_output)
-        return
+        output = ""
+        f = Figlet(font="slant")
+        for device in all_devices:
+            output += "\n" * 2 + f.renderText(
+                device["hostname"].center(15, " ") + "\n" * 2 
+            )
+            # decrypt_passwords
+            device["data"]["password"] = self.decrypt_password(
+                device["data"]["password"]
+            )
+            device["data"]["secret"] = self.decrypt_password(device["data"]["secret"])
+            i = 0
+            for command in all_commands:
+                result = self.create_show_handler(device, command)
+                if result:
+                    if i != len(all_commands) - 1:
+                        result +=  "\n" * 2 + "-" * 80 + "\n"
+                    output += result
+                else:
+                    break
+                i += 1
+        print(output)
+        if output:
+            self.config_show_te_cmds_output.setText(output)
+            return
 
     def show_cmd_against_device(self, device_name):
         device_name = self.cb_bt_all_devices.currentText()
@@ -221,43 +309,19 @@ class show_commands(QDialog):
         for command in self.show_commands_list.selectedItems():
             all_commands.append(command.text())
 
-        output_q = Queue()
         # decrypt_passwords
         my_device["data"]["password"] = self.decrypt_password(
             my_device["data"]["password"]
         )
         my_device["data"]["secret"] = self.decrypt_password(my_device["data"]["secret"])
-        for command in all_commands:
-            my_thread = threading.Thread(
-                target=self.create_show_handler,
-                args=(my_device, command, show_ouput_dictionary, output_q),
-            )
-            my_thread.start()
-
-        # Wait for all threads to complete
-        main_thread = threading.currentThread()
-        for some_thread in threading.enumerate():
-            if some_thread != main_thread:
-                some_thread.join()
-
-        # for thread in threading.enumerate():
-        #     if thread != main_thread:
-        #         thread.kill()
-
         output = ""
-        errors = ""
-        regex = r"""
-            (^(\(|'|\('))|((\)|'|\)')$)
-        """
-        while not output_q.empty():
-            my_dict = output_q.get()
-            output += "".join(my_dict["commands"])
-            errors += "".join(my_dict["error"])
-        output = re.sub(regex, "", output)
-        errors = re.sub(regex, "", errors)
-
-        print(output)
-        print(errors)
-        self.config_show_te_cmds_output.clear()
-        self.config_show_te_cmds_output.setText(output)
-        return
+        f = Figlet(font="slant")
+        for command in all_commands:
+            output += f.renderText(command)
+            result = self.create_show_handler(my_device, command)
+            if result:
+                output += result
+        if output:
+            self.config_show_te_cmds_output.clear()
+            self.config_show_te_cmds_output.setText(output)
+            return

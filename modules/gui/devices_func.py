@@ -20,10 +20,16 @@ class devices_func(QDial):
             self, "Save File", ".", "Excel File (*.xlsx);;All files(*)"
         )[0]
         # Append extension if not there yet
-        if not filename.endswith(".xlsx"):
-            filename += ".xlsx"
-        box_to_set_path.setText(filename)
-        return
+        if filename:
+            if not filename.endswith(".xlsx"):
+                filename += ".xlsx"
+            box_to_set_path.setText(filename)
+            return
+        else:
+            QMessageBox.information(
+                self, "Failed", "Please select path"
+            )
+            return
 
     def export_table(self, table, file_path_widget):
         filename = file_path_widget.text()

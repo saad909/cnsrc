@@ -100,6 +100,18 @@ class Main_Window(
         # sub_tab_window = self.tab_basic_tasks.currentWidget().objectName()
 
         # if main_tab_window == "configs" and sub_tab_window == "show_commands":
+        ########## SHow section ##################
+        self.cb_bt_all_devices.textActivated.connect(
+            lambda: self.check_for_activation(
+                self.cb_bt_all_devices, self.cb_bt_all_groups
+            )
+        )
+        self.cb_bt_all_groups.textActivated.connect(
+            lambda: self.check_for_activation(
+                self.cb_bt_all_groups, self.cb_bt_all_devices
+            )
+        )
+
         self.cb_bt_all_devices.textActivated.connect(
             lambda: self.disable_box(self.cb_bt_all_devices, self.cb_bt_all_groups)
         )
@@ -109,6 +121,8 @@ class Main_Window(
         self.show_commands_list.itemSelectionChanged.connect(
             self.show_commands_submit_button
         )
+        self.config_show_btn_export.clicked.connect(self.export_show_output)
+        self.config_show_btn_custom_commands.clicked.connect(self.add_custom_commands)
 
     ###################### handle buttons action ######################
 

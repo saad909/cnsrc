@@ -17,14 +17,14 @@
     device_type: cisco_ios
     host: 10.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdnVnVBdmg0QUNMVkZDQVhSR3lCRldVYU13UnAxV3k4REk1RVlXSHdTMUcxbzYzN3M3
-      LVctWmMwTlp3ZXBUdVNwSHNEVDk1amFSQm9jN2JIMVFRUnoyVXV0bmc9PQ==
+      Z0FBQUFBQmdoRG90eC1kSWVVRnQ0X2VRdEZaOXg2VU5zSTNhLTEyblRzdlYyMGkwODVudGd6Ujdo
+      TGY2RWIxTW5idGRmYmE1RTdRcDVzWWYxNkg4TTZEWUhNQ1NBMTdMZXc9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdnVnVBXzhlXy10T1pxVnhacENTV2hLN21YVHltNEJ6STV6ODFZMmNhQnRmakl5cXgz
-      TTJKZTlhU1FKdm4yQzllSWc2NHhlRXZldE1UOVJ3VVRHZm9MUUhaMkE9PQ==
+      Z0FBQUFBQmdoRG90bXl0cHl3SmJFWHFySEtlVjNlRk9jd0tMRzhmRFRKMEFSTW1oR1hmMzhkbGRm
+      WTMxbnFoOXBqaF9CUXBRNjJvbGg4Zk9vTHRvRUFtN1ltdVV2Z1dDTEE9PQ==
     username: cisco
   groups:
   - Switch
   hostname: Sw1
-  type: Switch
+  type: Router

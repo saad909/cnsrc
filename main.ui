@@ -22,6 +22,9 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_24">
     <item row="0" column="0">
@@ -1728,7 +1731,26 @@
             <string>Show Commands</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_23">
-            <item row="2" column="0" colspan="3">
+            <item row="0" column="2">
+             <widget class="QPushButton" name="config_show_btn_submit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Submit</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QComboBox" name="cb_bt_all_devices">
+              <item>
+               <property name="text">
+                <string>Select a device</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="3">
              <widget class="QTextEdit" name="config_show_te_cmds_output">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -1745,19 +1767,17 @@ color: rgb(0, 255, 0);</string>
               </property>
              </widget>
             </item>
+            <item row="4" column="0" colspan="3">
+             <widget class="QPushButton" name="config_show_btn_export">
+              <property name="text">
+               <string>Export</string>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="1">
              <widget class="QComboBox" name="cb_bt_all_groups"/>
             </item>
-            <item row="0" column="0">
-             <widget class="QComboBox" name="cb_bt_all_devices">
-              <item>
-               <property name="text">
-                <string>Select a device</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="1" column="0" colspan="3">
+            <item row="2" column="0" colspan="3">
              <widget class="QListWidget" name="show_commands_list">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
@@ -1770,20 +1790,16 @@ color: rgb(0, 255, 0);</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="2">
-             <widget class="QPushButton" name="config_show_btn_submit">
+            <item row="1" column="0">
+             <widget class="QPushButton" name="config_show_btn_custom_commands">
               <property name="enabled">
                <bool>false</bool>
               </property>
               <property name="text">
-               <string>Submit</string>
+               <string>Add your own commands from csv or text file</string>
               </property>
-             </widget>
-            </item>
-            <item row="3" column="0" colspan="3">
-             <widget class="QPushButton" name="pushButton">
-              <property name="text">
-               <string>Export</string>
+              <property name="checkable">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
