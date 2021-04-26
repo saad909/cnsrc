@@ -126,7 +126,7 @@ class devices_func(QDial):
             device_type = device["type"]
             port_number = device["data"]["port"]
             # groups based on device type
-            groups = device["groups"]
+            # groups = device["groups"]
             # user defined groups
             other_groups = list()
             all_custom_groups = self.get_all_groups()
@@ -134,7 +134,7 @@ class devices_func(QDial):
                 if hostname in group["group_members"]:
                     other_groups.append(group["group_name"])
 
-            all_groups = groups + other_groups
+            all_groups = other_groups
             os_type = device["data"]["device_type"]
 
             self.tbl_devices.setItem(i, 0, QTableWidgetItem(hostname))

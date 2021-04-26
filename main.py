@@ -101,6 +101,9 @@ class Main_Window(
 
         # if main_tab_window == "configs" and sub_tab_window == "show_commands":
         ########## SHow section ##################
+        # main toolbox index changed
+        self.load_settings()
+        self.toolBox.currentChanged.connect(self.tool_box_and_tabs_movement)
         self.cb_bt_all_devices.textActivated.connect(
             lambda: self.check_for_activation(
                 self.cb_bt_all_devices, self.cb_bt_all_groups

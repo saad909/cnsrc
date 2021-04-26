@@ -2,29 +2,29 @@
     device_type: cisco_ios
     host: 10.1.1.254
     password: !!binary |
-      Z0FBQUFBQmdnVnRfWVZkcGpHRUl0SVg5aUd3WTQ1ZEMyX2Zab2lfTmg3ZWtxbE1PUFY3TkNKekJU
-      cThMdFdTcXRxd01Xb28wamNaaWFMS0owYW5INmJDeHdDaTVEZ3ZCS0E9PQ==
+      Z0FBQUFBQmdoVVpZZktHUUFhNDRLZmE0YWxrcXVUVVpVN2VGNUM5WVRXbnJuN0RZazJ1YVQ4RktY
+      RUJmdUcwa2NNNVFkd0h1X3E1UWZLeXh4dExxZm84NnpFdEtVNlQ0RXc9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdnVnRfRmliZ1RjV183enJkRXNmM3RDbFZBWXBEOHNwbTU3bE9hQVFBY25GZng5UklG
-      dzJGVGxRZkZ1VE5PNzYyZHZXdk8xcTB0Vm12OFdxS0Y3VENCakNQdXc9PQ==
+      Z0FBQUFBQmdoVVpZS3Uzd2xmd2ZQSmRtM25uNTNSbnBNemFaNjhldGlvMllMQ21TbDZ1dk91S3NU
+      em1aUGMzbGxGZjFmTl9ncnZuMXMwYmRWOG9oS3lnbkZKTm9YS1NrZ2c9PQ==
     username: cisco
   groups:
   - Router
   hostname: R1@!@$_-
   type: Router
 - data:
-    device_type: cisco_ios
+    device_type: cisco_xr
     host: 10.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdoRG90eC1kSWVVRnQ0X2VRdEZaOXg2VU5zSTNhLTEyblRzdlYyMGkwODVudGd6Ujdo
-      TGY2RWIxTW5idGRmYmE1RTdRcDVzWWYxNkg4TTZEWUhNQ1NBMTdMZXc9PQ==
+      Z0FBQUFBQmdoVWJQX3RfU1ZUWHRCRXhOR09uUk14LXNfeHpmS1hzMkQyNU9vVTkyNnZrNlFjQWVH
+      SDlkdFZvUkRZYXcxb2pwVHZVUW0wNTVYU2h1NE1sRnJGb21CQzBlMVE9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdoRG90bXl0cHl3SmJFWHFySEtlVjNlRk9jd0tMRzhmRFRKMEFSTW1oR1hmMzhkbGRm
-      WTMxbnFoOXBqaF9CUXBRNjJvbGg4Zk9vTHRvRUFtN1ltdVV2Z1dDTEE9PQ==
+      Z0FBQUFBQmdoVWJQZVdLYVUzNWcxUkljUVZZRkJHOWtaSVNGRy14a1QyazBkTUNKVEQ4ZHZFWlFl
+      SlpQRjQ5aFdONlhiX0g4TXVkTGZKSTd2bFM1UUJKWERNWXhhSWNwb2c9PQ==
     username: cisco
   groups:
   - Switch
   hostname: Sw1
-  type: Router
+  type: Switch

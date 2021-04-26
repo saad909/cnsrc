@@ -2,22 +2,22 @@
 - 2. user authentication
 - 9. encrypt passwords in inventory file
 - 10. check intergrity of host file,group file and databse file before reading - hacker may create its own databse and may paste here
-- 3. multithreading
 - 9. Bulk addition also check the integrity of csv file
 - 10. Export tables as excel file
 - 11. optional port no while adding device
 - 13. Logging
 
-12. all show commands add
 
-8. monitoring - cpu, ram, per interface traffic and other usages show with graph
+1. Interfaces all - up/down
+2. Monitoring - cpu, ram, per interface
+3. running and startup config 
+4. Ios backup
+5. Configurations
+6. multithreading
 
-4. basic configs
-
-5. backup and restore running and startup configs at some action happened for each device or at specific interval or manually
-6. backup and restore ios at specific interval or on user demand
 
 
+Configurations:
 Routers:
 
 

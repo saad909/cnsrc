@@ -178,6 +178,8 @@ class show_commands(QDialog):
 
     def update_show_commands_groups_combobox(self):
         self.cb_bt_all_groups.clear()
+        if self.get_all_groups()[0] == "dummy":
+            return
         self.cb_bt_all_groups.addItems(["Select a group"] + self.get_all_groups_names())
 
     def check_for_activation(self, checking_box, box_to_disable):

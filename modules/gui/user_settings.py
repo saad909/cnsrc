@@ -29,18 +29,26 @@ class user_settings(QDial):
         if not exists:
             self.create_default_settings_yaml_file()
 
-    def load_settings(self):
-        # check whether the user defined settings exists
-        # 1. if exits - then load them
-        # 2. else create default settings and load them
-        self.check_settings_file()
-        settings = self.read_yaml_file("settings.yaml")
-        print(settings)
+    def tool_box_and_tabs_movement(self, index):
+        for i in range(0, 6):
+            if i == index:
+                self.tab_main.setCurrentIndex(i)
+                break
 
-        # default load page
-        self.toolBox.setCurrentIndex(settings["default_section"])
-        # default theme
-        # file_path  = os.path.join("themes", settings['theme'] + '.css')
-        # with open(file_path,'r') as handler:
-        #     style = handler.read()
-        # self.setStyleSheet(style)
+    def load_settings(self):
+        self.toolBox.setCurrentIndex(3)
+        self.tab_main.setCurrentIndex(3)
+        # # check whether the user defined settings exists
+        # # 1. if exits - then load them
+        # # 2. else create default settings and load them
+        # self.check_settings_file()
+        # settings = self.read_yaml_file("settings.yaml")
+        # print(settings)
+
+        # # default load page
+        # self.toolBox.setCurrentIndex(settings["default_section"])
+        # # default theme
+        # # file_path  = os.path.join("themes", settings['theme'] + '.css')
+        # # with open(file_path,'r') as handler:
+        # #     style = handler.read()
+        # # self.setStyleSheet(style)
