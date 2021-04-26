@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>849</width>
+    <width>870</width>
     <height>730</height>
    </rect>
   </property>
@@ -26,7 +26,7 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_24">
+   <layout class="QFormLayout" name="formLayout">
     <item row="0" column="0">
      <widget class="QToolBox" name="toolBox">
       <property name="sizePolicy">
@@ -45,7 +45,7 @@
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>5</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -55,7 +55,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>167</width>
+         <width>170</width>
          <height>528</height>
         </rect>
        </property>
@@ -78,7 +78,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>514</height>
+         <height>528</height>
         </rect>
        </property>
        <attribute name="label">
@@ -114,7 +114,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>514</height>
+         <height>528</height>
         </rect>
        </property>
        <attribute name="label">
@@ -149,7 +149,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>167</width>
+         <width>170</width>
          <height>528</height>
         </rect>
        </property>
@@ -167,7 +167,7 @@
         <item row="1" column="0">
          <widget class="QPushButton" name="pb_bt_set_ntp">
           <property name="text">
-           <string>Set</string>
+           <string>Interface</string>
           </property>
          </widget>
         </item>
@@ -178,7 +178,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>167</width>
+         <width>170</width>
          <height>528</height>
         </rect>
        </property>
@@ -191,7 +191,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>167</width>
+         <width>170</width>
          <height>528</height>
         </rect>
        </property>
@@ -213,7 +213,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -622,7 +622,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -1807,40 +1807,91 @@ color: rgb(0, 255, 0);</string>
           </widget>
           <widget class="QWidget" name="tab_6">
            <attribute name="title">
-            <string>Set</string>
+            <string>Interface state</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_18">
-            <item row="0" column="0">
-             <widget class="QGroupBox" name="groupBox_2">
-              <property name="title">
-               <string/>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_17">
-               <item row="1" column="0">
-                <widget class="QTextEdit" name="bt_set_vlan_desc">
-                 <property name="baseSize">
-                  <size>
-                   <width>400</width>
-                   <height>400</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QLineEdit" name="bt_set_vlan_no"/>
-               </item>
-               <item row="2" column="0">
-                <widget class="QPushButton" name="bt_set_vlan_submit">
-                 <property name="text">
-                  <string>Submit</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-           </layout>
+           <layout class="QGridLayout" name="gridLayout_18"/>
           </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_8">
+       <attribute name="title">
+        <string>Backup and restore</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Montoring</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_24">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="mon_int_cb_all_interfaces">
+          <property name="title">
+           <string>Interface Monitoring</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_17">
+           <item row="0" column="0">
+            <widget class="QComboBox" name="mon_int_cb_all_devices"/>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="mon_"/>
+           </item>
+           <item row="0" column="3">
+            <widget class="QRadioButton" name="mon_int_rb_up">
+             <property name="text">
+              <string>Up</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="4">
+            <widget class="QRadioButton" name="mon_int_rb_down">
+             <property name="text">
+              <string>Down</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="6">
+            <widget class="QPushButton" name="mon_int_btn_toggle">
+             <property name="text">
+              <string>Toggle State</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="mon_int_lbl_interfaces_state">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="7">
+            <widget class="QGraphicsView" name="mon_int_graph"/>
+           </item>
+           <item row="0" column="2">
+            <widget class="Line" name="line_2">
+             <property name="windowModality">
+              <enum>Qt::NonModal</enum>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
