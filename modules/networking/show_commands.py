@@ -115,6 +115,7 @@ class show_commands(QDialog):
                     QMessageBox.information(
                         self, "Warning", "Group has incomptaible members"
                     )
+                    self.config_show_btn_custom_commands.setEnabled(False)
                     self.show_commands_list.clear()
                     return
                 print(f"Group is selected is {group_name}")

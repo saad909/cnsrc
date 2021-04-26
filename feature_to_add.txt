@@ -8,13 +8,14 @@
 - 13. Logging
 
 
-1. Interfaces all - up/down
-2. Monitoring - cpu, ram, per interface
 3. running and startup config 
 4. Ios backup
 5. Configurations
 6. multithreading
 
+with snmp:
+  1. Interfaces all - up/down
+  2. Monitoring - cpu, ram, per interface
 
 
 Configurations:

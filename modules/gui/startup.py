@@ -62,4 +62,4 @@ class startup_settings(QDial):
         # self.remove_border(self.tab_devices)
         # show commands submit button
 
-        # fill all show commands list box w.r.t device type or group_type
+        self.update_mon_all_devices()

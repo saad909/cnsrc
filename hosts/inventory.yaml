@@ -14,15 +14,15 @@
   hostname: R1@!@$_-
   type: Router
 - data:
-    device_type: cisco_xr
+    device_type: cisco_ios
     host: 10.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdoVWJQX3RfU1ZUWHRCRXhOR09uUk14LXNfeHpmS1hzMkQyNU9vVTkyNnZrNlFjQWVH
-      SDlkdFZvUkRZYXcxb2pwVHZVUW0wNTVYU2h1NE1sRnJGb21CQzBlMVE9PQ==
+      Z0FBQUFBQmdoclgtMWZiSlFvTEcxOGU3cGxJaFFYMFEwYnJETkNMc2lDQmZOY3MyY1JMdjdUYmE5
+      OTFKaG1ucS1pcjVwcmt1eTR0STNxSXd6a3JHbld1bm8yYk1pMHFNbGc9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdoVWJQZVdLYVUzNWcxUkljUVZZRkJHOWtaSVNGRy14a1QyazBkTUNKVEQ4ZHZFWlFl
-      SlpQRjQ5aFdONlhiX0g4TXVkTGZKSTd2bFM1UUJKWERNWXhhSWNwb2c9PQ==
+      Z0FBQUFBQmdoclgtRC1CX1pYWTlxdk1RUi1LOUQ0bXdUX2FIV2VtWUE4aTNxWUxnMnhJa0FNc0FU
+      aW44a3dFeUZKbk50X1J5NjVUSjhmMF9la3lCN1Q0NWs5MDB2WHVoclE9PQ==
     username: cisco
   groups:
   - Switch

@@ -213,7 +213,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -1742,13 +1742,7 @@
              </widget>
             </item>
             <item row="0" column="0">
-             <widget class="QComboBox" name="cb_bt_all_devices">
-              <item>
-               <property name="text">
-                <string>Select a device</string>
-               </property>
-              </item>
-             </widget>
+             <widget class="QComboBox" name="cb_bt_all_devices"/>
             </item>
             <item row="3" column="0" colspan="3">
              <widget class="QTextEdit" name="config_show_te_cmds_output">
