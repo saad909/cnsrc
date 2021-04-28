@@ -63,3 +63,7 @@ class startup_settings(QDial):
         # show commands submit button
 
         self.update_mon_all_devices()
+
+        # configuration section
+        self.update_mgmt_config_all_devices()
+        self.update_mgmt_os_all_devices()

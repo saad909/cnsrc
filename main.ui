@@ -45,7 +45,7 @@
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>3</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -213,7 +213,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -1813,6 +1813,80 @@ color: rgb(0, 255, 0);</string>
        <attribute name="title">
         <string>Backup and restore</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_27">
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBox_11">
+          <property name="title">
+           <string>Backup or restore IOS</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_26">
+           <item row="1" column="0" colspan="3">
+            <widget class="QListWidget" name="listWidget_2"/>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <widget class="QComboBox" name="mgmt_os_all_devices"/>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="mgmt_os_btn_backup">
+             <property name="text">
+              <string>Backup</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QPushButton" name="mgmt_os_btn_restore">
+             <property name="text">
+              <string>Restore</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>Backup or restore configurations</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_25">
+           <item row="1" column="0" colspan="4">
+            <widget class="QListWidget" name="listWidget"/>
+           </item>
+           <item row="2" column="1" colspan="2">
+            <widget class="QPushButton" name="mgmt_config_btn_restore">
+             <property name="text">
+              <string>Restore</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QPushButton" name="mgmt_config_btn_backup">
+             <property name="text">
+              <string>Backup</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QComboBox" name="mgmt_config_all_devices_2">
+             <item>
+              <property name="text">
+               <string>running config</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>startup config</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <widget class="QComboBox" name="mgmt_config_all_devices"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
