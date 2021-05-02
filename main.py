@@ -74,6 +74,7 @@ class Main_Window(
     users,
     password_hashing,
     password_encryption,
+    configs,
 ):
     def __init__(self):
         super().__init__()
@@ -102,6 +103,7 @@ class Main_Window(
         # if main_tab_window == "configs" and sub_tab_window == "show_commands":
         ########## SHow section ##################
         # main toolbox index changed
+        # show section
         self.load_settings()
         self.toolBox.currentChanged.connect(self.tool_box_and_tabs_movement)
         self.cb_bt_all_devices.textActivated.connect(
@@ -126,6 +128,12 @@ class Main_Window(
         )
         self.config_show_btn_export.clicked.connect(self.export_show_output)
         self.config_show_btn_custom_commands.clicked.connect(self.add_custom_commands)
+
+        # devices configs section
+        self.mgmt_config_config_type.textActivated.connect(self.fill_configs)
+        self.mgmt_config_all_devices.textActivated.connect(self.fill_configs)
+        self.configs_list.itemClicked.connect(self.check_config_restore_button)
+        self.mgmt_config_btn_backup.clicked.connect(self.show_configs_backup_window)
 
     ###################### handle buttons action ######################
 

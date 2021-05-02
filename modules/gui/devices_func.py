@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from pprint import pprint
 import pandas as pd
+import os
 
 
 class devices_func(QDial):
@@ -615,6 +616,16 @@ class devices_func(QDial):
                 self.write_inventory(devices)
 
                 QMessageBox.information(self, "Success", "Data modified successfully")
+                try:
+                    if hostname_before != hostname:
+                        os.rename(os.path.join
+                          (
+                              "hosts","configs",hostname_before
+                          )
+                          ,os.path.join("hosts","configs",hostname)
+                  )
+                except Exception as error:
+                    print(str(error))
                 # reflect changes in groups.yaml file
                 self.synchronize_editing(hostname_before, hostname)
                 # update groups table

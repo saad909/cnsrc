@@ -45,7 +45,7 @@
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -1359,7 +1359,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -1850,10 +1850,13 @@ color: rgb(0, 255, 0);</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_25">
            <item row="1" column="0" colspan="4">
-            <widget class="QListWidget" name="listWidget"/>
+            <widget class="QListWidget" name="configs_list"/>
            </item>
            <item row="2" column="1" colspan="2">
             <widget class="QPushButton" name="mgmt_config_btn_restore">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>Restore</string>
              </property>
@@ -1861,13 +1864,16 @@ color: rgb(0, 255, 0);</string>
            </item>
            <item row="0" column="3">
             <widget class="QPushButton" name="mgmt_config_btn_backup">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>Backup</string>
              </property>
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QComboBox" name="mgmt_config_all_devices_2">
+            <widget class="QComboBox" name="mgmt_config_config_type">
              <item>
               <property name="text">
                <string>running config</string>

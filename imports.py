@@ -23,3 +23,6 @@ from modules.password.password_hashing import *
 
 # password hashing
 from modules.password.password_encryption import *
+
+# device configuartions
+from modules.gui.configs import *

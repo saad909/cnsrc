@@ -4,6 +4,16 @@ from pprint import pprint
 
 
 class devices(QDialog):
+    def create_device_directory(self, hostname):
+        # check for directory, if does not exists then make it
+        try:
+            if not os.path.isdir(os.path.join("hosts", "configs")):
+                os.mkdir(os.path.join("hosts", "configs"))
+            config_path = os.path.join("hosts", "configs", hostname)
+            os.mkdir(config_path)
+        except Exception as error:
+            print(str(error))
+
     def add_host(self):
         ##### getting the values from the boxes ######
 
@@ -84,6 +94,8 @@ class devices(QDialog):
 
         if added:
             QMessageBox.information(self, "Success", "Device added successfully")
+            # create directory of the file
+            self.create_device_directory(hostname)
             # clearing the fileds
             self.clear_add_devices_fileds()
 
@@ -238,6 +250,7 @@ class devices(QDialog):
                             self, "Success", f"{hostname} added successfully"
                         )
 
+                        self.create_device_directory(hostname)
                         self.dev_add_txt_csv_file_path.setText("")
                         # Update the all device table
                         self.clear_device_search_results()
