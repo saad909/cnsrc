@@ -15,7 +15,10 @@ class backup_window(QWidget, Config):
         self.configs_backup_btn_save.clicked.connect(self.backup_config)
 
     def backup_config(self):
-        QMessageBox.information(self, "Note", "Saving config")
+        # device_name = ui.mgmt_config_all_devices.currentText()
+        # config_type = ui.mgmt_config_config_type.currentText()
+        QMessageBox.information(self, "Note", f"Saving config")
+        # QMessageBox.information(self, "Note", f"Saving {config_type} of {device_name}")
         self.close()
 
 

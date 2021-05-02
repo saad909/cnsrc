@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>870</width>
+    <width>877</width>
     <height>730</height>
    </rect>
   </property>
@@ -121,6 +121,13 @@
         <string>Groups</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_20">
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pb_grp_edit">
+          <property name="text">
+           <string>Delete or Edit</string>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="0">
          <widget class="QPushButton" name="pb_grp_all">
           <property name="text">
@@ -132,13 +139,6 @@
          <widget class="QPushButton" name="pb_grp_add">
           <property name="text">
            <string>Add</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QPushButton" name="pb_grp_edit">
-          <property name="text">
-           <string>Delete or Edit</string>
           </property>
          </widget>
         </item>
