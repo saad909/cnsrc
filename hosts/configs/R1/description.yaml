@@ -1,0 +1,18 @@
+- desc: s1
+  file_name: startup config_03-05-2021_18:35:21.cfg
+  type: startup config
+- desc: s2
+  file_name: startup config_03-05-2021_18:39:48.cfg
+  type: startup config
+- desc: s3
+  file_name: startup config_03-05-2021_18:40:48.cfg
+  type: startup config
+- desc: r1
+  file_name: running config_03-05-2021_18:40:58.cfg
+  type: running config
+- desc: r2
+  file_name: running config_03-05-2021_18:41:01.cfg
+  type: running config
+- desc: s4
+  file_name: startup config_03-05-2021_18:44:15.cfg
+  type: startup config
