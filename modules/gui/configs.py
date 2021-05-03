@@ -162,16 +162,23 @@ class configs(QDialog):
     ):
 
         device_dir = os.path.join("hosts", "configs", device_name)
-        all_existing_files = glob.glob(os.path.join(device_dir, f"*{config_type}*.cfg"))
+        all_existing_files = glob.glob(os.path.join(device_dir, "*.cfg"))
+        # all_existing_files = glob.glob(os.path.join(device_dir, f"*{config_type}*.cfg"))
         print(f"All existing files {all_existing_files}")
         print(f"all configs in file {all_configs_in_file}")
-        # all_existing_files = glob.glob(os.path.join(device_dir, f"*.cfg"))
         files_not_present = list()
         i = 0
         for config in all_configs_in_file:
-            if not (config["file_name"] in set(all_existing_files)):
+            present = False
+            for file in all_existing_files:
+                if config['file_name'] in file:
+                    present = True
+                    break
+            if not present:
                 files_not_present.append(i)
             i += 1
+
+                
         print(f"Files not present at indexes {files_not_present}")
         return files_not_present
 
@@ -216,12 +223,22 @@ class configs(QDialog):
                     for config in all_configs:
                         if config["type"] == "running config":
                             our_configs.append(config)
-                # files_not_present_indices = self.check_config_files_existance(
-                #     our_configs, config_type, device_name
-                # )
-                # if files_not_present_indices:
-                #     for index in files_not_present_indices:
-                #         our_configs.pop(index)
+                print(f"Our config is {our_configs}")
+                # check for empty entries
+                files_not_present_indices = self.check_config_files_existance(
+                    all_configs, config_type, device_name
+                )
+                if files_not_present_indices:
+                    for index in files_not_present_indices:
+                        all_configs.pop(index)
+                    try:
+                        desc_file_path = os.path.join("hosts", "configs", device_name, "description.yaml")
+                        f = open(desc_file_path, "w+")
+                        yaml.dump(all_configs, f, allow_unicode=True)
+                        return
+                    except Exception as error:
+                        QMessageBox.critical(self,"Warning",str(error))
+
 
                 self.configs_list.clear()
                 if our_configs:
