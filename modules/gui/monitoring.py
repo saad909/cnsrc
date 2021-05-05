@@ -5,7 +5,13 @@ from pprint import pprint
 
 class monitoring:
     def check_interface_toggle_state(self):
-        self.mon_int_cb_all_interface.count()
+        count = self.mon_int_cb_all_interface.count()
+        if count:
+            all_interfaces = self.get_all_interfaces(
+                self.mon_int_cb_all_devices.currentText()
+            )
+            print(all_interfaces)
+
         if count and (
             self.mon_int_rb_up.isChecked() or self.mon_int_rb_down.isChecked()
         ):
@@ -48,7 +54,12 @@ class monitoring:
                             "protocol": result.group("protocol"),
                         }
                         interfaces.append(intf)
-                pprint(interfaces)
+                self.mon_int_cb_all_interface.clear()
+                for intf in interfaces:
+                    self.mon_int_cb_all_interface.addItem(intf["name"])
+
+                return interfaces
+
                 # ip_address = result.group("ip_address")
 
             except Exception as error:
