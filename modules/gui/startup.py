@@ -66,4 +66,4 @@ class startup_settings(QDial):
 
         # configuration section
         self.update_mgmt_config_all_devices()
-        self.update_mgmt_os_all_devices()
+        # self.update_mgmt_os_all_devices()

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>877</width>
+    <width>863</width>
     <height>730</height>
    </rect>
   </property>
@@ -27,180 +27,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="0">
-     <widget class="QToolBox" name="toolBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>1</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="inputMethodHints">
-       <set>Qt::ImhPreferNumbers</set>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
-      </property>
-      <property name="currentIndex">
-       <number>2</number>
-      </property>
-      <property name="tabSpacing">
-       <number>6</number>
-      </property>
-      <widget class="QWidget" name="page">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>170</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Users</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_15">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_usr_user_settings">
-          <property name="text">
-           <string>User Settings</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>184</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Devices</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_dev_all">
-          <property name="text">
-           <string>ALL</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QPushButton" name="pb_dev_edit">
-          <property name="text">
-           <string>Delete or Edit</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pb_dev_add">
-          <property name="text">
-           <string>Add</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_5">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>184</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Groups</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_20">
-        <item row="1" column="0" colspan="2">
-         <widget class="QPushButton" name="pb_grp_edit">
-          <property name="text">
-           <string>Delete or Edit</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_grp_all">
-          <property name="text">
-           <string>ALL</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pb_grp_add">
-          <property name="text">
-           <string>Add</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_6">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>170</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Configure Devices</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_8">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_bt_show_commands">
-          <property name="text">
-           <string>Show Commands</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pb_bt_set_ntp">
-          <property name="text">
-           <string>Interface</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>170</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Backup and Restore configs</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="page_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>170</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Monitoring</string>
-       </attribute>
-      </widget>
-     </widget>
-    </item>
     <item row="0" column="1">
      <widget class="QTabWidget" name="tab_main">
       <property name="sizePolicy">
@@ -213,7 +39,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -1814,64 +1640,12 @@ color: rgb(0, 255, 0);</string>
         <string>Backup and restore</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_27">
-        <item row="1" column="0">
-         <widget class="QGroupBox" name="groupBox_11">
-          <property name="title">
-           <string>Backup or restore IOS</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_26">
-           <item row="1" column="0" colspan="3">
-            <widget class="QListWidget" name="listWidget_2"/>
-           </item>
-           <item row="0" column="0" colspan="2">
-            <widget class="QComboBox" name="mgmt_os_all_devices"/>
-           </item>
-           <item row="0" column="2">
-            <widget class="QPushButton" name="mgmt_os_btn_backup">
-             <property name="text">
-              <string>Backup</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QPushButton" name="mgmt_os_btn_restore">
-             <property name="text">
-              <string>Restore</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
         <item row="0" column="0">
          <widget class="QGroupBox" name="groupBox_2">
           <property name="title">
            <string>Backup or restore configurations</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_25">
-           <item row="1" column="0" colspan="4">
-            <widget class="QListWidget" name="configs_list"/>
-           </item>
-           <item row="2" column="1" colspan="2">
-            <widget class="QPushButton" name="mgmt_config_btn_restore">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>Restore</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3">
-            <widget class="QPushButton" name="mgmt_config_btn_backup">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>Backup</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="2">
             <widget class="QComboBox" name="mgmt_config_config_type">
              <item>
@@ -1888,6 +1662,23 @@ color: rgb(0, 255, 0);</string>
            </item>
            <item row="0" column="0" colspan="2">
             <widget class="QComboBox" name="mgmt_config_all_devices"/>
+           </item>
+           <item row="0" column="3">
+            <widget class="QPushButton" name="mgmt_config_btn_backup">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Backup</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="4">
+            <widget class="QListWidget" name="configs_list">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -1909,7 +1700,7 @@ color: rgb(0, 255, 0);</string>
             <widget class="QComboBox" name="mon_int_cb_all_devices"/>
            </item>
            <item row="0" column="1">
-            <widget class="QComboBox" name="mon_"/>
+            <widget class="QComboBox" name="mon_int_cb_all_interface"/>
            </item>
            <item row="0" column="3">
             <widget class="QRadioButton" name="mon_int_rb_up">
@@ -1934,6 +1725,9 @@ color: rgb(0, 255, 0);</string>
            </item>
            <item row="0" column="6">
             <widget class="QPushButton" name="mon_int_btn_toggle">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>Toggle State</string>
              </property>
@@ -1969,6 +1763,173 @@ color: rgb(0, 255, 0);</string>
          </widget>
         </item>
        </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QToolBox" name="toolBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhPreferNumbers</set>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="currentIndex">
+       <number>5</number>
+      </property>
+      <property name="tabSpacing">
+       <number>6</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>114</width>
+         <height>528</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Users</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_15">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_usr_user_settings">
+          <property name="text">
+           <string>User Settings</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>184</width>
+         <height>528</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Devices</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_dev_all">
+          <property name="text">
+           <string>ALL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pb_dev_edit">
+          <property name="text">
+           <string>Delete or Edit</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pb_dev_add">
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>184</width>
+         <height>528</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Groups</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_20">
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pb_grp_edit">
+          <property name="text">
+           <string>Delete or Edit</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_grp_all">
+          <property name="text">
+           <string>ALL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pb_grp_add">
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>114</width>
+         <height>528</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Configure Devices</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_bt_show_commands">
+          <property name="text">
+           <string>Show Commands</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>114</width>
+         <height>528</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Backup configs</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>114</width>
+         <height>528</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Monitoring</string>
+       </attribute>
       </widget>
      </widget>
     </item>

@@ -75,6 +75,7 @@ class Main_Window(
     password_hashing,
     password_encryption,
     configs,
+    monitoring,
 ):
     def __init__(self):
         super().__init__()
@@ -132,8 +133,13 @@ class Main_Window(
         # devices configs section
         self.mgmt_config_config_type.textActivated.connect(self.fill_configs)
         self.mgmt_config_all_devices.textActivated.connect(self.fill_configs)
-        self.configs_list.itemClicked.connect(self.check_config_restore_button)
+        # self.configs_list.itemClicked.connect(self.check_config_restore_button)
         self.mgmt_config_btn_backup.clicked.connect(self.show_configs_backup_window)
+        # Monitoring
+        self.mon_int_cb_all_devices.textActivated.connect(self.get_all_interfaces)
+        self.mon_int_cb_all_interface.textActivated.connect(
+            self.check_interface_toggle_state
+        )
 
     ###################### handle buttons action ######################
 

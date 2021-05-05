@@ -46,9 +46,7 @@ class backup_window(
             os.mkdir(os.path.join("hosts", "configs"))
             os.path.join("hosts", "configs", self.device["hostname"])
             return False
-        if not os.path.isdir(
-            os.path.join("hosts", "configs", self.device["hostname"])
-        ):
+        if not os.path.isdir(os.path.join("hosts", "configs", self.device["hostname"])):
             os.mkdir(os.path.join("hosts", "configs", self.device["hostname"]))
             return False
 
@@ -101,7 +99,7 @@ class backup_window(
             if command:
                 output = conn.send_command(command)
                 now = datetime.now()
-                config_name = now.strftime("%d-%m-%Y_%H:%M:%S")
+                config_name = now.strftime("%d-%m-%Y_%H-%M-%S")
                 output_filename = os.path.join(
                     "hosts",
                     "configs",
@@ -148,11 +146,11 @@ class configs(QDialog):
         self.fill_configs()
         return
 
-    def check_config_restore_button(self):
-        if self.configs_list.selectedItems():
-            self.mgmt_config_btn_restore.setEnabled(True)
-        else:
-            self.mgmt_config_btn_restore.setEnabled(False)
+    # def check_config_restore_button(self):
+    #     if self.configs_list.selectedItems():
+            # self.mgmt_config_btn_restore.setEnabled(True)
+        # else:
+            # self.mgmt_config_btn_restore.setEnabled(False)
 
     def get_config_file_path(self, device_name):
         return os.path.join("hosts", "configs", device_name, "description.yaml")
@@ -171,33 +169,28 @@ class configs(QDialog):
         for config in all_configs_in_file:
             present = False
             for file in all_existing_files:
-                if config['file_name'] in file:
+                if config["file_name"] in file:
                     present = True
                     break
             if not present:
                 files_not_present.append(i)
             i += 1
 
-                
         print(f"Files not present at indexes {files_not_present}")
         return files_not_present
 
-    def check_desc_file(self,hostname):
+    def check_desc_file(self, hostname):
         if not os.path.isdir(os.path.join("hosts", "configs")):
             os.mkdir(os.path.join("hosts", "configs"))
             os.path.join("hosts", "configs", hostname)
             print("configs directory does not exists")
             return False
-        if not os.path.isdir(
-            os.path.join("hosts", "configs", hostname)
-        ):
+        if not os.path.isdir(os.path.join("hosts", "configs", hostname)):
             print(f"Host's({hostname}) configs directory does not exist")
             os.mkdir(os.path.join("hosts", "configs", hostname))
             return False
 
-        file_path = os.path.join(
-            "hosts", "configs", hostname, "description.yaml"
-        )
+        file_path = os.path.join("hosts", "configs", hostname, "description.yaml")
         if not os.path.isfile(file_path):
             return False
         else:
@@ -205,14 +198,16 @@ class configs(QDialog):
 
     def fill_configs(self):
         device_name = self.mgmt_config_all_devices.currentText()
-        self.mgmt_config_btn_restore.setEnabled(False)
+        # self.mgmt_config_btn_restore.setEnabled(False)
         if not device_name == "Select a Device":
             self.mgmt_config_btn_backup.setEnabled(True)
             device_dir = os.path.join("hosts", "configs", device_name)
             config_type = self.mgmt_config_config_type.currentText()
             # check for Per device config file
             if self.check_desc_file(device_name):
-                all_configs = self.read_yaml_file(self.get_config_file_path(device_name))
+                all_configs = self.read_yaml_file(
+                    self.get_config_file_path(device_name)
+                )
                 print(f"All configs are {all_configs}")
                 our_configs = list()
                 if config_type == "startup config":
@@ -232,13 +227,14 @@ class configs(QDialog):
                     for index in files_not_present_indices:
                         all_configs.pop(index)
                     try:
-                        desc_file_path = os.path.join("hosts", "configs", device_name, "description.yaml")
+                        desc_file_path = os.path.join(
+                            "hosts", "configs", device_name, "description.yaml"
+                        )
                         f = open(desc_file_path, "w+")
                         yaml.dump(all_configs, f, allow_unicode=True)
                         return
                     except Exception as error:
-                        QMessageBox.critical(self,"Warning",str(error))
-
+                        QMessageBox.critical(self, "Warning", str(error))
 
                 self.configs_list.clear()
                 if our_configs:
@@ -252,12 +248,12 @@ class configs(QDialog):
                     # QMessageBox.information(
                     #     self, "Warning", "No backup configs are found"
                     # )
-                    self.mgmt_config_btn_restore.setEnabled(False)
+                    # self.mgmt_config_btn_restore.setEnabled(False)
             else:
-                self.mgmt_config_btn_restore.setEnabled(False)
+                # self.mgmt_config_btn_restore.setEnabled(False)
                 self.configs_list.clear()
 
         else:
             self.mgmt_config_btn_backup.setEnabled(False)
-            self.mgmt_config_btn_restore.setEnabled(False)
+            # self.mgmt_config_btn_restore.setEnabled(False)
             self.configs_list.clear()

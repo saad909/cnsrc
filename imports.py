@@ -26,3 +26,6 @@ from modules.password.password_encryption import *
 
 # device configuartions
 from modules.gui.configs import *
+
+# monitoring
+from modules.gui.monitoring import *
