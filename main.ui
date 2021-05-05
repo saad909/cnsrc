@@ -1676,7 +1676,7 @@ color: rgb(0, 255, 0);</string>
            <item row="1" column="0" colspan="4">
             <widget class="QListWidget" name="configs_list">
              <property name="enabled">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -1704,6 +1704,9 @@ color: rgb(0, 255, 0);</string>
            </item>
            <item row="0" column="3">
             <widget class="QRadioButton" name="mon_int_rb_up">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>Up</string>
              </property>
@@ -1711,6 +1714,9 @@ color: rgb(0, 255, 0);</string>
            </item>
            <item row="0" column="4">
             <widget class="QRadioButton" name="mon_int_rb_down">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>Down</string>
              </property>
@@ -1747,7 +1753,11 @@ color: rgb(0, 255, 0);</string>
             </widget>
            </item>
            <item row="2" column="0" colspan="7">
-            <widget class="QGraphicsView" name="mon_int_graph"/>
+            <widget class="QGraphicsView" name="mon_int_graph">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="0" column="2">
             <widget class="Line" name="line_2">

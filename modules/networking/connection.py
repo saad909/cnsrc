@@ -3,6 +3,7 @@ from netmiko import ConnectHandler
 from netmiko.ssh_exception import NetMikoTimeoutException
 from netmiko.ssh_exception import AuthenticationException
 from paramiko.ssh_exception import SSHException
+from jinja2 import Environment, FileSystemLoader
 
 
 class connection(QDialog):
@@ -53,3 +54,22 @@ class connection(QDialog):
             self.statusBar.showMessage(str(error))
             QMessageBox.information(self, "Warning", str(error))
             return
+
+    def send_mon_int_configs(self, device, interface_name, command_file):
+        try:
+            # print(device)
+            # print(interface_name)
+            # print(command_file)
+            config_dictionary = {"intf_name": interface_name}
+            j2_env = Environment(
+                loader=FileSystemLoader("."), trim_blocks=True, autoescape=True
+            )
+            template = j2_env.get_template(command_file)
+            configuration = template.render(data=config_dictionary)
+            print(configuration)
+            conn = ConnectHandler(**device["data"])
+            conn.enable()
+            output = conn.send_config_set(configuration.split("\n"))
+            print(output)
+        except Exception as error:
+            QMessageBox.critical(self, "Warning", str(error))

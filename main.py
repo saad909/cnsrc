@@ -140,6 +140,7 @@ class Main_Window(
         self.mon_int_cb_all_interface.textActivated.connect(
             self.check_interface_toggle_state
         )
+        self.mon_int_btn_toggle.clicked.connect(self.toggle_interface_state)
 
     ###################### handle buttons action ######################
 

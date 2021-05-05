@@ -4,18 +4,73 @@ from pprint import pprint
 
 
 class monitoring:
-    def check_interface_toggle_state(self):
-        count = self.mon_int_cb_all_interface.count()
-        if count:
-            all_interfaces = self.get_all_interfaces(
-                self.mon_int_cb_all_devices.currentText()
+    def toggle_interface_state(self):
+        # try:
+        interface_name = self.mon_int_cb_all_interface.currentText()
+        device_name = self.mon_int_cb_all_devices.currentText()
+        all_devices = self.convert_host_file_into_list()
+        my_device = None
+        for device in all_devices:
+            if device["hostname"] == device_name:
+                my_device = device
+                break
+        my_device["data"]["password"] = self.decrypt_password(
+            my_device["data"]["password"]
+        )
+        my_device["data"]["secret"] = self.decrypt_password(my_device["data"]["secret"])
+        command_file = ""
+        if self.mon_int_rb_up.isChecked():
+            command_file = os.path.join(
+                "hosts",
+                "monitor",
+                my_device["data"]["device_type"] + "_int_shutdown.j2",
             )
-            print(all_interfaces)
+        else:
+            command_file = os.path.join(
+                "hosts",
+                "monitor",
+                my_device["data"]["device_type"] + "_int_noshut.j2",
+            )
 
-        if count and (
-            self.mon_int_rb_up.isChecked() or self.mon_int_rb_down.isChecked()
-        ):
-            self.mon_int_btn_toggle.setEnabled(True)
+        if command_file:
+            self.send_mon_int_configs(my_device, interface_name, command_file)
+
+        # except Exception as error:
+        #     QMessageBox.critical(self, "Warning", str(error))
+
+    def check_interface_toggle_state(self, interface_name):
+        try:
+            count = self.mon_int_cb_all_interface.count()
+            if count:
+                all_interfaces = self.get_all_interfaces(
+                    self.mon_int_cb_all_devices.currentText()
+                )
+                index = self.mon_int_cb_all_interface.findText(interface_name)
+                print(index)
+                self.mon_int_cb_all_interface.setCurrentIndex(index)
+                state = ""
+                interface = None
+                for intf in all_interfaces:
+                    if intf["name"] == interface_name:
+                        interface = intf
+                        break
+
+                print(interface)
+                print(
+                    f"inteface state is {interface['status']} and {interface['protocol']}"
+                )
+                if interface["status"] == "up" and interface["protocol"] == "up":
+                    self.mon_int_rb_up.setChecked(True)
+                else:
+                    self.mon_int_rb_down.setChecked(True)
+            if count and (
+                self.mon_int_rb_up.isChecked() or self.mon_int_rb_down.isChecked()
+            ):
+                self.mon_int_btn_toggle.setEnabled(True)
+                return
+        except Exception as error:
+            QMessageBox.critical(self, "Warning", str(error))
+            return
 
     def get_all_interfaces(self, device_name):
         if device_name != "Select a Device":
