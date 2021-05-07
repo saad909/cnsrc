@@ -16,3 +16,6 @@
 - desc: starttads
   file_name: startup config_05-05-2021_17-38-18.cfg
   type: startup config
+- desc: backing up running-config
+  file_name: running config_08-05-2021_01-09-21.cfg
+  type: running config

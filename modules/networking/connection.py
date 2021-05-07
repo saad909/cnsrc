@@ -24,6 +24,7 @@ class connection(QDialog):
 
             conn = ConnectHandler(**device["data"])
             output = conn.send_command(command)
+            conn.disconnect()
             return output
         except NetMikoTimeoutException:
             print(f"{device['hostname']}  in not reachable")
