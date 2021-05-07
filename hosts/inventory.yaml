@@ -28,3 +28,33 @@
   - Router
   hostname: R1
   type: Router
+- data:
+    device_type: cisco_ios
+    host: 100.100.100.100
+    password: !!binary |
+      Z0FBQUFBQmdsVEd6dWZKcW1iS1llOGV2UmtmYmNzbEFXMG5CakFhUVlJYl9yZ3hURjZkNW1aQ3VI
+      WG9ocGJvOG93bTFxOFItV3BqYUdYQk1MQUhfSmU4enNLSndpQTVWdnc9PQ==
+    port: '22'
+    secret: !!binary |
+      Z0FBQUFBQmdsVEd6X3AxTXBoLVp6UC0zQk9VOU9MeF9qNi1zajhtNHlEdE5sTDJZZmZTWW5Zcm1I
+      UEVmSzVZS1RDNk93Wm8zQURuVE94T1R4SGJLY2xsNHZWTTZhLVk3aVE9PQ==
+    username: cisco
+  groups:
+  - Router
+  hostname: R11
+  type: Router
+- data:
+    device_type: cisco_ios
+    host: 200.200.200.200
+    password: !!binary |
+      Z0FBQUFBQmdsVEhoUmczQkVvRzNvRFFSNkRnRmo2ZVUtTVY3Z3d0VURqMC1xT1NOTnczb0VWT0R5
+      VnZ3VnJRT25uSUFKTVlBeV80R2hsd1pGZy1Ma3lwRmx2XzdoV01NaEE9PQ==
+    port: '22'
+    secret: !!binary |
+      Z0FBQUFBQmdsVEhoZUJEZDdlTXB2cGJqYUJ6ZFpsaW1rbzUyaUxlOXlXNEE2Z215MG5qWEt0QWpw
+      ZGtyelhOSmp5MXJaU1BfOWVmd21oZXFabmJjZFdwZmZBSmtvMFJwdGc9PQ==
+    username: cisco
+  groups:
+  - Switch
+  hostname: Sw11
+  type: Switch

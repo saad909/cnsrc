@@ -27,6 +27,173 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QToolBox" name="toolBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>2</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhPreferNumbers</set>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="currentIndex">
+       <number>5</number>
+      </property>
+      <property name="tabSpacing">
+       <number>6</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>107</width>
+         <height>39</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Users</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_15">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_usr_user_settings">
+          <property name="text">
+           <string>User Settings</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>184</width>
+         <height>66</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Devices</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_dev_all">
+          <property name="text">
+           <string>ALL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pb_dev_edit">
+          <property name="text">
+           <string>Delete or Edit</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pb_dev_add">
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>184</width>
+         <height>66</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Groups</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_20">
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pb_grp_edit">
+          <property name="text">
+           <string>Delete or Edit</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_grp_all">
+          <property name="text">
+           <string>ALL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pb_grp_add">
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>107</width>
+         <height>39</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Configure Devices</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_bt_show_commands">
+          <property name="text">
+           <string>Show Commands</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Backup configs</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>114</width>
+         <height>528</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Monitoring</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
     <item row="0" column="1">
      <widget class="QTabWidget" name="tab_main">
       <property name="sizePolicy">
@@ -39,7 +206,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -62,108 +229,6 @@
                <string>user settings</string>
               </attribute>
               <layout class="QGridLayout" name="gridLayout_2">
-               <item row="0" column="0">
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="1" column="0">
-                <widget class="QGroupBox" name="groupBox_3">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="title">
-                  <string>Add</string>
-                 </property>
-                 <property name="flat">
-                  <bool>true</bool>
-                 </property>
-                 <property name="checkable">
-                  <bool>false</bool>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_9">
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="label_2">
-                    <property name="text">
-                     <string>username</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_5">
-                    <property name="text">
-                     <string>Password</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QLineEdit" name="txt_usr_add_username">
-                    <property name="placeholderText">
-                     <string>Enter user name</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QLineEdit" name="txt_usr_add_confirm_password">
-                    <property name="echoMode">
-                     <enum>QLineEdit::Password</enum>
-                    </property>
-                    <property name="placeholderText">
-                     <string>repeat password</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QLineEdit" name="txt_usr_add_password">
-                    <property name="echoMode">
-                     <enum>QLineEdit::Password</enum>
-                    </property>
-                    <property name="placeholderText">
-                     <string>Enter password</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="label_6">
-                    <property name="text">
-                     <string>Confirm Password</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="1">
-                   <widget class="QPushButton" name="btn_usr_add_add">
-                    <property name="text">
-                     <string>Add</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="1">
-                   <spacer name="verticalSpacer_2">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
                <item row="2" column="0" colspan="2">
                 <widget class="QGroupBox" name="groupBox_8">
                  <property name="sizePolicy">
@@ -182,20 +247,6 @@
                   <bool>true</bool>
                  </property>
                  <layout class="QGridLayout" name="gridLayout">
-                  <item row="1" column="2">
-                   <widget class="QPushButton" name="usr_btn_export">
-                    <property name="text">
-                     <string>Export</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLineEdit" name="usr_txt_file_path">
-                    <property name="placeholderText">
-                     <string>Enter full file path</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="0" column="0" colspan="3">
                    <layout class="QHBoxLayout" name="horizontalLayout_9">
                     <item>
@@ -239,6 +290,27 @@
                     </item>
                    </layout>
                   </item>
+                  <item row="1" column="1">
+                   <widget class="QPushButton" name="usr_btn_browse">
+                    <property name="text">
+                     <string>Browse</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QPushButton" name="usr_btn_export">
+                    <property name="text">
+                     <string>Export</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLineEdit" name="usr_txt_file_path">
+                    <property name="placeholderText">
+                     <string>Enter full file path</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="2" column="0" colspan="3">
                    <widget class="QTableWidget" name="tbl_users">
                     <attribute name="horizontalHeaderStretchLastSection">
@@ -257,13 +329,6 @@
                       <string>password</string>
                      </property>
                     </column>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QPushButton" name="usr_btn_browse">
-                    <property name="text">
-                     <string>Browse</string>
-                    </property>
                    </widget>
                   </item>
                  </layout>
@@ -350,13 +415,6 @@
                     </item>
                    </layout>
                   </item>
-                  <item row="3" column="0">
-                   <widget class="QLabel" name="label_15">
-                    <property name="text">
-                     <string>New Password</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="3" column="1">
                    <widget class="QLineEdit" name="txt_usr_edit_new_password">
                     <property name="toolTip">
@@ -367,6 +425,13 @@
                     </property>
                     <property name="placeholderText">
                      <string>Enter new password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="label_15">
+                    <property name="text">
+                     <string>New Password</string>
                     </property>
                    </widget>
                   </item>
@@ -395,6 +460,13 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_9">
+                    <property name="text">
+                     <string>password</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="1" column="1">
                    <widget class="QLineEdit" name="txt_usr_edit_username">
                     <property name="placeholderText">
@@ -415,12 +487,107 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="label_9">
-                    <property name="text">
-                     <string>password</string>
+                 </layout>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="1" column="0">
+                <widget class="QGroupBox" name="groupBox_3">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Add</string>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="checkable">
+                  <bool>false</bool>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_9">
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="txt_usr_add_confirm_password">
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>repeat password</string>
                     </property>
                    </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_5">
+                    <property name="text">
+                     <string>Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_6">
+                    <property name="text">
+                     <string>Confirm Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="txt_usr_add_username">
+                    <property name="placeholderText">
+                     <string>Enter user name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string>username</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QPushButton" name="btn_usr_add_add">
+                    <property name="text">
+                     <string>Add</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="txt_usr_add_password">
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Enter password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <spacer name="verticalSpacer_2">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
                   </item>
                  </layout>
                 </widget>
@@ -1773,173 +1940,6 @@ color: rgb(0, 255, 0);</string>
          </widget>
         </item>
        </layout>
-      </widget>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QToolBox" name="toolBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>1</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="inputMethodHints">
-       <set>Qt::ImhPreferNumbers</set>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
-      </property>
-      <property name="currentIndex">
-       <number>5</number>
-      </property>
-      <property name="tabSpacing">
-       <number>6</number>
-      </property>
-      <widget class="QWidget" name="page">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>114</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Users</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_15">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_usr_user_settings">
-          <property name="text">
-           <string>User Settings</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>184</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Devices</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_dev_all">
-          <property name="text">
-           <string>ALL</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QPushButton" name="pb_dev_edit">
-          <property name="text">
-           <string>Delete or Edit</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pb_dev_add">
-          <property name="text">
-           <string>Add</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_5">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>184</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Groups</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_20">
-        <item row="1" column="0" colspan="2">
-         <widget class="QPushButton" name="pb_grp_edit">
-          <property name="text">
-           <string>Delete or Edit</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_grp_all">
-          <property name="text">
-           <string>ALL</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pb_grp_add">
-          <property name="text">
-           <string>Add</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_6">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>114</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Configure Devices</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_8">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pb_bt_show_commands">
-          <property name="text">
-           <string>Show Commands</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>114</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Backup configs</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="page_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>114</width>
-         <height>528</height>
-        </rect>
-       </property>
-       <attribute name="label">
-        <string>Monitoring</string>
-       </attribute>
       </widget>
      </widget>
     </item>

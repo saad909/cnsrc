@@ -131,7 +131,7 @@ class inventory_mgmt_func(QDialog):
                 QMessageBox.information(
                     self,
                     "Waring",
-                    f"{device['hostname']}: {host['data']['host']} also has the same hostname",
+                    f"{host['hostname']}: {device['data']['host']} also has the same hostname",
                 )
                 # QMessageBox.information(
                 #     self, "Warning", "Host name duplication occured"

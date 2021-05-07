@@ -93,15 +93,6 @@ class Main_Window(
         self.get_valid_ip(self.txt_d_all_ip_address)
         self.get_valid_ip(self.d_edit_ip_address)
 
-        # handle show commands button(enable/disable) state
-        # self.cb_bt_all_groups.currentIndexChanged.connect(
-        #     lambda: self.disable_box(self.cb_bt_all_groups, self.cb_bt_all_devices)
-        # )
-
-        # main_tab_window = self.tab_main.currentWidget().objectName()
-        # sub_tab_window = self.tab_basic_tasks.currentWidget().objectName()
-
-        # if main_tab_window == "configs" and sub_tab_window == "show_commands":
         ########## SHow section ##################
         # main toolbox index changed
         # show section

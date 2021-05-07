@@ -6,15 +6,17 @@
 - 10. Export tables as excel file
 - 11. optional port no while adding device
 - 13. Logging
-
-
 1. running and startup config 
-2. Ios backup
+
+
 4. Configurations
 3. multithreading
+
+
 5.  with snmp:
     1. Interfaces all - up/down
     2. Monitoring - cpu, ram, per interface
+2. Ios backup
 
 
 Configurations:
@@ -51,7 +53,6 @@ ppp - pap,chap
 clock
 snmp enable
 backup  and restore configs
-export/import configs
 create new user with different privilages
 ip address config
 interface up/down
