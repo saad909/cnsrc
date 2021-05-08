@@ -66,7 +66,7 @@ class Main_Window(
     devices_func,
     inventory_mgmt_func,
     user_settings,
-    connection,
+    # Connection,
     update_combo_boxes,
     show_commands,
     basic_tasks,

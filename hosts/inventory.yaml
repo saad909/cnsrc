@@ -32,12 +32,12 @@
     device_type: cisco_ios
     host: 100.100.100.100
     password: !!binary |
-      Z0FBQUFBQmdsVEd6dWZKcW1iS1llOGV2UmtmYmNzbEFXMG5CakFhUVlJYl9yZ3hURjZkNW1aQ3VI
-      WG9ocGJvOG93bTFxOFItV3BqYUdYQk1MQUhfSmU4enNLSndpQTVWdnc9PQ==
-    port: '22'
+      Z0FBQUFBQmdsb2haVFVXRmtOdVhiZ2lWMWZRYmJmRmlLc1N0SXBwVHhvdTNsRi1DWkM1N3NyY1p5
+      TjFRLTNzVXZqVVZIVHNTcENNWHh5bWpnRG9FR2NaZW5wTEVvQ2tGMEE9PQ==
+    port: '65537'
     secret: !!binary |
-      Z0FBQUFBQmdsVEd6X3AxTXBoLVp6UC0zQk9VOU9MeF9qNi1zajhtNHlEdE5sTDJZZmZTWW5Zcm1I
-      UEVmSzVZS1RDNk93Wm8zQURuVE94T1R4SGJLY2xsNHZWTTZhLVk3aVE9PQ==
+      Z0FBQUFBQmdsb2habGxvRGVveGlzeDdSWmVaVm1oVHBwMHRyRUd0blE1VkZKeDVfWXgzd3RUbWRq
+      TEN3cmdsZFBaUWdpLWNkN21tMnBsNWFPS2MxMnZLZHYwVGxjQTZkMGc9PQ==
     username: cisco
   groups:
   - Router

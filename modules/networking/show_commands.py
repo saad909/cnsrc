@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import *
 import os, re
 from pyfiglet import Figlet
-from PyQt5.QtCore import Qt
+from modules.networking.connection import Connection 
+from PyQt5.QtCore import  QThread 
 
 
 from pprint import pprint
@@ -312,14 +313,32 @@ class show_commands(QDialog):
             my_device["data"]["password"]
         )
         my_device["data"]["secret"] = self.decrypt_password(my_device["data"]["secret"])
-        output = ""
-        f = Figlet(font="slant")
-        for command in all_commands:
-            output += f.renderText(command)
-            result = self.create_show_handler(my_device, command)
-            if result:
-                output += result
-        if output:
-            self.config_show_te_cmds_output.clear()
-            self.config_show_te_cmds_output.setText(output)
-            return
+        self.config_show_te_cmds_output.clear()
+        self.thread = QThread()
+        # Step 3: Create a worker object
+        self.worker = Connection(my_device,all_commands)
+        # Step 4: Move worker to the thread
+        self.worker.moveToThread(self.thread)
+        # Step 5: Connect signals and slots
+        self.thread.started.connect(self.worker.run)
+        self.worker.finished_signal.connect(self.thread.quit)
+        self.worker.finished_signal.connect(self.worker.deleteLater)
+        self.thread.finished.connect(self.thread.deleteLater)
+        self.worker.error_signal.connect(self.show_errors)
+        self.worker.output_signal.connect(self.show_commands_output)
+        # Step 6: Start the thread
+        self.thread.start()
+        # self.thread.finished.connect(
+        #     lambda: self.stepLabel.setText("Long-Running Step: 0")
+        # )
+
+    def show_commands_output(self,output):
+        print(output)
+        self.config_show_te_cmds_output.insertPlainText(output)
+        return
+
+    def show_errors(self,error):
+        print(error)
+        QMessageBox.critical(self,"Warning",error)
+        return
+
