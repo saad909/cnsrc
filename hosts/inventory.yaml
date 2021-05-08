@@ -58,3 +58,18 @@
   - Switch
   hostname: Sw11
   type: Switch
+- data:
+    device_type: cisco_ios
+    host: 192.168.122.101
+    password: !!binary |
+      Z0FBQUFBQmdsdUhMd1lnS096MVY0M0NHQnprWVhHc0VBZ1RBRkNJMWlLcDJfYWkwcEhoRVE0Qlcw
+      d0UtTWVVNzhWcnZEaUdBQ3ZpS1YxTUxsYkEtV05QVW9aS2RHWlBkaEE9PQ==
+    port: '22'
+    secret: !!binary |
+      Z0FBQUFBQmdsdUhMYXV5cFFvejVLV3JUZ1dqRTZWV3A5LW5VQ2JVWmc3UnJMUzJ6R1FRWjhyd0pi
+      MjZnSm5sbzRmNDVRUTFFdzdPME9pcTFXOXJRTmxqaGVlWWRneE9PNmc9PQ==
+    username: cisco
+  groups:
+  - Router
+  hostname: real_router
+  type: Router

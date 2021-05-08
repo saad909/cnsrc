@@ -110,6 +110,8 @@ class devices(QDialog):
             self.add_devices_for_group_selection()
             # update groups table
             self.fill_groups_table(self.get_all_groups())
+            # update devices in inteface monitoring section
+            self.update_mon_all_devices()
 
     #          ____  _   _ _     _  __     _    ____  ____ ___ _____ ___ ___  _   _
     #         | __ )| | | | |   | |/ /    / \  |  _ \|  _ \_ _|_   _|_ _/ _ \| \ | |
@@ -263,6 +265,8 @@ class devices(QDialog):
                         self.add_devices_for_group_selection()
                         # update groups table
                         self.fill_groups_table(self.get_all_groups())
+                        # update devices in inteface monitoring section
+                        self.update_mon_all_devices()
                 return
 
             else:
