@@ -1,15 +1,14 @@
 from PyQt5.QtWidgets import *
-import os, re
+import os 
 from pyfiglet import Figlet
-from modules.networking.connection import Connection 
+from modules.networking.connection import ConnectionWithThreading
 from PyQt5.QtCore import  QThread 
 
 
-from pprint import pprint
 
 
 class show_commands(QDialog):
-    def add_custom_commands(self, state):
+    def add_custom_commands(self ):
         if not self.config_show_btn_custom_commands.isChecked():
             self.show_commands_list.clear()
             self.fill_show_commands()
@@ -267,11 +266,12 @@ class show_commands(QDialog):
         all_commands = list()
         for command in self.show_commands_list.selectedItems():
             all_commands.append(command.text())
-        output = ""
         f = Figlet(font="slant")
-        for device in all_devices:
-            output += "\n" * 2 + f.renderText(
-                device["hostname"].center(15, " ") + "\n" * 2 
+        self.config_show_te_cmds_output.clear()
+        print(group_members)
+        for device in custom_group_members:
+            self.config_show_te_cmds_output.insertPlainText("\n" * 2 + f.renderText(
+                device["hostname"].center(15, " ") + "\n" * 2 )
             )
             # decrypt_passwords
             device["data"]["password"] = self.decrypt_password(
@@ -284,14 +284,10 @@ class show_commands(QDialog):
                 if result:
                     if i != len(all_commands) - 1:
                         result +=  "\n" * 2 + "-" * 80 + "\n"
-                    output += result
+                    self.config_show_te_cmds_output.insertPlainText(result)
                 else:
                     break
                 i += 1
-        print(output)
-        if output:
-            self.config_show_te_cmds_output.setText(output)
-            return
 
     def show_cmd_against_device(self, device_name):
         device_name = self.cb_bt_all_devices.currentText()
@@ -316,7 +312,7 @@ class show_commands(QDialog):
         self.config_show_te_cmds_output.clear()
         self.thread = QThread()
         # Step 3: Create a worker object
-        self.worker = Connection(my_device,all_commands)
+        self.worker = ConnectionWithThreading(my_device,all_commands)
         # Step 4: Move worker to the thread
         self.worker.moveToThread(self.thread)
         # Step 5: Connect signals and slots
