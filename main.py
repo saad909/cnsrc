@@ -76,6 +76,7 @@ class Main_Window(
     password_encryption,
     configs,
     monitoring,
+    configurations,
 ):
     def __init__(self):
         super().__init__()
@@ -132,6 +133,14 @@ class Main_Window(
             self.check_interface_toggle_state
         )
         self.mon_int_btn_toggle.clicked.connect(self.toggle_interface_state)
+        # configurations
+        self.configs_all_devices.textActivated.connect(self.fill_configurations)
+        self.configs_all_configurations.textActivated.connect(self.move_configs_tab_index)
+            # rip configuration
+        self.chkbox_rip_loopback.stateChanged.connect(self.create_rip_configuration)
+        self.chkbox_rip_directly.stateChanged.connect(self.create_rip_configuration)
+        self.btn_push_rip_config.clicked.connect(self.configure_rip)
+        self.btn_push_rip_clear.clicked.connect(self.clear_rip_results)
 
     ###################### handle buttons action ######################
 
@@ -153,6 +162,9 @@ class Main_Window(
         ##### basic tasks ######
         self.pb_bt_show_commands.clicked.connect(
             lambda: self.tab_movement(3, self.tab_basic_tasks, 0)
+        )
+        self.pb_bt_configurations.clicked.connect(
+            lambda: self.tab_movement(3, self.tab_basic_tasks, 1)
         )
         ##### custom groups ######
         self.pb_grp_all.clicked.connect(

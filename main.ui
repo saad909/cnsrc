@@ -6,18 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>863</width>
+    <width>796</width>
     <height>730</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Cisco Automation</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -26,7 +20,7 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QFormLayout" name="formLayout">
+   <layout class="QGridLayout" name="gridLayout_18">
     <item row="0" column="0">
      <widget class="QToolBox" name="toolBox">
       <property name="sizePolicy">
@@ -45,7 +39,7 @@
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>3</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -55,8 +49,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>107</width>
-         <height>39</height>
+         <width>114</width>
+         <height>528</height>
         </rect>
        </property>
        <attribute name="label">
@@ -78,7 +72,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>66</height>
+         <height>514</height>
         </rect>
        </property>
        <attribute name="label">
@@ -114,7 +108,7 @@
          <x>0</x>
          <y>0</y>
          <width>184</width>
-         <height>66</height>
+         <height>514</height>
         </rect>
        </property>
        <attribute name="label">
@@ -149,8 +143,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>107</width>
-         <height>39</height>
+         <width>114</width>
+         <height>528</height>
         </rect>
        </property>
        <attribute name="label">
@@ -164,6 +158,13 @@
           </property>
          </widget>
         </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pb_bt_configurations">
+          <property name="text">
+           <string>Configurations</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="page_4">
@@ -171,8 +172,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>114</width>
+         <height>528</height>
         </rect>
        </property>
        <attribute name="label">
@@ -206,7 +207,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -1717,7 +1718,7 @@
         <item row="0" column="0">
          <widget class="QTabWidget" name="tab_basic_tasks">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="show_commands">
            <attribute name="title">
@@ -1794,9 +1795,110 @@ color: rgb(0, 255, 0);</string>
           </widget>
           <widget class="QWidget" name="tab_6">
            <attribute name="title">
-            <string>Interface state</string>
+            <string>Configurations</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_18"/>
+           <layout class="QGridLayout" name="gridLayout_35">
+            <item row="0" column="0">
+             <widget class="QComboBox" name="configs_all_devices"/>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="configs_all_configurations"/>
+            </item>
+            <item row="1" column="0" colspan="2">
+             <widget class="QTabWidget" name="tab_configs">
+              <property name="currentIndex">
+               <number>1</number>
+              </property>
+              <widget class="QWidget" name="tab_11">
+               <attribute name="title">
+                <string>Page</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="rip">
+               <attribute name="title">
+                <string>rip</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_36">
+                <item row="2" column="0">
+                 <widget class="QCheckBox" name="chkbox_rip_directly">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="text">
+                   <string>Advertise Directly connected interfaces </string>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QCheckBox" name="chkbox_rip_version">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="text">
+                   <string>version 2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_13">
+                  <property name="text">
+                   <string>Generated Configuration</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QCheckBox" name="chkbox_rip_loopback">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="text">
+                   <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0" colspan="2">
+                 <widget class="QTextEdit" name="te_rip_config">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QPushButton" name="btn_push_rip_clear">
+                  <property name="text">
+                   <string>Clear</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QPushButton" name="btn_push_rip_config">
+                  <property name="text">
+                   <string>Push Configuration</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="ospf">
+               <attribute name="title">
+                <string>ospf</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="eigrp">
+               <attribute name="title">
+                <string>eigrp</string>
+               </attribute>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>

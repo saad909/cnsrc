@@ -42,6 +42,7 @@ class startup_settings(QDial):
         self.tab_devices.tabBar().setVisible(False)
         self.tab_groups.tabBar().setVisible(False)
         self.tab_users.tabBar().setVisible(False)
+        self.tab_configs.tabBar().setVisible(False)
         ###################### devices ######################
 
         ##### ALL Devices Table ######
@@ -66,4 +67,8 @@ class startup_settings(QDial):
 
         # configuration section
         self.update_mgmt_config_all_devices()
-        # self.update_mgmt_os_all_devices()
+
+        #update devices in all configurations section
+        self.update_configs_all_devices()
+        # configurations
+        self.tab_configs.setCurrentIndex(0)

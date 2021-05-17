@@ -90,6 +90,37 @@ class ConnectionWithThreading(
     #         QMessageBox.information(self, "Warning", str(error))
     #         return
 
+class WRITE_CONFIG(
+    QObject,
+):
+
+    finished_signal = pyqtSignal()
+    error_signal = pyqtSignal(str)
+    output_signal = pyqtSignal(str)
+
+    def __init__(self, device, configuration):
+        self.device = device
+        self.configuration = configuration
+        super().__init__()
+
+    def run(self):
+        if int(self.device["data"]["port"]) > 65535:
+            self.error_signal.emit(f"{self.device['hostname']} has invalid port number")
+            self.finished_signal.emit()
+            return
+        try:
+            conn = ConnectHandler(**self.device["data"])
+            conn.enable()
+            output = conn.send_config_set(self.configuration)
+            conn.disconnect()
+            self.output_signal.emit(output)
+            self.finished_signal.emit()
+        except Exception as error:
+            print(error)
+            self.error_signal.emit(str(error))
+            self.finished_signal.emit()
+
+
 
 class Connection(QDialog):
     def create_show_handler(self, device, command):

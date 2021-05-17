@@ -29,3 +29,6 @@ from modules.gui.configs import *
 
 # monitoring
 from modules.gui.monitoring import *
+
+# configurations
+from modules.gui.configurations import *

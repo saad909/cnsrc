@@ -1,0 +1,6 @@
+router rip
+  version {{ data.version }}
+{% for network in data.networks %}
+  network {{network}}
+{% endfor %}
+  no auto-summary

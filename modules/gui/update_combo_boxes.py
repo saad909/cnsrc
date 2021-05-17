@@ -44,3 +44,12 @@ class update_combo_boxes(QDialog):
         self.mgmt_os_all_devices.clear()
         self.mgmt_os_all_devices.addItems(all_devices_list)
         return
+
+    def update_configs_all_devices(self):
+        # getting all the devices
+        all_devices_list = self.get_all_devices_hostname()
+        all_devices_list.sort()
+        self.configs_all_devices.clear()
+        all_devices_list.insert(0, "Select a Device")
+        self.configs_all_devices.addItems(all_devices_list)
+        return
