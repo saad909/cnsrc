@@ -124,6 +124,9 @@ class configurations(QDialog):
 
 
     def create_rip_configuration(self):
+        if ( not self.chkbox_rip_loopback.isChecked() == True) and (not self.chkbox_rip_directly.isChecked() == True ):
+            self.te_rip_config.clear()
+
         if self.chkbox_rip_loopback.isChecked() == True or self.chkbox_rip_directly.isChecked() == True:
 
             device_name = self.configs_all_devices.currentText()
@@ -269,6 +272,9 @@ class configurations(QDialog):
 
 
     def create_eigrp_configuration(self):
+        if ( not self.chkbox_eigrp_loopback.isChecked() == True) and (not self.chkbox_eigrp_directly.isChecked() == True ):
+            self.te_eigrp_config.clear()
+
         if self.chkbox_eigrp_loopback.isChecked() == True or self.chkbox_eigrp_directly.isChecked() == True:
             #check for autonomous system number
             if not self.txt_eigrp_as_number.text():
@@ -340,6 +346,152 @@ class configurations(QDialog):
                 my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
                 my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
                 self.write_config(my_device,configurations,self.te_eigrp_config)
+                return
+            else:
+                return
+
+
+    # 00000000000000000000000000 OSPF Section 000000000000000000000000000000000
+    def get_valid_area_no(self,widget):
+        # check autonomous system number
+        regexp = QRegExp(r"^()([1-9]|[1-5]?[0-9]{2,4}|6[1-4][0-9]{3}|65[1-4][0-9]{2}|655[1-2][0-9]|6553[1-5])$")
+        validator = QRegExpValidator(regexp)
+        widget.setValidator(validator)
+
+    def genereate_ospf_config(self,output):
+
+
+        networks = list()
+        if self.chkbox_ospf_loopback.isChecked() == True:
+            for line in output.splitlines():
+                regex = re.compile(r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                result = re.fullmatch(regex,line)
+                if result:
+                    # print(result)
+                    networks.append(result.group("ip_address"))
+        else:
+            for line in output.splitlines():
+                regex = re.compile(r"^(G|E|F)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                result = re.fullmatch(regex,line)
+                if result:
+                    # print(result)
+                    networks.append(result.group("ip_address"))
+        if networks:
+            process_id = self.txt_process_id.text()
+            area_number = self.txt_ospf_area.text()
+            print(networks)
+
+            ospf_dict = {
+                "process_id":process_id,
+                "networks":networks,
+                "area_number":area_number,
+            }
+            j2_env = Environment(
+                loader=FileSystemLoader("hosts/templates/configurations"), trim_blocks=True, autoescape=True
+            )
+            template = j2_env.get_template("cisco_ios_ospf_single_area.j2")
+            configuration = template.render(data=ospf_dict)
+            if configuration:
+                print(configuration)
+                self.te_ospf_config.clear()
+                self.te_ospf_config.insertPlainText(str( configuration ))
+                return
+            else:
+                QMessageBox.critical(self,"Warning","Configuration generation failed")
+                return
+
+    def clear_ospf_results(self):
+        self.txt_process_id.setText("")
+        self.txt_ospf_area.setText("")
+        self.chkbox_ospf_directly.setChecked(False)
+        self.chkbox_ospf_loopback.setChecked(False)
+        self.te_ospf_config.clear()
+        self.txt_process_id.setFocus()
+
+
+    def create_ospf_configuration(self):
+
+
+        if ( not self.chkbox_ospf_loopback.isChecked() == True) and (not self.chkbox_ospf_directly.isChecked() == True ):
+            self.te_ospf_config.clear()
+
+        if self.chkbox_ospf_loopback.isChecked() == True or self.chkbox_ospf_directly.isChecked() == True:
+            #check for process id and area number
+            if (not self.txt_process_id.text()) or ( not self.txt_ospf_area.text()):
+                self.te_ospf_config.clear()
+                if self.chkbox_ospf_directly.isChecked() == True:
+                    self.chkbox_ospf_directly.setChecked(False)
+                elif self.chkbox_ospf_loopback.isChecked() == True:
+                    self.chkbox_ospf_loopback.setChecked(False)
+                QMessageBox.critical(self,"Warning","Please fill both fields")
+                self.te_ospf_config.clear()
+
+                if not self.txt_ospf_area.text():
+                    self.txt_ospf_area.setFocus()
+                if not self.txt_process_id.text():
+                    self.txt_process_id.setFocus()
+                else:
+                    self.txt_process_id.setFocus()
+                return
+
+            device_name = self.configs_all_devices.currentText()
+            all_devices = self.convert_host_file_into_list()
+            my_device = {}
+            for device in all_devices:
+                if device['hostname'] == device_name:
+                    my_device = device
+                    break
+            all_commands = ['show ip int br']
+
+            # decrypt password
+            my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
+            my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
+
+
+            try:
+                # getting output
+                self.thread = QThread()
+                # Step 3: Create a worker object
+                self.worker = ConnectionWithThreading(my_device,all_commands)
+                # Step 4: Move worker to the thread
+                self.worker.moveToThread(self.thread)
+                # Step 5: Connect signals and slots
+                self.thread.started.connect(self.worker.run)
+                self.worker.finished_signal.connect(self.thread.quit)
+                self.worker.finished_signal.connect(self.worker.deleteLater)
+                self.worker.error_signal.connect(self.show_errors)
+                # rps -> routing protocols
+                self.worker.output_signal.connect(self.genereate_ospf_config)
+                # Step 6: Start the thread
+                self.thread.start()
+                time.sleep(3)
+            except Exception as error:
+                QMessageBox.critical(self,"Warning",str(error))
+
+
+    def configure_ospf(self):
+        configurations = self.te_ospf_config.toPlainText().splitlines()
+        if configurations:
+            print(configurations)
+            # get the name of device and send the config
+            device_name = self.configs_all_devices.currentText()
+            all_devices = self.convert_host_file_into_list()
+            my_device = {}
+            for device in all_devices:
+                if device['hostname'] == device_name:
+                    my_device = device
+                    break
+            selection = QMessageBox.question(
+                            self,
+                            "Alert",
+                            "Do you want to apply configurations",
+                            QMessageBox.Yes | QMessageBox.No,
+                            QMessageBox.No,
+                        )
+            if selection == QMessageBox.Yes:
+                my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
+                my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
+                self.write_config(my_device,configurations,self.te_ospf_config)
                 return
             else:
                 return

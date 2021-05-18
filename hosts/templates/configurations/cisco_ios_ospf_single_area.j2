@@ -1,0 +1,4 @@
+router ospf {{ data.process_id }}
+{% for network in data.networks %}
+network {{network}} 0.0.0.0 area {{ data.area_number }}
+{% endfor %}

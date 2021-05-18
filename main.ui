@@ -616,7 +616,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -1807,7 +1807,7 @@ color: rgb(0, 255, 0);</string>
             <item row="1" column="0" colspan="2">
              <widget class="QTabWidget" name="tab_configs">
               <property name="currentIndex">
-               <number>3</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="tab_11">
                <attribute name="title">
@@ -1825,7 +1825,7 @@ color: rgb(0, 255, 0);</string>
                    <string>RIP</string>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_33">
-                   <item row="0" column="0">
+                   <item row="0" column="0" colspan="2">
                     <widget class="QLabel" name="label_13">
                      <property name="text">
                       <string>Generated Configuration</string>
@@ -1842,7 +1842,7 @@ color: rgb(0, 255, 0);</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="2" column="0">
+                   <item row="2" column="0" colspan="2">
                     <widget class="QCheckBox" name="chkbox_rip_directly">
                      <property name="enabled">
                       <bool>true</bool>
@@ -1858,7 +1858,7 @@ color: rgb(0, 255, 0);</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="3" column="0">
+                   <item row="3" column="0" colspan="2">
                     <widget class="QCheckBox" name="chkbox_rip_loopback">
                      <property name="enabled">
                       <bool>true</bool>
@@ -1876,19 +1876,23 @@ color: rgb(0, 255, 0);</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="0">
-                    <widget class="QPushButton" name="btn_push_rip_config">
-                     <property name="text">
-                      <string>Push Configuration</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="1">
-                    <widget class="QPushButton" name="btn_clear_rip">
-                     <property name="text">
-                      <string>Clear</string>
-                     </property>
-                    </widget>
+                   <item row="5" column="0" colspan="2">
+                    <layout class="QHBoxLayout" name="horizontalLayout_10">
+                     <item>
+                      <widget class="QPushButton" name="btn_push_rip_config">
+                       <property name="text">
+                        <string>Push Configuration</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_clear_rip">
+                       <property name="text">
+                        <string>Clear</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                   </layout>
                  </widget>
@@ -1907,32 +1911,6 @@ color: rgb(0, 255, 0);</string>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_28">
                    <item row="0" column="0">
-                    <widget class="QCheckBox" name="chkbox_ospf_directly">
-                     <property name="enabled">
-                      <bool>true</bool>
-                     </property>
-                     <property name="text">
-                      <string>Advertise Directly connected interfaces </string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                     <property name="checked">
-                      <bool>false</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="0">
-                    <widget class="QCheckBox" name="chkbox_ospf_loopback">
-                     <property name="enabled">
-                      <bool>true</bool>
-                     </property>
-                     <property name="text">
-                      <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="0" colspan="2">
                     <layout class="QFormLayout" name="formLayout">
                      <item row="0" column="0">
                       <widget class="QLabel" name="label_16">
@@ -1964,7 +1942,33 @@ color: rgb(0, 255, 0);</string>
                      </item>
                     </layout>
                    </item>
-                   <item row="3" column="0" colspan="2">
+                   <item row="1" column="0">
+                    <widget class="QCheckBox" name="chkbox_ospf_directly">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected interfaces </string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QCheckBox" name="chkbox_ospf_loopback">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
                     <widget class="QTextEdit" name="te_ospf_config">
                      <property name="styleSheet">
                       <string notr="true">background-color: rgb(0, 0, 0);
@@ -1973,18 +1977,22 @@ color: rgb(0, 255, 0);</string>
                     </widget>
                    </item>
                    <item row="4" column="0">
-                    <widget class="QPushButton" name="btn_push_ospf_config">
-                     <property name="text">
-                      <string>Push Configuration</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="1">
-                    <widget class="QPushButton" name="btn_clear_ospf">
-                     <property name="text">
-                      <string>Clear</string>
-                     </property>
-                    </widget>
+                    <layout class="QHBoxLayout" name="horizontalLayout_6">
+                     <item>
+                      <widget class="QPushButton" name="btn_push_ospf_config">
+                       <property name="text">
+                        <string>Push Configuration</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_clear_ospf">
+                       <property name="text">
+                        <string>Clear</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                   </layout>
                  </widget>

@@ -96,6 +96,8 @@ class Main_Window(
         # as_no range = 1-65535
         self.get_valid_as_no(self.d_add_port_number)
         self.get_valid_as_no(self.txt_eigrp_as_number)
+        self.get_valid_as_no(self.txt_process_id)
+        self.get_valid_area_no(self.txt_ospf_area)
 
         ########## SHow section ##################
         # main toolbox index changed
@@ -149,6 +151,11 @@ class Main_Window(
         self.chkbox_eigrp_directly.stateChanged.connect(self.create_eigrp_configuration)
         self.btn_push_eigrp_config.clicked.connect(self.configure_eigrp)
         self.btn_clear_eigrp.clicked.connect(self.clear_eigrp_results)
+            # ospf
+        self.chkbox_ospf_loopback.stateChanged.connect(self.create_ospf_configuration)
+        self.chkbox_ospf_directly.stateChanged.connect(self.create_ospf_configuration)
+        self.btn_push_ospf_config.clicked.connect(self.configure_ospf)
+        self.btn_clear_ospf.clicked.connect(self.clear_ospf_results)
 
     ###################### handle buttons action ######################
 
