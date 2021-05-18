@@ -1,0 +1,4 @@
+router eigrp {{ data.as_sys_no }}
+{% for network in data.networks %}
+  network {{network}} 0.0.0.0
+{% endfor %}

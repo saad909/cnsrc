@@ -616,7 +616,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -1807,7 +1807,7 @@ color: rgb(0, 255, 0);</string>
             <item row="1" column="0" colspan="2">
              <widget class="QTabWidget" name="tab_configs">
               <property name="currentIndex">
-               <number>1</number>
+               <number>3</number>
               </property>
               <widget class="QWidget" name="tab_11">
                <attribute name="title">
@@ -1819,69 +1819,78 @@ color: rgb(0, 255, 0);</string>
                 <string>rip</string>
                </attribute>
                <layout class="QGridLayout" name="gridLayout_36">
-                <item row="2" column="0">
-                 <widget class="QCheckBox" name="chkbox_rip_directly">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="text">
-                   <string>Advertise Directly connected interfaces </string>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QCheckBox" name="chkbox_rip_version">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="text">
-                   <string>version 2</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="0">
-                 <widget class="QLabel" name="label_13">
-                  <property name="text">
-                   <string>Generated Configuration</string>
+                 <widget class="QGroupBox" name="groupBox_12">
+                  <property name="title">
+                   <string>RIP</string>
                   </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QCheckBox" name="chkbox_rip_loopback">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="text">
-                   <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0" colspan="2">
-                 <widget class="QTextEdit" name="te_rip_config">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(0, 0, 0);
+                  <layout class="QGridLayout" name="gridLayout_33">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_13">
+                     <property name="text">
+                      <string>Generated Configuration</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QCheckBox" name="chkbox_rip_version">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>version 2</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QCheckBox" name="chkbox_rip_directly">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected interfaces </string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QCheckBox" name="chkbox_rip_loopback">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0" colspan="2">
+                    <widget class="QTextEdit" name="te_rip_config">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);
 color: rgb(0, 255, 0);</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="1">
-                 <widget class="QPushButton" name="btn_push_rip_clear">
-                  <property name="text">
-                   <string>Clear</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="0">
-                 <widget class="QPushButton" name="btn_push_rip_config">
-                  <property name="text">
-                   <string>Push Configuration</string>
-                  </property>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QPushButton" name="btn_push_rip_config">
+                     <property name="text">
+                      <string>Push Configuration</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QPushButton" name="btn_clear_rip">
+                     <property name="text">
+                      <string>Clear</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                </layout>
@@ -1890,11 +1899,179 @@ color: rgb(0, 255, 0);</string>
                <attribute name="title">
                 <string>ospf</string>
                </attribute>
+               <layout class="QGridLayout" name="gridLayout_26">
+                <item row="2" column="0">
+                 <widget class="QGroupBox" name="groupBox_11">
+                  <property name="title">
+                   <string>OSPF</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_28">
+                   <item row="0" column="0">
+                    <widget class="QCheckBox" name="chkbox_ospf_directly">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected interfaces </string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QCheckBox" name="chkbox_ospf_loopback">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0" colspan="2">
+                    <layout class="QFormLayout" name="formLayout">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_16">
+                       <property name="text">
+                        <string>PROCESS ID</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_14">
+                       <property name="text">
+                        <string>AREA</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="txt_process_id">
+                       <property name="placeholderText">
+                        <string>Enter the process id for ospf between 1-65535</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLineEdit" name="txt_ospf_area">
+                       <property name="placeholderText">
+                        <string>Enter the area number between 0-4294967295</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="3" column="0" colspan="2">
+                    <widget class="QTextEdit" name="te_ospf_config">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QPushButton" name="btn_push_ospf_config">
+                     <property name="text">
+                      <string>Push Configuration</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QPushButton" name="btn_clear_ospf">
+                     <property name="text">
+                      <string>Clear</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
               </widget>
               <widget class="QWidget" name="eigrp">
                <attribute name="title">
                 <string>eigrp</string>
                </attribute>
+               <layout class="QGridLayout" name="gridLayout_37">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="groupBox_13">
+                  <property name="title">
+                   <string>EIGRP</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_34">
+                   <item row="5" column="0">
+                    <layout class="QHBoxLayout" name="horizontalLayout_3">
+                     <item>
+                      <widget class="QPushButton" name="btn_push_eigrp_config">
+                       <property name="text">
+                        <string>Push Configuration</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_clear_eigrp">
+                       <property name="text">
+                        <string>Clear</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QTextEdit" name="te_eigrp_config">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QCheckBox" name="chkbox_eigrp_directly">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected interfaces </string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QCheckBox" name="chkbox_eigrp_loopback">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_17">
+                     <property name="text">
+                      <string>Autonomous System Number</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLineEdit" name="txt_eigrp_as_number">
+                     <property name="placeholderText">
+                      <string>Enter Autonous System Number for eigrp between 1-65535</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </widget>
             </item>

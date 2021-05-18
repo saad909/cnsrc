@@ -93,6 +93,7 @@ class Main_Window(
         self.get_valid_ip(self.d_add_ip_address)
         self.get_valid_ip(self.txt_d_all_ip_address)
         self.get_valid_ip(self.d_edit_ip_address)
+        self.get_valid_as_no(self.txt_eigrp_as_number)
 
         ########## SHow section ##################
         # main toolbox index changed
@@ -140,7 +141,12 @@ class Main_Window(
         self.chkbox_rip_loopback.stateChanged.connect(self.create_rip_configuration)
         self.chkbox_rip_directly.stateChanged.connect(self.create_rip_configuration)
         self.btn_push_rip_config.clicked.connect(self.configure_rip)
-        self.btn_push_rip_clear.clicked.connect(self.clear_rip_results)
+        self.btn_clear_rip.clicked.connect(self.clear_rip_results)
+            # eigrp
+        self.chkbox_eigrp_loopback.stateChanged.connect(self.create_eigrp_configuration)
+        self.chkbox_eigrp_directly.stateChanged.connect(self.create_eigrp_configuration)
+        self.btn_push_eigrp_config.clicked.connect(self.configure_eigrp)
+        self.btn_clear_eigrp.clicked.connect(self.clear_eigrp_results)
 
     ###################### handle buttons action ######################
 
