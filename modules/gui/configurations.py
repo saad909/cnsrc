@@ -15,6 +15,7 @@ class configurations(QDialog):
     # 0000000000000000000000 RIP section 0000000000000000000000000000
     def fill_configurations(self,device_name):
         # all_devices_list = self.convert_host_file_into_list()
+        self.tab_configs.setCurrentIndex(0)
         if "Select a Device" in device_name:
             return
 
