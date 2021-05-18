@@ -426,9 +426,9 @@ class configurations(QDialog):
                 QMessageBox.critical(self,"Warning","Please fill both fields")
                 self.te_ospf_config.clear()
 
-                if not self.txt_ospf_area.text():
+                if self.txt_process_id.text():
                     self.txt_ospf_area.setFocus()
-                if not self.txt_process_id.text():
+                elif self.txt_ospf_area.text():
                     self.txt_process_id.setFocus()
                 else:
                     self.txt_process_id.setFocus()
