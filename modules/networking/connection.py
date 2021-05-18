@@ -22,10 +22,6 @@ class ConnectionWithThreading(
         super().__init__()
 
     def run(self):
-        if int(self.device["data"]["port"]) > 65535:
-            self.error_signal.emit(f"{self.device['hostname']} has invalid port number")
-            self.finished_signal.emit()
-            return
         try:
             f = Figlet(font="slant")
             for command in self.all_commands:
@@ -104,10 +100,6 @@ class WRITE_CONFIG(
         super().__init__()
 
     def run(self):
-        if int(self.device["data"]["port"]) > 65535:
-            self.error_signal.emit(f"{self.device['hostname']} has invalid port number")
-            self.finished_signal.emit()
-            return
         try:
             conn = ConnectHandler(**self.device["data"])
             conn.enable()
@@ -125,18 +117,6 @@ class WRITE_CONFIG(
 class Connection(QDialog):
     def create_show_handler(self, device, command):
         try:
-            if int(device["data"]["port"]) > 65535:
-                self.statusBar().showMessage(
-                    f"{device['hostname']} has invalid port number"
-                )
-                QMessageBox.information(
-                    self, "Warning", f"{device['hostname']} has invalid port number"
-                )
-                print(f"{device['hostname']} has invalid port number")
-                QMessageBox.information(
-                    self, "Warning", f"{device['hostname']} has invalid port number"
-                )
-                return
 
             conn = ConnectHandler(**device["data"])
             output = conn.send_command(command)
