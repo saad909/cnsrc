@@ -1,28 +1,13 @@
 - data:
     device_type: cisco_ios
-    host: 10.1.1.253
-    password: !!binary |
-      Z0FBQUFBQmdrblVFZXdOY0dtaE90Tk5JdXRvbm5yVXhaMW9KZjhMWEU4bC04TXZKZG1CUDJnUm5y
-      bjQtdm9taWVOVjVuZ2ZORUk0MEpOZkpEYmVOVVlJUDZlRm0wU1R0MlE9PQ==
-    port: '22'
-    secret: !!binary |
-      Z0FBQUFBQmdrblVFc200OEtpMUtmRDlwazVVWFZpOTdlMWl4YW5EcXI4cm50RnRscWZITUY4TUF6
-      SGZncmhOdGo3S2VKWVpQUFdxM2NDYU5EVVQ0WEZTU2t5Uk0yQ0hXX1E9PQ==
-    username: cisco
-  groups:
-  - Switch
-  hostname: Sw1
-  type: Switch
-- data:
-    device_type: cisco_ios
     host: 10.1.1.254
     password: !!binary |
-      Z0FBQUFBQmdrblUxRXdwMjA0NUFjVDg0QmdZcmZndW85Y3pzWHo2d09KNEpVbHZCT3RmOVFGMjRs
-      b3lXUzVtd0IzOUFWaUlHUWdkNkxqNlUwaW83NFlNZ252ajBBNFE2Q2c9PQ==
+      Z0FBQUFBQmdvNDR4N1FqQlpoRmx6WkNXWXdMNm1VY0hxZlg4dFFfbk9GVEdwcHpvek1uQ2tKWmw2
+      aXprdjUxZEQ2WWJRZkk3SEdaSEhfR2E1ci1jSTRVNWl6ZzNqeVZGQVE9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdrblUxUVVRTmdPYUlrT1lzQ1FBQnpwNXFScTFFM3lrZjk1eW0xQ3JtbTRmVkM3RDNl
-      bGtRaUN5Q3NxWFhPMUJhOGh1WWhaVnUxaF9XNGRnU2Y5NEJBUGJISmc9PQ==
+      Z0FBQUFBQmdvNDR4a0tpLW9kYlU0VjRHVDU1eG9nUkVFa3FubzVjWG5tWlBtSzZkUkZfSHdOUXpr
+      bTVnZmswRTFaYjBKWDBZdDdXdHRuWDBvUXd5SVRSMGZBQWlNeXdzc3c9PQ==
     username: cisco
   groups:
   - Router
@@ -30,46 +15,16 @@
   type: Router
 - data:
     device_type: cisco_ios
-    host: 100.100.100.100
+    host: 10.1.1.253
     password: !!binary |
-      Z0FBQUFBQmdsb2haVFVXRmtOdVhiZ2lWMWZRYmJmRmlLc1N0SXBwVHhvdTNsRi1DWkM1N3NyY1p5
-      TjFRLTNzVXZqVVZIVHNTcENNWHh5bWpnRG9FR2NaZW5wTEVvQ2tGMEE9PQ==
-    port: '65537'
+      Z0FBQUFBQmdvNDR6VThZaFVMNVA5TkZXd1o1Y3lZUGdWRDI0ZXV6enphNWowcXpiR2xwNzZ0ckZw
+      M3k3X3JpRE1SQWc5ZG5PdXRzQWFWUkdRVVl5UWROR19mTmxwbWRCOWc9PQ==
+    port: '65535'
     secret: !!binary |
-      Z0FBQUFBQmdsb2habGxvRGVveGlzeDdSWmVaVm1oVHBwMHRyRUd0blE1VkZKeDVfWXgzd3RUbWRq
-      TEN3cmdsZFBaUWdpLWNkN21tMnBsNWFPS2MxMnZLZHYwVGxjQTZkMGc9PQ==
-    username: cisco
-  groups:
-  - Router
-  hostname: R11
-  type: Router
-- data:
-    device_type: cisco_ios
-    host: 200.200.200.200
-    password: !!binary |
-      Z0FBQUFBQmdsVEhoUmczQkVvRzNvRFFSNkRnRmo2ZVUtTVY3Z3d0VURqMC1xT1NOTnczb0VWT0R5
-      VnZ3VnJRT25uSUFKTVlBeV80R2hsd1pGZy1Ma3lwRmx2XzdoV01NaEE9PQ==
-    port: '22'
-    secret: !!binary |
-      Z0FBQUFBQmdsVEhoZUJEZDdlTXB2cGJqYUJ6ZFpsaW1rbzUyaUxlOXlXNEE2Z215MG5qWEt0QWpw
-      ZGtyelhOSmp5MXJaU1BfOWVmd21oZXFabmJjZFdwZmZBSmtvMFJwdGc9PQ==
+      Z0FBQUFBQmdvNDR6c1V4TkpaVWN3Z1JhUi1UX2VPcmJQaUNCcDhldUp1QVFoaXBYellWX0RoZm1r
+      UlJpQ2dERVlvVUZiMzVDV2gwblhqa3ZDQWVhQnlFRFBBQy1KakM4dlE9PQ==
     username: cisco
   groups:
   - Switch
-  hostname: Sw11
+  hostname: Sw1
   type: Switch
-- data:
-    device_type: cisco_ios
-    host: 192.168.122.101
-    password: !!binary |
-      Z0FBQUFBQmdsdUhMd1lnS096MVY0M0NHQnprWVhHc0VBZ1RBRkNJMWlLcDJfYWkwcEhoRVE0Qlcw
-      d0UtTWVVNzhWcnZEaUdBQ3ZpS1YxTUxsYkEtV05QVW9aS2RHWlBkaEE9PQ==
-    port: '22'
-    secret: !!binary |
-      Z0FBQUFBQmdsdUhMYXV5cFFvejVLV3JUZ1dqRTZWV3A5LW5VQ2JVWmc3UnJMUzJ6R1FRWjhyd0pi
-      MjZnSm5sbzRmNDVRUTFFdzdPME9pcTFXOXJRTmxqaGVlWWRneE9PNmc9PQ==
-    username: cisco
-  groups:
-  - Router
-  hostname: real_router
-  type: Router

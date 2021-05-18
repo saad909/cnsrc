@@ -93,6 +93,8 @@ class Main_Window(
         self.get_valid_ip(self.d_add_ip_address)
         self.get_valid_ip(self.txt_d_all_ip_address)
         self.get_valid_ip(self.d_edit_ip_address)
+        # as_no range = 1-65535
+        self.get_valid_as_no(self.d_add_port_number)
         self.get_valid_as_no(self.txt_eigrp_as_number)
 
         ########## SHow section ##################

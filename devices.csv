@@ -1,2 +1,2 @@
-Router,cisco_ios,R1@!@$_-,10.1.1.254,cisco,cisco, cisco,  22   , 
-Switch,cisco_ios,Sw1,10.1.1.253,cisco,  cisco  ,cisco, 
+Router,cisco_ios, R1 ,10.1.1.254,cisco,cisco, cisco,  22   , 
+Switch,cisco_ios,Sw1,10.1.1.253,cisco,  cisco  ,cisco, 65535
