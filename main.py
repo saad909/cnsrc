@@ -89,10 +89,20 @@ class Main_Window(
 
     ###################### handle UI changes  ######################
     def handleUIChanges(self):
+        # get valid identifier
+        self.get_valid_identifier(self.dhcp_pool_name)
         # get the valid ip
         self.get_valid_ip(self.d_add_ip_address)
         self.get_valid_ip(self.txt_d_all_ip_address)
         self.get_valid_ip(self.d_edit_ip_address)
+        self.get_valid_ip(self.dhcp_network_address)
+        self.get_valid_ip(self.dhcp_exclude_start)
+        self.get_valid_ip(self.dhcp_exclude_end)
+        self.get_valid_ip(self.dhcp_default_gateway)
+        self.get_valid_ip(self.dhcp_dns_server)
+        self.get_valid_ip(self.dhcp_ip_phone_gateway)
+        # get valid subnet mask
+        self.get_valid_subnet(self.dhcp_subnet_mask)
         # as_no range = 1-65535
         self.get_valid_as_no(self.d_add_port_number)
         self.get_valid_as_no(self.txt_eigrp_as_number)

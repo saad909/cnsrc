@@ -88,6 +88,32 @@ class devices_func(QDial):
         ipValidator = QRegExpValidator(ipRegExp)
         textBox.setValidator(ipValidator)
 
+    def get_valid_subnet(self, textBox):
+        # validate ip address input
+        octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-5])"
+        ipRegExp = QRegExp(
+            "^" + octet + r"\." + octet + r"\." + octet + r"\." + octet + "$"
+        )
+        # ipRegExp = QRegExp(
+        #     r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
+        # )
+        ipValidator = QRegExpValidator(ipRegExp)
+        textBox.setValidator(ipValidator)
+
+    def is_subnet_mask_complete(self, ipTextBox):
+
+        ip_address = ipTextBox.text()
+        # reg_exp = r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
+
+        octet = "(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25?[0-5])"
+        reg_exp = "^" + octet + r"\." + octet + r"\." + octet + r"\." + octet + "$"
+        result = list()
+        result = re.findall(reg_exp, ip_address)
+        if len(result) == 1:
+            return True
+        else:
+            return False
+
     def is_ip_complete(self, ipTextBox):
 
         ip_address = ipTextBox.text()
@@ -101,6 +127,16 @@ class devices_func(QDial):
             return True
         else:
             return False
+
+    def get_valid_identifier(self, textBox):
+        # validate ip address input
+        regexp = QRegExp(r"[\w_\-!#@]+")
+        # ipRegExp = QRegExp(
+        #     r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
+        # )
+        validator = QRegExpValidator(regexp)
+        textBox.setValidator(validator)
+
 
     def clear_add_devices_fileds(self):
         self.clear_text_box(self.d_add_hostname)

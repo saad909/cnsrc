@@ -624,6 +624,49 @@ class configurations(QDialog):
                     self.dhcp_btn_generate.setChecked(False)
                     self.dhcp_ip_phone_gateway.setFocus()
                     return
+
+            # check for valid ip addresses
+            if not self.is_ip_complete(self.dhcp_network_address):
+                QMessageBox.critical(self,"Warning","Please enter valid network address")
+                self.dhcp_btn_generate.setChecked(False)
+                self.dhcp_network_address.setFocus()
+                return
+
+
+            if not self.is_subnet_mask_complete(self.dhcp_subnet_mask):
+                QMessageBox.critical(self,"Warning","Please enter valid subnet mask")
+                self.dhcp_btn_generate.setChecked(False)
+                self.dhcp_subnet_mask.setFocus()
+                return
+
+
+            if not self.is_ip_complete(self.dhcp_exclude_start) and self.chkbox_exclude_range.isChecked():
+                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                self.dhcp_btn_generate.setChecked(False)
+                self.dhcp_exclude_start.setFocus()
+                return
+            if not self.is_ip_complete(self.dhcp_exclude_end) and self.chkbox_exclude_range.isChecked():
+                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                self.dhcp_btn_generate.setChecked(False)
+                self.dhcp_exclude_end.setFocus()
+                return
+            if not self.is_ip_complete(self.dhcp_default_gateway) and self.chkbox_default_gateway.isChecked():
+                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                self.dhcp_btn_generate.setChecked(False)
+                self.dhcp_default_gateway.setFocus()
+                return
+            if not self.is_ip_complete(self.dhcp_dns_server) and self.chkbox_dns_server.isChecked():
+                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                self.dhcp_btn_generate.setChecked(False)
+                self.dhcp_dns_server.setFocus()
+                return
+            if not self.is_ip_complete(self.dhcp_ip_phone_gateway) and self.chkbox_ip_phone_gateway.isChecked():
+                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                self.dhcp_btn_generate.setChecked(False)
+                self.dhcp_ip_phone_gateway.setFocus()
+                return
+
+
         else:
             self.te_dhcp_server_config.clear()
             return
