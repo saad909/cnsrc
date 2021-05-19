@@ -38,9 +38,9 @@ class configurations(QDialog):
               ]
                 dhcp_configurations_list = [
                     '----------- DHCP -----------',
-                    "dhcp server",
-                    "dhcp client",
-                    "dhcp snooping",
+                    "dhcp_server",
+                    "dhcp_client",
+                    "dhcp_snooping",
                 ]
                 self.configs_all_configurations.addItems(routing_protocols_list)
                 self.configs_all_configurations.addItems(dhcp_configurations_list)
@@ -124,6 +124,12 @@ class configurations(QDialog):
             return
 
 
+    def show_rip_errors(self,error):
+        QMessageBox.critical(self,"Warning",error)
+        self.clear_rip_results()
+        return
+
+
     def create_rip_configuration(self):
         if ( not self.chkbox_rip_loopback.isChecked() == True) and (not self.chkbox_rip_directly.isChecked() == True ):
             self.te_rip_config.clear()
@@ -155,7 +161,7 @@ class configurations(QDialog):
                 self.thread.started.connect(self.worker.run)
                 self.worker.finished_signal.connect(self.thread.quit)
                 self.worker.finished_signal.connect(self.worker.deleteLater)
-                self.worker.error_signal.connect(self.show_errors)
+                self.worker.error_signal.connect(self.show_rip_errors)
                 # rps -> routing protocols
                 self.worker.output_signal.connect(self.genereate_rip_config)
                 # Step 6: Start the thread
@@ -272,6 +278,12 @@ class configurations(QDialog):
         self.txt_eigrp_as_number.setFocus()
 
 
+    def show_eigrp_errors(self,error):
+        QMessageBox.critical(self,"Warning",error)
+        self.clear_eigrp_results()
+        return
+
+
     def create_eigrp_configuration(self):
         if ( not self.chkbox_eigrp_loopback.isChecked() == True) and (not self.chkbox_eigrp_directly.isChecked() == True ):
             self.te_eigrp_config.clear()
@@ -314,7 +326,7 @@ class configurations(QDialog):
                 self.thread.started.connect(self.worker.run)
                 self.worker.finished_signal.connect(self.thread.quit)
                 self.worker.finished_signal.connect(self.worker.deleteLater)
-                self.worker.error_signal.connect(self.show_errors)
+                self.worker.error_signal.connect(self.show_eigrp_errors)
                 # rps -> routing protocols
                 self.worker.output_signal.connect(self.genereate_eigrp_config)
                 # Step 6: Start the thread
@@ -410,6 +422,12 @@ class configurations(QDialog):
         self.txt_process_id.setFocus()
 
 
+    def show_ospf_errors(self,error):
+        QMessageBox.critical(self,"Warning",error)
+        self.clear_ospf_results()
+        return
+
+
     def create_ospf_configuration(self):
 
 
@@ -460,7 +478,7 @@ class configurations(QDialog):
                 self.thread.started.connect(self.worker.run)
                 self.worker.finished_signal.connect(self.thread.quit)
                 self.worker.finished_signal.connect(self.worker.deleteLater)
-                self.worker.error_signal.connect(self.show_errors)
+                self.worker.error_signal.connect(self.show_ospf_errors)
                 # rps -> routing protocols
                 self.worker.output_signal.connect(self.genereate_ospf_config)
                 # Step 6: Start the thread
@@ -497,3 +515,115 @@ class configurations(QDialog):
             else:
                 return
 
+    # 00000000000000000000000000 DHCP Server 000000000000000000000000000000000
+
+
+    def hide_dhcp_server_optional_arguments(self):
+        self.dhcp_exclude_start.setVisible(False)
+        self.dhcp_exclude_end.setVisible(False)
+        self.dhcp_default_gateway.setVisible(False)
+        self.dhcp_dns_server.setVisible(False)
+        self.dhcp_ip_phone_gateway.setVisible(False)
+
+    def toggle_exclude_range(self,state):
+        if state == 2:
+            self.dhcp_exclude_start.setVisible(True)
+            self.dhcp_exclude_end.setVisible(True)
+        else:
+            self.dhcp_exclude_start.setVisible(False)
+            self.dhcp_exclude_end.setVisible(False)
+
+
+
+    def toggle_ip_phone_gateway(self,state):
+        if state == 2:
+            self.dhcp_ip_phone_gateway.setVisible(True)
+        else:
+            self.dhcp_ip_phone_gateway.setVisible(False)
+
+
+    def toggle_default_gateway(self,state):
+        if state == 2:
+            self.dhcp_default_gateway.setVisible(True)
+        else:
+            self.dhcp_default_gateway.setVisible(False)
+
+
+    def toggle_dns_server(self,state):
+        if state == 2:
+            self.dhcp_dns_server.setVisible(True)
+        else:
+            self.dhcp_dns_server.setVisible(False)
+
+
+
+    def genereate_dhcp_server_config(self,state):
+        # get the values
+        print(state)
+        if state:
+            pool_name = self.dhcp_pool_name.text()
+            network_address = self.dhcp_network_address.text()
+            subnet_mask = self.dhcp_subnet_mask.text()
+
+            if not pool_name:
+                QMessageBox.critical(self,"Warning","Please enter the pool name")
+                self.dhcp_pool_name.setFocus()
+                self.dhcp_btn_generate.setChecked(False)
+                return
+            elif not network_address:
+                QMessageBox.critical(self,"Warning","Please enter the network address")
+                self.dhcp_network_address.setFocus()
+                self.dhcp_btn_generate.setChecked(False)
+                return
+            if not subnet_mask:
+                QMessageBox.critical(self,"Warning","Please enter the subnet mask")
+                self.dhcp_subnet_mask.setFocus()
+                self.dhcp_btn_generate.setChecked(False)
+                return
+            default_gateway = "None"
+            dns_server = "None"
+            ip_phone_gateway = "None"
+            start_range = "None"
+            end_range = "None"
+
+            if self.chkbox_exclude_range.isChecked():
+                start_range = self.dhcp_exclude_start.text()
+                end_range = self.dhcp_exclude_end.text()
+                if not start_range:
+                    QMessageBox.critical(self,"Warning","Please enter the excluding start address")
+                    self.dhcp_btn_generate.setChecked(False)
+                    self.dhcp_exclude_start.setFocus()
+                    return
+                if not end_range:
+                    QMessageBox.critical(self,"Warning","Please enter the excluding end address")
+                    self.dhcp_btn_generate.setChecked(False)
+                    self.dhcp_exclude_end.setFocus()
+                    return
+
+            if self.chkbox_default_gateway.isChecked():
+                default_gateway = self.dhcp_default_gateway.text()
+                if not default_gateway:
+                    QMessageBox.critical(self,"Warning","Please enter the default gateway")
+                    self.dhcp_btn_generate.setChecked(False)
+                    self.dhcp_default_gateway.setFocus()
+                    return
+
+
+            if self.chkbox_dns_server.isChecked():
+                dns_server = self.dhcp_dns_server.text()
+                if not dns_server:
+                    QMessageBox.critical(self,"Warning","Please enter the dns server")
+                    self.dhcp_btn_generate.setChecked(False)
+                    self.dhcp_dns_server.setFocus()
+                    return
+
+            if self.chkbox_ip_phone_gateway.isChecked():
+                ip_phone_gateway = self.dhcp_ip_phone_gateway.text()
+                if not ip_phone_gateway:
+                    QMessageBox.critical(self,"Warning","Please enter the ip phone gateway")
+                    self.dhcp_btn_generate.setChecked(False)
+                    self.dhcp_ip_phone_gateway.setFocus()
+                    return
+        else:
+            self.te_dhcp_server_config.clear()
+            return

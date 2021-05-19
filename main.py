@@ -156,6 +156,14 @@ class Main_Window(
         self.chkbox_ospf_directly.stateChanged.connect(self.create_ospf_configuration)
         self.btn_push_ospf_config.clicked.connect(self.configure_ospf)
         self.btn_clear_ospf.clicked.connect(self.clear_ospf_results)
+            #dhcp server
+        self.chkbox_exclude_range.stateChanged.connect(self.toggle_exclude_range)
+        self.chkbox_default_gateway.stateChanged.connect(self.toggle_default_gateway)
+        self.chkbox_dns_server.stateChanged.connect(self.toggle_dns_server)
+        self.chkbox_ip_phone_gateway.stateChanged.connect(self.toggle_ip_phone_gateway)
+        self.dhcp_btn_generate.clicked.connect(self.genereate_dhcp_server_config)
+
+
 
     ###################### handle buttons action ######################
 

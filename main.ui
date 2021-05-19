@@ -616,7 +616,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <property name="movable">
            <bool>false</bool>
@@ -1714,7 +1714,7 @@
        <attribute name="title">
         <string>Basic Section</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_22">
+       <layout class="QGridLayout" name="gridLayout_47">
         <item row="0" column="0">
          <widget class="QTabWidget" name="tab_basic_tasks">
           <property name="currentIndex">
@@ -1798,16 +1798,16 @@ color: rgb(0, 255, 0);</string>
             <string>Configurations</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_35">
-            <item row="0" column="0">
-             <widget class="QComboBox" name="configs_all_devices"/>
-            </item>
             <item row="0" column="1">
              <widget class="QComboBox" name="configs_all_configurations"/>
+            </item>
+            <item row="0" column="0">
+             <widget class="QComboBox" name="configs_all_devices"/>
             </item>
             <item row="1" column="0" colspan="2">
              <widget class="QTabWidget" name="tab_configs">
               <property name="currentIndex">
-               <number>1</number>
+               <number>4</number>
               </property>
               <widget class="QWidget" name="tab_11">
                <attribute name="title">
@@ -1936,7 +1936,7 @@ color: rgb(0, 255, 0);</string>
                      <item row="1" column="1">
                       <widget class="QLineEdit" name="txt_ospf_area">
                        <property name="placeholderText">
-                        <string>Enter the area number between 0-4294967295</string>
+                        <string>Enter the area number between 0-65535</string>
                        </property>
                       </widget>
                      </item>
@@ -2073,6 +2073,177 @@ color: rgb(0, 255, 0);</string>
                     <widget class="QLineEdit" name="txt_eigrp_as_number">
                      <property name="placeholderText">
                       <string>Enter Autonous System Number for eigrp between 1-65535</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="dhcp_server">
+               <attribute name="title">
+                <string>Page</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_22">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="groupBox_17">
+                  <property name="title">
+                   <string>DHCP Server</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_48">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_22">
+                     <property name="text">
+                      <string>Pool Name</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QLineEdit" name="dhcp_pool_name">
+                     <property name="placeholderText">
+                      <string>Enter the pool name</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="label_24">
+                     <property name="text">
+                      <string>Network Address</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="2">
+                    <widget class="QLineEdit" name="dhcp_network_address">
+                     <property name="placeholderText">
+                      <string>Enter the network address</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="label_23">
+                     <property name="text">
+                      <string>Subnet Mask</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="2">
+                    <widget class="QLineEdit" name="dhcp_subnet_mask">
+                     <property name="placeholderText">
+                      <string>Enter the subnet mask</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QCheckBox" name="chkbox_exclude_range">
+                     <property name="text">
+                      <string>Exclude Range</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="2">
+                    <layout class="QHBoxLayout" name="dhcp_exclude_range_layout">
+                     <item>
+                      <widget class="QLineEdit" name="dhcp_exclude_start">
+                       <property name="placeholderText">
+                        <string>Starting address</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="dhcp_exclude_end">
+                       <property name="placeholderText">
+                        <string>Ending address</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QCheckBox" name="chkbox_default_gateway">
+                     <property name="text">
+                      <string>Default Gateway</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="2">
+                    <widget class="QLineEdit" name="dhcp_default_gateway">
+                     <property name="placeholderText">
+                      <string>Enter default gateway</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QCheckBox" name="chkbox_dns_server">
+                     <property name="text">
+                      <string>DNS Server</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="2">
+                    <widget class="QLineEdit" name="dhcp_dns_server">
+                     <property name="placeholderText">
+                      <string>Enter DNS Server</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="0" colspan="2">
+                    <widget class="QCheckBox" name="chkbox_ip_phone_gateway">
+                     <property name="text">
+                      <string>IP phone gateway</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="2">
+                    <widget class="QLineEdit" name="dhcp_ip_phone_gateway">
+                     <property name="placeholderText">
+                      <string>Enter IP phone gateway</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="0">
+                    <widget class="QLabel" name="label_28">
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="2">
+                    <widget class="QTextEdit" name="te_dhcp_server_config">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="2">
+                    <layout class="QHBoxLayout" name="horizontalLayout_14">
+                     <item>
+                      <widget class="QPushButton" name="pushButton">
+                       <property name="text">
+                        <string>Push Configuration</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_3">
+                       <property name="text">
+                        <string>Clear</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="7" column="2">
+                    <widget class="QPushButton" name="dhcp_btn_generate">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Generate Config</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>

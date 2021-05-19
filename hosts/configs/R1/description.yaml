@@ -1,18 +1,6 @@
-- desc: s1
-  file_name: startup config_03-05-2021_18:35:21.cfg
-  type: startup config
-- desc: s2
-  file_name: startup config_03-05-2021_18:39:48.cfg
-  type: startup config
-- desc: running-config backedup
-  file_name: running config_03-05-2021_20:25:35.cfg
-  type: running config
 - desc: start
   file_name: startup config_03-05-2021_23-41-21.cfg
   type: startup config
-- desc: running-config
-  file_name: running config_03-05-2021_23-41-37.cfg
-  type: running config
 - desc: starttads
   file_name: startup config_05-05-2021_17-38-18.cfg
   type: startup config
@@ -22,3 +10,9 @@
 - desc: cvfgdf
   file_name: startup config_08-05-2021_23-06-53.cfg
   type: startup config
+- desc: testing for fyp
+  file_name: startup config_18-05-2021_17-20-55.cfg
+  type: startup config
+- desc: sa
+  file_name: running config_18-05-2021_17-21-42.cfg
+  type: running config

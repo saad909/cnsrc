@@ -72,3 +72,6 @@ class startup_settings(QDial):
         self.update_configs_all_devices()
         # configurations
         self.tab_configs.setCurrentIndex(0)
+
+        # dhcp server
+        self.hide_dhcp_server_optional_arguments()
