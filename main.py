@@ -172,6 +172,8 @@ class Main_Window(
         self.chkbox_dns_server.stateChanged.connect(self.toggle_dns_server)
         self.chkbox_ip_phone_gateway.stateChanged.connect(self.toggle_ip_phone_gateway)
         self.dhcp_btn_generate.clicked.connect(self.genereate_dhcp_server_config)
+        self.btn_push_dhcp_server_config.clicked.connect(self.configure_dhcp_server)
+        self.btn_clear_dhcp_server.clicked.connect(self.clear_dhcp_server_results)
 
 
 

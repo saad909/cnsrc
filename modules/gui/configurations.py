@@ -529,31 +529,47 @@ class configurations(QDialog):
         if state == 2:
             self.dhcp_exclude_start.setVisible(True)
             self.dhcp_exclude_end.setVisible(True)
+            self.te_dhcp_server_config.clear()
+            self.dhcp_btn_generate.setChecked(False)
         else:
             self.dhcp_exclude_start.setVisible(False)
             self.dhcp_exclude_end.setVisible(False)
+            self.te_dhcp_server_config.clear()
+            self.dhcp_btn_generate.setChecked(False)
 
 
 
     def toggle_ip_phone_gateway(self,state):
         if state == 2:
             self.dhcp_ip_phone_gateway.setVisible(True)
+            self.te_dhcp_server_config.clear()
+            self.dhcp_btn_generate.setChecked(False)
         else:
             self.dhcp_ip_phone_gateway.setVisible(False)
+            self.te_dhcp_server_config.clear()
+            self.dhcp_btn_generate.setChecked(False)
 
 
     def toggle_default_gateway(self,state):
         if state == 2:
             self.dhcp_default_gateway.setVisible(True)
+            self.te_dhcp_server_config.clear()
+            self.dhcp_btn_generate.setChecked(False)
         else:
             self.dhcp_default_gateway.setVisible(False)
+            self.te_dhcp_server_config.clear()
+            self.dhcp_btn_generate.setChecked(False)
 
 
     def toggle_dns_server(self,state):
         if state == 2:
             self.dhcp_dns_server.setVisible(True)
+            self.te_dhcp_server_config.clear()
+            self.dhcp_btn_generate.setChecked(False)
         else:
             self.dhcp_dns_server.setVisible(False)
+            self.te_dhcp_server_config.clear()
+            self.dhcp_btn_generate.setChecked(False)
 
 
 
@@ -666,7 +682,85 @@ class configurations(QDialog):
                 self.dhcp_ip_phone_gateway.setFocus()
                 return
 
+            enabled_exclude_range = self.chkbox_exclude_range.isChecked()
+            enabled_default_gateway = self.chkbox_default_gateway.isChecked()
+            enabled_dns_server = self.chkbox_dns_server.isChecked()
+            enabled_ip_phone_gateway = self.chkbox_ip_phone_gateway.isChecked()
+            dhcp_server_dict = {
+                "enabled_exclude_range":enabled_exclude_range,
+                "enabled_default_gateway":enabled_default_gateway,
+                "enabled_dns_server":enabled_dns_server,
+                "enabled_ip_phone_gateway":enabled_ip_phone_gateway,
+                "exclude_start":start_range,
+                "exclude_end":end_range,
+                "pool_name":pool_name,
+                "network_address":network_address,
+                "subnet_mask":subnet_mask,
+                "default_gateway":default_gateway,
+                "dns_server":dns_server,
+                "ip_phone_gateway":ip_phone_gateway,
+            }
+            j2_env = Environment(
+                loader=FileSystemLoader("hosts/templates/configurations"), trim_blocks=True, autoescape=True
+            )
+            template = j2_env.get_template("cisco_ios_dhcp_server.j2")
+            configuration = template.render(data=dhcp_server_dict)
+            if configuration:
+                print(configuration)
+                self.te_dhcp_server_config.clear()
+                self.te_dhcp_server_config.insertPlainText(str( configuration ))
+
 
         else:
             self.te_dhcp_server_config.clear()
             return
+
+    def configure_dhcp_server(self):
+        configurations = self.te_dhcp_server_config.toPlainText().splitlines()
+        if configurations:
+            print(configurations)
+            # get the name of device and send the config
+            device_name = self.configs_all_devices.currentText()
+            all_devices = self.convert_host_file_into_list()
+            my_device = {}
+            for device in all_devices:
+                if device['hostname'] == device_name:
+                    my_device = device
+                    break
+            selection = QMessageBox.question(
+                            self,
+                            "Alert",
+                            "Do you want to apply configurations",
+                            QMessageBox.Yes | QMessageBox.No,
+                            QMessageBox.No,
+                        )
+            if selection == QMessageBox.Yes:
+                my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
+                my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
+                self.write_config(my_device,configurations,self.te_dhcp_server_config)
+                return
+            else:
+                return
+        else:
+            QMessageBox.information(self,"Note","Please generate the config first!")
+            self.dhcp_pool_name.setFocus()
+            return
+
+
+    def clear_dhcp_server_results(self):
+        self.dhcp_pool_name.setText("")
+        self.dhcp_network_address.setText("")
+        self.dhcp_subnet_mask.setText("")
+        self.chkbox_exclude_range.setChecked(False)
+        self.chkbox_default_gateway.setChecked(False)
+        self.chkbox_dns_server.setChecked(False)
+        self.chkbox_ip_phone_gateway.setChecked(False)
+        self.dhcp_exclude_start.setText("")
+        self.dhcp_exclude_end.setText("")
+        self.dhcp_default_gateway.setText("")
+        self.dhcp_dns_server.setText("")
+        self.dhcp_ip_phone_gateway.setText("")
+        self.dhcp_btn_generate.setChecked(False)
+        self.te_dhcp_server_config.clear()
+        self.dhcp_pool_name.setFocus()
+        return

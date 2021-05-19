@@ -1,5 +1,16 @@
+{% if data.enabled_exclude_range == True -%}
+ip dhcp excluded-address {{data.exclude_start}} {{data.exclude_end}}
+{% endif %}
 ip dhcp pool {{data.pool_name}}
-network <network_address> <subnet_mask>
-default-router <default_gateway>
-dns-server <dns-server>
-option 150 ip <ip_phone_gateway>
+network {{data.network_address}} {{data.subnet_mask}}
+{% if data.enabled_default_gateway == True -%}
+default-router {{data.default_gateway}}
+{% endif %}
+{% if data.enabled_dns_server == True -%}
+dns-server {{data.dns_server}}
+{% endif %}
+{% if data.enabled_ip_phone_gateway == True -%}
+option 150 ip {{data.ip_phone_gateway}}
+{% endif %}
+
+! End of configuration

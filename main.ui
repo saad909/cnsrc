@@ -2219,14 +2219,14 @@ color: rgb(0, 255, 0);</string>
                    <item row="9" column="2">
                     <layout class="QHBoxLayout" name="horizontalLayout_14">
                      <item>
-                      <widget class="QPushButton" name="pushButton">
+                      <widget class="QPushButton" name="btn_push_dhcp_server_config">
                        <property name="text">
                         <string>Push Configuration</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_3">
+                      <widget class="QPushButton" name="btn_clear_dhcp_server">
                        <property name="text">
                         <string>Clear</string>
                        </property>
