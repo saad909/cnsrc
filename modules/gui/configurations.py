@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import *
 from modules.networking.connection import ConnectionWithThreading
-from PyQt5.QtCore import  QThread,Qt,QRegExp
-import re,time
+from PyQt5.QtCore import QThread, Qt, QRegExp
+import re
+import time
 from PyQt5.QtGui import QRegExpValidator
 from jinja2 import Environment, FileSystemLoader
 from modules.networking.connection import WRITE_CONFIG as WC
@@ -9,11 +10,8 @@ from modules.networking.connection import WRITE_CONFIG as WC
 
 class configurations(QDialog):
 
-
-
-
     # 0000000000000000000000 RIP section 0000000000000000000000000000
-    def fill_configurations(self,device_name):
+    def fill_configurations(self, device_name):
         # all_devices_list = self.convert_host_file_into_list()
         self.tab_configs.setCurrentIndex(0)
         if "Select a Device" in device_name:
@@ -32,28 +30,31 @@ class configurations(QDialog):
             if my_device['type'] == "Router":
                 routing_protocols_list = [
                     '----------- Routing Protocols -----------',
-                      'rip',
-                      'ospf',
-                      'eigrp',
-              ]
+                    'rip',
+                    'ospf',
+                    'eigrp',
+                ]
                 dhcp_configurations_list = [
                     '----------- DHCP -----------',
-                    "dhcp_server",
-                    "dhcp_client",
-                    "dhcp_snooping",
+                    # "dhcp_server",
+                    "dhcp",
+                    # "dhcp_snooping",
                 ]
-                self.configs_all_configurations.addItems(routing_protocols_list)
-                self.configs_all_configurations.addItems(dhcp_configurations_list)
-                others_list =  [
-                "----------- OTHER -----------",
-                "port channeling",
-                "ppp",
-                "clock",
-                "snmp",
-                "local users",
-                "loopback interface",
-                "hostname"
-                    ]
+                self.configs_all_configurations.addItems(
+                    routing_protocols_list)
+                self.configs_all_configurations.addItems(
+                    dhcp_configurations_list)
+                others_list = [
+                    "----------- OTHER -----------",
+                    "configure_static_ip",
+                    "port channeling",
+                    "ppp",
+                    "clock",
+                    "snmp",
+                    "local users",
+                    "loopback interface",
+                    "hostname"
+                ]
                 self.configs_all_configurations.addItems(others_list)
                 return
             elif my_device['type'] == "Switch":
@@ -68,36 +69,47 @@ class configurations(QDialog):
                 self.configs_all_configurations.addItems(configs_list)
                 return
         else:
-            QMessageBox.critical(self,"Warning","Software currently supports only cisco_ios devices")
+            QMessageBox.critical(
+                self, "Warning", "Software currently supports only cisco_ios devices")
             return
 
+    # def fill_device_interfaces(self, device_name):
+        # print(type(all_interfaces))
+        # print(all_interfaces)
+        # self.dhcp_client_all_interfaces.addItems(all_interfaces)
 
-    def move_configs_tab_index(self,config_selected):
+    def move_configs_tab_index(self, config_selected):
         if not "-" in config_selected:
-            page = self.tab_configs.findChild(QWidget,config_selected)
+            page = self.tab_configs.findChild(QWidget, config_selected)
             index = self.tab_configs.indexOf(page)
+            print(self.tab_configs.tabText(index))
+            if self.tab_configs.tabText(index) == "dhcp":
+                # fill the interfaces into box
+                self.statusBar().showMessage("Fetching device interfaces")
+                self.get_all_interfaces(self.configs_all_devices.currentText(),self.dhcp_client_all_interfaces)
+                # self.statusBar().showMessage("")
             print(f"INdex is {index}")
             self.tab_configs.setCurrentIndex(index)
         else:
             self.tab_configs.setCurrentIndex(0)
             return
 
-
-    def genereate_rip_config(self,output):
-
+    def genereate_rip_config(self, output):
 
         networks = list()
         if self.chkbox_rip_loopback.isChecked() == True:
             for line in output.splitlines():
-                regex = re.compile(r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
-                result = re.fullmatch(regex,line)
+                regex = re.compile(
+                    r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                result = re.fullmatch(regex, line)
                 if result:
                     # print(result)
                     networks.append(result.group("ip_address"))
         else:
             for line in output.splitlines():
-                regex = re.compile(r"^(G|E|F)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
-                result = re.fullmatch(regex,line)
+                regex = re.compile(
+                    r"^(G|E|F)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                result = re.fullmatch(regex, line)
                 if result:
                     # print(result)
                     networks.append(result.group("ip_address"))
@@ -108,8 +120,8 @@ class configurations(QDialog):
                 rip_version = "2"
 
             rip_dict = {
-                "networks":networks,
-                "version":rip_version,
+                "networks": networks,
+                "version": rip_version,
             }
             j2_env = Environment(
                 loader=FileSystemLoader("hosts/templates/configurations"), trim_blocks=True, autoescape=True
@@ -119,19 +131,17 @@ class configurations(QDialog):
             if configuration:
                 print(configuration)
                 self.te_rip_config.clear()
-                self.te_rip_config.insertPlainText(str( configuration ))
+                self.te_rip_config.insertPlainText(str(configuration))
 
             return
 
-
-    def show_rip_errors(self,error):
-        QMessageBox.critical(self,"Warning",error)
+    def show_rip_errors(self, error):
+        QMessageBox.critical(self, "Warning", error)
         self.clear_rip_results()
         return
 
-
     def create_rip_configuration(self):
-        if ( not self.chkbox_rip_loopback.isChecked() == True) and (not self.chkbox_rip_directly.isChecked() == True ):
+        if (not self.chkbox_rip_loopback.isChecked() == True) and (not self.chkbox_rip_directly.isChecked() == True):
             self.te_rip_config.clear()
 
         if self.chkbox_rip_loopback.isChecked() == True or self.chkbox_rip_directly.isChecked() == True:
@@ -146,15 +156,16 @@ class configurations(QDialog):
             all_commands = ['show ip int br']
 
             # decrypt password
-            my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
-            my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
-
+            my_device['data']['password'] = self.decrypt_password(
+                my_device['data']['password'])
+            my_device['data']['secret'] = self.decrypt_password(
+                my_device['data']['secret'])
 
             try:
                 # getting output
                 self.thread = QThread()
                 # Step 3: Create a worker object
-                self.worker = ConnectionWithThreading(my_device,all_commands)
+                self.worker = ConnectionWithThreading(my_device, all_commands)
                 # Step 4: Move worker to the thread
                 self.worker.moveToThread(self.thread)
                 # Step 5: Connect signals and slots
@@ -168,13 +179,12 @@ class configurations(QDialog):
                 self.thread.start()
                 time.sleep(3)
             except Exception as error:
-                QMessageBox.critical(self,"Warning",str(error))
+                QMessageBox.critical(self, "Warning", str(error))
 
-
-    def write_config(self,device,configuration,output_box):
+    def write_config(self, device, configuration, output_box):
         self.thread = QThread()
         # Step 3: Create a worker object
-        self.worker = WC(device,configuration)
+        self.worker = WC(device, configuration)
         # Step 4: Move worker to the thread
         self.worker.moveToThread(self.thread)
         # Step 5: Connect signals and slots
@@ -194,7 +204,6 @@ class configurations(QDialog):
         self.chkbox_rip_version.setChecked(False)
         self.te_rip_config.clear()
 
-
     def configure_rip(self):
         configurations = self.te_rip_config.toPlainText().splitlines()
         if configurations:
@@ -208,43 +217,47 @@ class configurations(QDialog):
                     my_device = device
                     break
             selection = QMessageBox.question(
-                            self,
-                            "Alert",
-                            "Do you want to apply configurations",
-                            QMessageBox.Yes | QMessageBox.No,
-                            QMessageBox.No,
-                        )
+                self,
+                "Alert",
+                "Do you want to apply configurations",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No,
+            )
             if selection == QMessageBox.Yes:
-                my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
-                my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
-                self.write_config(my_device,configurations,self.te_rip_config)
+                my_device['data']['password'] = self.decrypt_password(
+                    my_device['data']['password'])
+                my_device['data']['secret'] = self.decrypt_password(
+                    my_device['data']['secret'])
+                self.write_config(my_device, configurations,
+                                  self.te_rip_config)
                 return
             else:
                 return
 
-
     # 00000000000000000000000000 EIGRP 000000000000000000000000000000000
-    def get_valid_as_no(self,widget):
+    def get_valid_as_no(self, widget):
         # check autonomous system number
-        regexp = QRegExp(r"^()([1-9]|[1-5]?[0-9]{2,4}|6[1-4][0-9]{3}|65[1-4][0-9]{2}|655[1-2][0-9]|6553[1-5])$")
+        regexp = QRegExp(
+            r"^()([1-9]|[1-5]?[0-9]{2,4}|6[1-4][0-9]{3}|65[1-4][0-9]{2}|655[1-2][0-9]|6553[1-5])$")
         validator = QRegExpValidator(regexp)
         widget.setValidator(validator)
 
-    def genereate_eigrp_config(self,output):
-
+    def genereate_eigrp_config(self, output):
 
         networks = list()
         if self.chkbox_eigrp_loopback.isChecked() == True:
             for line in output.splitlines():
-                regex = re.compile(r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
-                result = re.fullmatch(regex,line)
+                regex = re.compile(
+                    r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                result = re.fullmatch(regex, line)
                 if result:
                     # print(result)
                     networks.append(result.group("ip_address"))
         else:
             for line in output.splitlines():
-                regex = re.compile(r"^(G|E|F)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
-                result = re.fullmatch(regex,line)
+                regex = re.compile(
+                    r"^(G|E|F)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                result = re.fullmatch(regex, line)
                 if result:
                     # print(result)
                     networks.append(result.group("ip_address"))
@@ -253,8 +266,8 @@ class configurations(QDialog):
             print(networks)
 
             eigrp_dict = {
-                "as_sys_no":as_sys_no,
-                "networks":networks,
+                "as_sys_no": as_sys_no,
+                "networks": networks,
             }
             j2_env = Environment(
                 loader=FileSystemLoader("hosts/templates/configurations"), trim_blocks=True, autoescape=True
@@ -264,10 +277,11 @@ class configurations(QDialog):
             if configuration:
                 print(configuration)
                 self.te_eigrp_config.clear()
-                self.te_eigrp_config.insertPlainText(str( configuration ))
+                self.te_eigrp_config.insertPlainText(str(configuration))
                 return
             else:
-                QMessageBox.critical(self,"Warning","Configuration generation failed")
+                QMessageBox.critical(
+                    self, "Warning", "Configuration generation failed")
                 return
 
     def clear_eigrp_results(self):
@@ -277,26 +291,25 @@ class configurations(QDialog):
         self.te_eigrp_config.clear()
         self.txt_eigrp_as_number.setFocus()
 
-
-    def show_eigrp_errors(self,error):
-        QMessageBox.critical(self,"Warning",error)
+    def show_eigrp_errors(self, error):
+        QMessageBox.critical(self, "Warning", error)
         self.clear_eigrp_results()
         return
 
-
     def create_eigrp_configuration(self):
-        if ( not self.chkbox_eigrp_loopback.isChecked() == True) and (not self.chkbox_eigrp_directly.isChecked() == True ):
+        if (not self.chkbox_eigrp_loopback.isChecked() == True) and (not self.chkbox_eigrp_directly.isChecked() == True):
             self.te_eigrp_config.clear()
 
         if self.chkbox_eigrp_loopback.isChecked() == True or self.chkbox_eigrp_directly.isChecked() == True:
-            #check for autonomous system number
+            # check for autonomous system number
             if not self.txt_eigrp_as_number.text():
                 self.te_eigrp_config.clear()
                 if self.chkbox_eigrp_directly.isChecked() == True:
                     self.chkbox_eigrp_directly.setChecked(False)
                 elif self.chkbox_eigrp_loopback.isChecked() == True:
                     self.chkbox_eigrp_loopback.setChecked(False)
-                QMessageBox.critical(self,"Warning","Please enter the autonomous system number")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter the autonomous system number")
                 self.te_eigrp_config.clear()
                 self.txt_eigrp_as_number.setFocus()
                 return
@@ -311,15 +324,16 @@ class configurations(QDialog):
             all_commands = ['show ip int br']
 
             # decrypt password
-            my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
-            my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
-
+            my_device['data']['password'] = self.decrypt_password(
+                my_device['data']['password'])
+            my_device['data']['secret'] = self.decrypt_password(
+                my_device['data']['secret'])
 
             try:
                 # getting output
                 self.thread = QThread()
                 # Step 3: Create a worker object
-                self.worker = ConnectionWithThreading(my_device,all_commands)
+                self.worker = ConnectionWithThreading(my_device, all_commands)
                 # Step 4: Move worker to the thread
                 self.worker.moveToThread(self.thread)
                 # Step 5: Connect signals and slots
@@ -333,8 +347,7 @@ class configurations(QDialog):
                 self.thread.start()
                 time.sleep(3)
             except Exception as error:
-                QMessageBox.critical(self,"Warning",str(error))
-
+                QMessageBox.critical(self, "Warning", str(error))
 
     def configure_eigrp(self):
         configurations = self.te_eigrp_config.toPlainText().splitlines()
@@ -349,43 +362,47 @@ class configurations(QDialog):
                     my_device = device
                     break
             selection = QMessageBox.question(
-                            self,
-                            "Alert",
-                            "Do you want to apply configurations",
-                            QMessageBox.Yes | QMessageBox.No,
-                            QMessageBox.No,
-                        )
+                self,
+                "Alert",
+                "Do you want to apply configurations",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No,
+            )
             if selection == QMessageBox.Yes:
-                my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
-                my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
-                self.write_config(my_device,configurations,self.te_eigrp_config)
+                my_device['data']['password'] = self.decrypt_password(
+                    my_device['data']['password'])
+                my_device['data']['secret'] = self.decrypt_password(
+                    my_device['data']['secret'])
+                self.write_config(my_device, configurations,
+                                  self.te_eigrp_config)
                 return
             else:
                 return
 
-
     # 00000000000000000000000000 OSPF Section 000000000000000000000000000000000
-    def get_valid_area_no(self,widget):
+    def get_valid_area_no(self, widget):
         # check autonomous system number
-        regexp = QRegExp(r"^()([1-9]|[1-5]?[0-9]{2,4}|6[1-4][0-9]{3}|65[1-4][0-9]{2}|655[1-2][0-9]|6553[1-5])$")
+        regexp = QRegExp(
+            r"^()([1-9]|[1-5]?[0-9]{2,4}|6[1-4][0-9]{3}|65[1-4][0-9]{2}|655[1-2][0-9]|6553[1-5])$")
         validator = QRegExpValidator(regexp)
         widget.setValidator(validator)
 
-    def genereate_ospf_config(self,output):
-
+    def genereate_ospf_config(self, output):
 
         networks = list()
         if self.chkbox_ospf_loopback.isChecked() == True:
             for line in output.splitlines():
-                regex = re.compile(r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
-                result = re.fullmatch(regex,line)
+                regex = re.compile(
+                    r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                result = re.fullmatch(regex, line)
                 if result:
                     # print(result)
                     networks.append(result.group("ip_address"))
         else:
             for line in output.splitlines():
-                regex = re.compile(r"^(G|E|F)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
-                result = re.fullmatch(regex,line)
+                regex = re.compile(
+                    r"^(G|E|F)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                result = re.fullmatch(regex, line)
                 if result:
                     # print(result)
                     networks.append(result.group("ip_address"))
@@ -395,9 +412,9 @@ class configurations(QDialog):
             print(networks)
 
             ospf_dict = {
-                "process_id":process_id,
-                "networks":networks,
-                "area_number":area_number,
+                "process_id": process_id,
+                "networks": networks,
+                "area_number": area_number,
             }
             j2_env = Environment(
                 loader=FileSystemLoader("hosts/templates/configurations"), trim_blocks=True, autoescape=True
@@ -407,10 +424,11 @@ class configurations(QDialog):
             if configuration:
                 print(configuration)
                 self.te_ospf_config.clear()
-                self.te_ospf_config.insertPlainText(str( configuration ))
+                self.te_ospf_config.insertPlainText(str(configuration))
                 return
             else:
-                QMessageBox.critical(self,"Warning","Configuration generation failed")
+                QMessageBox.critical(
+                    self, "Warning", "Configuration generation failed")
                 return
 
     def clear_ospf_results(self):
@@ -421,28 +439,26 @@ class configurations(QDialog):
         self.te_ospf_config.clear()
         self.txt_process_id.setFocus()
 
-
-    def show_ospf_errors(self,error):
-        QMessageBox.critical(self,"Warning",error)
+    def show_ospf_errors(self, error):
+        QMessageBox.critical(self, "Warning", error)
         self.clear_ospf_results()
         return
 
-
     def create_ospf_configuration(self):
 
-
-        if ( not self.chkbox_ospf_loopback.isChecked() == True) and (not self.chkbox_ospf_directly.isChecked() == True ):
+        if (not self.chkbox_ospf_loopback.isChecked() == True) and (not self.chkbox_ospf_directly.isChecked() == True):
             self.te_ospf_config.clear()
 
         if self.chkbox_ospf_loopback.isChecked() == True or self.chkbox_ospf_directly.isChecked() == True:
-            #check for process id and area number
-            if (not self.txt_process_id.text()) or ( not self.txt_ospf_area.text()):
+            # check for process id and area number
+            if (not self.txt_process_id.text()) or (not self.txt_ospf_area.text()):
                 self.te_ospf_config.clear()
                 if self.chkbox_ospf_directly.isChecked() == True:
                     self.chkbox_ospf_directly.setChecked(False)
                 elif self.chkbox_ospf_loopback.isChecked() == True:
                     self.chkbox_ospf_loopback.setChecked(False)
-                QMessageBox.critical(self,"Warning","Please fill both fields")
+                QMessageBox.critical(
+                    self, "Warning", "Please fill both fields")
                 self.te_ospf_config.clear()
 
                 if self.txt_process_id.text():
@@ -463,15 +479,16 @@ class configurations(QDialog):
             all_commands = ['show ip int br']
 
             # decrypt password
-            my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
-            my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
-
+            my_device['data']['password'] = self.decrypt_password(
+                my_device['data']['password'])
+            my_device['data']['secret'] = self.decrypt_password(
+                my_device['data']['secret'])
 
             try:
                 # getting output
                 self.thread = QThread()
                 # Step 3: Create a worker object
-                self.worker = ConnectionWithThreading(my_device,all_commands)
+                self.worker = ConnectionWithThreading(my_device, all_commands)
                 # Step 4: Move worker to the thread
                 self.worker.moveToThread(self.thread)
                 # Step 5: Connect signals and slots
@@ -485,8 +502,7 @@ class configurations(QDialog):
                 self.thread.start()
                 time.sleep(3)
             except Exception as error:
-                QMessageBox.critical(self,"Warning",str(error))
-
+                QMessageBox.critical(self, "Warning", str(error))
 
     def configure_ospf(self):
         configurations = self.te_ospf_config.toPlainText().splitlines()
@@ -501,22 +517,24 @@ class configurations(QDialog):
                     my_device = device
                     break
             selection = QMessageBox.question(
-                            self,
-                            "Alert",
-                            "Do you want to apply configurations",
-                            QMessageBox.Yes | QMessageBox.No,
-                            QMessageBox.No,
-                        )
+                self,
+                "Alert",
+                "Do you want to apply configurations",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No,
+            )
             if selection == QMessageBox.Yes:
-                my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
-                my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
-                self.write_config(my_device,configurations,self.te_ospf_config)
+                my_device['data']['password'] = self.decrypt_password(
+                    my_device['data']['password'])
+                my_device['data']['secret'] = self.decrypt_password(
+                    my_device['data']['secret'])
+                self.write_config(my_device, configurations,
+                                  self.te_ospf_config)
                 return
             else:
                 return
 
     # 00000000000000000000000000 DHCP Server 000000000000000000000000000000000
-
 
     def hide_dhcp_server_optional_arguments(self):
         self.dhcp_exclude_start.setVisible(False)
@@ -525,7 +543,7 @@ class configurations(QDialog):
         self.dhcp_dns_server.setVisible(False)
         self.dhcp_ip_phone_gateway.setVisible(False)
 
-    def toggle_exclude_range(self,state):
+    def toggle_exclude_range(self, state):
         if state == 2:
             self.dhcp_exclude_start.setVisible(True)
             self.dhcp_exclude_end.setVisible(True)
@@ -537,9 +555,7 @@ class configurations(QDialog):
             self.te_dhcp_server_config.clear()
             self.dhcp_btn_generate.setChecked(False)
 
-
-
-    def toggle_ip_phone_gateway(self,state):
+    def toggle_ip_phone_gateway(self, state):
         if state == 2:
             self.dhcp_ip_phone_gateway.setVisible(True)
             self.te_dhcp_server_config.clear()
@@ -549,8 +565,7 @@ class configurations(QDialog):
             self.te_dhcp_server_config.clear()
             self.dhcp_btn_generate.setChecked(False)
 
-
-    def toggle_default_gateway(self,state):
+    def toggle_default_gateway(self, state):
         if state == 2:
             self.dhcp_default_gateway.setVisible(True)
             self.te_dhcp_server_config.clear()
@@ -560,8 +575,7 @@ class configurations(QDialog):
             self.te_dhcp_server_config.clear()
             self.dhcp_btn_generate.setChecked(False)
 
-
-    def toggle_dns_server(self,state):
+    def toggle_dns_server(self, state):
         if state == 2:
             self.dhcp_dns_server.setVisible(True)
             self.te_dhcp_server_config.clear()
@@ -571,9 +585,7 @@ class configurations(QDialog):
             self.te_dhcp_server_config.clear()
             self.dhcp_btn_generate.setChecked(False)
 
-
-
-    def genereate_dhcp_server_config(self,state):
+    def genereate_dhcp_server_config(self, state):
         # get the values
         print(state)
         if state:
@@ -582,17 +594,20 @@ class configurations(QDialog):
             subnet_mask = self.dhcp_subnet_mask.text()
 
             if not pool_name:
-                QMessageBox.critical(self,"Warning","Please enter the pool name")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter the pool name")
                 self.dhcp_pool_name.setFocus()
                 self.dhcp_btn_generate.setChecked(False)
                 return
             elif not network_address:
-                QMessageBox.critical(self,"Warning","Please enter the network address")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter the network address")
                 self.dhcp_network_address.setFocus()
                 self.dhcp_btn_generate.setChecked(False)
                 return
             if not subnet_mask:
-                QMessageBox.critical(self,"Warning","Please enter the subnet mask")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter the subnet mask")
                 self.dhcp_subnet_mask.setFocus()
                 self.dhcp_btn_generate.setChecked(False)
                 return
@@ -606,12 +621,14 @@ class configurations(QDialog):
                 start_range = self.dhcp_exclude_start.text()
                 end_range = self.dhcp_exclude_end.text()
                 if not start_range:
-                    QMessageBox.critical(self,"Warning","Please enter the excluding start address")
+                    QMessageBox.critical(
+                        self, "Warning", "Please enter the excluding start address")
                     self.dhcp_btn_generate.setChecked(False)
                     self.dhcp_exclude_start.setFocus()
                     return
                 if not end_range:
-                    QMessageBox.critical(self,"Warning","Please enter the excluding end address")
+                    QMessageBox.critical(
+                        self, "Warning", "Please enter the excluding end address")
                     self.dhcp_btn_generate.setChecked(False)
                     self.dhcp_exclude_end.setFocus()
                     return
@@ -619,16 +636,17 @@ class configurations(QDialog):
             if self.chkbox_default_gateway.isChecked():
                 default_gateway = self.dhcp_default_gateway.text()
                 if not default_gateway:
-                    QMessageBox.critical(self,"Warning","Please enter the default gateway")
+                    QMessageBox.critical(
+                        self, "Warning", "Please enter the default gateway")
                     self.dhcp_btn_generate.setChecked(False)
                     self.dhcp_default_gateway.setFocus()
                     return
 
-
             if self.chkbox_dns_server.isChecked():
                 dns_server = self.dhcp_dns_server.text()
                 if not dns_server:
-                    QMessageBox.critical(self,"Warning","Please enter the dns server")
+                    QMessageBox.critical(
+                        self, "Warning", "Please enter the dns server")
                     self.dhcp_btn_generate.setChecked(False)
                     self.dhcp_dns_server.setFocus()
                     return
@@ -636,48 +654,54 @@ class configurations(QDialog):
             if self.chkbox_ip_phone_gateway.isChecked():
                 ip_phone_gateway = self.dhcp_ip_phone_gateway.text()
                 if not ip_phone_gateway:
-                    QMessageBox.critical(self,"Warning","Please enter the ip phone gateway")
+                    QMessageBox.critical(
+                        self, "Warning", "Please enter the ip phone gateway")
                     self.dhcp_btn_generate.setChecked(False)
                     self.dhcp_ip_phone_gateway.setFocus()
                     return
 
             # check for valid ip addresses
             if not self.is_ip_complete(self.dhcp_network_address):
-                QMessageBox.critical(self,"Warning","Please enter valid network address")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter valid network address")
                 self.dhcp_btn_generate.setChecked(False)
                 self.dhcp_network_address.setFocus()
                 return
 
-
             if not self.is_subnet_mask_complete(self.dhcp_subnet_mask):
-                QMessageBox.critical(self,"Warning","Please enter valid subnet mask")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter valid subnet mask")
                 self.dhcp_btn_generate.setChecked(False)
                 self.dhcp_subnet_mask.setFocus()
                 return
 
-
             if not self.is_ip_complete(self.dhcp_exclude_start) and self.chkbox_exclude_range.isChecked():
-                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter valid ip address")
                 self.dhcp_btn_generate.setChecked(False)
                 self.dhcp_exclude_start.setFocus()
                 return
             if not self.is_ip_complete(self.dhcp_exclude_end) and self.chkbox_exclude_range.isChecked():
-                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter valid ip address")
                 self.dhcp_btn_generate.setChecked(False)
                 self.dhcp_exclude_end.setFocus()
                 return
             if not self.is_ip_complete(self.dhcp_default_gateway) and self.chkbox_default_gateway.isChecked():
-                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter valid ip address")
                 self.dhcp_btn_generate.setChecked(False)
                 self.dhcp_default_gateway.setFocus()
                 return
             if not self.is_ip_complete(self.dhcp_dns_server) and self.chkbox_dns_server.isChecked():
-                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter valid ip address")
                 self.dhcp_btn_generate.setChecked(False)
                 self.dhcp_dns_server.setFocus()
                 return
             if not self.is_ip_complete(self.dhcp_ip_phone_gateway) and self.chkbox_ip_phone_gateway.isChecked():
-                QMessageBox.critical(self,"Warning","Please enter valid ip address")
+                QMessageBox.critical(
+                    self, "Warning", "Please enter valid ip address")
                 self.dhcp_btn_generate.setChecked(False)
                 self.dhcp_ip_phone_gateway.setFocus()
                 return
@@ -687,18 +711,18 @@ class configurations(QDialog):
             enabled_dns_server = self.chkbox_dns_server.isChecked()
             enabled_ip_phone_gateway = self.chkbox_ip_phone_gateway.isChecked()
             dhcp_server_dict = {
-                "enabled_exclude_range":enabled_exclude_range,
-                "enabled_default_gateway":enabled_default_gateway,
-                "enabled_dns_server":enabled_dns_server,
-                "enabled_ip_phone_gateway":enabled_ip_phone_gateway,
-                "exclude_start":start_range,
-                "exclude_end":end_range,
-                "pool_name":pool_name,
-                "network_address":network_address,
-                "subnet_mask":subnet_mask,
-                "default_gateway":default_gateway,
-                "dns_server":dns_server,
-                "ip_phone_gateway":ip_phone_gateway,
+                "enabled_exclude_range": enabled_exclude_range,
+                "enabled_default_gateway": enabled_default_gateway,
+                "enabled_dns_server": enabled_dns_server,
+                "enabled_ip_phone_gateway": enabled_ip_phone_gateway,
+                "exclude_start": start_range,
+                "exclude_end": end_range,
+                "pool_name": pool_name,
+                "network_address": network_address,
+                "subnet_mask": subnet_mask,
+                "default_gateway": default_gateway,
+                "dns_server": dns_server,
+                "ip_phone_gateway": ip_phone_gateway,
             }
             j2_env = Environment(
                 loader=FileSystemLoader("hosts/templates/configurations"), trim_blocks=True, autoescape=True
@@ -708,8 +732,7 @@ class configurations(QDialog):
             if configuration:
                 print(configuration)
                 self.te_dhcp_server_config.clear()
-                self.te_dhcp_server_config.insertPlainText(str( configuration ))
-
+                self.te_dhcp_server_config.insertPlainText(str(configuration))
 
         else:
             self.te_dhcp_server_config.clear()
@@ -728,24 +751,27 @@ class configurations(QDialog):
                     my_device = device
                     break
             selection = QMessageBox.question(
-                            self,
-                            "Alert",
-                            "Do you want to apply configurations",
-                            QMessageBox.Yes | QMessageBox.No,
-                            QMessageBox.No,
-                        )
+                self,
+                "Alert",
+                "Do you want to apply configurations",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No,
+            )
             if selection == QMessageBox.Yes:
-                my_device['data']['password'] = self.decrypt_password(my_device['data']['password'])
-                my_device['data']['secret'] = self.decrypt_password(my_device['data']['secret'])
-                self.write_config(my_device,configurations,self.te_dhcp_server_config)
+                my_device['data']['password'] = self.decrypt_password(
+                    my_device['data']['password'])
+                my_device['data']['secret'] = self.decrypt_password(
+                    my_device['data']['secret'])
+                self.write_config(my_device, configurations,
+                                  self.te_dhcp_server_config)
                 return
             else:
                 return
         else:
-            QMessageBox.information(self,"Note","Please generate the config first!")
+            QMessageBox.information(
+                self, "Note", "Please generate the config first!")
             self.dhcp_pool_name.setFocus()
             return
-
 
     def clear_dhcp_server_results(self):
         self.dhcp_pool_name.setText("")

@@ -63,8 +63,6 @@ class startup_settings(QDial):
         # self.remove_border(self.tab_devices)
         # show commands submit button
 
-        self.update_mon_all_devices()
-
         # configuration section
         self.update_mgmt_config_all_devices()
 
@@ -75,3 +73,4 @@ class startup_settings(QDial):
 
         # dhcp server
         self.hide_dhcp_server_optional_arguments()
+        # self.update_dhcp_client_all_devices()

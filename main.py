@@ -1,10 +1,11 @@
 import sys
-from PyQt5.QtWidgets import *
+
 from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUiType
 from imports import *
 
-ui, _ = loadUiType("main.ui")
+
 login, _ = loadUiType("login.ui")
 
 
@@ -51,10 +52,14 @@ class Login(QWidget, login, password_hashing):
             self.txt_login_password.setFocus()
             self.txt_login_password.setText("")
         else:
-            QMessageBox.information(self, "Warning", "username does not exists")
+            QMessageBox.information(
+                self, "Warning", "username does not exists")
             self.txt_login_username.setText("")
             self.txt_login_password.setText("")
             self.txt_login_username.setFocus()
+
+
+ui, _ = loadUiType("main.ui")
 
 
 class Main_Window(
@@ -126,56 +131,68 @@ class Main_Window(
         )
 
         self.cb_bt_all_devices.textActivated.connect(
-            lambda: self.disable_box(self.cb_bt_all_devices, self.cb_bt_all_groups)
+            lambda: self.disable_box(
+                self.cb_bt_all_devices, self.cb_bt_all_groups)
         )
         self.cb_bt_all_groups.textActivated.connect(
-            lambda: self.disable_box(self.cb_bt_all_groups, self.cb_bt_all_devices)
+            lambda: self.disable_box(
+                self.cb_bt_all_groups, self.cb_bt_all_devices)
         )
         self.show_commands_list.itemSelectionChanged.connect(
             self.show_commands_submit_button
         )
         self.config_show_btn_export.clicked.connect(self.export_show_output)
-        self.config_show_btn_custom_commands.clicked.connect(self.add_custom_commands)
+        self.config_show_btn_custom_commands.clicked.connect(
+            self.add_custom_commands)
 
         # devices configs section
         self.mgmt_config_config_type.textActivated.connect(self.fill_configs)
         self.mgmt_config_all_devices.textActivated.connect(self.fill_configs)
         # self.configs_list.itemClicked.connect(self.check_config_restore_button)
-        self.mgmt_config_btn_backup.clicked.connect(self.show_configs_backup_window)
-        # Monitoring
-        self.mon_int_cb_all_devices.textActivated.connect(self.get_all_interfaces)
-        self.mon_int_cb_all_interface.textActivated.connect(
-            self.check_interface_toggle_state
-        )
-        self.mon_int_btn_toggle.clicked.connect(self.toggle_interface_state)
+        self.mgmt_config_btn_backup.clicked.connect(
+            self.show_configs_backup_window)
         # configurations
-        self.configs_all_devices.textActivated.connect(self.fill_configurations)
-        self.configs_all_configurations.textActivated.connect(self.move_configs_tab_index)
-            # rip configuration
-        self.chkbox_rip_loopback.stateChanged.connect(self.create_rip_configuration)
-        self.chkbox_rip_directly.stateChanged.connect(self.create_rip_configuration)
+        self.configs_all_devices.textActivated.connect(
+            self.fill_configurations)
+        self.configs_all_configurations.textActivated.connect(
+            self.move_configs_tab_index)
+        # rip configuration
+        self.chkbox_rip_loopback.stateChanged.connect(
+            self.create_rip_configuration)
+        self.chkbox_rip_directly.stateChanged.connect(
+            self.create_rip_configuration)
         self.btn_push_rip_config.clicked.connect(self.configure_rip)
         self.btn_clear_rip.clicked.connect(self.clear_rip_results)
-            # eigrp
-        self.chkbox_eigrp_loopback.stateChanged.connect(self.create_eigrp_configuration)
-        self.chkbox_eigrp_directly.stateChanged.connect(self.create_eigrp_configuration)
+        # eigrp
+        self.chkbox_eigrp_loopback.stateChanged.connect(
+            self.create_eigrp_configuration)
+        self.chkbox_eigrp_directly.stateChanged.connect(
+            self.create_eigrp_configuration)
         self.btn_push_eigrp_config.clicked.connect(self.configure_eigrp)
         self.btn_clear_eigrp.clicked.connect(self.clear_eigrp_results)
-            # ospf
-        self.chkbox_ospf_loopback.stateChanged.connect(self.create_ospf_configuration)
-        self.chkbox_ospf_directly.stateChanged.connect(self.create_ospf_configuration)
+        # ospf
+        self.chkbox_ospf_loopback.stateChanged.connect(
+            self.create_ospf_configuration)
+        self.chkbox_ospf_directly.stateChanged.connect(
+            self.create_ospf_configuration)
         self.btn_push_ospf_config.clicked.connect(self.configure_ospf)
         self.btn_clear_ospf.clicked.connect(self.clear_ospf_results)
-            #dhcp server
-        self.chkbox_exclude_range.stateChanged.connect(self.toggle_exclude_range)
-        self.chkbox_default_gateway.stateChanged.connect(self.toggle_default_gateway)
+        # dhcp server
+        self.chkbox_exclude_range.stateChanged.connect(
+            self.toggle_exclude_range)
+        self.chkbox_default_gateway.stateChanged.connect(
+            self.toggle_default_gateway)
         self.chkbox_dns_server.stateChanged.connect(self.toggle_dns_server)
-        self.chkbox_ip_phone_gateway.stateChanged.connect(self.toggle_ip_phone_gateway)
-        self.dhcp_btn_generate.clicked.connect(self.genereate_dhcp_server_config)
-        self.btn_push_dhcp_server_config.clicked.connect(self.configure_dhcp_server)
-        self.btn_clear_dhcp_server.clicked.connect(self.clear_dhcp_server_results)
-
-
+        self.chkbox_ip_phone_gateway.stateChanged.connect(
+            self.toggle_ip_phone_gateway)
+        self.dhcp_btn_generate.clicked.connect(
+            self.genereate_dhcp_server_config)
+        self.btn_push_dhcp_server_config.clicked.connect(
+            self.configure_dhcp_server)
+        self.btn_clear_dhcp_server.clicked.connect(
+            self.clear_dhcp_server_results)
+        # self.dhcp_client_all_devices.textActivated.connect(
+        #     self.clear_dhcp_server_results)
 
     ###################### handle buttons action ######################
 
@@ -236,7 +253,8 @@ class Main_Window(
         )
         # Export devices
         self.dev_all_btn_export.clicked.connect(
-            lambda: self.export_table(self.tbl_devices, self.dev_all_txt_file_path)
+            lambda: self.export_table(
+                self.tbl_devices, self.dev_all_txt_file_path)
         )
 
         ##### edit or delete devices ######
@@ -262,7 +280,8 @@ class Main_Window(
         )
         # export user
         self.grp_all_btn_export.clicked.connect(
-            lambda: self.export_table(self.tbl_groups, self.grp_all_txt_file_path)
+            lambda: self.export_table(
+                self.tbl_groups, self.grp_all_txt_file_path)
         )
 
         ##### show commands ######
@@ -282,7 +301,8 @@ class Main_Window(
         # filter button for all users
         self.btn_usr_filter.clicked.connect(self.filter_all_devices)
         # clear user filter results button for all users
-        self.btn_usr_clear_filter.clicked.connect(self.clear_users_filter_results)
+        self.btn_usr_clear_filter.clicked.connect(
+            self.clear_users_filter_results)
         # browse export file path
         self.usr_btn_browse.clicked.connect(
             lambda: self.export_file_path(self.usr_txt_file_path)

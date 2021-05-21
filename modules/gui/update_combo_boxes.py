@@ -53,3 +53,12 @@ class update_combo_boxes(QDialog):
         all_devices_list.insert(0, "Select a Device")
         self.configs_all_devices.addItems(all_devices_list)
         return
+
+    # def update_dhcp_client_all_devices(self):
+    #     # getting all the devices
+    #     all_devices_list = self.get_all_devices_hostname()
+    #     all_devices_list.sort()
+    #     self.dhcp_client_all_devices.clear()
+    #     all_devices_list.insert(0, "Select a Device")
+    #     self.dhcp_client_all_devices.addItems(all_devices_list)
+    #     return

@@ -30,6 +30,7 @@ class ConnectionWithThreading(
                 conn.enable()
                 output = conn.send_command(command)
                 conn.disconnect()
+                # print(output)
                 self.output_signal.emit(output)
             self.finished_signal.emit()
         except Exception as error:
