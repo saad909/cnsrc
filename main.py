@@ -191,8 +191,8 @@ class Main_Window(
             self.configure_dhcp_server)
         self.btn_clear_dhcp_server.clicked.connect(
             self.clear_dhcp_server_results)
-        # self.dhcp_client_all_devices.textActivated.connect(
-        #     self.clear_dhcp_server_results)
+        # dhcp client
+        self.btn_configure_dhcp_client.clicked.connect(self.configure_dhcp_client)
 
     ###################### handle buttons action ######################
 

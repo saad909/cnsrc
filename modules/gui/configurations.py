@@ -85,8 +85,8 @@ class configurations(QDialog):
             print(self.tab_configs.tabText(index))
             if self.tab_configs.tabText(index) == "dhcp":
                 # fill the interfaces into box
-                self.statusBar().showMessage("Fetching device interfaces")
-                self.get_all_interfaces(self.configs_all_devices.currentText(),self.dhcp_client_all_interfaces)
+                self.get_all_interfaces(
+                    self.configs_all_devices.currentText(), self.dhcp_client_all_interfaces)
                 # self.statusBar().showMessage("")
             print(f"INdex is {index}")
             self.tab_configs.setCurrentIndex(index)
@@ -790,3 +790,33 @@ class configurations(QDialog):
         self.te_dhcp_server_config.clear()
         self.dhcp_pool_name.setFocus()
         return
+
+    def configure_dhcp_client(self):
+        intf_name = self.dhcp_client_all_interfaces.currentText()
+        device_name = self.configs_all_devices.currentText()
+
+        all_devices = self.convert_host_file_into_list()
+        my_device = {}
+        for device in all_devices:
+            if device['hostname'] == device_name:
+                my_device = device
+                break
+        all_commands = ['show ip int br']
+
+        # decrypt password
+        my_device['data']['password'] = self.decrypt_password(
+            my_device['data']['password'])
+        my_device['data']['secret'] = self.decrypt_password(
+            my_device['data']['secret'])
+
+        dhcp_client_dict = {
+            "intf_name": intf_name,
+        }
+        j2_env = Environment(
+            loader=FileSystemLoader("hosts/templates/configurations"), trim_blocks=True, autoescape=True
+        )
+        template = j2_env.get_template("cisco_ios_dhcp_client.j2")
+        configuration = template.render(data=dhcp_client_dict)
+        self.write_config(my_device, configuration.split("\n"),
+                          self.te_dhcp_server_config)
+
