@@ -44,16 +44,18 @@ routinng protocols
     - network adv
 dhcp server configure
 dhcp snooping
-
-
-
-
-port channeling
-ppp - pap,chap
-clock
-snmp enable
 backup  and restore configs
-create new user with different privilages
+
+
+
+
+today - port channeling
+today - ppp - pap,chap
+today - clock
+today - snmp enable
+today - create new user with different privilages
+today - hostname
+
 ip address config
 interface up/down
 new interface configure

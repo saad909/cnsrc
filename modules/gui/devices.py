@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import *
-import os, re, csv
+import os
+import re
+import csv
 from pprint import pprint
 
 
@@ -93,7 +95,8 @@ class devices(QDialog):
         added = self.add_host_into_inventory(device)
 
         if added:
-            QMessageBox.information(self, "Success", "Device added successfully")
+            QMessageBox.information(
+                self, "Success", "Device added successfully")
             # create directory of the file
             self.create_device_directory(hostname)
             # clearing the fileds
@@ -111,8 +114,8 @@ class devices(QDialog):
             # update groups table
             self.fill_groups_table(self.get_all_groups())
             # update devices in inteface monitoring section
-            self.update_mon_all_devices()
-            #update devices in all configurations section
+            # self.update_mon_all_devices()
+            # update devices in all configurations section
             self.update_configs_all_devices()
 
     #          ____  _   _ _     _  __     _    ____  ____ ___ _____ ___ ___  _   _
@@ -133,7 +136,8 @@ class devices(QDialog):
             r"\s*[\w+\-@$!]+\s*"
             + ","
             # ip address
-            + r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
+            + r"\s*(25[0-4]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-4]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-4]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-4]|2[0-4][0-9]|[01]?[0-9][0-9]?)\s*"
+            # + r"\s*([0-1]?[0-9]?[0-9]?|2[0-2][0-3])\.([0-1]?\d\d\.|[2]?[0-4]?\d?\.|25?[0-5]?\.){2}([0-1]\d\d|2[0-4]\d|25[0-5])\s*"
             + ","
             # username and password
             + r"(\s*[\w\-@$!]+\s*,){2}"
@@ -270,8 +274,8 @@ class devices(QDialog):
                         # update groups table
                         self.fill_groups_table(self.get_all_groups())
                         # update devices in inteface monitoring section
-                        self.update_mon_all_devices()
-                        #update devices in all configurations section
+                        # self.update_mon_all_devices()
+                        # update devices in all configurations section
                         self.update_configs_all_devices()
                 return
 
@@ -281,6 +285,7 @@ class devices(QDialog):
                 self.dev_add_txt_csv_file_path.setText("")
                 return
         else:
-            QMessageBox.information(self, "Warning", "Please enter the csv file path")
+            QMessageBox.information(
+                self, "Warning", "Please enter the csv file path")
             self.dev_add_txt_csv_file_path.setFocus()
             return

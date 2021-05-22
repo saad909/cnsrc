@@ -679,7 +679,7 @@ class devices_func(QDial):
                 # update devices in group addition
                 self.add_devices_for_group_selection()
                 # update devices in inteface monitoring section
-                self.update_mon_all_devices()
+                # self.update_mon_all_devices()
                 #update devices in all configurations section
                 self.update_configs_all_devices()
             elif selection == QMessageBox.No:
@@ -752,7 +752,7 @@ class devices_func(QDial):
                     self.add_devices_for_group_selection()
                     # update groups table
                     self.fill_groups_table(self.get_all_groups())
-                    self.update_mon_all_devices()
+                    # self.update_mon_all_devices()
                     #update devices in all configurations section
                     self.update_configs_all_devices()
                 else:
