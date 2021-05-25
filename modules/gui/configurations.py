@@ -107,7 +107,7 @@ class configurations(QDialog):
         if self.chkbox_rip_loopback.isChecked() == True:
             for line in output.splitlines():
                 regex = re.compile(
-                    r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                    r"^(G|E|F|L|S)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
                 result = re.fullmatch(regex, line)
                 if result:
                     # print(result)
@@ -255,7 +255,7 @@ class configurations(QDialog):
         if self.chkbox_eigrp_loopback.isChecked() == True:
             for line in output.splitlines():
                 regex = re.compile(
-                    r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                    r"^(G|E|F|L|S)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
                 result = re.fullmatch(regex, line)
                 if result:
                     # print(result)
@@ -400,7 +400,7 @@ class configurations(QDialog):
         if self.chkbox_ospf_loopback.isChecked() == True:
             for line in output.splitlines():
                 regex = re.compile(
-                    r"^(G|E|F|L)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
+                    r"^(G|E|F|L|S)[\w\/]+\s+(?P<ip_address>[\d.]+)\s+YES.+up\s+up.*")
                 result = re.fullmatch(regex, line)
                 if result:
                     # print(result)
