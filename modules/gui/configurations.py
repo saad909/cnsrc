@@ -2,10 +2,12 @@ from PyQt5.QtWidgets import *
 from modules.networking.connection import ConnectionWithThreading
 from PyQt5.QtCore import QThread, Qt, QRegExp
 import re
+import os
 import time
 from PyQt5.QtGui import QRegExpValidator
 from jinja2 import Environment, FileSystemLoader
 from modules.networking.connection import WRITE_CONFIG as WC
+from functools import partial
 
 
 class configurations(QDialog):
@@ -46,14 +48,14 @@ class configurations(QDialog):
                     dhcp_configurations_list)
                 others_list = [
                     "----------- OTHER -----------",
-                    "configure_static_ip",
-                    "port channeling",
+                    # "configure_static_ip",
+                    # "port channeling",
                     "ppp",
-                    "clock",
-                    "snmp",
-                    "local users",
-                    "loopback interface",
-                    "hostname"
+                    # "clock",
+                    # "snmp",
+                    # "local users",
+                    # "loopback interface",
+                    # "hostname"
                 ]
                 self.configs_all_configurations.addItems(others_list)
                 return
@@ -87,7 +89,12 @@ class configurations(QDialog):
                 # fill the interfaces into box
                 self.get_all_interfaces(
                     self.configs_all_devices.currentText(), self.dhcp_client_all_interfaces)
-                # self.statusBar().showMessage("")
+
+            elif self.tab_configs.tabText(index) == "ppp":
+                # fill the interfaces into box
+                self.get_all_interfaces(
+                    self.configs_all_devices.currentText(), self.ppp_all_interfaces)
+                self.update_remote_devices()
             print(f"INdex is {index}")
             self.tab_configs.setCurrentIndex(index)
         else:
@@ -196,7 +203,7 @@ class configurations(QDialog):
         self.worker.output_signal.connect(output_box.insertPlainText)
         # Step 6: Start the thread
         self.thread.start()
-        return
+        return True
 
     def clear_rip_results(self):
         self.chkbox_rip_directly.setChecked(False)
@@ -820,3 +827,222 @@ class configurations(QDialog):
         self.write_config(my_device, configuration.split("\n"),
                           self.te_dhcp_server_config)
 
+    def get_all_routers(self):
+        all_devices = self.convert_host_file_into_list()
+        all_routers = list()
+        for device in all_devices:
+            if device['type'] == "Router":
+                all_routers.append(device)
+
+        return all_routers
+
+    chap_used = True
+
+    def configure_remote_site(self, checked):
+        if checked:
+            # get values from the gui
+            self.remote_device = self.ppp_remote_all_devices.currentText()
+            self.target_intf = self.ppp_remote_all_interfaces.currentText()
+            self.remote_username = self.ppp_remote_username.text()
+            self.remote_password = self.ppp_remote_password.text()
+            if not self.remote_device:
+                QMessageBox.critical(
+                    self, "Warning", "Please select the remote device")
+                self.ppp_remote_all_devices.setFocus()
+                self.btn_ppp_remote_generate_config.toggle()
+                return
+            if not self.target_intf:
+                QMessageBox.critical(
+                    self, "Warning", "Please select the target interface")
+                self.ppp_remote_all_devices.setFocus()
+                self.btn_ppp_remote_generate_config.toggle()
+                return
+            elif not self.remote_username:
+                QMessageBox.critical(
+                    self, "Warning", "Please enter the username for authentication")
+                self.ppp_remote_username.setFocus()
+                self.btn_ppp_remote_generate_config.toggle()
+                return
+            elif not self.remote_password:
+                QMessageBox.critical(
+                    self, "Warning", "Please enter the password for authentication")
+                self.ppp_remote_password.setFocus()
+                self.btn_ppp_remote_generate_config.toggle()
+                return
+            else:
+                # main code
+
+                self.groupBox_19.setEnabled(True)
+                self.ppp_all_interfaces.setEnabled(True)
+                self.btn_ppp_local_generate_config.setEnabled(True)
+                if not self.chap_used:
+                    self.ppp_local_password.setEnabled(True)
+                else:
+                    self.ppp_local_password.setEnabled(False)
+
+                QMessageBox.information(
+                    self, "Note", "Now configure local site")
+                # disable
+                self.groupBox_20.setEnabled(False)
+        else:
+            self.groupBox_19.setEnabled(False)
+            self.te_ppp_remote_config.clear()
+
+    def for_chap_use_same_config(self, output):
+        if self.rb_chap.isChecked():
+            self.ppp_local_password.setText(output)
+
+    def check_for_authentication_method(self):
+        # will return True if chap is used. In case of pap False will be returned
+        self.btn_ppp_local_generate_config.setChecked(False)
+        self.btn_ppp_remote_generate_config.setChecked(False)
+        self.te_ppp_remote_config.clear()
+        self.groupBox_20.setEnabled(True)
+
+        if self.rb_pap.isChecked():
+            self.chap_used = False
+            self.ppp_local_username.setText("")
+            self.ppp_local_password.setText("")
+
+            self.ppp_remote_username.setText("")
+            self.ppp_remote_password.setText("")
+            self.btn_ppp_remote_generate_config.setChecked(False)
+            # print("pap is used")
+            return
+        else:
+            self.chap_used = True
+            # self.ppp_local_username.setEnabled(False)
+            # self.ppp_local_password.setEnabled(False)
+            # self.ppp_local_username.setText(self.ppp_remote_username.text())
+            self.ppp_local_password.setText(self.ppp_remote_password.text())
+
+            # print("Chap is used")
+            return
+
+    def generate_ppp_config(self, checked):
+        if checked:
+            if not self.ppp_all_interfaces.currentText():
+                QMessageBox.critical(
+                    self, "Warning", "Please select the local device target interface")
+                self.ppp_all_interfaces.setFocus()
+                self.btn_ppp_local_generate_config.toggle()
+                self.te_ppp_remote_config.clear()
+                return
+            elif not self.ppp_local_username.text():
+                QMessageBox.critical(
+                    self, "Warning", "Please enter local device authentication username")
+                self.ppp_local_username.setFocus()
+                self.btn_ppp_local_generate_config.toggle()
+                self.te_ppp_remote_config.clear()
+                return
+            elif not self.ppp_local_password.text():
+                QMessageBox.critical(
+                    self, "Warning", "Please enter local device authentication password")
+                self.ppp_local_password.setFocus()
+                self.btn_ppp_local_generate_config.toggle()
+                self.te_ppp_remote_config.clear()
+                return
+
+            # get values from gui
+            local_target_interface = self.ppp_all_interfaces.currentText()
+            local_username = self.ppp_local_username.text()
+            local_password = self.ppp_local_password.text()
+            # generate config
+            ppp_dict = {
+                "chap_used": self.chap_used,
+                "remote_intf_name": self.target_intf,
+                "remote_username": self.remote_username,
+                "remote_password": self.remote_password,
+                "local_intf_name": local_target_interface,
+                "local_username": local_username,
+                "local_password": local_password,
+                "local_device": self.configs_all_devices.currentText(),
+                "remote_device": self.ppp_remote_all_devices.currentText(),
+            }
+            j2_env = Environment(
+                loader=FileSystemLoader("hosts/templates/configurations"), trim_blocks=True, autoescape=True
+            )
+            template = j2_env.get_template("cisco_ios_ppp.j2")
+            configuration = template.render(data=ppp_dict)
+            # print(configuration)
+            self.te_ppp_remote_config.clear()
+            self.te_ppp_remote_config.insertPlainText(configuration)
+
+        else:
+            self.te_ppp_remote_config.clear()
+            return
+
+    def push_ppp_config(self):
+        if self.te_ppp_remote_config.toPlainText():
+            output = self.te_ppp_remote_config.toPlainText()
+            remote_device = self.ppp_remote_all_devices.currentText()
+            local_device = self.configs_all_devices.currentText()
+
+            regex_remote = rf"^!(\s*{remote_device})(?P<config>[^!]*)"
+            regex_local = rf"^!(\s*{local_device})(?P<config>[^!]*)"
+
+            remote_configuration = re.findall(
+                regex_remote, output, re.MULTILINE)
+            local_configuration = re.findall(regex_local, output, re.MULTILINE)
+
+            remote_config_list = list(local_configuration[0][1].replace(",", "").split("\n"))
+            local_config_list=list(remote_configuration[0][1].replace(",", "").split("\n"))
+
+            selection = QMessageBox.question(
+                self,
+                "Alert",
+                "Do you want to apply configurations",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No,
+            )
+            if selection == QMessageBox.Yes:
+
+                remote_device_data = {}
+                all_devices = self.convert_host_file_into_list()
+                for device in all_devices:
+                    if device['hostname'] == remote_device:
+                        device['data']['password'] = self.decrypt_password(
+                            device['data']['password'])
+                        device['data']['secret'] = self.decrypt_password(
+                            device['data']['secret'])
+                        remote_device_data = device
+
+                local_device_data = {}
+                for device in all_devices:
+                    if device['hostname'] == local_device:
+                        device['data']['password'] = self.decrypt_password(
+                            device['data']['password'])
+                        device['data']['secret'] = self.decrypt_password(
+                            device['data']['secret'])
+                        local_device_data = device
+
+                self.thread = QThread()
+                # Step 3: Create a worker object
+                self.worker = WC(remote_device_data, remote_config_list)
+                # Step 4: Move worker to the thread
+                self.worker.moveToThread(self.thread)
+                # Step 5: Connect signals and slots
+                self.worker.finished_signal.connect(self.thread.quit)
+                self.worker.finished_signal.connect(self.worker.deleteLater)
+                self.thread.finished.connect(partial(self.write_config,local_device_data, local_config_list,
+                              self.te_ppp_remote_config))
+                self.thread.started.connect(self.worker.run)
+                self.worker.error_signal.connect(self.show_errors)
+                self.te_ppp_remote_config.insertPlainText("\n\n---------Output-----------\n\n")
+                self.worker.output_signal.connect(self.te_ppp_remote_config.insertPlainText)
+                # Step 6: Start the thread
+                self.thread.start()
+
+
+                # # write to remote device
+                # ended = self.write_config(remote_device_data, remote_config_list,
+                #                           self.te_ppp_remote_config)
+
+                # # write to local device
+                # if ended:
+                #     self.write_config(local_device_data, local_config_list,
+                #                   self.te_ppp_remote_config)
+        else:
+            QMessageBox.critical(
+                self, "Warning", "Please generate the configuration first")
+            return

@@ -4,7 +4,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUiType
 from imports import *
-
+from functools import partial
 
 login, _ = loadUiType("login.ui")
 
@@ -194,6 +194,16 @@ class Main_Window(
         # dhcp client
         self.btn_configure_dhcp_client.clicked.connect(
             self.configure_dhcp_client)
+        # ppp
+        self.ppp_remote_all_devices.textActivated.connect(lambda: self.get_all_interfaces(
+            self.ppp_remote_all_devices.currentText(), self.ppp_remote_all_interfaces))
+        self.btn_ppp_remote_generate_config.toggled.connect(self.configure_remote_site)
+        self.rb_pap.toggled.connect(self.check_for_authentication_method)
+        self.rb_chap.toggled.connect(self.check_for_authentication_method)
+        # self.ppp_remote_username.textChanged.connect(partial( self.for_chap_use_same_config,"username"))
+        self.ppp_remote_password.textChanged.connect( self.for_chap_use_same_config)
+        self.btn_ppp_local_generate_config.toggled.connect(self.generate_ppp_config)
+        self.btn_ppp_push.clicked.connect(self.push_ppp_config)
 
     ###################### handle buttons action ######################
 

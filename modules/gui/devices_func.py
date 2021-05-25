@@ -682,6 +682,7 @@ class devices_func(QDial):
                 # self.update_mon_all_devices()
                 #update devices in all configurations section
                 self.update_configs_all_devices()
+                self.update_remote_devices()
             elif selection == QMessageBox.No:
                 self.clear_edit_search_results()
                 self.clear_device_edit_user_search()
@@ -755,6 +756,7 @@ class devices_func(QDial):
                     # self.update_mon_all_devices()
                     #update devices in all configurations section
                     self.update_configs_all_devices()
+                    self.update_remote_devices()
                 else:
                     self.clear_edit_search_results()
                     self.clear_device_edit_user_search()

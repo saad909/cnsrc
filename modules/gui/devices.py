@@ -117,6 +117,7 @@ class devices(QDialog):
             # self.update_mon_all_devices()
             # update devices in all configurations section
             self.update_configs_all_devices()
+            self.update_remote_devices()
 
     #          ____  _   _ _     _  __     _    ____  ____ ___ _____ ___ ___  _   _
     #         | __ )| | | | |   | |/ /    / \  |  _ \|  _ \_ _|_   _|_ _/ _ \| \ | |
@@ -277,6 +278,7 @@ class devices(QDialog):
                         # self.update_mon_all_devices()
                         # update devices in all configurations section
                         self.update_configs_all_devices()
+                        self.update_remote_devices()
                 return
 
             else:

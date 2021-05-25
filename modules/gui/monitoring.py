@@ -88,6 +88,7 @@ class monitoring:
             interfaces = list()
             for line in output.splitlines():
                 regex = re.compile(
+                    # r"(?P<interface_name>^S[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
                     r"(?P<interface_name>^(G|E|F|V|L|S)[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
                 )
                 result = regex.fullmatch(line)
@@ -112,6 +113,9 @@ class monitoring:
                 for intf in interfaces:
                     my_box.addItem(intf['intf_name'])
                 self.all_interfaces = interfaces
+                # if not interfaces == 0:
+                #     QMessageBox.critical(self,"Warning","Please add another Router")
+                #     return
             else:
                 return False
 

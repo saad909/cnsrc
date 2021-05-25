@@ -74,3 +74,5 @@ class startup_settings(QDial):
         # dhcp server
         self.hide_dhcp_server_optional_arguments()
         # self.update_dhcp_client_all_devices()
+        # ppp 
+        self.update_remote_devices()

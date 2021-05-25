@@ -62,3 +62,21 @@ class update_combo_boxes(QDialog):
     #     all_devices_list.insert(0, "Select a Device")
     #     self.dhcp_client_all_devices.addItems(all_devices_list)
     #     return
+
+    def update_remote_devices(self):
+        # getting all the devices
+        all_devices_list = self.get_all_routers()
+        all_devices_hostname = list()
+        local_device_name = self.configs_all_devices.currentText()
+        print("Local device name is")
+        print(local_device_name)
+        for device in all_devices_list:
+            if device['hostname'] == local_device_name:
+                continue
+            else:
+                all_devices_hostname.append(device['hostname'])
+
+        all_devices_hostname.sort()
+        self.ppp_remote_all_devices.clear()
+        self.ppp_remote_all_devices.addItems(all_devices_hostname)
+        return

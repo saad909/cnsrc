@@ -1,0 +1,27 @@
+{% if data.chap_used == True -%}
+
+! {{data.remote_device}}
+username {{data.local_username}} priv 15 secret {{data.local_password}}
+interface {{data.remote_intf_name}}
+  ppp chap hostname {{data.remote_username}}
+  ppp authentication chap
+! {{data.local_device}}
+username {{data.remote_username}} priv 15 secret {{data.remote_password}}
+interface {{data.local_intf_name}}
+  ppp chap hostname {{data.local_username}}
+  ppp authentication chap 
+
+{% else -%}
+
+! {{data.remote_device}}
+username {{data.local_username}} priv 15 secret {{data.local_password}}
+interface {{data.remote_intf_name}}
+  ppp pap sent-username {{data.remote_username}} password {{data.remote_password}}
+  ppp authentication pap
+! {{data.local_device}}
+username {{data.remote_username}} priv 15 secret {{data.remote_password}}
+interface {{data.local_intf_name}}
+  ppp pap sent-username {{data.local_username}} password {{data.local_password}}
+  ppp authentication pap 
+
+{% endif %}

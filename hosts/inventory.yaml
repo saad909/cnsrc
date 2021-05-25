@@ -1,60 +1,30 @@
 - data:
     device_type: cisco_ios
-    host: 192.168.122.254
+    host: 1.1.1.1
     password: !!binary |
-      Z0FBQUFBQmdxT29OSWk2NE1RLUFXZmtDZzg0NndZT2lQMlA0R0RPUk9mV1AzM2RlbVhWNlVidW5Q
-      SVVsRnMxa2c4NVBEblBTbmZHZHc2UEN4LXVFRHVYM2IwWEx5b1JGZHc9PQ==
+      Z0FBQUFBQmdyTTg5QzA2S1hqazV6ZFFMRmlDaVlMUG5EUXBTRkZfaUl1enF4NGkyX0tLNS0xYlBk
+      TVZ3MVpVdEd0T1pVcHI3ZF9qYk5MYV9DaEgyMHZQZ3FYSDFQeThOVnc9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdxT29OVVVvdlZqSkQ5OG9iaF9WZzRZVTdRRWZqcHhMNkp6SWxadDg1LWNJNGNEUjFT
-      MHZRdGFGUUYxNEsxcDJoa3RuSktBX1k0WHBOTVVwdVVYQ1ZYZmRvOWc9PQ==
+      Z0FBQUFBQmdyTTg5dE45UzhiUFIzQTdFVGtNVVowSEdhSTVPN0JXQk9oOHhGbnF4aFhJNTNZUnZZ
+      LS1SRE81eGV4MmM3S1VkZ1lsSEJvZy1Md19pUEROVTZnWWVBdm5LN2c9PQ==
     username: cisco
   groups:
   - Router
-  hostname: Ro2
+  hostname: R1
   type: Router
 - data:
     device_type: cisco_ios
     host: 1.1.1.2
     password: !!binary |
-      Z0FBQUFBQmdxT29POGtDd1FkTFYwM0tmZ3V2RlY0akE2R2VOUlYwVzBHckZaYTJaTm9KNHZlOHBR
-      UVVpLWozTjBqWlFuX1NVYzNGWGh1d2VseE1DME5hSV81c3ZYVnFlTHc9PQ==
+      Z0FBQUFBQmdyTS1PT25GeHBibmV5WE96YUhMU0RMdktPSHdmWGl6RU1aQTBsckFuSUh0WXV4SUk3
+      Z29tblhGNDI1eW44TUxwSjVMOFp2TldiaVgxQVFtaGdrRE5CcERZanc9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdxT29PUHM4bHJiME9HTFJmRGtXVUZHcUttUnRWcGtUSm5Tc0JPSGJrOTJmS200TmRI
-      TVprUGpEdHZEOGEtT3YtcmhOVE5SOVY3MllOdDNQZ01CWjBUTmRBemc9PQ==
-    username: cisco
-  groups:
-  - Router
-  hostname: Ro1
-  type: Router
-- data:
-    device_type: cisco_ios
-    host: 1.1.1.6
-    password: !!binary |
-      Z0FBQUFBQmdxT29PelR0NVlKY2xoX2dEbDhPd0x6VHJSeGFmc0RCMGoyUmk0T0JyU29VQVBwRTB2
-      a3Rva3RibGoxN2NFVlJJWE9Bemh1Z2JuZTdzN2xRNDRUWG40YVpiY2c9PQ==
-    port: '22'
-    secret: !!binary |
-      Z0FBQUFBQmdxT29PVzNOUnhxd0l0TFNtUEhfbG1vbVVKNjFDeXUtTWQwWE9BNVVTNXRjUVJZQ1Vw
-      SHNqRGRYYXRfODVPOWtMNXpIWU5iYVVGVWtCLV9XMW5QYlFLbUlZUmc9PQ==
-    username: cisco
-  groups:
-  - Router
-  hostname: Ro3
-  type: Router
-- data:
-    device_type: cisco_ios
-    host: 200.100.50.253
-    password: !!binary |
-      Z0FBQUFBQmdxT29PWnJjMmo4ZTZ3bm1wNzJ0UWROWFk3ckdOZGhwSDF2SEoxOWloS1pqRWtqcHlx
-      TFp5ZHByX1YyTGotUE9pVG5nYWlsdHhRQ2U2ZGc3WG1tSXlMNDBqSmc9PQ==
-    port: '22'
-    secret: !!binary |
-      Z0FBQUFBQmdxT29PYmlKbU9aNnczc3o0YW1oQ3RxMXlFVDQ3Qlo5RU1DVkhqWGdaTkdILW5jb3Nz
-      UDJpeXRtYlhLUFFNZFF3UXBqZ0ltY1FCczhCeUpGdUhqWUwyek9nV3c9PQ==
+      Z0FBQUFBQmdyTS1PRkZtbUNCQ1NBSDBBMWg5OU5ia29BSjZKeDREaHplcmZ5eEg5U1BsdEhUZUNv
+      emRsc2FtM3hOWTUxWkc3Szg1YTVMdXdPODFvRF9NdEFGNE83b0lvR0E9PQ==
     username: cisco
   groups:
   - Switch
-  hostname: So1
-  type: Switch
+  hostname: R2
+  type: Router

@@ -77,3 +77,8 @@ change hostname
 Optional:
 
 Total = 3/11
+
+
+
+get valid port number in edit devices
+update back and restore devices on device addtiton and editing
