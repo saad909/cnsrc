@@ -985,8 +985,9 @@ class configurations(QDialog):
                 regex_remote, output, re.MULTILINE)
             local_configuration = re.findall(regex_local, output, re.MULTILINE)
 
-            remote_config_list = list(local_configuration[0][1].replace(",", "").split("\n"))
-            local_config_list=list(remote_configuration[0][1].replace(",", "").split("\n"))
+            remote_config_list = list(remote_configuration[0][1].replace(",", "").split("\n"))
+            print(remote_config_list)
+            local_config_list=list(local_configuration[0][1].replace(",", "").split("\n"))
 
             selection = QMessageBox.question(
                 self,
@@ -1001,20 +1002,22 @@ class configurations(QDialog):
                 all_devices = self.convert_host_file_into_list()
                 for device in all_devices:
                     if device['hostname'] == remote_device:
-                        device['data']['password'] = self.decrypt_password(
-                            device['data']['password'])
-                        device['data']['secret'] = self.decrypt_password(
-                            device['data']['secret'])
                         remote_device_data = device
+                        remote_device_data['data']['password'] = self.decrypt_password(
+                            remote_device_data['data']['password'])
+                        remote_device_data['data']['secret'] = self.decrypt_password(
+                            remote_device_data['data']['secret'])
+                        break
 
                 local_device_data = {}
                 for device in all_devices:
                     if device['hostname'] == local_device:
-                        device['data']['password'] = self.decrypt_password(
-                            device['data']['password'])
-                        device['data']['secret'] = self.decrypt_password(
-                            device['data']['secret'])
                         local_device_data = device
+                        local_device_data['data']['password'] = self.decrypt_password(
+                            local_device_data['data']['password'])
+                        local_device_data['data']['secret'] = self.decrypt_password(
+                            local_device_data['data']['secret'])
+                        break
 
                 self.thread = QThread()
                 # Step 3: Create a worker object
@@ -1034,14 +1037,6 @@ class configurations(QDialog):
                 self.thread.start()
 
 
-                # # write to remote device
-                # ended = self.write_config(remote_device_data, remote_config_list,
-                #                           self.te_ppp_remote_config)
-
-                # # write to local device
-                # if ended:
-                #     self.write_config(local_device_data, local_config_list,
-                #                   self.te_ppp_remote_config)
         else:
             QMessageBox.critical(
                 self, "Warning", "Please generate the configuration first")
