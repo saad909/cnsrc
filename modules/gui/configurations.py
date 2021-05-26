@@ -138,7 +138,7 @@ class configurations(QDialog):
             if configuration:
                 print(configuration)
                 self.te_rip_config.clear()
-                self.te_rip_config.insertPlainText(str(configuration))
+                self.te_rip_config.append(str(configuration))
 
             return
 
@@ -199,8 +199,8 @@ class configurations(QDialog):
         self.worker.finished_signal.connect(self.worker.deleteLater)
         self.thread.started.connect(self.worker.run)
         self.worker.error_signal.connect(self.show_errors)
-        output_box.insertPlainText("\n\n---------Output-----------\n\n")
-        self.worker.output_signal.connect(output_box.insertPlainText)
+        output_box.append("\n\n---------Output-----------\n\n")
+        self.worker.output_signal.connect(output_box.append)
         # Step 6: Start the thread
         self.thread.start()
         return True
@@ -284,7 +284,7 @@ class configurations(QDialog):
             if configuration:
                 print(configuration)
                 self.te_eigrp_config.clear()
-                self.te_eigrp_config.insertPlainText(str(configuration))
+                self.te_eigrp_config.append(str(configuration))
                 return
             else:
                 QMessageBox.critical(
@@ -431,7 +431,7 @@ class configurations(QDialog):
             if configuration:
                 print(configuration)
                 self.te_ospf_config.clear()
-                self.te_ospf_config.insertPlainText(str(configuration))
+                self.te_ospf_config.append(str(configuration))
                 return
             else:
                 QMessageBox.critical(
@@ -739,7 +739,7 @@ class configurations(QDialog):
             if configuration:
                 print(configuration)
                 self.te_dhcp_server_config.clear()
-                self.te_dhcp_server_config.insertPlainText(str(configuration))
+                self.te_dhcp_server_config.append(str(configuration))
 
         else:
             self.te_dhcp_server_config.clear()
@@ -966,7 +966,7 @@ class configurations(QDialog):
             configuration = template.render(data=ppp_dict)
             # print(configuration)
             self.te_ppp_remote_config.clear()
-            self.te_ppp_remote_config.insertPlainText(configuration)
+            self.te_ppp_remote_config.append(configuration)
 
         else:
             self.te_ppp_remote_config.clear()
@@ -1026,13 +1026,12 @@ class configurations(QDialog):
                 self.worker.moveToThread(self.thread)
                 # Step 5: Connect signals and slots
                 self.worker.finished_signal.connect(self.thread.quit)
-                self.worker.finished_signal.connect(self.worker.deleteLater)
                 self.thread.finished.connect(partial(self.write_config,local_device_data, local_config_list,
                               self.te_ppp_remote_config))
                 self.thread.started.connect(self.worker.run)
                 self.worker.error_signal.connect(self.show_errors)
-                self.te_ppp_remote_config.insertPlainText("\n\n---------Output-----------\n\n")
-                self.worker.output_signal.connect(self.te_ppp_remote_config.insertPlainText)
+                self.te_ppp_remote_config.append("\n\n---------Output-----------\n\n")
+                self.worker.output_signal.connect(self.te_ppp_remote_config.append)
                 # Step 6: Start the thread
                 self.thread.start()
 

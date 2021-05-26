@@ -1,13 +1,13 @@
 - data:
     device_type: cisco_ios
-    host: 1.1.1.1
+    host: 192.168.122.254
     password: !!binary |
-      Z0FBQUFBQmdyTTg5QzA2S1hqazV6ZFFMRmlDaVlMUG5EUXBTRkZfaUl1enF4NGkyX0tLNS0xYlBk
-      TVZ3MVpVdEd0T1pVcHI3ZF9qYk5MYV9DaEgyMHZQZ3FYSDFQeThOVnc9PQ==
+      Z0FBQUFBQmdyVzV2UEhDdFFYTTllZGpVM2FrRXRQTmxDNnA0VDVvV1hOVmlfRl81YWwyNzdjNF92
+      SzZ2UnVsN0FUYjZseTZtX1RVVjJPMXB4UDE2bFRtcXR4UmJVVkRiY3c9PQ==
     port: '22'
     secret: !!binary |
-      Z0FBQUFBQmdyTTg5dE45UzhiUFIzQTdFVGtNVVowSEdhSTVPN0JXQk9oOHhGbnF4aFhJNTNZUnZZ
-      LS1SRE81eGV4MmM3S1VkZ1lsSEJvZy1Md19pUEROVTZnWWVBdm5LN2c9PQ==
+      Z0FBQUFBQmdyVzV2SGR2dnlJTF9lZWhCRkY5NU5Xc2kwaEpkWFBMTVh4ajJTN3k1bngwZEJ2VDBh
+      WVRnbWluVXR6RW0yQ001SjdRZ2RZMEhoMlFVSGpGTVRfTTNkbUljdHc9PQ==
     username: cisco
   groups:
   - Router
