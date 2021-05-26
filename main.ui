@@ -1797,7 +1797,7 @@ color: rgb(0, 255, 0);</string>
             <item row="1" column="0" colspan="2">
              <widget class="QTabWidget" name="tab_configs">
               <property name="currentIndex">
-               <number>4</number>
+               <number>5</number>
               </property>
               <widget class="QWidget" name="tab_11">
                <attribute name="title">
@@ -2298,7 +2298,7 @@ color: rgb(0, 255, 0);</string>
                      </property>
                      <layout class="QGridLayout" name="gridLayout_17">
                       <item row="4" column="1">
-                       <widget class="QPushButton" name="dhcp_btn_generate_7">
+                       <widget class="QPushButton" name="btn_clear_ppp">
                         <property name="enabled">
                          <bool>true</bool>
                         </property>
