@@ -1797,7 +1797,7 @@ color: rgb(0, 255, 0);</string>
             <item row="1" column="0" colspan="2">
              <widget class="QTabWidget" name="tab_configs">
               <property name="currentIndex">
-               <number>5</number>
+               <number>4</number>
               </property>
               <widget class="QWidget" name="tab_11">
                <attribute name="title">

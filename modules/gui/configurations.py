@@ -985,9 +985,11 @@ class configurations(QDialog):
                 regex_remote, output, re.MULTILINE)
             local_configuration = re.findall(regex_local, output, re.MULTILINE)
 
-            remote_config_list = list(remote_configuration[0][1].replace(",", "").split("\n"))
+            remote_config_list = list(
+                remote_configuration[0][1].replace(",", "").split("\n"))
             print(remote_config_list)
-            local_config_list=list(local_configuration[0][1].replace(",", "").split("\n"))
+            local_config_list = list(
+                local_configuration[0][1].replace(",", "").split("\n"))
 
             selection = QMessageBox.question(
                 self,
@@ -1026,15 +1028,16 @@ class configurations(QDialog):
                 self.worker.moveToThread(self.thread)
                 # Step 5: Connect signals and slots
                 self.worker.finished_signal.connect(self.thread.quit)
-                self.thread.finished.connect(partial(self.write_config,local_device_data, local_config_list,
-                              self.te_ppp_remote_config))
+                self.thread.finished.connect(partial(self.write_config, local_device_data, local_config_list,
+                                                     self.te_ppp_remote_config))
                 self.thread.started.connect(self.worker.run)
                 self.worker.error_signal.connect(self.show_errors)
-                self.te_ppp_remote_config.append("\n\n---------Output-----------\n\n")
-                self.worker.output_signal.connect(self.te_ppp_remote_config.append)
+                self.te_ppp_remote_config.append(
+                    "\n\n---------Output-----------\n\n")
+                self.worker.output_signal.connect(
+                    self.te_ppp_remote_config.append)
                 # Step 6: Start the thread
                 self.thread.start()
-
 
         else:
             QMessageBox.critical(
