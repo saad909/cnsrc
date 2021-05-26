@@ -1047,11 +1047,12 @@ class configurations(QDialog):
     def clear_ppp_result(self):
         self.te_ppp_remote_config.clear()
         self.groupBox_19.setEnabled(False)
+        self.groupBox_20.setEnabled(True)
         self.ppp_local_username.setText("")
         self.ppp_local_password.setText("")
         self.btn_ppp_local_generate_config.setChecked(False)
         self.ppp_all_interfaces.setCurrentIndex(0)
-        self.btn_ppp_remote_generate_config.setCurrentIndex(False)
+        self.btn_ppp_remote_generate_config.setChecked(False)
         self.ppp_remote_password.setText("")
         self.ppp_remote_username.setText("")
         self.ppp_remote_all_interfaces.setCurrentIndex(0)
