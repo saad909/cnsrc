@@ -87,10 +87,21 @@ class monitoring:
         if output:
             interfaces = list()
             for line in output.splitlines():
-                regex = re.compile(
-                    # r"(?P<interface_name>^S[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
-                    r"(?P<interface_name>^(G|E|F|V|L|S)[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
-                )
+                if self.tab_configs.currentIndex() == 5:
+                    regex = re.compile(
+                        # r"(?P<interface_name>^S[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
+                        r"(?P<interface_name>^S[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
+                    )
+                elif self.tab_configs.currentIndex() == 4:
+                    regex = re.compile(
+                        # r"(?P<interface_name>^S[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
+                        r"(?P<interface_name>^(G|E|F|V|L)[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
+                    )
+                else:
+                    regex = re.compile(
+                        # r"(?P<interface_name>^S[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
+                        r"(?P<interface_name>^(G|E|F|V|L|S)[\w\/]+)\s+(?P<ip_address>([\d.]+)|unassigned)\s+YES.*?(?P<status>(up|down))\s+(?P<protocol>(up|down)).*"
+                    )
                 result = regex.fullmatch(line)
                 if result:
                     # print(result.group("interface_name"))
