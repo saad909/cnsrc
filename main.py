@@ -96,6 +96,10 @@ class Main_Window(
     def handleUIChanges(self):
         # get valid identifier
         self.get_valid_identifier(self.dhcp_pool_name)
+        self.get_valid_identifier(self.ppp_remote_username)
+        self.get_valid_identifier(self.ppp_remote_password)
+        self.get_valid_identifier(self.ppp_local_username)
+        self.get_valid_identifier(self.ppp_local_password)
         # get the valid ip
         self.get_valid_ip(self.d_add_ip_address)
         self.get_valid_ip(self.txt_d_all_ip_address)
@@ -207,6 +211,7 @@ class Main_Window(
         self.btn_ppp_local_generate_config.toggled.connect(
             self.generate_ppp_config)
         self.btn_ppp_push.clicked.connect(self.push_ppp_config)
+        self.btn_clear_ppp.clicked.connect(self.clear_ppp_result)
 
     ###################### handle buttons action ######################
 
