@@ -455,7 +455,7 @@ class devices_func(QDial):
 
         self.write_group_file(all_groups)
         # Target Groups
-        QMessageBox.information(self, "Warning", f"Target Groups are {target_groups}")
+        # QMessageBox.information(self, "Warning", f"Target Groups are {target_groups}")
 
         # checking for os type match
         groups = list()
