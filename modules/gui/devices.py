@@ -118,6 +118,7 @@ class devices(QDialog):
             # update devices in all configurations section
             self.update_configs_all_devices()
             self.update_remote_devices()
+            self.update_mgmt_config_all_devices()
 
     #          ____  _   _ _     _  __     _    ____  ____ ___ _____ ___ ___  _   _
     #         | __ )| | | | |   | |/ /    / \  |  _ \|  _ \_ _|_   _|_ _/ _ \| \ | |
