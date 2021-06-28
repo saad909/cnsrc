@@ -45,7 +45,7 @@
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -200,7 +200,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -1704,7 +1704,7 @@
         <item row="0" column="0">
          <widget class="QTabWidget" name="tab_basic_tasks">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="show_commands">
            <attribute name="title">
@@ -1770,7 +1770,7 @@ color: rgb(0, 255, 0);</string>
                <bool>false</bool>
               </property>
               <property name="text">
-               <string>Add your own commands from csv or text file</string>
+               <string>Add your own commands from a text file</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
@@ -1790,7 +1790,7 @@ color: rgb(0, 255, 0);</string>
             <item row="1" column="0" colspan="2">
              <widget class="QTabWidget" name="tab_configs">
               <property name="currentIndex">
-               <number>4</number>
+               <number>5</number>
               </property>
               <widget class="QWidget" name="tab_11">
                <attribute name="title">
@@ -2638,20 +2638,26 @@ otherwise this will fail.To configure this enter the command int interface mode 
   <tabstop>txt_usr_username_search</tabstop>
   <tabstop>btn_usr_search</tabstop>
   <tabstop>btn_usr_search_clear</tabstop>
-  <tabstop>txt_usr_edit_username</tabstop>
-  <tabstop>txt_usr_edit_password</tabstop>
-  <tabstop>txt_usr_edit_new_password</tabstop>
-  <tabstop>txt_usr_edit_confirm_password</tabstop>
-  <tabstop>btn_usr_del_delete</tabstop>
-  <tabstop>btn_user_edit_edit</tabstop>
-  <tabstop>txt_usr_table_filter</tabstop>
-  <tabstop>btn_usr_filter</tabstop>
-  <tabstop>btn_usr_clear_filter</tabstop>
-  <tabstop>usr_txt_file_path</tabstop>
-  <tabstop>usr_btn_browse</tabstop>
-  <tabstop>usr_btn_export</tabstop>
-  <tabstop>tbl_users</tabstop>
-  <tabstop>pb_usr_user_settings</tabstop>
+  <tabstop>txt_d_all_hostname</tabstop>
+  <tabstop>txt_d_all_ip_address</tabstop>
+  <tabstop>btn_d_all_search</tabstop>
+  <tabstop>btn_d_all_clear</tabstop>
+  <tabstop>dev_all_txt_file_path</tabstop>
+  <tabstop>dev_all_btn_browse</tabstop>
+  <tabstop>dev_all_btn_export</tabstop>
+  <tabstop>tbl_devices</tabstop>
+  <tabstop>d_add_hostname</tabstop>
+  <tabstop>d_add_ip_address</tabstop>
+  <tabstop>d_add_username</tabstop>
+  <tabstop>d_add_password</tabstop>
+  <tabstop>d_add_secret</tabstop>
+  <tabstop>d_add_port_number</tabstop>
+  <tabstop>d_add_device_type</tabstop>
+  <tabstop>d_add_cb_os_type</tabstop>
+  <tabstop>btn_d_add_save</tabstop>
+  <tabstop>dev_add_txt_csv_file_path</tabstop>
+  <tabstop>dev_add_btn_browse</tabstop>
+  <tabstop>dev_add_btn_bulk_add</tabstop>
   <tabstop>txt_d_edit_hostname</tabstop>
   <tabstop>btn_d_edit_search</tabstop>
   <tabstop>d_edit_hostname</tabstop>
@@ -2668,6 +2674,16 @@ otherwise this will fail.To configure this enter the command int interface mode 
   <tabstop>pb_dev_all</tabstop>
   <tabstop>pb_dev_add</tabstop>
   <tabstop>pb_dev_edit</tabstop>
+  <tabstop>txt_g_all_group_name</tabstop>
+  <tabstop>btn_g_all_search</tabstop>
+  <tabstop>btn_g_all_clear</tabstop>
+  <tabstop>grp_all_txt_file_path</tabstop>
+  <tabstop>grp_all_btn_browse</tabstop>
+  <tabstop>grp_all_btn_export</tabstop>
+  <tabstop>tbl_groups</tabstop>
+  <tabstop>g_add_groupname</tabstop>
+  <tabstop>g_add_group_members</tabstop>
+  <tabstop>g_add_submit</tabstop>
   <tabstop>txt_g_edit_groupname</tabstop>
   <tabstop>btn_g_edit_search</tabstop>
   <tabstop>g_edit_groupname</tabstop>
@@ -2684,24 +2700,12 @@ otherwise this will fail.To configure this enter the command int interface mode 
   <tabstop>show_commands_list</tabstop>
   <tabstop>config_show_te_cmds_output</tabstop>
   <tabstop>config_show_btn_export</tabstop>
-  <tabstop>pb_bt_show_commands</tabstop>
-  <tabstop>pb_bt_configurations</tabstop>
-  <tabstop>configs_all_devices</tabstop>
-  <tabstop>configs_all_configurations</tabstop>
-  <tabstop>btn_g_all_clear</tabstop>
-  <tabstop>btn_g_all_search</tabstop>
-  <tabstop>grp_all_btn_export</tabstop>
-  <tabstop>tbl_groups</tabstop>
-  <tabstop>g_add_group_members</tabstop>
-  <tabstop>g_add_groupname</tabstop>
-  <tabstop>g_add_submit</tabstop>
-  <tabstop>tab_main</tabstop>
   <tabstop>chkbox_rip_version</tabstop>
   <tabstop>chkbox_rip_directly</tabstop>
   <tabstop>chkbox_rip_loopback</tabstop>
   <tabstop>te_rip_config</tabstop>
-  <tabstop>txt_g_all_group_name</tabstop>
-  <tabstop>tab_configs</tabstop>
+  <tabstop>btn_push_rip_config</tabstop>
+  <tabstop>btn_clear_rip</tabstop>
   <tabstop>txt_process_id</tabstop>
   <tabstop>txt_ospf_area</tabstop>
   <tabstop>chkbox_ospf_directly</tabstop>
@@ -2715,42 +2719,6 @@ otherwise this will fail.To configure this enter the command int interface mode 
   <tabstop>te_eigrp_config</tabstop>
   <tabstop>btn_push_eigrp_config</tabstop>
   <tabstop>btn_clear_eigrp</tabstop>
-  <tabstop>tbl_devices</tabstop>
-  <tabstop>tab_groups</tabstop>
-  <tabstop>grp_all_txt_file_path</tabstop>
-  <tabstop>btn_push_rip_config</tabstop>
-  <tabstop>btn_clear_rip</tabstop>
-  <tabstop>grp_all_btn_browse</tabstop>
-  <tabstop>dev_add_txt_csv_file_path</tabstop>
-  <tabstop>dev_add_btn_browse</tabstop>
-  <tabstop>dev_all_btn_browse</tabstop>
-  <tabstop>d_add_password</tabstop>
-  <tabstop>dev_all_txt_file_path</tabstop>
-  <tabstop>txt_d_all_ip_address</tabstop>
-  <tabstop>tab_users</tabstop>
-  <tabstop>d_add_secret</tabstop>
-  <tabstop>tab_devices</tabstop>
-  <tabstop>txt_d_all_hostname</tabstop>
-  <tabstop>d_add_hostname</tabstop>
-  <tabstop>rb_chap</tabstop>
-  <tabstop>rb_pap</tabstop>
-  <tabstop>ppp_remote_all_devices</tabstop>
-  <tabstop>ppp_remote_all_interfaces</tabstop>
-  <tabstop>ppp_remote_username</tabstop>
-  <tabstop>ppp_remote_password</tabstop>
-  <tabstop>btn_ppp_remote_generate_config</tabstop>
-  <tabstop>ppp_all_interfaces</tabstop>
-  <tabstop>ppp_local_username</tabstop>
-  <tabstop>ppp_local_password</tabstop>
-  <tabstop>btn_ppp_local_generate_config</tabstop>
-  <tabstop>te_ppp_remote_config</tabstop>
-  <tabstop>btn_ppp_push</tabstop>
-  <tabstop>btn_clear_ppp</tabstop>
-  <tabstop>mgmt_config_all_devices</tabstop>
-  <tabstop>mgmt_config_config_type</tabstop>
-  <tabstop>mgmt_config_btn_backup</tabstop>
-  <tabstop>configs_list</tabstop>
-  <tabstop>d_add_cb_os_type</tabstop>
   <tabstop>dhcp_pool_name</tabstop>
   <tabstop>dhcp_network_address</tabstop>
   <tabstop>dhcp_subnet_mask</tabstop>
@@ -2769,16 +2737,48 @@ otherwise this will fail.To configure this enter the command int interface mode 
   <tabstop>btn_clear_dhcp_server</tabstop>
   <tabstop>dhcp_client_all_interfaces</tabstop>
   <tabstop>btn_configure_dhcp_client</tabstop>
-  <tabstop>btn_d_all_clear</tabstop>
-  <tabstop>d_add_username</tabstop>
+  <tabstop>tab_main</tabstop>
+  <tabstop>tab_configs</tabstop>
+  <tabstop>rb_chap</tabstop>
+  <tabstop>rb_pap</tabstop>
+  <tabstop>ppp_remote_all_devices</tabstop>
+  <tabstop>ppp_remote_all_interfaces</tabstop>
+  <tabstop>ppp_remote_username</tabstop>
+  <tabstop>ppp_remote_password</tabstop>
+  <tabstop>btn_ppp_remote_generate_config</tabstop>
+  <tabstop>ppp_all_interfaces</tabstop>
+  <tabstop>ppp_local_username</tabstop>
+  <tabstop>ppp_local_password</tabstop>
+  <tabstop>btn_ppp_local_generate_config</tabstop>
+  <tabstop>te_ppp_remote_config</tabstop>
+  <tabstop>btn_ppp_push</tabstop>
+  <tabstop>btn_clear_ppp</tabstop>
+  <tabstop>pb_bt_show_commands</tabstop>
+  <tabstop>pb_bt_configurations</tabstop>
+  <tabstop>mgmt_config_all_devices</tabstop>
+  <tabstop>mgmt_config_config_type</tabstop>
+  <tabstop>mgmt_config_btn_backup</tabstop>
+  <tabstop>configs_list</tabstop>
+  <tabstop>tab_users</tabstop>
+  <tabstop>tab_devices</tabstop>
+  <tabstop>tab_groups</tabstop>
+  <tabstop>txt_usr_edit_username</tabstop>
   <tabstop>tab_basic_tasks</tabstop>
-  <tabstop>dev_add_btn_bulk_add</tabstop>
-  <tabstop>dev_all_btn_export</tabstop>
-  <tabstop>d_add_device_type</tabstop>
-  <tabstop>btn_d_add_save</tabstop>
-  <tabstop>btn_d_all_search</tabstop>
-  <tabstop>d_add_ip_address</tabstop>
-  <tabstop>d_add_port_number</tabstop>
+  <tabstop>btn_user_edit_edit</tabstop>
+  <tabstop>btn_usr_filter</tabstop>
+  <tabstop>btn_usr_del_delete</tabstop>
+  <tabstop>txt_usr_edit_password</tabstop>
+  <tabstop>txt_usr_edit_new_password</tabstop>
+  <tabstop>txt_usr_edit_confirm_password</tabstop>
+  <tabstop>txt_usr_table_filter</tabstop>
+  <tabstop>btn_usr_clear_filter</tabstop>
+  <tabstop>usr_txt_file_path</tabstop>
+  <tabstop>usr_btn_browse</tabstop>
+  <tabstop>usr_btn_export</tabstop>
+  <tabstop>tbl_users</tabstop>
+  <tabstop>pb_usr_user_settings</tabstop>
+  <tabstop>configs_all_devices</tabstop>
+  <tabstop>configs_all_configurations</tabstop>
  </tabstops>
  <resources/>
  <connections>
