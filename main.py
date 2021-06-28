@@ -1,15 +1,10 @@
 import sys
-
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from PyQt5.uic import loadUiType
 from imports import *
-from functools import partial
-
-login, _ = loadUiType("login.ui")
 
 
-class Login(QWidget, login, password_hashing):
+class Login(QWidget, Ui_login, password_hashing):
     def __init__(self):
         QWidget.__init__(self)
         self.setupUi(self)
@@ -59,13 +54,11 @@ class Login(QWidget, login, password_hashing):
             self.txt_login_username.setFocus()
 
 
-ui, _ = loadUiType("main.ui")
 
 
 class Main_Window(
     QMainWindow,
-    # Ui_main_window,
-    ui,
+    Ui_main_window,
     startup_settings,
     devices,
     devices_func,

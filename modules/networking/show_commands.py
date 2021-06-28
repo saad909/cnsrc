@@ -318,8 +318,8 @@ class show_commands(QDialog):
         # Step 5: Connect signals and slots
         self.thread.started.connect(self.worker.run)
         self.worker.finished_signal.connect(self.thread.quit)
-        self.worker.finished_signal.connect(self.worker.deleteLater)
-        self.thread.finished.connect(self.thread.deleteLater)
+        # self.worker.finished_signal.connect(self.worker.deleteLater)
+        # self.thread.finished.connect(self.thread.delete)
         self.worker.error_signal.connect(self.show_errors)
         self.worker.output_signal.connect(self.show_commands_output)
         # Step 6: Start the thread

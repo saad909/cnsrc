@@ -1,6 +1,0 @@
-show run
-show start
-show cdp neigh
-show version
-show ip int br
-show run | s router

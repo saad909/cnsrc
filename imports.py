@@ -1,4 +1,6 @@
-# from gui import *
+# gui
+from main_window import *
+from login_window import *
 from modules.gui.startup import *
 from modules.gui.devices import *
 from modules.gui.devices_func import *
