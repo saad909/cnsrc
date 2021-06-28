@@ -280,6 +280,7 @@ class devices(QDialog):
                         # update devices in all configurations section
                         self.update_configs_all_devices()
                         self.update_remote_devices()
+                        self.update_mgmt_config_all_devices()
                 return
 
             else:
