@@ -127,6 +127,9 @@ class backup_window(
 class configs(QDialog):
     def show_configs_backup_window(self):
         device_name = self.mgmt_config_all_devices.currentText()
+        if device_name == "dummy":
+            QMessageBox.critical(self,"Note","Please add a group")
+            return
         all_devices = self.convert_host_file_into_list()
         our_device = None
         for device in all_devices:
