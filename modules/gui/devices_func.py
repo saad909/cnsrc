@@ -707,64 +707,67 @@ class devices_func(QDial):
         return
 
     def delete_device(self):
-        hostname_before = self.device_before["hostname"]
         hostname = self.d_edit_hostname.text()
-        if hostname:
-            if hostname == hostname_before:
-                selection = QMessageBox.question(
-                    self,
-                    "Warning",
-                    "Do you want to delete the device ?",
-                    QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
-                    QMessageBox.No,
-                )
-                if selection == QMessageBox.Yes:
-                    devices = self.convert_host_file_into_list()
-                    # getting the deletion device index
-                    index = None
-                    i = 0
-                    for device in devices:
-                        if device["hostname"] == hostname:
-                            index = i
-                            break
-                        i += 1
-
-                    devices.pop(index)
-
-                    # write to the inventory file
-                    self.write_inventory(devices)
-
-                    QMessageBox.information(
-                        self, "Success", "host deleted successfully"
+        if hostname and self.d_edit_ip_address.text() and self.d_edit_username.text() \
+                and self.d_edit_password and self.d_edit_secret \
+                and self.d_edit_port_number:
+            hostname_before = self.device_before["hostname"]
+            if hostname :
+                if hostname == hostname_before:
+                    selection = QMessageBox.question(
+                        self,
+                        "Warning",
+                        "Do you want to delete the device ?",
+                        QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
+                        QMessageBox.No,
                     )
-                    # reflect changes in groups.yaml file
-                    self.synchronize_deletion(hostname)
-                    # update all devices table
-                    self.clear_device_search_results()
-                    # update autocomplete list of ip_addresses and hostnames
-                    self.auto_complete_edit_results()
-                    self.auto_complete_search_results()
-                    # clear search results
-                    self.clear_edit_search_results()
-                    self.clear_device_edit_user_search()
-                    # update devices in show commands combo boxes
-                    self.update_bt_all_devices()
-                    # update devices in group addition
-                    self.add_devices_for_group_selection()
-                    # update groups table
-                    self.fill_groups_table(self.get_all_groups())
-                    # self.update_mon_all_devices()
-                    #update devices in all configurations section
-                    self.update_configs_all_devices()
-                    self.update_remote_devices()
+                    if selection == QMessageBox.Yes:
+                        devices = self.convert_host_file_into_list()
+                        # getting the deletion device index
+                        index = None
+                        i = 0
+                        for device in devices:
+                            if device["hostname"] == hostname:
+                                index = i
+                                break
+                            i += 1
+
+                        devices.pop(index)
+
+                        # write to the inventory file
+                        self.write_inventory(devices)
+
+                        QMessageBox.information(
+                            self, "Success", "host deleted successfully"
+                        )
+                        # reflect changes in groups.yaml file
+                        self.synchronize_deletion(hostname)
+                        # update all devices table
+                        self.clear_device_search_results()
+                        # update autocomplete list of ip_addresses and hostnames
+                        self.auto_complete_edit_results()
+                        self.auto_complete_search_results()
+                        # clear search results
+                        self.clear_edit_search_results()
+                        self.clear_device_edit_user_search()
+                        # update devices in show commands combo boxes
+                        self.update_bt_all_devices()
+                        # update devices in group addition
+                        self.add_devices_for_group_selection()
+                        # update groups table
+                        self.fill_groups_table(self.get_all_groups())
+                        # self.update_mon_all_devices()
+                        #update devices in all configurations section
+                        self.update_configs_all_devices()
+                        self.update_remote_devices()
+                    else:
+                        self.clear_edit_search_results()
+                        self.clear_device_edit_user_search()
                 else:
+                    QMessageBox.information(self, "Failed", "You alterd the results")
                     self.clear_edit_search_results()
                     self.clear_device_edit_user_search()
             else:
-                QMessageBox.information(self, "Failed", "You alterd the results")
+                QMessageBox.information(self, "Failed", "hostname can't be empty")
                 self.clear_edit_search_results()
                 self.clear_device_edit_user_search()
-        else:
-            QMessageBox.information(self, "Failed", "hostname can't be empty")
-            self.clear_edit_search_results()
-            self.clear_device_edit_user_search()

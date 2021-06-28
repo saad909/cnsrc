@@ -28,3 +28,18 @@
   - Switch
   hostname: R2
   type: Router
+- data:
+    device_type: cisco_ios
+    host: 200.100.50.253
+    password: !!binary |
+      Z0FBQUFBQmcxd2hwMDlMaGxmUHExSzNOalRfUlNaUEE4NHEzV1BaTnpHTWtsZWVkS2drV2hGWWk1
+      THdsOFNzS2pWZ1VqUTVyRFhfSU0tTGtmUG5yM2lLaVZTdzh4R01teWc9PQ==
+    port: '22'
+    secret: !!binary |
+      Z0FBQUFBQmcxd2hwZmw2YlgtLWR6SUExTnUtZWNkbUNuQm5GcjZEZURBYjhObzJMNkNDelpJaE1Z
+      STNrN1pvV056Yjd4XzZJZWNwN3gtQzRyam1LN0lsSnVUNVoxYm16Z3c9PQ==
+    username: cisco
+  groups:
+  - Switch
+  hostname: Sw1
+  type: Switch

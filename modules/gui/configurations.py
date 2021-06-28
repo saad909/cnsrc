@@ -62,11 +62,12 @@ class configurations(QDialog):
             elif my_device['type'] == "Switch":
                 self.configs_all_configurations.clear()
                 configs_list = [
-                    "vlans",
-                    "dns",
-                    "default gateway",
-                    "loopback",
-                    "hostname"
+                    "Null"
+                    # "vlans",
+                    # "dns",
+                    # "default gateway",
+                    # "loopback",
+                    # "hostname"
                 ]
                 self.configs_all_configurations.addItems(configs_list)
                 return

@@ -345,6 +345,7 @@ class groups(QDialog):
                 self.fill_groups_table(self.get_all_groups())
                 self.clear_edit_group_fields()
                 self.clear_device_search_results()
+                self.update_show_commands_groups_combobox()
             elif selection == QMessageBox.Cancel:
                 self.clear_edit_group_fields()
 

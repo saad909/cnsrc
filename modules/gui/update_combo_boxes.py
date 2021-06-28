@@ -14,9 +14,12 @@ class update_combo_boxes(QDialog):
 
     def update_show_commands_groups_combobox(self):
         self.cb_bt_all_groups.clear()
-        if self.get_all_groups()[0] == "dummy":
-            return
-        self.cb_bt_all_groups.addItems(["Select a group"] + self.get_all_groups_names())
+        if self.get_all_groups():
+            if self.get_all_groups()[0] == "dummy":
+                return
+            self.cb_bt_all_groups.addItems(["Select a group"] + self.get_all_groups_names())
+        else:
+            self.cb_bt_all_groups.addItems(["No group is present"])
 
     def update_mon_all_devices(self):
         # getting all the devices

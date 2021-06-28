@@ -100,6 +100,21 @@ class Main_Window(
         self.get_valid_identifier(self.ppp_remote_password)
         self.get_valid_identifier(self.ppp_local_username)
         self.get_valid_identifier(self.ppp_local_password)
+        self.get_valid_identifier(self.d_add_hostname)
+        self.get_valid_identifier(self.d_add_username)
+        self.get_valid_identifier(self.d_add_password)
+        self.get_valid_identifier(self.d_add_secret)
+        self.get_valid_identifier(self.d_edit_hostname)
+        self.get_valid_identifier(self.d_edit_username)
+        self.get_valid_identifier(self.d_edit_password)
+        self.get_valid_identifier(self.d_edit_secret)
+        self.get_valid_identifier(self.txt_d_all_hostname)
+        self.get_valid_identifier(self.txt_g_edit_groupname)
+        self.get_valid_identifier(self.g_edit_groupname)
+        self.get_valid_identifier(self.g_add_groupname)
+        self.get_valid_identifier(self.txt_g_all_group_name)
+        self.get_valid_identifier(self.g_add_groupname)
+
         # get the valid ip
         self.get_valid_ip(self.d_add_ip_address)
         self.get_valid_ip(self.txt_d_all_ip_address)
@@ -112,7 +127,8 @@ class Main_Window(
         self.get_valid_ip(self.dhcp_ip_phone_gateway)
         # get valid subnet mask
         self.get_valid_subnet(self.dhcp_subnet_mask)
-        # as_no range = 1-65535
+        # as_no and port number range = 1-65535
+        self.get_valid_as_no(self.d_edit_port_number)
         self.get_valid_as_no(self.d_add_port_number)
         self.get_valid_as_no(self.txt_eigrp_as_number)
         self.get_valid_as_no(self.txt_process_id)
