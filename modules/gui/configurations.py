@@ -1032,7 +1032,7 @@ class configurations(QDialog):
                 self.thread.finished.connect(partial(self.write_config, local_device_data, local_config_list,
                                                      self.te_ppp_remote_config))
                 self.thread.started.connect(self.worker.run)
-                self.worker.error_signal.connect(self.show_errors)
+                # self.worker.error_signal.connect(self.show_errors)
                 self.te_ppp_remote_config.append(
                     "\n\n---------Output-----------\n\n")
                 self.worker.output_signal.connect(
