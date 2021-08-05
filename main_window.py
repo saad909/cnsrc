@@ -1678,7 +1678,7 @@ class Ui_main_window(object):
         self.tab_configs.setTabText(self.tab_configs.indexOf(self.ppp), _translate("main_window", "ppp"))
         self.tab_basic_tasks.setTabText(self.tab_basic_tasks.indexOf(self.tab_6), _translate("main_window", "Configurations"))
         self.tab_main.setTabText(self.tab_main.indexOf(self.configs), _translate("main_window", "Basic Section"))
-        self.groupBox_2.setTitle(_translate("main_window", "Backup or restore configurations"))
+        self.groupBox_2.setTitle(_translate("main_window", "Backup configurations"))
         self.mgmt_config_config_type.setItemText(0, _translate("main_window", "running config"))
         self.mgmt_config_config_type.setItemText(1, _translate("main_window", "startup config"))
         self.mgmt_config_btn_backup.setText(_translate("main_window", "Backup"))

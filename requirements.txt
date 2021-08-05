@@ -6,3 +6,4 @@ paramiko==2.7.2
 cryptography==3.4.7
 PyQt5==5.15.4
 PyYAML==5.4.1
+openpyxl==3.0.7
