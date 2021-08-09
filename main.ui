@@ -29,12 +29,6 @@
    <layout class="QGridLayout" name="gridLayout_24">
     <item row="0" column="0">
      <widget class="QToolBox" name="toolBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
       <property name="inputMethodHints">
        <set>Qt::ImhPreferNumbers</set>
       </property>
@@ -45,7 +39,7 @@
        <enum>QFrame::Sunken</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -2527,7 +2521,7 @@ otherwise this will fail.To configure this enter the command int interface mode 
         <item row="0" column="0">
          <widget class="QGroupBox" name="groupBox_2">
           <property name="title">
-           <string>Backup or restore configurations</string>
+           <string>Backup configurations</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_25">
            <item row="0" column="2">
@@ -2561,6 +2555,18 @@ otherwise this will fail.To configure this enter the command int interface mode 
             <widget class="QListWidget" name="configs_list">
              <property name="enabled">
               <bool>true</bool>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="sizeAdjustPolicy">
+              <enum>QAbstractScrollArea::AdjustToContents</enum>
+             </property>
+             <property name="resizeMode">
+              <enum>QListView::Adjust</enum>
              </property>
             </widget>
            </item>
