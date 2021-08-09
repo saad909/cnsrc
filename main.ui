@@ -1,0 +1,2850 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main_window</class>
+ <widget class="QMainWindow" name="main_window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>999</width>
+    <height>771</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>5</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Cisco Automation</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_24">
+    <item row="0" column="0">
+     <widget class="QToolBox" name="toolBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhPreferNumbers</set>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <property name="tabSpacing">
+       <number>6</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>123</width>
+         <height>591</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Users</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_15">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_usr_user_settings">
+          <property name="text">
+           <string>User Settings</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>194</width>
+         <height>578</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Devices</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_dev_all">
+          <property name="text">
+           <string>ALL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pb_dev_edit">
+          <property name="text">
+           <string>Delete or Edit</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pb_dev_add">
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>194</width>
+         <height>578</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Groups</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_20">
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="pb_grp_edit">
+          <property name="text">
+           <string>Delete or Edit</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_grp_all">
+          <property name="text">
+           <string>ALL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pb_grp_add">
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>129</width>
+         <height>591</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Configure Devices</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pb_bt_show_commands">
+          <property name="text">
+           <string>Show Commands</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pb_bt_configurations">
+          <property name="text">
+           <string>Configurations</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>123</width>
+         <height>591</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Backup configs</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QTabWidget" name="tab_main">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>2</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <widget class="QWidget" name="tab_7">
+       <attribute name="title">
+        <string>Users</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_21">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_10">
+          <property name="title">
+           <string>Users Settings</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_19">
+           <item row="0" column="0">
+            <widget class="QTabWidget" name="tab_users">
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="tab_24">
+              <attribute name="title">
+               <string>user settings</string>
+              </attribute>
+              <layout class="QGridLayout" name="gridLayout_2">
+               <item row="2" column="0" colspan="2">
+                <widget class="QGroupBox" name="groupBox_8">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>1</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>All Users</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout">
+                  <item row="0" column="0" colspan="3">
+                   <layout class="QHBoxLayout" name="horizontalLayout_9">
+                    <item>
+                     <widget class="QLineEdit" name="txt_usr_table_filter">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="placeholderText">
+                       <string>search username</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_filter">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>Filter</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_clear_filter">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>Clear</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QPushButton" name="usr_btn_browse">
+                    <property name="text">
+                     <string>Browse</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QPushButton" name="usr_btn_export">
+                    <property name="text">
+                     <string>Export</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLineEdit" name="usr_txt_file_path">
+                    <property name="placeholderText">
+                     <string>Enter full file path</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" colspan="3">
+                   <widget class="QTableWidget" name="tbl_users">
+                    <attribute name="horizontalHeaderStretchLastSection">
+                     <bool>true</bool>
+                    </attribute>
+                    <attribute name="verticalHeaderStretchLastSection">
+                     <bool>false</bool>
+                    </attribute>
+                    <column>
+                     <property name="text">
+                      <string>username</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>password</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QGroupBox" name="groupBox_4">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Delete or Edit</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_13">
+                  <property name="rightMargin">
+                   <number>25</number>
+                  </property>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_11">
+                    <property name="text">
+                     <string>username</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="txt_usr_edit_password">
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Enter old password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" colspan="2">
+                   <layout class="QHBoxLayout" name="horizontalLayout_8">
+                    <item>
+                     <widget class="QLineEdit" name="txt_usr_username_search">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="placeholderText">
+                       <string>search username</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_search">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>Search</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_search_clear">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>Clear</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QLineEdit" name="txt_usr_edit_new_password">
+                    <property name="toolTip">
+                     <string>Leave empty, if don't want to change password</string>
+                    </property>
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Enter new password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="label_15">
+                    <property name="text">
+                     <string>New Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <layout class="QHBoxLayout" name="horizontalLayout_7">
+                    <item>
+                     <widget class="QPushButton" name="btn_usr_del_delete">
+                      <property name="text">
+                       <string>Delete</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_user_edit_edit">
+                      <property name="text">
+                       <string>Edit</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="label_10">
+                    <property name="text">
+                     <string>Confirm Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_9">
+                    <property name="text">
+                     <string>password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="txt_usr_edit_username">
+                    <property name="placeholderText">
+                     <string>Enter user name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="QLineEdit" name="txt_usr_edit_confirm_password">
+                    <property name="toolTip">
+                     <string>Leave empty, if don't want to change password</string>
+                    </property>
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>repeat password</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="1" column="0">
+                <widget class="QGroupBox" name="groupBox_3">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Add</string>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="checkable">
+                  <bool>false</bool>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_9">
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="txt_usr_add_confirm_password">
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>repeat password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_5">
+                    <property name="text">
+                     <string>Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_6">
+                    <property name="text">
+                     <string>Confirm Password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="txt_usr_add_username">
+                    <property name="placeholderText">
+                     <string>Enter user name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string>username</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QPushButton" name="btn_usr_add_add">
+                    <property name="text">
+                     <string>Add</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="txt_usr_add_password">
+                    <property name="echoMode">
+                     <enum>QLineEdit::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Enter password</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <spacer name="verticalSpacer_2">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Devices</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_11">
+        <item row="1" column="0" colspan="3">
+         <widget class="QTabWidget" name="tab_devices">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <property name="movable">
+           <bool>false</bool>
+          </property>
+          <widget class="QWidget" name="tab_3">
+           <attribute name="title">
+            <string>All Devices</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_12">
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="groupBox">
+              <property name="title">
+               <string>All Devices</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_6">
+               <item row="1" column="0">
+                <spacer name="verticalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Minimum</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>17</width>
+                   <height>13</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="0" column="4">
+                <widget class="QPushButton" name="btn_d_all_search">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Search</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="5">
+                <widget class="QPushButton" name="btn_d_all_clear">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Clear</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLineEdit" name="txt_d_all_hostname">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Search using hostname</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0" colspan="6">
+                <widget class="QTableWidget" name="tbl_devices">
+                 <property name="tabletTracking">
+                  <bool>false</bool>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>true</bool>
+                 </property>
+                 <property name="textElideMode">
+                  <enum>Qt::ElideRight</enum>
+                 </property>
+                 <property name="sortingEnabled">
+                  <bool>true</bool>
+                 </property>
+                 <attribute name="horizontalHeaderCascadingSectionResizes">
+                  <bool>false</bool>
+                 </attribute>
+                 <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                  <bool>false</bool>
+                 </attribute>
+                 <attribute name="horizontalHeaderStretchLastSection">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderCascadingSectionResizes">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderStretchLastSection">
+                  <bool>false</bool>
+                 </attribute>
+                 <column>
+                  <property name="text">
+                   <string>Hostname</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>IP Address</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Username</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Password</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Secret Password</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Groups</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Type</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Port</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>OS</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+               <item row="2" column="0" colspan="3">
+                <widget class="QLineEdit" name="dev_all_txt_file_path">
+                 <property name="placeholderText">
+                  <string>Enter full file path</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QPushButton" name="dev_all_btn_browse">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Browse</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4" colspan="2">
+                <widget class="QPushButton" name="dev_all_btn_export">
+                 <property name="text">
+                  <string>Export</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLineEdit" name="txt_d_all_ip_address">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Search using IP Address</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_4">
+           <attribute name="title">
+            <string>Add Device</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_10">
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="gb_d_all">
+              <property name="title">
+               <string>Add a device</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="0">
+                <layout class="QFormLayout" name="formLayout_2">
+                 <property name="horizontalSpacing">
+                  <number>10</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>8</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>100</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="hostnameLabel">
+                   <property name="text">
+                    <string>hostname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="d_add_hostname">
+                   <property name="placeholderText">
+                    <string>Enter device hostname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="iPAddressLabel">
+                   <property name="text">
+                    <string>IP Address</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="d_add_ip_address">
+                   <property name="placeholderText">
+                    <string>Enter deivce ip address</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="usernameLabel">
+                   <property name="text">
+                    <string>username</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="d_add_username">
+                   <property name="placeholderText">
+                    <string>Enter ssh username</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="passwordLabel">
+                   <property name="text">
+                    <string>password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLineEdit" name="d_add_password">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter ssh password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="enablePasswordLabel">
+                   <property name="text">
+                    <string>Enable Password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="d_add_secret">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter enable password of device</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="label">
+                   <property name="text">
+                    <string>Device Type</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="1">
+                  <widget class="QComboBox" name="d_add_device_type">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Router</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Switch</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="enablePasswordLabel_2">
+                   <property name="text">
+                    <string>Port Number</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QLineEdit" name="d_add_port_number">
+                   <property name="text">
+                    <string>22</string>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::Normal</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Enter port number(optional)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="label_12">
+                   <property name="text">
+                    <string>OS type</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
+                  <widget class="QComboBox" name="d_add_cb_os_type">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>cisco_ios</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_xr</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>ios_xe</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_asa</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_nxos</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="8" column="1">
+                  <widget class="QPushButton" name="btn_d_add_save">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                     <horstretch>3</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Save</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QGroupBox" name="groupBox_9">
+              <property name="title">
+               <string>Bulk addition</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_14">
+               <item row="0" column="1">
+                <widget class="QPushButton" name="dev_add_btn_browse">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Browse</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLineEdit" name="dev_add_txt_csv_file_path">
+                 <property name="placeholderText">
+                  <string>full path of csv file containing hosts data</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0" colspan="2">
+                <widget class="QPushButton" name="dev_add_btn_bulk_add">
+                 <property name="text">
+                  <string>Add</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_5">
+           <attribute name="title">
+            <string>Edit or Delete</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="gb_d_edit">
+              <property name="title">
+               <string>Edit or delete Device</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <item row="1" column="0">
+                <layout class="QFormLayout" name="formLayout_4">
+                 <property name="horizontalSpacing">
+                  <number>10</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>8</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>100</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>100</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="hostnameLabel_3">
+                   <property name="text">
+                    <string>hostname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="d_edit_hostname">
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="iPAddressLabel_3">
+                   <property name="text">
+                    <string>IP Address</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="d_edit_ip_address">
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="usernameLabel_3">
+                   <property name="text">
+                    <string>username</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="d_edit_username">
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="passwordLabel_3">
+                   <property name="text">
+                    <string>password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLineEdit" name="d_edit_password">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="enablePasswordLabel_3">
+                   <property name="text">
+                    <string>Enable Password</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="d_edit_secret">
+                   <property name="echoMode">
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="enablePasswordLabel_4">
+                   <property name="text">
+                    <string>Port Number</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QLineEdit" name="d_edit_port_number">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::Normal</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="deviceTypeLabel">
+                   <property name="text">
+                    <string>Device Type</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="1">
+                  <widget class="QComboBox" name="d_edit_device_type">
+                   <item>
+                    <property name="text">
+                     <string>Router</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Switch</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="deviceTypeLabel_2">
+                   <property name="text">
+                    <string>OS Type</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
+                  <widget class="QComboBox" name="d_edit_cb_os_type">
+                   <item>
+                    <property name="text">
+                     <string>cisco_ios</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_xr</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_xe</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_asa</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>cisco_nxos</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="8" column="1">
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <item>
+                    <widget class="QPushButton" name="btn_d_edit_edit">
+                     <property name="text">
+                      <string>Edit</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_3">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>10</width>
+                       <height>10</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="btn_d_edit_delete">
+                     <property name="text">
+                      <string>Delete</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_4">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>10</width>
+                       <height>10</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="btn_d_edit_clear">
+                     <property name="text">
+                      <string>Clear</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+               <item row="0" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <item>
+                  <widget class="QLineEdit" name="txt_d_edit_hostname">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Search by hostname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_d_edit_search">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Search</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_1">
+       <attribute name="title">
+        <string>Groups</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QTabWidget" name="tab_groups">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="currentIndex">
+           <number>2</number>
+          </property>
+          <property name="movable">
+           <bool>false</bool>
+          </property>
+          <widget class="QWidget" name="tab_13">
+           <attribute name="title">
+            <string>All Groups</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_16">
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="groupBox_5">
+              <property name="title">
+               <string>All Groups</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_29">
+               <item row="2" column="1">
+                <widget class="QLineEdit" name="grp_all_txt_file_path">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Enter full file path</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <spacer name="verticalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Minimum</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>17</width>
+                   <height>13</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="2">
+                <widget class="QPushButton" name="grp_all_btn_browse">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Browse</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QPushButton" name="btn_g_all_clear">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Clear</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLineEdit" name="txt_g_all_group_name">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Enter group name</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QPushButton" name="btn_g_all_search">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Search</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QPushButton" name="grp_all_btn_export">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Export</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0" colspan="4">
+                <widget class="QTableWidget" name="tbl_groups">
+                 <property name="tabletTracking">
+                  <bool>false</bool>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>true</bool>
+                 </property>
+                 <property name="textElideMode">
+                  <enum>Qt::ElideRight</enum>
+                 </property>
+                 <property name="sortingEnabled">
+                  <bool>true</bool>
+                 </property>
+                 <attribute name="horizontalHeaderCascadingSectionResizes">
+                  <bool>false</bool>
+                 </attribute>
+                 <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                  <bool>false</bool>
+                 </attribute>
+                 <attribute name="horizontalHeaderStretchLastSection">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderCascadingSectionResizes">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderStretchLastSection">
+                  <bool>false</bool>
+                 </attribute>
+                 <column>
+                  <property name="text">
+                   <string>Group Name</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>OS</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Group Members</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_14">
+           <attribute name="title">
+            <string>Add Group</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_30">
+            <item row="0" column="1">
+             <widget class="QGroupBox" name="gb_d_all_3">
+              <property name="title">
+               <string>Add a group</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_38">
+               <item row="0" column="0">
+                <widget class="QGroupBox" name="groupBox_6">
+                 <property name="title">
+                  <string>Add a new group</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_31">
+                  <item row="2" column="2">
+                   <widget class="QListWidget" name="g_add_group_members">
+                    <property name="selectionMode">
+                     <enum>QAbstractItemView::MultiSelection</enum>
+                    </property>
+                    <property name="sortingEnabled">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_3">
+                    <property name="text">
+                     <string>Group Name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QLineEdit" name="g_add_groupname">
+                    <property name="placeholderText">
+                     <string>Enter the group name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLabel" name="label_4">
+                    <property name="text">
+                     <string>Select Group Members(Optional)</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QPushButton" name="g_add_submit">
+                    <property name="text">
+                     <string>Add Group</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_17">
+           <attribute name="title">
+            <string>Edit or Delete Group</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_32">
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="gb_d_edit_3">
+              <property name="title">
+               <string>Edit or Delete Group</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_40">
+               <item row="0" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_4">
+                 <item>
+                  <widget class="QLineEdit" name="txt_g_edit_groupname">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Search using group name</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_g_edit_search">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Search</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="0">
+                <widget class="QGroupBox" name="groupBox_7">
+                 <property name="title">
+                  <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_39">
+                  <item row="1" column="0">
+                   <widget class="QLineEdit" name="g_edit_groupname">
+                    <property name="placeholderText">
+                     <string>Enter the group name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_7">
+                    <property name="text">
+                     <string>Group Name</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0" colspan="2">
+                   <widget class="QListWidget" name="g_edit_group_members">
+                    <property name="selectionMode">
+                     <enum>QAbstractItemView::MultiSelection</enum>
+                    </property>
+                    <property name="sortingEnabled">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="2">
+                   <widget class="QLabel" name="label_8">
+                    <property name="text">
+                     <string>Group Members</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout">
+                 <item>
+                  <widget class="QPushButton" name="pb_g_edit">
+                   <property name="text">
+                    <string>Edit</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pb_g_delete">
+                   <property name="text">
+                    <string>Delete</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="configs">
+       <attribute name="title">
+        <string>Basic Section</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_47">
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="tab_basic_tasks">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="show_commands">
+           <attribute name="title">
+            <string>Show Commands</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_23">
+            <item row="0" column="2">
+             <widget class="QPushButton" name="config_show_btn_submit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Submit</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QComboBox" name="cb_bt_all_devices"/>
+            </item>
+            <item row="3" column="0" colspan="3">
+             <widget class="QTextEdit" name="config_show_te_cmds_output">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" colspan="3">
+             <widget class="QPushButton" name="config_show_btn_export">
+              <property name="text">
+               <string>Export</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="cb_bt_all_groups"/>
+            </item>
+            <item row="2" column="0" colspan="3">
+             <widget class="QListWidget" name="show_commands_list">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::MultiSelection</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="config_show_btn_custom_commands">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Add your own commands from a text file</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_6">
+           <attribute name="title">
+            <string>Configurations</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_35">
+            <item row="0" column="1">
+             <widget class="QComboBox" name="configs_all_configurations"/>
+            </item>
+            <item row="1" column="0" colspan="2">
+             <widget class="QTabWidget" name="tab_configs">
+              <property name="currentIndex">
+               <number>5</number>
+              </property>
+              <widget class="QWidget" name="tab_11">
+               <attribute name="title">
+                <string>Page</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="rip">
+               <attribute name="title">
+                <string>rip</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_36">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="groupBox_12">
+                  <property name="title">
+                   <string>RIP</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_33">
+                   <item row="0" column="0" colspan="2">
+                    <widget class="QLabel" name="label_13">
+                     <property name="text">
+                      <string>Generated Configuration</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QCheckBox" name="chkbox_rip_version">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>version 2</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0" colspan="2">
+                    <widget class="QCheckBox" name="chkbox_rip_directly">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected interfaces </string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0" colspan="2">
+                    <widget class="QCheckBox" name="chkbox_rip_loopback">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0" colspan="2">
+                    <widget class="QTextEdit" name="te_rip_config">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+                     </property>
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0" colspan="2">
+                    <layout class="QHBoxLayout" name="horizontalLayout_10">
+                     <item>
+                      <widget class="QPushButton" name="btn_push_rip_config">
+                       <property name="text">
+                        <string>Push Configuration</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_clear_rip">
+                       <property name="text">
+                        <string>Clear</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="ospf">
+               <attribute name="title">
+                <string>ospf</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_26">
+                <item row="2" column="0">
+                 <widget class="QGroupBox" name="groupBox_11">
+                  <property name="title">
+                   <string>OSPF</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_28">
+                   <item row="0" column="0">
+                    <layout class="QFormLayout" name="formLayout">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_16">
+                       <property name="text">
+                        <string>PROCESS ID</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_14">
+                       <property name="text">
+                        <string>AREA</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="txt_process_id">
+                       <property name="placeholderText">
+                        <string>Enter the process id for ospf between 1-65535</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLineEdit" name="txt_ospf_area">
+                       <property name="placeholderText">
+                        <string>Enter the area number between 0-65535</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QCheckBox" name="chkbox_ospf_directly">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected interfaces </string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QCheckBox" name="chkbox_ospf_loopback">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QTextEdit" name="te_ospf_config">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+                     </property>
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0">
+                    <layout class="QHBoxLayout" name="horizontalLayout_6">
+                     <item>
+                      <widget class="QPushButton" name="btn_push_ospf_config">
+                       <property name="text">
+                        <string>Push Configuration</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_clear_ospf">
+                       <property name="text">
+                        <string>Clear</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="eigrp">
+               <attribute name="title">
+                <string>eigrp</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_37">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="groupBox_13">
+                  <property name="title">
+                   <string>EIGRP</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_34">
+                   <item row="5" column="0">
+                    <layout class="QHBoxLayout" name="horizontalLayout_3">
+                     <item>
+                      <widget class="QPushButton" name="btn_push_eigrp_config">
+                       <property name="text">
+                        <string>Push Configuration</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_clear_eigrp">
+                       <property name="text">
+                        <string>Clear</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QTextEdit" name="te_eigrp_config">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+                     </property>
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QCheckBox" name="chkbox_eigrp_directly">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected interfaces </string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QCheckBox" name="chkbox_eigrp_loopback">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Advertise Directly connected and loopback interfaces(Preferred)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_17">
+                     <property name="text">
+                      <string>Autonomous System Number</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLineEdit" name="txt_eigrp_as_number">
+                     <property name="placeholderText">
+                      <string>Enter Autonous System Number for eigrp between 1-65535</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="dhcp">
+               <attribute name="title">
+                <string>dhcp</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_41">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="groupBox_17">
+                  <property name="title">
+                   <string>DHCP Server</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_48">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_22">
+                     <property name="text">
+                      <string>Pool Name</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QLineEdit" name="dhcp_pool_name">
+                     <property name="placeholderText">
+                      <string>Enter the pool name</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="label_24">
+                     <property name="text">
+                      <string>Network Address</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="2">
+                    <widget class="QLineEdit" name="dhcp_network_address">
+                     <property name="placeholderText">
+                      <string>Enter the network address</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="label_23">
+                     <property name="text">
+                      <string>Subnet Mask</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="2">
+                    <widget class="QLineEdit" name="dhcp_subnet_mask">
+                     <property name="placeholderText">
+                      <string>Enter the subnet mask</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QCheckBox" name="chkbox_exclude_range">
+                     <property name="text">
+                      <string>Exclude Range</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="2">
+                    <layout class="QHBoxLayout" name="dhcp_exclude_range_layout">
+                     <item>
+                      <widget class="QLineEdit" name="dhcp_exclude_start">
+                       <property name="placeholderText">
+                        <string>Starting address</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="dhcp_exclude_end">
+                       <property name="placeholderText">
+                        <string>Ending address</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QCheckBox" name="chkbox_default_gateway">
+                     <property name="text">
+                      <string>Default Gateway</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="2">
+                    <widget class="QLineEdit" name="dhcp_default_gateway">
+                     <property name="placeholderText">
+                      <string>Enter default gateway</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QCheckBox" name="chkbox_dns_server">
+                     <property name="text">
+                      <string>DNS Server</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="2">
+                    <widget class="QLineEdit" name="dhcp_dns_server">
+                     <property name="placeholderText">
+                      <string>Enter DNS Server</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="0" colspan="2">
+                    <widget class="QCheckBox" name="chkbox_ip_phone_gateway">
+                     <property name="text">
+                      <string>IP phone gateway</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="2">
+                    <widget class="QLineEdit" name="dhcp_ip_phone_gateway">
+                     <property name="placeholderText">
+                      <string>Enter IP phone gateway</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="0">
+                    <widget class="QLabel" name="label_28">
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="2">
+                    <widget class="QTextEdit" name="te_dhcp_server_config">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+                     </property>
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="2">
+                    <layout class="QHBoxLayout" name="horizontalLayout_14">
+                     <item>
+                      <widget class="QPushButton" name="btn_push_dhcp_server_config">
+                       <property name="text">
+                        <string>Push Configuration</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_clear_dhcp_server">
+                       <property name="text">
+                        <string>Clear</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="7" column="2">
+                    <widget class="QPushButton" name="dhcp_btn_generate">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>Generate Config</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QGroupBox" name="groupBox_14">
+                  <property name="title">
+                   <string>Get ip address from DHCP</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_22">
+                   <item row="0" column="1">
+                    <widget class="QPushButton" name="btn_configure_dhcp_client">
+                     <property name="text">
+                      <string>Configure</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QComboBox" name="dhcp_client_all_interfaces"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="ppp">
+               <attribute name="title">
+                <string>ppp</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_42">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="groupBox_16">
+                  <property name="title">
+                   <string>ppp authentication</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_18">
+                   <item row="2" column="0" colspan="2">
+                    <widget class="Line" name="line_2">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0" rowspan="2" colspan="2">
+                    <widget class="QGroupBox" name="groupBox_15">
+                     <property name="title">
+                      <string/>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_17">
+                      <item row="4" column="1">
+                       <widget class="QPushButton" name="btn_clear_ppp">
+                        <property name="enabled">
+                         <bool>true</bool>
+                        </property>
+                        <property name="text">
+                         <string>Clear</string>
+                        </property>
+                        <property name="checkable">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="0" colspan="2">
+                       <widget class="QTextEdit" name="te_ppp_remote_config">
+                        <property name="styleSheet">
+                         <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(0, 255, 0);</string>
+                        </property>
+                        <property name="readOnly">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="0">
+                       <widget class="QPushButton" name="btn_ppp_push">
+                        <property name="enabled">
+                         <bool>true</bool>
+                        </property>
+                        <property name="text">
+                         <string>Push Configuration</string>
+                        </property>
+                        <property name="checkable">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="1">
+                       <widget class="QGroupBox" name="groupBox_20">
+                        <property name="title">
+                         <string>REMOTE SITE(Configure First)</string>
+                        </property>
+                        <layout class="QGridLayout" name="gridLayout_49">
+                         <item row="2" column="0">
+                          <widget class="QLabel" name="label_30">
+                           <property name="text">
+                            <string>Authentication username</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QLineEdit" name="ppp_remote_password">
+                           <property name="echoMode">
+                            <enum>QLineEdit::Password</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="1">
+                          <widget class="QComboBox" name="ppp_remote_all_interfaces"/>
+                         </item>
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_21">
+                           <property name="text">
+                            <string>Remote Device</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QComboBox" name="ppp_remote_all_devices"/>
+                         </item>
+                         <item row="1" column="0">
+                          <widget class="QLabel" name="label_20">
+                           <property name="text">
+                            <string>Target Interface</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="1">
+                          <widget class="QLineEdit" name="ppp_remote_username"/>
+                         </item>
+                         <item row="3" column="0">
+                          <widget class="QLabel" name="label_31">
+                           <property name="text">
+                            <string>Authentication password</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="1">
+                          <widget class="QPushButton" name="btn_ppp_remote_generate_config">
+                           <property name="enabled">
+                            <bool>true</bool>
+                           </property>
+                           <property name="text">
+                            <string>Configure Local Site</string>
+                           </property>
+                           <property name="checkable">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                        <zorder>ppp_remote_username</zorder>
+                        <zorder>label_30</zorder>
+                        <zorder>ppp_remote_password</zorder>
+                        <zorder>ppp_remote_all_interfaces</zorder>
+                        <zorder>label_21</zorder>
+                        <zorder>ppp_remote_all_devices</zorder>
+                        <zorder>label_20</zorder>
+                        <zorder>label_31</zorder>
+                        <zorder>btn_ppp_remote_generate_config</zorder>
+                       </widget>
+                      </item>
+                      <item row="1" column="0">
+                       <widget class="QGroupBox" name="groupBox_19">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="title">
+                         <string>Local Site</string>
+                        </property>
+                        <layout class="QGridLayout" name="gridLayout_46">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_35">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="0">
+                          <widget class="QLabel" name="label_25">
+                           <property name="text">
+                            <string>Authentication username</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="1">
+                          <widget class="QLineEdit" name="ppp_local_username"/>
+                         </item>
+                         <item row="1" column="0">
+                          <widget class="QLabel" name="label_19">
+                           <property name="text">
+                            <string>Target Interface</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QLineEdit" name="ppp_local_password">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="echoMode">
+                            <enum>QLineEdit::Password</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="0">
+                          <widget class="QLabel" name="label_26">
+                           <property name="text">
+                            <string>Authentication password</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="1">
+                          <widget class="QComboBox" name="ppp_all_interfaces">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="1">
+                          <widget class="QPushButton" name="btn_ppp_local_generate_config">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="text">
+                            <string>Generate Config</string>
+                           </property>
+                           <property name="checkable">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QRadioButton" name="rb_chap">
+                     <property name="text">
+                      <string>CHAP</string>
+                     </property>
+                     <property name="checked">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QRadioButton" name="rb_pap">
+                     <property name="text">
+                      <string>PAP</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0" colspan="2">
+                    <widget class="QLabel" name="label_18">
+                     <property name="text">
+                      <string>Note: For Configuring PAP and CHAP. You must ensure that selected interfaces are using PPP encapsulation
+otherwise this will fail.To configure this enter the command int interface mode &quot;encapsulation ppp&quot;</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QComboBox" name="configs_all_devices"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_8">
+       <attribute name="title">
+        <string>Backup and restore</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_27">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>Backup or restore configurations</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_25">
+           <item row="0" column="2">
+            <widget class="QComboBox" name="mgmt_config_config_type">
+             <item>
+              <property name="text">
+               <string>running config</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>startup config</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <widget class="QComboBox" name="mgmt_config_all_devices"/>
+           </item>
+           <item row="0" column="3">
+            <widget class="QPushButton" name="mgmt_config_btn_backup">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Backup</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="4">
+            <widget class="QListWidget" name="configs_list">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="text">
+    <string>Save as</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="theme_blue_shade">
+   <property name="text">
+    <string>blue shade</string>
+   </property>
+  </action>
+  <action name="theme_dark_grey">
+   <property name="text">
+    <string>Dark Grey</string>
+   </property>
+  </action>
+  <action name="theme_breeze_dark">
+   <property name="text">
+    <string>Breeze Dark</string>
+   </property>
+  </action>
+  <action name="theme_breeze_light">
+   <property name="text">
+    <string>Breeze Light</string>
+   </property>
+  </action>
+  <action name="theme_classic">
+   <property name="text">
+    <string>Classic</string>
+   </property>
+  </action>
+  <action name="actionDark_Grey_2">
+   <property name="text">
+    <string>Dark Grey</string>
+   </property>
+  </action>
+  <action name="theme_dark_orange">
+   <property name="text">
+    <string>Dark Orange</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>txt_usr_add_username</tabstop>
+  <tabstop>txt_usr_add_password</tabstop>
+  <tabstop>txt_usr_add_confirm_password</tabstop>
+  <tabstop>btn_usr_add_add</tabstop>
+  <tabstop>txt_usr_username_search</tabstop>
+  <tabstop>btn_usr_search</tabstop>
+  <tabstop>btn_usr_search_clear</tabstop>
+  <tabstop>txt_d_all_hostname</tabstop>
+  <tabstop>txt_d_all_ip_address</tabstop>
+  <tabstop>btn_d_all_search</tabstop>
+  <tabstop>btn_d_all_clear</tabstop>
+  <tabstop>dev_all_txt_file_path</tabstop>
+  <tabstop>dev_all_btn_browse</tabstop>
+  <tabstop>dev_all_btn_export</tabstop>
+  <tabstop>tbl_devices</tabstop>
+  <tabstop>d_add_hostname</tabstop>
+  <tabstop>d_add_ip_address</tabstop>
+  <tabstop>d_add_username</tabstop>
+  <tabstop>d_add_password</tabstop>
+  <tabstop>d_add_secret</tabstop>
+  <tabstop>d_add_port_number</tabstop>
+  <tabstop>d_add_device_type</tabstop>
+  <tabstop>d_add_cb_os_type</tabstop>
+  <tabstop>btn_d_add_save</tabstop>
+  <tabstop>dev_add_txt_csv_file_path</tabstop>
+  <tabstop>dev_add_btn_browse</tabstop>
+  <tabstop>dev_add_btn_bulk_add</tabstop>
+  <tabstop>txt_d_edit_hostname</tabstop>
+  <tabstop>btn_d_edit_search</tabstop>
+  <tabstop>d_edit_hostname</tabstop>
+  <tabstop>d_edit_ip_address</tabstop>
+  <tabstop>d_edit_username</tabstop>
+  <tabstop>d_edit_password</tabstop>
+  <tabstop>d_edit_secret</tabstop>
+  <tabstop>d_edit_port_number</tabstop>
+  <tabstop>d_edit_device_type</tabstop>
+  <tabstop>d_edit_cb_os_type</tabstop>
+  <tabstop>btn_d_edit_edit</tabstop>
+  <tabstop>btn_d_edit_delete</tabstop>
+  <tabstop>btn_d_edit_clear</tabstop>
+  <tabstop>pb_dev_all</tabstop>
+  <tabstop>pb_dev_add</tabstop>
+  <tabstop>pb_dev_edit</tabstop>
+  <tabstop>txt_g_all_group_name</tabstop>
+  <tabstop>btn_g_all_search</tabstop>
+  <tabstop>btn_g_all_clear</tabstop>
+  <tabstop>grp_all_txt_file_path</tabstop>
+  <tabstop>grp_all_btn_browse</tabstop>
+  <tabstop>grp_all_btn_export</tabstop>
+  <tabstop>tbl_groups</tabstop>
+  <tabstop>g_add_groupname</tabstop>
+  <tabstop>g_add_group_members</tabstop>
+  <tabstop>g_add_submit</tabstop>
+  <tabstop>txt_g_edit_groupname</tabstop>
+  <tabstop>btn_g_edit_search</tabstop>
+  <tabstop>g_edit_groupname</tabstop>
+  <tabstop>g_edit_group_members</tabstop>
+  <tabstop>pb_g_edit</tabstop>
+  <tabstop>pb_g_delete</tabstop>
+  <tabstop>pb_grp_all</tabstop>
+  <tabstop>pb_grp_add</tabstop>
+  <tabstop>pb_grp_edit</tabstop>
+  <tabstop>cb_bt_all_devices</tabstop>
+  <tabstop>cb_bt_all_groups</tabstop>
+  <tabstop>config_show_btn_submit</tabstop>
+  <tabstop>config_show_btn_custom_commands</tabstop>
+  <tabstop>show_commands_list</tabstop>
+  <tabstop>config_show_te_cmds_output</tabstop>
+  <tabstop>config_show_btn_export</tabstop>
+  <tabstop>chkbox_rip_version</tabstop>
+  <tabstop>chkbox_rip_directly</tabstop>
+  <tabstop>chkbox_rip_loopback</tabstop>
+  <tabstop>te_rip_config</tabstop>
+  <tabstop>btn_push_rip_config</tabstop>
+  <tabstop>btn_clear_rip</tabstop>
+  <tabstop>txt_process_id</tabstop>
+  <tabstop>txt_ospf_area</tabstop>
+  <tabstop>chkbox_ospf_directly</tabstop>
+  <tabstop>chkbox_ospf_loopback</tabstop>
+  <tabstop>te_ospf_config</tabstop>
+  <tabstop>btn_push_ospf_config</tabstop>
+  <tabstop>btn_clear_ospf</tabstop>
+  <tabstop>txt_eigrp_as_number</tabstop>
+  <tabstop>chkbox_eigrp_directly</tabstop>
+  <tabstop>chkbox_eigrp_loopback</tabstop>
+  <tabstop>te_eigrp_config</tabstop>
+  <tabstop>btn_push_eigrp_config</tabstop>
+  <tabstop>btn_clear_eigrp</tabstop>
+  <tabstop>dhcp_pool_name</tabstop>
+  <tabstop>dhcp_network_address</tabstop>
+  <tabstop>dhcp_subnet_mask</tabstop>
+  <tabstop>chkbox_exclude_range</tabstop>
+  <tabstop>dhcp_exclude_start</tabstop>
+  <tabstop>dhcp_exclude_end</tabstop>
+  <tabstop>chkbox_default_gateway</tabstop>
+  <tabstop>dhcp_default_gateway</tabstop>
+  <tabstop>chkbox_dns_server</tabstop>
+  <tabstop>dhcp_dns_server</tabstop>
+  <tabstop>chkbox_ip_phone_gateway</tabstop>
+  <tabstop>dhcp_ip_phone_gateway</tabstop>
+  <tabstop>dhcp_btn_generate</tabstop>
+  <tabstop>te_dhcp_server_config</tabstop>
+  <tabstop>btn_push_dhcp_server_config</tabstop>
+  <tabstop>btn_clear_dhcp_server</tabstop>
+  <tabstop>dhcp_client_all_interfaces</tabstop>
+  <tabstop>btn_configure_dhcp_client</tabstop>
+  <tabstop>tab_main</tabstop>
+  <tabstop>tab_configs</tabstop>
+  <tabstop>rb_chap</tabstop>
+  <tabstop>rb_pap</tabstop>
+  <tabstop>ppp_remote_all_devices</tabstop>
+  <tabstop>ppp_remote_all_interfaces</tabstop>
+  <tabstop>ppp_remote_username</tabstop>
+  <tabstop>ppp_remote_password</tabstop>
+  <tabstop>btn_ppp_remote_generate_config</tabstop>
+  <tabstop>ppp_all_interfaces</tabstop>
+  <tabstop>ppp_local_username</tabstop>
+  <tabstop>ppp_local_password</tabstop>
+  <tabstop>btn_ppp_local_generate_config</tabstop>
+  <tabstop>te_ppp_remote_config</tabstop>
+  <tabstop>btn_ppp_push</tabstop>
+  <tabstop>btn_clear_ppp</tabstop>
+  <tabstop>pb_bt_show_commands</tabstop>
+  <tabstop>pb_bt_configurations</tabstop>
+  <tabstop>mgmt_config_all_devices</tabstop>
+  <tabstop>mgmt_config_config_type</tabstop>
+  <tabstop>mgmt_config_btn_backup</tabstop>
+  <tabstop>configs_list</tabstop>
+  <tabstop>tab_users</tabstop>
+  <tabstop>tab_devices</tabstop>
+  <tabstop>tab_groups</tabstop>
+  <tabstop>txt_usr_edit_username</tabstop>
+  <tabstop>tab_basic_tasks</tabstop>
+  <tabstop>btn_user_edit_edit</tabstop>
+  <tabstop>btn_usr_filter</tabstop>
+  <tabstop>btn_usr_del_delete</tabstop>
+  <tabstop>txt_usr_edit_password</tabstop>
+  <tabstop>txt_usr_edit_new_password</tabstop>
+  <tabstop>txt_usr_edit_confirm_password</tabstop>
+  <tabstop>txt_usr_table_filter</tabstop>
+  <tabstop>btn_usr_clear_filter</tabstop>
+  <tabstop>usr_txt_file_path</tabstop>
+  <tabstop>usr_btn_browse</tabstop>
+  <tabstop>usr_btn_export</tabstop>
+  <tabstop>tbl_users</tabstop>
+  <tabstop>pb_usr_user_settings</tabstop>
+  <tabstop>configs_all_devices</tabstop>
+  <tabstop>configs_all_configurations</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pb_dev_all</sender>
+   <signal>clicked()</signal>
+   <receiver>txt_d_all_ip_address</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>97</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>105</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_grp_all</sender>
+   <signal>clicked()</signal>
+   <receiver>tab_groups</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>77</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_bt_show_commands</sender>
+   <signal>clicked()</signal>
+   <receiver>cb_bt_all_devices</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>112</x>
+     <y>304</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>128</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_dev_add</sender>
+   <signal>clicked()</signal>
+   <receiver>d_add_hostname</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>183</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>321</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
